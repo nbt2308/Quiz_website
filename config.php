@@ -4,7 +4,7 @@ const _PERMISSION = true;
 
 //database
 const _HOST = "localhost";
-const _DBNAME = "test";
+const _DBNAME = "technews";
 const _USER = "root";
 const _PASSWORD = "";
 const _DRIVER = "mysql";
