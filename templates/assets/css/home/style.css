@@ -1,0 +1,29 @@
+body {}
+
+.category {
+    border: 1px solid red;
+    height: 80px;
+}
+
+.main {
+    border: 1px solid green;
+    height: 100vh;
+    display: flex;
+    padding:0;
+}
+
+.left-container {
+    width: 70%;
+    border: 1px solid rgb(248, 0, 41);
+    height: 100%;
+}
+.right-container{
+    width: 30%;
+    height: 100%;
+}
+
+.footer {
+
+    border: 1px solid blue;
+    height: 100vh;
+}
