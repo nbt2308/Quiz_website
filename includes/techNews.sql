@@ -1,4 +1,6 @@
 -- 1️⃣ Tạo database
+DROP DATABASE IF EXISTS TechNews;
+
 CREATE DATABASE IF NOT EXISTS TechNews
 CHARACTER SET utf8mb4
 COLLATE utf8mb4_unicode_ci;
