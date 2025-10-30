@@ -1,0 +1,20 @@
+
+
+.login-container {
+    width: 500px;
+    /* margin: auto; */
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.title-login {
+    text-align: center;
+    width: fit-content;
+    border: 2px solid aqua;
+    padding: 20px;
+}
+
