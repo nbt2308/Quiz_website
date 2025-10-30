@@ -32,6 +32,9 @@
                         <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
                         <label for="floatingPassword">Password</label>
                     </div>
+                    <div class="forgot-password">
+                        <a href="register.php">Forgot your password</a>
+                    </div>
                     <div class="btn-login">
                         <button type="submit" class="btn btn-primary">Sign in</button>
                     </div>

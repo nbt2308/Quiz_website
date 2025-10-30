@@ -37,3 +37,11 @@
     background-color: #d8e6ff;
     color:black;
 }
+
+a {
+    text-decoration: none;
+}
+
+a:hover {
+    color: red;
+}
