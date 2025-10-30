@@ -13,18 +13,18 @@
     <link rel="stylesheet" href="./css/forgotPassword.css">
 </head>
 <body>
-    <form action="forgotPassword_xuly.php" method="post">
+    <form action="" method="post">
         <div class="forgot-password-title">
             <span>FORGOT PASSWORD</span>
         </div>
         <div class="form-floating mb-3">
-            <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
-            <label for="floatingInput">Email address</label>
+            <input type="password" class="form-control" id="floatingInput" placeholder="password">
+            <label for="floatingInput">New password</label>
         </div>
-        <div class="confirm-button">
-            <button type="submit" class="btn btn-primary">Confirm email</button>
+        <div class="form-floating mb-3">
+            <input type="password" class="form-control" id="floatingInput" placeholder="password">
+            <label for="floatingInput">Confirm password</label>
         </div>
-        <?php ?>
     </form>
 </body>
 </html>

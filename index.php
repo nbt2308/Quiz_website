@@ -21,4 +21,6 @@ try {
     }
 } catch (Exception $e) {
     echo "loi ket noi";
+    exit();
 }
+?>
