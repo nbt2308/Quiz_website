@@ -2,6 +2,8 @@
 // if(!defined('_USER')){
 //     die("Truy cập không hợp lệ") ;
 // }
+
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -16,34 +18,37 @@
 
 <body>
     <div class="register-main">
-        <div class="logo-brand">
-
+        <div class="logo-brand mb-4">
+            <img src="../../templates//assets//images//TH.png" alt="Logo-brand">
         </div>
         <div class="register-container">
             <div class="register-content">
-                <div class="register-title">
+                <div class="register-title mb-3 mt-3">
                     <span>Create a new account</span>
                 </div>
                 <div class="form-register mt-3">
-                    <form class="form-floating">
-                        <input type="email" class="form-control" id="floatingInputValue" placeholder="name@example.com" value="">
-                        <label for="floatingInputValue">Email</label>
+                    <form action="" method="post">
+                        <div class="form-floating mb-3">
+                            <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
+                            <label for="floatingInput">Email address</label>
+                        </div>
+                        <div class="form-floating mb-3">
+                            <input type="text" class="form-control" id="floatingInput" placeholder="name@example.com">
+                            <label for="floatingInput">Username</label>
+                        </div>
+                        <div class="form-floating mb-3">
+                            <input type="password" class="form-control" id="floatingInput" placeholder="name@example.com">
+                            <label for="floatingInput">Password</label>
+                        </div>
+                        <div class="btn-register">
+                            <button onclick="">SIGN UP</button>
+                        </div>
                     </form>
-                    <form class="form-floating my-3">
-                        <input type="email" class="form-control" id="floatingInputValue" placeholder="name@example.com" value="">
-                        <label for="floatingInputValue">Username</label>
-                    </form>
-                    <form class="form-floating">
-                        <input type="email" class="form-control" id="floatingInputValue" placeholder="name@example.com" value="">
-                        <label for="floatingInputValue">Password</label>
-                    </form>
-                    <div class="btn-register">
-                        <button>SIGN UP</button>
+                    <div class="sign-in mb-3">
+                        <span>Already have an account?</span>
+                        <a href="login.php">Sign in</a>
                     </div>
-                    <div className="sign-in">
-                        <span>Already have an account</span>
-                        <span className="btn-signin">Sign in</span>
-                    </div>
+                    <div class="btn-goBack btn"><span>Go to homepage</span></div>
                 </div>
             </div>
         </div>
