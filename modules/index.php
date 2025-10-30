@@ -3,6 +3,21 @@
 //     die("Truy cập không hợp lệ") ;
 // }
 
+function redirect($url) {
+    if (!headers_sent()) {
+        header("Location: $url");
+        exit();
+    } else {
+        echo "<script>window.location.href='$url';</script>";
+        exit();
+    }
+}
+if (isset($_POST['signIn'])) {
+    redirect('./auth/login.php');
+}
+if(isset($_POST['signUp'])){
+    redirect('./auth/register.php');
+}
 //home
 ?>
 <!DOCTYPE html>
@@ -18,9 +33,9 @@
 
 <body>
     <div class="header container">
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <nav class="navbar navbar-expand-lg navbar-light">
             <div class="container-fluid">
-                <a class="navbar-brand" href="#">Navbar</a>
+                <a class="navbar-brand logo-brand"   href="#"><img src="../templates/assets/images/TH.png" alt="Logo-brand"></a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -37,9 +52,7 @@
                             <a class="nav-link" href="#">Manage</a>
                         </li>
 
-                        <li class="nav-item datetime">
-                            <a class="nav-link disabled" href="#">ngaythang</a>
-                        </li>
+                       
 
                         <!-- check login  -->
                         <li class="nav-item dropdown">
@@ -52,6 +65,11 @@
                             </ul>
                         </li>
 
+                        <!-- lay ngay thang bang js -->
+                         <li class="nav-item datetime">
+                            <a class="nav-link disabled" href="#">ngaythang</a>
+                        </li>
+
 
 
 
@@ -62,8 +80,11 @@
                     </form>
                     <?php   ?>
                     <div class="signin-signup ms-3">
-                        <button class="btn-signin">Sign in</button>
-                        <button class="btn-signup">Sign up</button>
+                         <form method="POST">
+                            <button type="submit" name="signIn" class="btn btn-primary">Sign in</button>
+                            <button type="submit" name="signUp" class="btn btn-primary">Sign up</button>
+                        </form>
+                       
                     </div>
                 </div>
             </div>

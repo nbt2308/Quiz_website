@@ -1,5 +1,18 @@
 body {}
 
+a.navbar-brand.logo-brand  {
+    width: 70px;
+    height: 70px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+a.navbar-brand.logo-brand img {
+    max-width: 100%;
+    max-height: 100%;
+}
+
 .category {
     border: 1px solid red;
     height: 80px;
