@@ -13,25 +13,34 @@
     <link rel="stylesheet" href="./css/changePassword.css">
 </head>
 <body>
-    <form action="" method="POST">
-        <div class="change-password-title">
-            <span>CHANGE PASSWORD</span>
+    <div class="changePassword-container">
+        <div class="logo-brand">
+            <img src="../../templates//assets//images//TH.png" alt="Logo-brand">
         </div>
-        <div class="form-floating mb-3">
-            <input type="password" class="form-control" id="floatingInput" placeholder="current password">
-            <label for="floatingInput">Current password</label>
+        <div class="changePassword-content">
+            <form action="" method="POST" class="m-5">
+                <div class="change-password-title">
+                    <span>Change Password</span>
+                </div>
+                <div class="form-floating">
+                    <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
+                    <label for="floatingPassword">Current password</label>
+                </div>
+                 <div class="form-floating my-3">
+                    <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
+                    <label for="floatingPassword">New password</label>
+                </div>
+                 <div class="form-floating">
+                    <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
+                    <label for="floatingPassword">Confirm password</label>
+                </div>
+                <div class="change-button mt-3">
+                    <button type="submit" class="btn btn-primary">Change Password</button>
+                </div>
+                <div class="btn-goBack btn"><span>Go to homepage</span></div>
+                
+            </form>
         </div>
-        <div class="form-floating mb-3">
-            <input type="password" class="form-control" id="floatingInput" placeholder="new password">
-            <label for="floatingInput">New password</label>
-        </div>
-        <div class="form-floating mb-3">
-            <input type="password" class="form-control" id="floatingInput" placeholder="confirm password">
-            <label for="floatingInput">Confirm password</label>
-        </div>
-        <div class="change-button">
-            <button type="submit" class="btn btn-primary">Change Password</button>
-        </div>
-    </form>
+    </div>
 </body>
 </html>
