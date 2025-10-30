@@ -23,4 +23,5 @@ try {
     echo "loi ket noi";
     exit();
 }
+require_once './modules/index.php';
 ?>
