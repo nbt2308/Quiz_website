@@ -24,7 +24,7 @@
         <div class="register-container">
             <div class="register-content">
                 <div class="register-title mb-3 mt-3">
-                    <span>Create a new account</span>
+                    <span>CREATE A NEW ACCOUNT</span>
                 </div>
                 <div class="form-register mt-3">
                     <form action="" method="post">
