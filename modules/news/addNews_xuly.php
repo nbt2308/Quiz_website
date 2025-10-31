@@ -15,6 +15,10 @@
     }
     // fix sql injection
     $sql = "INSERT INTO news (news_title, news_description, news_image, sumary, image_note, user_id, category_id) VALUES ('$news_title', '$news_content', '$image_file', '$news_summary', '$image_description', '$user_id', '$category')";
-    mysqli_query($conn, $sql);
-    require_once 'manageNews.php';
+    if ($conn->query($sql) === TRUE) {
+        header("Location: ?module=news&action=manageNews");
+    } else {
+        echo "Error: " . $sql . "<br>" . $conn->error;
+    }
+    $conn->close();
 ?>
