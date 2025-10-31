@@ -73,13 +73,16 @@ include_once 'addNews.php';
         </div>
         <div class="manageNews-content">
             <div class="manageNews-button my-3 mx-3">
-                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalAddNews">
-                    <img src="\Quiz_website\templates\assets\images\add_circle_24dp_1F1F1F_FILL0_wght400_GRAD0_opsz24.svg" alt="">Add News
+                <button type="button" class="btn btn-primary add-button" data-bs-toggle="modal" data-bs-target="#modalAddNews">
+                    <img class="add-icon" src="\Quiz_website\templates\assets\images\add_circle_24dp_1F1F1F_FILL0_wght400_GRAD0_opsz24.svg" alt="">Add News
                 </button>
             </div>
             <div class="search mb-3 mx-3">
                 <form class="d-flex">
-                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                    <div class="search-box me-2">
+                        <img class="search-icon" src="\Quiz_website\templates\assets\images\search_24dp_1F1F1F_FILL0_wght400_GRAD0_opsz24.svg" alt="">
+                        <input class="form-control" type="search" placeholder="Enter the title or category news" aria-label="Search">
+                    </div>
                     <button class="btn btn-outline-success" type="submit">Search</button>
                 </form>
             </div>

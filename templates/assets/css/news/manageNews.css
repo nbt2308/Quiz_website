@@ -19,8 +19,9 @@
         0 10px 10px rgba(0, 0, 0, 0.22);
 }
 
-.search{
-    width: 400px;
+.manageNews-title {
+    font-size: 30px;
+    font-weight: 700;
 }
 
 .table {
@@ -28,7 +29,27 @@
     margin: auto;
 }
 
-.manageNews-title {
-    font-size: 30px;
-    font-weight: 700;
+.add-button {
+    padding-top: 8px;
+}
+
+.add-icon {
+    align-items: left;
+    margin-right: 5px;
+    padding-bottom: 3px;
+}
+
+.search-box {
+    width: 400px;
+    position: relative;
+}
+
+.search-box input{
+    padding-left: 35px;
+}
+
+.search-icon{
+    align-items: left;
+    position: absolute;
+    margin: 7px 5px;
 }
