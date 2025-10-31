@@ -49,7 +49,7 @@ $result = $conn->query($sql);
                         </li>
                         <!-- check role -->
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Manage</a>
+                            <a class="nav-link" href="?module=news&action=manageNews">Manage</a>
                         </li>
 
 
