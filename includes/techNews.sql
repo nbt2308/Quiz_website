@@ -22,6 +22,7 @@ CREATE TABLE category (
     category_id INT AUTO_INCREMENT PRIMARY KEY,
     name VARCHAR(100) NOT NULL
 );
+INSERT INTO category (name) VALUES ("Beaking News"), ("World"), ("Business"), ("Sports"), ("Technology"), ("Health"), ("Science"), ("Entertainment");
 
 -- 4️⃣ Bảng NEWS
 CREATE TABLE news (
