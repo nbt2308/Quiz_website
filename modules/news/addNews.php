@@ -21,9 +21,15 @@
         <div class="modal-body">
           <select class="form-select form-select-lg mb-3">
             <option selected disabled> -- Select a category-- </option>
-            <option value="1">One</option>
-            <option value="2">Two</option>
-            <option value="3">Three</option>
+            <?php 
+              $sql = "SELECT * FROM categories";
+              $list = mysqli_query($conn, $sql);
+              if ($list->num_rows > 0) {
+                while ($row->fetch_assos()) {
+                  echo '<option value=' . $row["category_id"] . '>' . $row["name"] . '</option>';
+                }
+              }
+            ?>
           </select>
           <div class="form-floating mb-3">
             <input type="text" class="form-control" id="floatingInput" placeholder="news-title">
