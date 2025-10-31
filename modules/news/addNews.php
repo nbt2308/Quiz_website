@@ -22,11 +22,11 @@
           <select class="form-select form-select-lg mb-3">
             <option selected disabled> -- Select a category-- </option>
             <?php 
-              $sql = "SELECT * FROM categories";
+              $sql = "SELECT * FROM category";
               $list = mysqli_query($conn, $sql);
               if ($list->num_rows > 0) {
-                while ($row->fetch_assos()) {
-                  echo '<option value=' . $row["category_id"] . '>' . $row["name"] . '</option>';
+                while ($row = $list->fetch_assoc()) {
+                  echo '<option value="' . $row["category_id"] . '">' . $row["name"] . '</option>';
                 }
               }
             ?>
