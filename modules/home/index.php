@@ -3,24 +3,14 @@
 //     die("Truy cập không hợp lệ") ;
 // }
 
-// function redirect($url)
-// {
-//     if (!headers_sent()) {
-//         header("Location: $url");
-//         exit();
-//     } else {
-//         echo "<script>window.location.href='$url';</script>";
-//         exit();
-//     }
-// }
-// if (isset($_POST['signIn'])) {
-//     redirect('modules/auth/login.php');
-// }
-// if (isset($_POST['signUp'])) {
-//     redirect('modules/auth/register.php');
-// }
-$sql = "SELECT name FROM category";
-$result = $conn->query($sql);
+
+//lấy tất cả tên chủ đề
+
+
+
+
+
+
 //home
 ?>
 <!DOCTYPE html>
@@ -30,7 +20,7 @@ $result = $conn->query($sql);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="/Quiz_website/templates/assets/css/home/style.css">
+    <link rel="stylesheet" href="\Quiz_website\templates\assets\css\home\style.css">
     <title>Home</title>
 </head>
 
@@ -95,6 +85,8 @@ $result = $conn->query($sql);
     </div>
     <div class="category container">
         <?php
+        $sql = "SELECT name FROM category";
+        $result = $conn->query($sql);
         if ($result->num_rows > 0) {
             while ($row = $result->fetch_assoc()) {
                 echo '
@@ -120,50 +112,50 @@ $result = $conn->query($sql);
     </div>
     <div class="main container">
         <div class="left-container ">
-            <span class="category-title">Breaking news</span>
+
+
             <div id="newsCarousel" class="carousel slide" data-bs-ride="carousel">
                 <div class="carousel-inner">
 
-                    <!-- Slide 1 -->
-                    <div class="carousel-item active">
+                    <?php
+                    $sql2 = "SELECT n.*, c.name AS category_name
+                            FROM news n
+                            JOIN category c ON n.category_id = c.category_id
+                            JOIN (
+                                SELECT category_id, MAX(post_date) AS latest_post
+                                FROM news
+                                GROUP BY category_id
+                            ) vmax ON n.category_id = vmax.category_id AND n.post_date = vmax.latest_post;
+";
+
+                    $result = $conn->query($sql2);
+                    if ($result->num_rows > 0) {
+                        $isActive = true;
+                        while ($row = $result->fetch_assoc()) {
+                            echo '
+                    <div class="carousel-item ' . ($isActive ? 'active' : '') . '">
                         <div class="d-flex align-items-center justify-content-center p-3">
                             <img src="https://picsum.photos/400/250?random=1" class="rounded me-3" alt="ảnh 1" style="width:400px;height:250px;object-fit:cover;">
                             <div>
-                                <h5 class="fw-bold">50+ hình nền phong cảnh thiên nhiên, 3D cực đẹp, full HD</h5>
-                                <p class="text-muted mb-0">
-                                    Ngày nay phần lớn mọi người ai cũng có sở hữu cho bản thân một chiếc điện thoại thông minh.
-                                    Việc tìm kiếm hình nền phong cảnh thiên nhiên tươi mới dường như là một sở thích của nhiều người.
-                                </p>
-                                <p class="mt-5">Ngày đăng: 30-10-2025</p>
+                                <a class="fw-bold text-decoration-none" href="#" >' . htmlspecialchars($row['news_title']) . ' </a>
+                                <div class="text-limit">
+                                    <p class="text-muted mb-0">'
+                                . htmlspecialchars($row['news_description']) .
+                                '</p>
+                                </div>
+                                <p class="mt-5">Ngày đăng: ' . htmlspecialchars($row['post_date'])  . '</p>
                             </div>
                         </div>
                     </div>
+        ';
+                            $isActive = false;
+                        }
+                    } else {
+                        echo "<p>Không có dữ liệu.</p>";
+                    }
+                    ?>
 
-                    <!-- Slide 2 -->
-                    <div class="carousel-item">
-                        <div class="d-flex align-items-center justify-content-center p-3">
-                            <img src="https://picsum.photos/400/250?random=2" class="rounded me-3" alt="ảnh 2" style="width:400px;height:250px;object-fit:cover;">
-                            <div>
-                                <h5 class="fw-bold">Bộ sưu tập hình nền thành phố về đêm tuyệt đẹp</h5>
-                                <p class="text-muted mb-0">
-                                    Ánh đèn lung linh và bầu trời đêm tĩnh lặng tạo nên khung cảnh tuyệt đẹp khiến nhiều người say mê.
-                                </p>
-                            </div>
-                        </div>
-                    </div>
 
-                    <!-- Slide 3 -->
-                    <div class="carousel-item">
-                        <div class="d-flex align-items-center justify-content-center p-3">
-                            <img src="/Quiz_website/templates/assets/images/logo.png" class="rounded me-3" alt="ảnh 3" style="width:400px;height:250px;object-fit:cover;">
-                            <div>
-                                <h5 class="fw-bold">Những hình nền phong cảnh biển xanh mát mắt</h5>
-                                <p class="text-muted mb-0">
-                                    Hình ảnh đại dương bao la, sóng vỗ rì rào mang lại cảm giác bình yên và thư giãn tuyệt đối.
-                                </p>
-                            </div>
-                        </div>
-                    </div>
 
                 </div>
 
@@ -182,16 +174,56 @@ $result = $conn->query($sql);
                     <button type="button" data-bs-target="#newsCarousel" data-bs-slide-to="2"></button>
                 </div>
             </div>
-            <div class="card">
-                <div class="image-preview">
-                    <img class="card-img-top" src="/Quiz_website/templates/assets/images/logo1.png" alt="Card-image-cap" />
+            <div class="news-card my-3">
+                <?php
+                $category_id = 1; // ví dụ id chuyên mục
+                $sql3 = "
+                   SELECT n.*, c.name AS category_name
+                    FROM news n
+                    INNER JOIN category c ON n.category_id = c.category_id
+                    INNER JOIN (
+                        SELECT category_id, MIN(post_date) AS latest_post
+                        FROM news
+                        GROUP BY category_id
+                    ) AS latest ON n.category_id = latest.category_id AND n.post_date = latest.latest_post;
+                ";
+                $result = $conn->query($sql3);
+                if ($result->num_rows > 0) {
+                    while ($row = $result->fetch_assoc()) {
+                        echo '
+                        <span class="ms-3 fs-4 fw-bold">' . htmlspecialchars($row['category_name']) . '</span>
+                <div class="card">
+                    <div class="image-preview">
+                        <img class="card-img-top" src="/Quiz_website/templates/assets/images/logo1.png" alt="Card-image-cap" />
+                    </div>
+                    <div class="card-body">
+                        <div class="top">
+                            <h5 class="card-title">' . htmlspecialchars($row['news_title']) . '</h5>
+                            <div class="text-limit">
+                                <p class="card-text">' . htmlspecialchars($row['news_description']) . '</p>
+                            </div>
+                        </div>
+                        <div class="bottom">
+                            <div class="views d-flex align-items-center gap-1 ">
+                                <img src="\Quiz_website\templates\assets\images\visibility_24dp_000000_FILL0_wght400_GRAD0_opsz24.svg" alt="">
+                                <p class="m-0">' . htmlspecialchars($row['views']) . '</p>
+                            </div>
+                            <div class="Post-date d-flex align-items-center ">
+                                <p class="m-0">' . htmlspecialchars($row['post_date']) . '</p>
+                            </div>
+                            <button class="btn btn-primary">View more</button>
+                        </div>
+                    </div>
                 </div>
-                <div class="card-body">
-                    <h5 class="card-title">Tieu de</h5>
-                    <div class="text-limit"><p class="card-text"></p></div>
-                    <button class="btn btn-primary">View more</button>
-                </div>
+                        ';
+                    }
+                } else {
+                    echo "<p>Không có dữ liệu.</p>";
+                }
+                ?>
+
             </div>
+
         </div>
         <div class="right-container"></div>
     </div>
