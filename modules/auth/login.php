@@ -11,7 +11,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sign in</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="./css/login.css">
+    <link rel="stylesheet" href="/Quiz_website/templates/assets/css/auth/login.css">
 </head>
 
 <body>
@@ -40,7 +40,7 @@
                     </div>
                     <div class="register">
                         <span>Don't have an account?</span>
-                        <a href="register.php">Create a new account</a>
+                        <a href="?module=auth&action=register">Create a new account</a>
                     </div>
                 </form>
             </div>

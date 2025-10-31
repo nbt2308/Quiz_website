@@ -12,14 +12,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="./css/register.css">
+    <link rel="stylesheet" href="/Quiz_website/templates/assets/css/auth/register.css">
     <title>Document</title>
 </head>
 
 <body>
     <div class="register-main">
         <div class="logo-brand mb-4">
-            <img src="../../templates//assets//images//TH.png" alt="Logo-brand">
+            <img src=".//templates//assets//images//TH.png" alt="Logo-brand">
         </div>
         <div class="register-container">
             <div class="register-content">
@@ -46,9 +46,9 @@
                     </form>
                     <div class="sign-in mb-3">
                         <span>Already have an account?</span>
-                        <a href="login.php">Sign in</a>
+                        <a href="?module=auth&action=login">Sign in</a>
                     </div>
-                    <div class="btn-goBack btn"><span>Go to homepage</span></div>
+                    <div class="btn-goBack btn"><a href="?module=home&action=index">Go to homepage</a></div>
                 </div>
             </div>
         </div>

@@ -4,19 +4,27 @@ session_start(); //mo phien lam viec
 ob_start(); //tranh loi khi dung ham header, cookie
 
 require_once 'config.php';
+require_once './includes/connect.php';
 
-try {
-    header("Content-type: text/html; charset=utf-8");
-    $conn = new mysqli(_HOST, _USER, _PASSWORD, _DBNAME);
-    mysqli_set_charset($conn, 'UTF8');
-    // Nếu kết nối bị lỗi thì xuất báo lỗi và thoát.
-    if ($conn->connect_error) {
-        die("Không kết nối :" . $conn->connect_error);
-        exit();
-    }
-} catch (Exception $e) {
-    echo "loi ket noi";
-    exit();
+//gán 2 biến module và action là 2 biến hằng số được khai báo bên config.php
+//để kiểm tra phương thức get trên url khi truy cập web và require đúng module mà người dùng đang muốn truy cập
+$module = _MODULES;
+$action = _ACTION;
+if (!empty($_GET['module'])) {
+    $module = $_GET['module'];
 }
-require_once './modules/index.php';
-?>
+if (!empty($_GET['action'])) {
+    $action = $_GET['action'];
+}
+
+$path = 'modules/' . $module . '/' . $action . '.php';
+if (!empty($path)) {
+    if (file_exists($path)) {
+        
+        require_once $path;
+    } else {
+        require_once './modules/errors/404.php';
+    }
+} else {
+    require_once './modules/errors/500.php';
+}

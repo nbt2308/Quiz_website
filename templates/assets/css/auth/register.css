@@ -96,7 +96,10 @@
 
 
 }
-
+.btn-goBack a{
+    text-decoration: none;
+    color: #fff;
+}
 .btn-goBack:hover {
     background-color: #3d84f5;
     color:white;
