@@ -49,7 +49,7 @@ $result = $conn->query($sql);
                         </li>
                         <!-- check role -->
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Manage</a>
+                            <a class="nav-link" href="?module=news&action=manageNews">Manage</a>
                         </li>
 
 
@@ -180,6 +180,16 @@ $result = $conn->query($sql);
                     <button type="button" data-bs-target="#newsCarousel" data-bs-slide-to="0" class="active"></button>
                     <button type="button" data-bs-target="#newsCarousel" data-bs-slide-to="1"></button>
                     <button type="button" data-bs-target="#newsCarousel" data-bs-slide-to="2"></button>
+                </div>
+            </div>
+            <div class="card">
+                <div class="image-preview">
+                    <img class="card-img-top" src="/Quiz_website/templates/assets/images/logo1.png" alt="Card-image-cap" />
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title">Tieu de</h5>
+                    <div class="text-limit"><p class="card-text"></p></div>
+                    <button class="btn btn-primary">View more</button>
                 </div>
             </div>
         </div>
