@@ -99,32 +99,32 @@ include_once 'addNews.php';
                                 <th scope="col">Action</th>
                             </tr>
                         </thead>
-                        <?php
-                        $sql = "SELECT * FROM category, news WHERE news.category_id = category.category_id";
-                        $list = $conn->query($sql);
-                        if ($list->num_rows > 0)
-                            while ($row = $list->fetch_assoc()) {
-                                echo '<tbody>';
-                                    echo '<tr>';
-                                        echo '<th scope="row">' . $row["news_id"] . '</th>';
-                                        echo '<td>' . $row["news_title"] . '</td>';
-                                        echo '<td>' . $row["post_date"] . '</td>';
-                                        if ($row["isPost"] == 1) {
-                                            echo '<td>Approved</td>';
-                                        } else {
-                                            echo '<td>Not yet approved</td>';
-                                        }
-                                        echo '<td>' . $row["name"] . '</td>';
+                        <tbody>
+                            <?php
+                            $sql = "SELECT * FROM category, news WHERE news.category_id = category.category_id";
+                            $list = $conn->query($sql);
+                            if ($list->num_rows > 0)
+                                while ($row = $list->fetch_assoc()) {
+                                        echo '<tr>';
+                                            echo '<th scope="row">' . $row["news_id"] . '</th>';
+                                            echo '<td>' . $row["news_title"] . '</td>';
+                                            echo '<td>' . $row["news_post_date"] . '</td>';
+                                            if ($row["news_isPost"] == 1) {
+                                                echo '<td>Approved</td>';
+                                            } else {
+                                                echo '<td>Not yet approved</td>';
+                                            }
+                                            echo '<td>' . $row["category_name"] . '</td>';
 
-                                        echo '<td>
-                                                <button type="button" class="btn btn-warning btn-sm"><img src="\Quiz_website\templates\assets\images\edit_24dp_1F1F1F_FILL0_wght400_GRAD0_opsz24.svg" alt="Edit"></button>
-                                                <button type="button" class="btn btn-danger btn-sm"><img src="\Quiz_website\templates\assets\images\delete_24dp_1F1F1F_FILL0_wght400_GRAD0_opsz24.svg" alt="Delete"></button>
-                                             </td>';
-                
-                                    echo '</tr>';
-                                echo '</tbody>';
-                            }
+                                            echo '<td>
+                                                    <button type="button" class="btn btn-warning btn-sm"><img src="\Quiz_website\templates\assets\images\edit_24dp_1F1F1F_FILL0_wght400_GRAD0_opsz24.svg" alt="Edit"></button>
+                                                    <button type="button" class="btn btn-danger btn-sm"><img src="\Quiz_website\templates\assets\images\delete_24dp_1F1F1F_FILL0_wght400_GRAD0_opsz24.svg" alt="Delete"></button>
+                                                </td>';
+                    
+                                        echo '</tr>';
+                                }
                         ?>
+                        </tbody>
                     </table>
                 </div>
             </div>

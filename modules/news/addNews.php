@@ -18,7 +18,7 @@
           <h1 class="modal-title fs-5" id="staticBackdropLabel">Add news</h1>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
-        <form action="?module=news&action=addNews_xuly" method="POST">
+        <form action="?module=news&action=addNews_xuly" method="POST" enctype="multipart/form-data">
           <div class="modal-body">
             <select name="category" class="form-select form-select-lg mb-3">
               <option selected disabled> -- Select a category-- </option>
@@ -27,7 +27,7 @@
               $list = mysqli_query($conn, $sql);
               if ($list->num_rows > 0) {
                 while ($row = $list->fetch_assoc()) {
-                  echo '<option value="' . $row["category_id"] . '">' . $row["name"] . '</option>';
+                  echo '<option value="' . $row["category_id"] . '">' . $row["category_name"] . '</option>';
                 }
               }
               ?>
@@ -37,8 +37,8 @@
               <label for="floatingInput">News title</label>
             </div>
             <div class="form-floating mb-3">
-              <input name="news_sumary" type="text" class="form-control" id="floatingInput" placeholder="news-summary">
-              <label for="floatingInput">News sumary</label>
+              <input name="news_summary" type="text" class="form-control" id="floatingInput" placeholder="news-summary">
+              <label for="floatingInput">News summary</label>
             </div>
             <div class="form-floating mb-3">
               <textarea name="news_content" class="form-control" placeholder="news-content" id="floatingTextarea2" style="height: 100px"></textarea>

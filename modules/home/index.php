@@ -85,13 +85,13 @@
     </div>
     <div class="category container">
         <?php
-        $sql = "SELECT name FROM category";
+        $sql = "SELECT category_name FROM category";
         $result = $conn->query($sql);
         if ($result->num_rows > 0) {
             while ($row = $result->fetch_assoc()) {
                 echo '
                     <div class="category-title">
-                        <a href="#"><strong>' . htmlspecialchars($row['name']) . '</strong></a>
+                        <a href="#"><strong>' . htmlspecialchars($row['category_name']) . '</strong></a>
                     </div>
         ';
             }
@@ -118,15 +118,14 @@
                 <div class="carousel-inner">
 
                     <?php
-                    $sql2 = "SELECT n.*, c.name AS category_name
+                    $sql2 = "SELECT n.*, c.category_name
                             FROM news n
                             JOIN category c ON n.category_id = c.category_id
                             JOIN (
-                                SELECT category_id, MAX(post_date) AS latest_post
+                                SELECT category_id, MAX(news_post_date) AS latest_post
                                 FROM news
                                 GROUP BY category_id
-                            ) vmax ON n.category_id = vmax.category_id AND n.post_date = vmax.latest_post;
-";
+                            ) vmax ON n.category_id = vmax.category_id AND n.news_post_date = vmax.latest_post;";
 
                     $result = $conn->query($sql2);
                     if ($result->num_rows > 0) {
@@ -143,7 +142,7 @@
                                 . htmlspecialchars($row['news_description']) .
                                 '</p>
                                 </div>
-                                <p class="mt-5">Ngày đăng: ' . htmlspecialchars($row['post_date'])  . '</p>
+                                <p class="mt-5">Ngày đăng: ' . htmlspecialchars($row['news_post_date']) . '</p>
                             </div>
                         </div>
                     </div>
@@ -177,16 +176,14 @@
             <div class="news-card my-3">
                 <?php
                 $category_id = 1; // ví dụ id chuyên mục
-                $sql3 = "
-                   SELECT n.*, c.name AS category_name
-                    FROM news n
-                    INNER JOIN category c ON n.category_id = c.category_id
-                    INNER JOIN (
-                        SELECT category_id, MIN(post_date) AS latest_post
-                        FROM news
-                        GROUP BY category_id
-                    ) AS latest ON n.category_id = latest.category_id AND n.post_date = latest.latest_post;
-                ";
+                $sql3 = "SELECT n.*, c.category_name
+                        FROM news n
+                        INNER JOIN category c ON n.category_id = c.category_id
+                        INNER JOIN (
+                            SELECT category_id, MIN(news_post_date) AS latest_post
+                            FROM news
+                            GROUP BY category_id
+                        ) AS latest ON n.category_id = latest.category_id AND n.news_post_date = latest.latest_post;";
                 $result = $conn->query($sql3);
                 if ($result->num_rows > 0) {
                     while ($row = $result->fetch_assoc()) {
@@ -206,10 +203,10 @@
                         <div class="bottom">
                             <div class="views d-flex align-items-center gap-1 ">
                                 <img src="\Quiz_website\templates\assets\images\visibility_24dp_000000_FILL0_wght400_GRAD0_opsz24.svg" alt="">
-                                <p class="m-0">' . htmlspecialchars($row['views']) . '</p>
+                                <p class="m-0">' . htmlspecialchars($row['news_views']) . '</p>
                             </div>
                             <div class="Post-date d-flex align-items-center ">
-                                <p class="m-0">' . htmlspecialchars($row['post_date']) . '</p>
+                                <p class="m-0">' . htmlspecialchars($row['news_post_date']) . '</p>
                             </div>
                             <button class="btn btn-primary">View more</button>
                         </div>
