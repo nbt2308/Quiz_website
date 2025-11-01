@@ -11,7 +11,7 @@
 </head>
 
 <body>
-  <div class="modal fade fs-5" id="modalAddNews" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal fade fs-6" id="modalAddNews" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">
       <div class="modal-content">
         <div class="modal-header">
@@ -20,7 +20,7 @@
         </div>
         <form action="?module=news&action=addNews_xuly" method="POST" enctype="multipart/form-data">
           <div class="modal-body">
-            <select name="category" class="form-select form-select-lg mb-3">
+            <select name="category" class="form-select form-select-me mb-3">
               <option selected disabled> -- Select a category-- </option>
               <?php
               $sql = "SELECT * FROM category";
@@ -46,7 +46,7 @@
             </div>
             <div>
               <label for="formFileLg" class="form-label">Upload a news image</label>
-              <input name="image_file" class="form-control form-control-lg mb-3" id="formFileLg" type="file">
+              <input name="image_file" class="form-control form-control-me mb-3" id="formFileLg" type="file">
             </div>
             <div class="form-floating mb-3">
               <input name="image_description" type="text" class="form-control" id="floatingInput" placeholder="image-description">
