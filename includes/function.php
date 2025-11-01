@@ -17,7 +17,7 @@ function layoutUser($layoutname)
     }
 }
 
-//Function gui mail
+//Function send email
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\SMTP;
 use PHPMailer\PHPMailer\Exception;
@@ -35,7 +35,7 @@ function sendMail($emailTo, $subjectEmail, $contentEmail)
         $mail->Host       = 'smtp.gmail.com';                     //Set the SMTP server to send through
         $mail->SMTPAuth   = true;                                   //Enable SMTP authentication
         $mail->Username   = 'thnewswebsite@gmail.com';                     //SMTP username
-        $mail->Password   = 'vicocznqffnwtggj';                               //SMTP password
+        $mail->Password   = _PASSWORD_EMAIL;                               //SMTP password
         $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;            //Enable implicit TLS encryption
         $mail->Port       = 465;                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
 
@@ -59,3 +59,6 @@ function sendMail($emailTo, $subjectEmail, $contentEmail)
         echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
     }
 }
+
+//Function filter data 
+function filterData() {}
