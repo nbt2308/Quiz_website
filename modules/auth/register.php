@@ -40,7 +40,7 @@
                         <label for="floatingInput">Password</label>
                     </div>
                     <div class="btn-register">
-                        <button onclick="">SIGN UP</button>
+                        <button onclick="">Sign up</button>
                     </div>
                 </form>
                 <div class="sign-in mb-3">
