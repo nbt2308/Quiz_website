@@ -42,7 +42,7 @@ include_once 'templates\layout\user\header.php';
         <div class="category-title"><a href="#"><strong>Education</strong></a></div>
         <div class="category-title"><a href="#"><strong>Lifestyle</strong></a></div> -->
     </div>
-    <div class="main container">
+    <div class="main container mt-3">
         <div class="left-container ">
 
 

@@ -46,7 +46,12 @@ a.navbar-brand.logo-brand img {
 }
 
 .category {
-    border: 1px solid red;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background-color: white;
+    border-top: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
     height: 80px;
     display: flex;
     justify-content: center;
@@ -59,7 +64,7 @@ a.navbar-brand.logo-brand img {
 }
 
 .main {
-    border: 1px solid green;
+    /* border: 1px solid green; */
     height: fit-content;
     display: flex;
     padding: 0;
@@ -68,7 +73,7 @@ a.navbar-brand.logo-brand img {
 /* LEFT CONTAINER */
 .left-container {
     width: 70%;
-    border: 1px solid rgb(248, 0, 41);
+    /* border: 1px solid rgb(248, 0, 41); */
     height: fit-content;
 }
 
