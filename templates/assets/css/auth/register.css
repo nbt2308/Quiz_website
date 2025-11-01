@@ -67,6 +67,9 @@
 .sign-in a {
     text-decoration: none;
 }
+.sign-in a:hover {
+    color: red;
+}
 
 .btn-goBack {
     width: 100%;
