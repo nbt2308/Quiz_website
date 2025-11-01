@@ -14,6 +14,9 @@ CREATE TABLE user (
     user_password VARCHAR(255) NOT NULL,
     user_name VARCHAR(100) NOT NULL,
     user_role BOOLEAN DEFAULT FALSE,  -- TRUE = admin, FALSE = user
+    user_status BOOLEAN DEFAULT FALSE, 
+    user_forget_token VARCHAR(500), 
+    user_active_token VARCHAR(500),  
     user_created_at DATETIME DEFAULT CURRENT_TIMESTAMP
 );
 INSERT INTO user (user_email, user_password, user_name, user_role) VALUES ("nva@gmail.com", md5("nva123"), "Nguyen Van A", FALSE);
