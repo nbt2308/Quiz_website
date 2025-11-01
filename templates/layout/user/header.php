@@ -44,7 +44,7 @@
 
                             <!-- lay ngay thang bang js -->
                             <li class="nav-item datetime">
-                                <a class="nav-link disabled" href="#">ngaythang</a>
+                                <?php echo '<a class="nav-link" disabled>' . date('d/m/Y ') . '</a>'; ?>
                             </li>
 
 
