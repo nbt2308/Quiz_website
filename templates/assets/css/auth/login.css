@@ -1,8 +1,9 @@
 .login-container {
-    height: 100vh;
+    height: calc(100vh - 72px);
     display: flex;
     justify-content: center;
     align-items: center;
+    gap: 100px;
 }
 
 .login-content {
@@ -17,9 +18,14 @@
         0 10px 10px rgba(0, 0, 0, 0.22);
 }
 
+.login-form {
+    width: 400px;
+}
+
 .title-login {
     font-size: 30px;
     font-weight: 700;
+    color: #0d6efd;
 }
 
 .btn-login {
@@ -34,8 +40,8 @@
 }
 
 .btn-login button:hover {
-    background-color: #d8e6ff;
-    color:black;
+    background-color: #3d84f5;
+    color: rgb(255, 255, 255);
 }
 
 a {
@@ -44,4 +50,32 @@ a {
 
 a:hover {
     color: red;
+}
+
+.register {
+    display: flex;
+    justify-content: space-between;
+}
+
+.btn-goBack {
+    width: 100%;
+    margin: 10px 0;
+    border: none;
+}
+
+.btn-goBack a {
+    text-decoration: none;
+    padding: 10px 20px;
+    border-radius: 20px;
+    background-color: #0d6efd;
+    color: #fff;
+}
+
+.btn-goBack a:hover {
+
+    background-color: #3d84f5;
+    text-decoration: none;
+    padding: 10px 20px;
+    border-radius: 20px;
+    color: #fff;
 }

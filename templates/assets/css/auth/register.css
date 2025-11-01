@@ -1,31 +1,12 @@
-.register-main {
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
-
 .register-container {
-    /* height: 100%; */
-    margin-bottom: 20px;
+    height: calc(100vh - 72px);
     display: flex;
     justify-content: center;
     align-items: center;
+    gap: 100px;
 }
 
-.logo-brand {
-    width: 150px;
-    height: 150px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
 
-.logo-brand img {
-    max-width: 100%;
-    max-height: 100%;
-}
 
 .register-content {
     display: flex;
@@ -42,7 +23,7 @@
 .register-title {
     font-size: 30px;
     font-weight: 700;
-
+    color: #0361f7;
 }
 
 .divider {
@@ -88,19 +69,24 @@
 }
 
 .btn-goBack {
-
+    width: 100%;
     margin: 10px 0;
+    border: none;
+}
+
+.btn-goBack a {
+    text-decoration: none;
+    padding: 10px 20px;
     border-radius: 20px;
     background-color: #0d6efd;
     color: #fff;
-
-
 }
-.btn-goBack a{
-    text-decoration: none;
-    color: #fff;
-}
-.btn-goBack:hover {
+
+.btn-goBack a:hover {
+
     background-color: #3d84f5;
-    color:white;
+    text-decoration: none;
+    padding: 10px 20px;
+    border-radius: 20px;
+    color: #fff;
 }
