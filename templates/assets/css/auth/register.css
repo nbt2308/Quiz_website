@@ -1,5 +1,5 @@
 .register-container {
-    height: calc(100vh - 72px);
+    height: calc(100vh - 20px);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -67,6 +67,7 @@
 .sign-in a {
     text-decoration: none;
 }
+
 .sign-in a:hover {
     color: red;
 }
