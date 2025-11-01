@@ -47,7 +47,7 @@ VALUES (
     'AI technology booming in 2025',
     'Many companies invest heavily in AI to boost productivity.',
     'According to the latest report, the AI field is growing faster than ever. Big tech firms like Google, OpenAI, and Microsoft are expanding their AI products aggressively.',
-    'uploads/ai_news.jpg',
+    'templates/assets/images/add_24dp_1F1F1F_FILL0_wght400_GRAD0_opsz24.svg',
     'Illustration of AI technology',
     1,
     2
@@ -58,7 +58,7 @@ VALUES (
     'Global markets rally amid economic optimism',
     'Stock markets worldwide see significant gains as economic outlook improves.',
     'Investors are showing increased confidence in the global economy, leading to a surge in stock prices across major exchanges. Analysts attribute this to positive economic data and successful vaccination campaigns.',
-    'uploads/market_news.jpg',
+    'templates/assets/images/logo.png',
     'Stock market graph showing upward trend',
     1,
     3
