@@ -52,7 +52,7 @@ echo $category_id;
                        
                 <div class="card">
                     <div class="image-preview">
-                        <img class="card-img-top" src="/Quiz_website/templates/assets/images/logo1.png" alt="Card-image-cap" />
+                        <img class="card-img-top" src="' . $row['news_image_path'] . '" alt="News image" />
                     </div>
                     <div class="card-body">
                         <div class="top">

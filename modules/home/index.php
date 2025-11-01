@@ -66,8 +66,8 @@ include_once 'templates\layout\user\header.php';
                             echo '
                     <div class="carousel-item ' . ($isActive ? 'active' : '') . '">
                         <div class="d-flex align-items-center justify-content-center p-3">
-                            <img src="' . $row['news_image_path'] . '" alt="News image class="rounded me-3" alt="ảnh 1" style="width:400px;height:250px;object-fit:cover;">
-                            <div>
+                            <img src="' . $row['news_image_path'] . '" alt="News image class="rounded me-3" style="width:400px;height:250px;object-fit:cover;">
+                            <div class="ms-3">
                                 <a class="fw-bold text-decoration-none" href="#" >' . htmlspecialchars($row['news_title']) . ' </a>
                                 <div class="text-limit">
                                     <p class="text-muted mb-0">'
