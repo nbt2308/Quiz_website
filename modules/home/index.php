@@ -66,7 +66,7 @@ include_once 'templates\layout\user\header.php';
                             echo '
                     <div class="carousel-item ' . ($isActive ? 'active' : '') . '">
                         <div class="d-flex align-items-center justify-content-center p-3">
-                            <img src="https://picsum.photos/400/250?random=1" class="rounded me-3" alt="ảnh 1" style="width:400px;height:250px;object-fit:cover;">
+                            <img src="' . $row['news_image_path'] . '" alt="News image" class="rounded me-3" alt="ảnh 1" style="width:400px;height:250px;object-fit:cover;">
                             <div>
                                 <a class="fw-bold text-decoration-none" href="#" >' . htmlspecialchars($row['news_title']) . ' </a>
                                 <div class="text-limit">
@@ -123,7 +123,7 @@ include_once 'templates\layout\user\header.php';
                         <span class="ms-3 fs-4 fw-bold">' . htmlspecialchars($row['category_name']) . '</span>
                 <div class="card">
                     <div class="image-preview">
-                        <img class="card-img-top" src="/Quiz_website/templates/assets/images/logo1.png" alt="Card-image-cap" />
+                        <img class="card-img-top" src="' . $row['news_image_path'] . '" alt="News image">
                     </div>
                     <div class="card-body">
                         <div class="top">
