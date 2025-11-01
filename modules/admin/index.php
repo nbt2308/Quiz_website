@@ -3,8 +3,8 @@ if (!defined('_PERMISSION')) {
     die("Truy cập không hợp lệ");
 }
 
-require_once './templates/layout/admin/header.php';
-require_once './templates/layout/admin/sidebar.php';
+layoutAdmin("header");
+layoutAdmin("sidebar");
 
 ?>
 <!--begin::App Main-->
@@ -14,7 +14,7 @@ require_once './templates/layout/admin/sidebar.php';
     <div class="app-content-header">
         <!--begin::Container-->
         <div class="container-fluid">
-            <?php require_once './templates/layout/admin/breadcrumb.php';?> 
+            <?php layoutAdmin("breadcrumb"); ?>
         </div>
         <!--end::Container-->
     </div>
@@ -142,4 +142,4 @@ require_once './templates/layout/admin/sidebar.php';
 </main>
 <!--end::App Main-->
 
-<?php require_once './templates/layout/admin/footer.php'; ?>
+<?php layoutAdmin("footer"); ?>

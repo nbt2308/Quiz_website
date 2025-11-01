@@ -6,7 +6,7 @@ ob_start(); //tranh loi khi dung ham header, cookie
 require_once 'config.php';
 require_once './includes/connect.php';
 require_once './includes/session.php';
-
+require_once './includes/function.php';
 //Test session
 // setSesstion('nbt1','test session');
 // $s=getSession('nbt1');
