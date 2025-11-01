@@ -10,3 +10,8 @@ function layoutAdmin($layoutname)
         require_once './templates/layout/admin/' . $layoutname . '.php';
     }
 }
+function layoutUser($layoutname){
+    if (file_exists('./templates/layout/user/' . $layoutname . '.php')) {
+        require_once './templates/layout/user/' . $layoutname . '.php';
+    }
+}
