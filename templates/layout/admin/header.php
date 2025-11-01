@@ -29,7 +29,7 @@ if (!defined('_PERMISSION')) {
     <!--begin::Accessibility Features-->
     <!-- Skip links will be dynamically added by accessibility.js -->
     <meta name="supported-color-schemes" content="light dark" />
-    <link rel="preload" href="./css/adminlte.css" as="style" />
+    <link rel="stylesheet" href="/Quiz_website/templates/assets/css/admin/adminlte.css">
     <!--end::Accessibility Features-->
     <!--begin::Fonts-->
     <link
@@ -53,7 +53,7 @@ if (!defined('_PERMISSION')) {
         crossorigin="anonymous" />
     <!--end::Third Party Plugin(Bootstrap Icons)-->
     <!--begin::Required Plugin(AdminLTE)-->
-    <link rel="stylesheet" href="./templates/assets/css/admin/adminlte.css" />
+    <link rel="stylesheet" href="/Quiz_website/templates/assets/css/admin/adminlte.css">
     <!--end::Required Plugin(AdminLTE)-->
     <!-- apexcharts -->
     <link
