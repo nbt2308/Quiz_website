@@ -3,6 +3,15 @@
 //     die("Truy cập không hợp lệ") ;
 // }
 
+//test function filterData
+if (!empty($_POST)) {
+    $filterArr = filterData('post');
+    echo '<pre>';
+    print_r($filterArr);
+    echo '</pre>';
+    die();
+}
+
 
 ?>
 <!DOCTYPE html>
@@ -26,21 +35,25 @@
                 <span>SIGN UP</span>
             </div>
             <div class="form-register mt-3">
-                <form action="" method="post">
+                <form action="" method="POST">
                     <div class="form-floating mb-3">
-                        <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
+                        <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com" name="email">
                         <label for="floatingInput">Email address</label>
                     </div>
                     <div class="form-floating mb-3">
-                        <input type="text" class="form-control" id="floatingInput" placeholder="name@example.com">
+                        <input type="text" class="form-control" id="floatingInput" placeholder="name@example.com" name="username">
                         <label for="floatingInput">Username</label>
                     </div>
                     <div class="form-floating mb-3">
-                        <input type="password" class="form-control" id="floatingInput" placeholder="name@example.com">
+                        <input type="password" class="form-control" id="floatingInput" placeholder="name@example.com" name="password">
                         <label for="floatingInput">Password</label>
                     </div>
+                    <div class="form-floating mb-3">
+                        <input type="password" class="form-control" id="floatingInput" placeholder="name@example.com" name="confirmPassword">
+                        <label for="floatingInput">Confirm password</label>
+                    </div>
                     <div class="btn-register">
-                        <button onclick="">Sign up</button>
+                        <button type="submit">Sign up</button>
                     </div>
                 </form>
                 <div class="sign-in mb-3">

@@ -60,5 +60,89 @@ function sendMail($emailTo, $subjectEmail, $contentEmail)
     }
 }
 
+
+//Kiểm tra phương thức get,post
+function isMethodPost()
+{
+    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+        return true;
+    }
+    return false;
+}
+function isMethodGet()
+{
+    if ($_SERVER['REQUEST_METHOD'] == 'GET') {
+        return true;
+    }
+    return false;
+}
 //Function filter data 
-function filterData() {}
+function filterData($method = '')
+{
+    $filterArr = [];
+    if (empty($method)) {
+        if (isMethodGet()) {
+            if (!empty($_GET)) {
+                foreach ($_GET as $key => $value) {
+                    //strip_tags: loại bỏ tất cả html, php,.. trong 1 chuỗi và chỉ giữ lại chuỗi text
+                    $key = strip_tags($key);
+                    if (is_array($value)) {
+                        //FILTER_REQUIRE_ARRAY: xử lý nếu value là dạng mảng
+                        $filterArr[$key] = filter_input($_GET[$key], FILTER_SANITIZE_SPECIAL_CHARS, FILTER_REQUIRE_ARRAY);
+                    } else {
+                        //FILTER_SANITIZE_SPECIAL_CHARS: lọc những ký tự đặc biệt
+                        $filterArr[$key] = filter_input($_GET[$key], FILTER_SANITIZE_SPECIAL_CHARS);
+                    }
+                }
+            }
+        }
+        if (isMethodPost()) {
+            if (!empty($_POST)) {
+                foreach ($_POST as $key => $value) {
+                    //strip_tags: loại bỏ tất cả html, php,.. trong 1 chuỗi và chỉ giữ lại chuỗi text
+                    $key = strip_tags($key);
+                    if (is_array($value)) {
+                        //FILTER_REQUIRE_ARRAY: xử lý nếu value là dạng mảng
+                        $filterArr[$key] = filter_input(INPUT_POST, $key, FILTER_SANITIZE_SPECIAL_CHARS, FILTER_REQUIRE_ARRAY);
+                    } else {
+                        //FILTER_SANITIZE_SPECIAL_CHARS: lọc những ký tự đặc biệt
+                        $filterArr[$key] = filter_input(INPUT_POST, $key, FILTER_SANITIZE_SPECIAL_CHARS);
+                    }
+                }
+            }
+        }
+       
+    } else {
+        if ($method == 'get') {
+            if (!empty($_GET)) {
+                foreach ($_GET as $key => $value) {
+                    //strip_tags: loại bỏ tất cả html, php,.. trong 1 chuỗi và chỉ giữ lại chuỗi text
+                    $key = strip_tags($key);
+                    if (is_array($value)) {
+                        //FILTER_REQUIRE_ARRAY: xử lý nếu value là dạng mảng
+                        $filterArr[$key] = filter_input($_GET[$key], FILTER_SANITIZE_SPECIAL_CHARS, FILTER_REQUIRE_ARRAY);
+                    } else {
+                        //FILTER_SANITIZE_SPECIAL_CHARS: lọc những ký tự đặc biệt
+                        $filterArr[$key] = filter_input($_GET[$key], FILTER_SANITIZE_SPECIAL_CHARS);
+                    }
+                }
+            }
+        } else if ($method == 'post') 
+        {
+            if (!empty($_POST)) {
+                foreach ($_POST as $key => $value) {
+                    //strip_tags: loại bỏ tất cả html, php,.. trong 1 chuỗi và chỉ giữ lại chuỗi text
+                    $key = strip_tags($key);
+                    if (is_array($value)) {
+                        //FILTER_REQUIRE_ARRAY: xử lý nếu value là dạng mảng
+                        $filterArr[$key] = filter_input(INPUT_POST, $key, FILTER_SANITIZE_SPECIAL_CHARS, FILTER_REQUIRE_ARRAY);
+                    } else {
+                        //FILTER_SANITIZE_SPECIAL_CHARS: lọc những ký tự đặc biệt
+                        $filterArr[$key] = filter_input(INPUT_POST, $key, FILTER_SANITIZE_SPECIAL_CHARS);
+                    }
+                }
+            }
+        }
+    }
+    return $filterArr;
+}
