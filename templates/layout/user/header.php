@@ -53,7 +53,7 @@
                         <?php
                         //Check người dùng đã đăng nhập hay chưa
                         $Login = getSession("user_id");
-                        if (!isset($Login)) {
+                        if (!$Login) {
                         ?>
                             <div class="signin-signup ms-3">
                                 <a href="?module=auth&action=login" class="btn-login">Sign in</a>

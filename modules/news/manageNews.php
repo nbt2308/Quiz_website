@@ -1,7 +1,7 @@
 <?php
 layoutUser('header');
 $Login = getSession("user_id");
-if (!isset($Login)) {
+if (!$Login) {
     header("Location: ?module=auth&action=login");
 }
 ?>
