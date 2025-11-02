@@ -1,15 +1,17 @@
 <?php
 include_once 'templates/layout/user/header.php';
 
-$news_id = (int)$_GET['id'];
-$sql1 = "SELECT * FROM news WHERE news_id = $news_id";
-$result1 = $conn->query($sql1);
-$news = $result1->fetch_assoc();
+if (isset($_GET['id'])) {
+    $news_id = (int)$_GET['id'];
+    $sql1 = "SELECT * FROM news WHERE news_id = $news_id";
+    $result1 = $conn->query($sql1);
+    $news = $result1->fetch_assoc();
 
-$category_id = $news['category_id'];
-$sql2 = "SELECT * FROM category WHERE category_id = $category_id";
-$result2 = $conn->query($sql2);
-$category = $result2->fetch_assoc();
+    $category_id = $news['category_id'];
+    $sql2 = "SELECT * FROM category WHERE category_id = $category_id";
+    $result2 = $conn->query($sql2);
+    $category = $result2->fetch_assoc();
+}
 ?>
 
 <main>
