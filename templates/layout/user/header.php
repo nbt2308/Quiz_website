@@ -31,19 +31,6 @@
                             </li>
 
 
-
-                            <!-- check login  -->
-                            <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                    Setting
-                                </a>
-                                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    <li><a class="dropdown-item" href="#">Profile</a></li>
-                                    <li><a class="dropdown-item" href="#">Logout</a></li>
-                                </ul>
-                            </li>
-
-                            <!-- lay ngay thang bang js -->
                             <li class="nav-item datetime">
                                 <?php echo '<a class="nav-link" disabled>' . date('d/m/Y ') . '</a>'; ?>
                             </li>
@@ -62,11 +49,33 @@
                         <input type="hidden" name="action" value="index">
                         <button type="submit" class="btn btn-outline-success">Search</button>
                     </form> -->
-                        <?php   ?>
-                        <div class="signin-signup ms-3">
-                            <a href="?module=auth&action=login" class="btn-login">Sign in</a>
-                            <a href="?module=auth&action=register" class="btn-register">Sign up</a>
-                        </div>
+                        <?php
+                        //Check người dùng đã đăng nhập hay chưa
+                        $Login = getSession("user_id");
+                        if (!isset($Login)) {
+                        ?>
+                            <div class="signin-signup ms-3">
+                                <a href="?module=auth&action=login" class="btn-login">Sign in</a>
+                                <a href="?module=auth&action=register" class="btn-register">Sign up</a>
+                            </div>
+                        <?php
+                        } else {
+                        ?>
+                            <ul class="list-unstyled ms-4 mt-3">
+                                <li class="nav-item dropdown ">
+                                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                        Setting
+                                    </a>
+                                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                        <li><a class="dropdown-item" href="#">Profile</a></li>
+                                        <li><a class="dropdown-item" href="#">Logout</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        <?php
+                        }
+                        ?>
+
                     </div>
                 </div>
             </nav>
