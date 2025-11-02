@@ -104,7 +104,7 @@ if (isMethodPost()) {
             sendMail($emailTo, $subjectEmail, $contentEmail);
 
 
-            setSesstionFlash('msg', 'Register succeed, please check your email to active your account');
+            setSesstionFlash('msg', 'Register succeed, please check your email to activate your account');
             setSesstionFlash('msg_type', 'success');
             $last_id = $conn->insert_id;
         } else {
