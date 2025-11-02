@@ -42,12 +42,10 @@ if (isset($_GET['id'])) {
                 <textarea class="form-control" rows="5" disabled><?= htmlspecialchars($news['news_description']) ?></textarea>
             </div>
 
-            <?php if (!empty($news['news_image_path'])): ?>
             <div class="mb-3">
                 <label class="form-label">Image</label><br>
                 <img src="<?= $news['news_image_path'] ?>" class="img-fluid" alt="News Image">
             </div>
-            <?php endif; ?>
 
             <div class="mb-3">
                 <label class="form-label">Image Description</label>
