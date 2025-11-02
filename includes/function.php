@@ -88,10 +88,10 @@ function filterData($method = '')
                     $key = strip_tags($key);
                     if (is_array($value)) {
                         //FILTER_REQUIRE_ARRAY: xử lý nếu value là dạng mảng
-                        $filterArr[$key] = filter_input($_GET[$key], FILTER_SANITIZE_SPECIAL_CHARS, FILTER_REQUIRE_ARRAY);
+                        $filterArr[$key] = filter_input(INPUT_GET, $key, FILTER_SANITIZE_SPECIAL_CHARS, FILTER_REQUIRE_ARRAY);
                     } else {
                         //FILTER_SANITIZE_SPECIAL_CHARS: lọc những ký tự đặc biệt
-                        $filterArr[$key] = filter_input($_GET[$key], FILTER_SANITIZE_SPECIAL_CHARS);
+                        $filterArr[$key] = filter_input(INPUT_GET, $key, FILTER_SANITIZE_SPECIAL_CHARS);
                     }
                 }
             }
@@ -111,24 +111,22 @@ function filterData($method = '')
                 }
             }
         }
-       
     } else {
-        if ($method == 'get') {
+        if ($method == 'GET') {
             if (!empty($_GET)) {
                 foreach ($_GET as $key => $value) {
                     //strip_tags: loại bỏ tất cả html, php,.. trong 1 chuỗi và chỉ giữ lại chuỗi text
                     $key = strip_tags($key);
                     if (is_array($value)) {
                         //FILTER_REQUIRE_ARRAY: xử lý nếu value là dạng mảng
-                        $filterArr[$key] = filter_input($_GET[$key], FILTER_SANITIZE_SPECIAL_CHARS, FILTER_REQUIRE_ARRAY);
+                        $filterArr[$key] = filter_input(INPUT_GET, $key, FILTER_SANITIZE_SPECIAL_CHARS, FILTER_REQUIRE_ARRAY);
                     } else {
                         //FILTER_SANITIZE_SPECIAL_CHARS: lọc những ký tự đặc biệt
-                        $filterArr[$key] = filter_input($_GET[$key], FILTER_SANITIZE_SPECIAL_CHARS);
+                        $filterArr[$key] = filter_input(INPUT_GET, $key, FILTER_SANITIZE_SPECIAL_CHARS);
                     }
                 }
             }
-        } else if ($method == 'post') 
-        {
+        } else if ($method == 'POST') {
             if (!empty($_POST)) {
                 foreach ($_POST as $key => $value) {
                     //strip_tags: loại bỏ tất cả html, php,.. trong 1 chuỗi và chỉ giữ lại chuỗi text
@@ -149,18 +147,40 @@ function filterData($method = '')
 
 //------------VALIDATE----------------------
 //Function validate email
-function validateEmail($email){
-    if(!empty($email)){
-        $checkEmail =filter_var($email,FILTER_VALIDATE_EMAIL);
+function validateEmail($email)
+{
+    if (!empty($email)) {
+        $checkEmail = filter_var($email, FILTER_VALIDATE_EMAIL);
     }
     return $checkEmail;
 }
 
 //Function validate int
-function validateInt($number){
-    if(!empty($number)){
-        $checkNumber =filter_var($number,FILTER_VALIDATE_INT);
+function validateInt($number)
+{
+    if (!empty($number)) {
+        $checkNumber = filter_var($number, FILTER_VALIDATE_INT);
     }
     return $checkNumber;
 }
- 
+
+
+//function notification to user
+function getMsg($msg, $type = 'success')
+{
+
+    echo '<div class="annouce-message alert alert-' . $type . '">';
+    echo $msg;
+    echo '</div>';
+}
+
+//function show error for input 
+function formErrors($errors, $fieldName)
+{
+    return (!empty($errors[$fieldName]) ? '<div class="error text-danger ms-1">' . reset($errors[$fieldName]) . '</div>' : false);
+}
+//function fill old data
+function showOldData($oldData, $fieldName)
+{
+    return (!empty($oldData[$fieldName]) ? $oldData[$fieldName] : null);
+}
