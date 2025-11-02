@@ -1,0 +1,78 @@
+<?php
+include_once 'templates/layout/user/header.php';
+
+if (isset($_GET['id'])) {
+    $news_id = $_GET['id'];
+
+    $sql = "SELECT * 
+            FROM news n, category c
+            WHERE n.category_id = c.category_id AND n.news_id = $news_id";
+    $result = $conn->query($sql);
+    if (!$result || $result->num_rows == 0) {
+        echo "News not found";
+        exit;
+    }
+    $news = $result->fetch_assoc();
+}
+?>
+
+<main>
+    <div class="container my-4">
+        <h3 class="mb-4">View News</h3>
+
+        <div class="p-4 border rounded bg-light">
+
+            <div class="mb-3">
+                <label class="form-label">Category</label>
+                <input type="text" class="form-control" value="<?= htmlspecialchars($news['category_name']) ?>" disabled>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Title</label>
+                <input type="text" class="form-control" value="<?= htmlspecialchars($news['news_title']) ?>" disabled>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Summary</label>
+                <textarea class="form-control" rows="3" disabled><?= htmlspecialchars($news['news_summary']) ?></textarea>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Content</label>
+                <textarea class="form-control" rows="5" disabled><?= htmlspecialchars($news['news_description']) ?></textarea>
+            </div>
+
+            <?php if (!empty($news['news_image_path'])): ?>
+            <div class="mb-3">
+                <label class="form-label">Image</label><br>
+                <img src="<?= $news['news_image_path'] ?>" class="img-fluid" alt="News Image">
+            </div>
+            <?php endif; ?>
+
+            <div class="mb-3">
+                <label class="form-label">Image Description</label>
+                <input type="text" class="form-control" value="<?= htmlspecialchars($news['news_image_note']) ?>" disabled>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Post Date</label>
+                <input type="text" class="form-control" value="<?= $news['news_post_date'] ?>" disabled>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Views</label>
+                <input type="text" class="form-control" value="<?= $news['news_views'] ?>" disabled>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Status</label>
+                <input type="text" class="form-control" value="<?= $news['news_isPost'] ? 'Approved' : 'Not approved' ?>" disabled>
+            </div>
+
+            <a href="?module=news&action=manageNews" class="btn btn-secondary mt-3">Back</a>
+
+        </div>
+    </div>
+</main>
+
+<?php include_once 'templates/layout/user/footer.php'; ?>
