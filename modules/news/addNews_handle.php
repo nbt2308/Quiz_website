@@ -1,6 +1,6 @@
 <?php
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-        if (empty($_POST['category'])|| empty($_POST['news_title']) || empty($_POST['news_summary']) || empty($_POST['news_content']) || empty($_POST['image_description'])) {
+        if (empty($_POST['category'])|| empty($_POST['news_title']) || empty($_POST['news_summary']) || empty($_POST['news_content']) || empty($_FILES['image_file']['name']) || empty($_POST['image_description'])) {
             die("Error: Missing required fields.");
         } else {
             $category_id = $_POST['category'];
@@ -27,7 +27,7 @@
     if ($conn->query($sql) === TRUE) {
         header("Location: ?module=news&action=manageNews");
     } else {
-        echo "Error: " . $sql . "<br>" . $conn->error;
+        echo "Error adding news: " . $conn->error;
     }
     $conn->close();
 ?>

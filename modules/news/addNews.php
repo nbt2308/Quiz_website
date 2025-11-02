@@ -10,11 +10,11 @@ include_once 'templates/layout/user/header.php';
       <!-- Chọn danh mục -->
       <div class="mb-3">
         <label for="category" class="form-label">Select category</label>
-        <select name="category" id="category" class="form-select" required>
+        <select name="category" id="category" class="form-select">
           <option selected disabled>-- Select a category --</option>
           <?php
           $sql = "SELECT * FROM category";
-          $list = mysqli_query($conn, $sql);
+          $list = $conn->query($sql);
           if ($list && $list->num_rows > 0) {
             while ($row = $list->fetch_assoc()) {
               echo '<option value="' . $row["category_id"] . '">' . $row["category_name"] . '</option>';
@@ -27,7 +27,7 @@ include_once 'templates/layout/user/header.php';
       <!-- Tiêu đề tin -->
       <div class="mb-3">
         <label for="news_title" class="form-label">News title</label>
-        <input name="news_title" id="news_title" type="text" class="form-control" placeholder="Enter news title" required>
+        <input name="news_title" id="news_title" type="text" class="form-control" placeholder="Enter news title">
       </div>
 
       <!-- Tóm tắt -->

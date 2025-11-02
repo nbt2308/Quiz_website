@@ -29,6 +29,8 @@ include_once 'templates\layout\user\header.php';
                             <tr>
                                 <th scope="col">ID</th>
                                 <th scope="col">Title</th>
+                                <th scope="col">Summay</th>
+                                <th scope="col">Content</th>
                                 <th scope="col">Date</th>
                                 <th scope="col">Status</th>
                                 <th scope="col">Category</th>
@@ -44,6 +46,8 @@ include_once 'templates\layout\user\header.php';
                                     echo '<tr>';
                                     echo '<th scope="row">' . $row["news_id"] . '</th>';
                                     echo '<td>' . $row["news_title"] . '</td>';
+                                    echo '<td>' . $row["news_summary"] . '</td>';
+                                    echo '<td>' . $row["news_description"] . '</td>';
                                     echo '<td>' . $row["news_post_date"] . '</td>';
                                     if ($row["news_isPost"] == 1) {
                                         echo '<td>Approved</td>';
@@ -53,8 +57,14 @@ include_once 'templates\layout\user\header.php';
                                     echo '<td>' . $row["category_name"] . '</td>';
 
                                     echo '<td>
-                                            <button type="button" class="btn btn-warning btn-sm"><img src="\Quiz_website\templates\assets\images\edit_24dp_1F1F1F_FILL0_wght400_GRAD0_opsz24.svg" alt="Edit"></button>
-                                            <button type="button" class="btn btn-danger btn-sm"><img src="\Quiz_website\templates\assets\images\delete_24dp_1F1F1F_FILL0_wght400_GRAD0_opsz24.svg" alt="Delete"></button>
+                                            <a href="?module=news&action=editNews&id=' . $row['news_id'] . '" class="btn btn-warning btn-sm mb-1">
+                                                <img src="/Quiz_website/templates/assets/images/edit_24dp_1F1F1F_FILL0_wght400_GRAD0_opsz24.svg" alt="Edit">
+                                            </a>
+
+                                            <a href="?module=news&action=deleteNews&id=' . $row['news_id'] . '" class="btn btn-danger btn-sm">
+                                                <img src="/Quiz_website/templates/assets/images/delete_24dp_1F1F1F_FILL0_wght400_GRAD0_opsz24.svg" alt="Delete">
+                                            </a>
+
                                         </td>';
 
                                     echo '</tr>';
