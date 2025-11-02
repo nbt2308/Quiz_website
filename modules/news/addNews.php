@@ -18,7 +18,7 @@
           <h1 class="modal-title fs-5" id="staticBackdropLabel">Add news</h1>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
-        <form action="?module=news&action=addNews_xuly" method="POST" enctype="multipart/form-data">
+        <form action="?module=news&action=addNews_handle" method="POST" enctype="multipart/form-data">
           <div class="modal-body">
             <select name="category" class="form-select form-select-me mb-3">
               <option selected disabled> -- Select a category-- </option>
