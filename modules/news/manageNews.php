@@ -1,5 +1,9 @@
 <?php
-include_once 'templates\layout\user\header.php';
+layoutUser('header');
+$Login = getSession("user_id");
+if (!isset($Login)) {
+    header("Location: ?module=auth&action=login");
+}
 ?>
 
 <main>
@@ -80,5 +84,5 @@ include_once 'templates\layout\user\header.php';
 </main>
 
 <?php
-include_once 'templates\layout\user\footer.php';
+layoutUser('footer');
 ?>
