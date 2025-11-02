@@ -30,6 +30,17 @@
                             <li class="nav-item">
                                 <a class="nav-link" href="?module=news&action=manageNews">Manage</a>
                             </li>
+                            <?php
+                            $Admin = getSession('user_role');
+                            if ($Admin == 1) {
+                            ?>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="?module=admin&action=index">Admin</a>
+                                </li>
+                            <?php
+                            }
+                            ?>
+
 
 
                             <li class="nav-item datetime">

@@ -61,6 +61,7 @@ if (isMethodPost()) {
                         //Tạo session khi đăng nhập thành công
                         setSesstion("user_id", $user['user_id']);
                         setSesstion("user_name", $user['user_name']);
+                        setSesstion("user_role",$user['user_role']);
                         setSesstionFlash('msg', 'Login succeed');
                         setSesstionFlash('msg_type', 'success');
                         header("Location:?module=home&action=index");
