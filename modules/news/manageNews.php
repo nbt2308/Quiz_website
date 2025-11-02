@@ -28,12 +28,10 @@ include_once 'templates\layout\user\header.php';
                         <thead>
                             <tr>
                                 <th scope="col">ID</th>
-                                <th scope="col">Title</th>
-                                <th scope="col">Summay</th>
-                                <th scope="col">Content</th>
-                                <th scope="col" style="width: 100px;">Date</th>
-                                <th scope="col">Status</th>
                                 <th scope="col">Category</th>
+                                <th scope="col">Title</th>
+                                <th scope="col">Date</th>
+                                <th scope="col">Status</th>
                                 <th scope="col">Action</th>
                             </tr>
                         </thead>
@@ -45,16 +43,14 @@ include_once 'templates\layout\user\header.php';
                                 while ($row = $list->fetch_assoc()) {
                                     echo '<tr>';
                                     echo '<th scope="row">' . $row["news_id"] . '</th>';
+                                    echo '<td>' . $row["category_name"] . '</td>';
                                     echo '<td>' . $row["news_title"] . '</td>';
-                                    echo '<td>' . $row["news_summary"] . '</td>';
-                                    echo '<td>' . $row["news_description"] . '</td>';
                                     echo '<td>' . $row["news_post_date"] . '</td>';
                                     if ($row["news_isPost"] == 1) {
                                         echo '<td>Approved</td>';
                                     } else {
                                         echo '<td>Not yet approved</td>';
                                     }
-                                    echo '<td>' . $row["category_name"] . '</td>';
 
                                     echo '<td>
                                             <a href="?module=news&action=editNews&id=' . $row['news_id'] . '" class="btn btn-warning btn-sm mb-1">
@@ -63,6 +59,10 @@ include_once 'templates\layout\user\header.php';
 
                                             <a href="?module=news&action=deleteNews&id=' . $row['news_id'] . '" class="btn btn-danger btn-sm">
                                                 <img src="/Quiz_website/templates/assets/images/delete_24dp_1F1F1F_FILL0_wght400_GRAD0_opsz24.svg" alt="Delete">
+                                            </a>
+
+                                            <a href="?module=news&action=viewNews&id=' . $row['news_id'] . '" class="btn btn-info btn-sm">
+                                                <img src="/Quiz_website/templates/assets/images/visibility_24dp_000000_FILL0_wght400_GRAD0_opsz24.svg" alt="View">
                                             </a>
 
                                         </td>';
