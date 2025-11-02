@@ -31,7 +31,7 @@ include_once 'templates\layout\user\header.php';
                                 <th scope="col">Title</th>
                                 <th scope="col">Summay</th>
                                 <th scope="col">Content</th>
-                                <th scope="col">Date</th>
+                                <th scope="col" style="width: 100px;">Date</th>
                                 <th scope="col">Status</th>
                                 <th scope="col">Category</th>
                                 <th scope="col">Action</th>
