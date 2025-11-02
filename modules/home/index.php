@@ -4,15 +4,9 @@
 // }
 
 
-//lấy tất cả tên chủ đề
-
-
-
-
-
 
 //home
-include_once 'templates\layout\user\header.php';
+layoutUser('header');
 ?>
 <main>
     <div class="category container">
@@ -66,7 +60,7 @@ include_once 'templates\layout\user\header.php';
                             echo '
                     <div class="carousel-item ' . ($isActive ? 'active' : '') . '">
                         <div class="d-flex align-items-center justify-content-center p-3">
-                            <img src="' . $row['news_image_path'] . '" alt="News image class="rounded me-3" style="width:400px;height:250px;object-fit:cover;">
+                            <img src="' . $row['news_image_path'] . '" alt="News image" class="rounded me-3" style="width:400px;height:250px;object-fit:cover;">
                             <div class="ms-3">
                                 <a class="fw-bold text-decoration-none" href="#" >' . htmlspecialchars($row['news_title']) . ' </a>
                                 <div class="text-limit">
@@ -157,7 +151,6 @@ include_once 'templates\layout\user\header.php';
         <div class="right-container"></div>
     </div>
 </main>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 <?php
-    include_once 'templates\layout\user\footer.php';
+layoutUser('footer');
 ?>
