@@ -1,68 +1,68 @@
-<!DOCTYPE html>
-<html lang="en">
+<?php
+include_once 'templates/layout/user/header.php';
+?>
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Add News</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<main>
+  <div class="container my-4">
+    <h3 class="mb-4">Add News</h3>
+    <form action="?module=news&action=addNews_handle" method="POST" enctype="multipart/form-data" class="p-4 border rounded bg-light">
 
-  <link rel="stylesheet" href="\Quiz_website\templates\assets\css\home\style.css">
-</head>
-
-<body>
-  <div class="modal fade fs-6" id="modalAddNews" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h1 class="modal-title fs-5" id="staticBackdropLabel">Add news</h1>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <form action="?module=news&action=addNews_handle" method="POST" enctype="multipart/form-data">
-          <div class="modal-body">
-            <select name="category" class="form-select form-select-me mb-3">
-              <option selected disabled> -- Select a category-- </option>
-              <?php
-              $sql = "SELECT * FROM category";
-              $list = mysqli_query($conn, $sql);
-              if ($list->num_rows > 0) {
-                while ($row = $list->fetch_assoc()) {
-                  echo '<option value="' . $row["category_id"] . '">' . $row["category_name"] . '</option>';
-                }
-              }
-              ?>
-            </select>
-            <div class="form-floating mb-3">
-              <input name="news_title" type="text" class="form-control" id="floatingInput" placeholder="news-title">
-              <label for="floatingInput">News title</label>
-            </div>
-            <div class="form-floating mb-3">
-              <input name="news_summary" type="text" class="form-control" id="floatingInput" placeholder="news-summary">
-              <label for="floatingInput">News summary</label>
-            </div>
-            <div class="form-floating mb-3">
-              <textarea name="news_content" class="form-control" placeholder="news-content" id="floatingTextarea2" style="height: 100px"></textarea>
-              <label for="floatingTextarea2">News content</label>
-            </div>
-            <div>
-              <label for="formFileLg" class="form-label">Upload a news image</label>
-              <input name="image_file" class="form-control form-control-me mb-3" id="formFileLg" type="file">
-            </div>
-            <div class="form-floating mb-3">
-              <input name="image_description" type="text" class="form-control" id="floatingInput" placeholder="image-description">
-              <label for="floatingInput">Image description</label>
-            </div>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-            <button type="submit" class="btn btn-primary">Add news</button>
-          </div>
-        </form>
+      <!-- Chọn danh mục -->
+      <div class="mb-3">
+        <label for="category" class="form-label">Select category</label>
+        <select name="category" id="category" class="form-select" required>
+          <option selected disabled>-- Select a category --</option>
+          <?php
+          $sql = "SELECT * FROM category";
+          $list = mysqli_query($conn, $sql);
+          if ($list && $list->num_rows > 0) {
+            while ($row = $list->fetch_assoc()) {
+              echo '<option value="' . $row["category_id"] . '">' . $row["category_name"] . '</option>';
+            }
+          }
+          ?>
+        </select>
       </div>
-    </div>
+
+      <!-- Tiêu đề tin -->
+      <div class="mb-3">
+        <label for="news_title" class="form-label">News title</label>
+        <input name="news_title" id="news_title" type="text" class="form-control" placeholder="Enter news title" required>
+      </div>
+
+      <!-- Tóm tắt -->
+      <div class="mb-3">
+        <label for="news_summary" class="form-label">News summary</label>
+        <input name="news_summary" id="news_summary" type="text" class="form-control" placeholder="Enter short summary">
+      </div>
+
+      <!-- Nội dung -->
+      <div class="mb-3">
+        <label for="news_content" class="form-label">News content</label>
+        <textarea name="news_content" id="news_content" class="form-control" rows="5" placeholder="Enter content here"></textarea>
+      </div>
+
+      <!-- Hình ảnh -->
+      <div class="mb-3">
+        <label for="formFileLg" class="form-label">Upload a news image</label>
+        <input name="image_file" class="form-control" id="formFileLg" type="file">
+      </div>
+
+      <!-- Mô tả hình ảnh -->
+      <div class="mb-3">
+        <label for="image_description" class="form-label">Image description</label>
+        <input name="image_description" id="image_description" type="text" class="form-control" placeholder="Enter image description">
+      </div>
+
+      <!-- Nút hành động -->
+      <div class="d-flex justify-content-between mt-4">
+        <a href="?module=news&action=manageNews" class="btn btn-secondary">Back</a>
+        <button type="submit" class="btn btn-primary">Add news</button>
+      </div>
+    </form>
   </div>
+</main>
 
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
-</body>
-
-</html>
+<?php
+include_once 'templates/layout/user/footer.php';
+?>

@@ -1,7 +1,7 @@
 <?php
 include_once 'templates\layout\user\header.php';
-include_once 'addNews.php';
 ?>
+
 <main>
     <div class="manageNews-container container">
         <div class="manageNews-title my-3">
@@ -9,9 +9,9 @@ include_once 'addNews.php';
         </div>
         <div class="manageNews-content">
             <div class="manageNews-button my-3 mx-3">
-                <button type="button" class="btn btn-primary add-button" data-bs-toggle="modal" data-bs-target="#modalAddNews">
-                    <img class="add-icon" src="\Quiz_website\templates\assets\images\add_circle_24dp_1F1F1F_FILL0_wght400_GRAD0_opsz24.svg" alt="">Add News
-                </button>
+                <a href="?module=news&action=addNews" class="btn btn-primary add-button">
+                    <img class="add-icon" src="\Quiz_website\templates\assets\images\add_circle_24dp_1F1F1F_FILL0_wght400_GRAD0_opsz24.svg" alt=""> Add News
+                </a>
             </div>
             <div class="search mb-3 mx-3">
                 <form class="d-flex">
@@ -41,25 +41,25 @@ include_once 'addNews.php';
                             $list = $conn->query($sql);
                             if ($list->num_rows > 0)
                                 while ($row = $list->fetch_assoc()) {
-                                        echo '<tr>';
-                                            echo '<th scope="row">' . $row["news_id"] . '</th>';
-                                            echo '<td>' . $row["news_title"] . '</td>';
-                                            echo '<td>' . $row["news_post_date"] . '</td>';
-                                            if ($row["news_isPost"] == 1) {
-                                                echo '<td>Approved</td>';
-                                            } else {
-                                                echo '<td>Not yet approved</td>';
-                                            }
-                                            echo '<td>' . $row["category_name"] . '</td>';
+                                    echo '<tr>';
+                                    echo '<th scope="row">' . $row["news_id"] . '</th>';
+                                    echo '<td>' . $row["news_title"] . '</td>';
+                                    echo '<td>' . $row["news_post_date"] . '</td>';
+                                    if ($row["news_isPost"] == 1) {
+                                        echo '<td>Approved</td>';
+                                    } else {
+                                        echo '<td>Not yet approved</td>';
+                                    }
+                                    echo '<td>' . $row["category_name"] . '</td>';
 
-                                            echo '<td>
-                                                    <button type="button" class="btn btn-warning btn-sm"><img src="\Quiz_website\templates\assets\images\edit_24dp_1F1F1F_FILL0_wght400_GRAD0_opsz24.svg" alt="Edit"></button>
-                                                    <button type="button" class="btn btn-danger btn-sm"><img src="\Quiz_website\templates\assets\images\delete_24dp_1F1F1F_FILL0_wght400_GRAD0_opsz24.svg" alt="Delete"></button>
-                                                </td>';
-                    
-                                        echo '</tr>';
+                                    echo '<td>
+                                            <button type="button" class="btn btn-warning btn-sm"><img src="\Quiz_website\templates\assets\images\edit_24dp_1F1F1F_FILL0_wght400_GRAD0_opsz24.svg" alt="Edit"></button>
+                                            <button type="button" class="btn btn-danger btn-sm"><img src="\Quiz_website\templates\assets\images\delete_24dp_1F1F1F_FILL0_wght400_GRAD0_opsz24.svg" alt="Delete"></button>
+                                        </td>';
+
+                                    echo '</tr>';
                                 }
-                        ?>
+                            ?>
                         </tbody>
                     </table>
                 </div>
@@ -68,6 +68,7 @@ include_once 'addNews.php';
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
 </main>
+
 <?php
-    include_once 'templates\layout\user\footer.php';
+include_once 'templates\layout\user\footer.php';
 ?>
