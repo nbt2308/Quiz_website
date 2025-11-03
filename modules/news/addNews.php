@@ -59,14 +59,14 @@ if (isMethodPost()) {
             }
         }
         //Xử lý dữ liệu từ input có áp dụng ckeditor
-        $save_content = $conn->real_escape_string($filterArr['news_content']);
+        // $save_content = $conn->real_escape_string($filterArr['news_content']);
         //lấy user id từ session
         $user_id = getSession('user_id');
         $data = [
             'category_id' => $filterArr['category'],
             'news_title' => $filterArr['news_title'],
             'news_summary' => $filterArr['news_summary'],
-            'news_description' => $save_content,
+            'news_description' => $filterArr['news_content'],
             'news_image_path' => $news_image_path,
             'news_image_note' => $filterArr['image_description'],
             'user_id' => $user_id

@@ -39,7 +39,17 @@ if (isset($_GET['id'])) {
 
             <div class="mb-3">
                 <label class="form-label">Content</label>
-                <textarea class="form-control" rows="5" disabled><?= htmlspecialchars($news['news_description']) ?></textarea>
+                <?php
+                $content = $news['news_description']; // Lấy dữ liệu từ DB, ví dụ: &#60;p&#62;&#38;aacute;dasdasda&#60;/p&#62;
+
+                // Giải mã 2 lần
+                $decoded = html_entity_decode($content, ENT_QUOTES | ENT_HTML5, 'UTF-8');
+                $decoded = html_entity_decode($decoded, ENT_QUOTES | ENT_HTML5, 'UTF-8');
+                ?>
+                <!-- <textarea class="form-control" rows="5" disabled><?php echo $decoded; ?></textarea> -->
+                <div style="border:1px solid #ccc; padding:10px; border-radius:5px; background-color: #e9ecef;">
+                    <?php echo $decoded; ?>
+                </div>
             </div>
 
             <div class="mb-3">
