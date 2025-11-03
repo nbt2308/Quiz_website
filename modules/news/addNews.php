@@ -5,9 +5,6 @@ layoutUser('header');
 if (isMethodPost()) {
     $filterArr = filterData();
     $errors = [];
-    echo '<pre>';
-    print_r($filterArr);
-    echo '</pre>';
     //validate select category
     if (empty($filterArr['category'])) {
         $errors['category']['required'] = "Please select category";
@@ -38,21 +35,69 @@ if (isMethodPost()) {
     }
     //validate image
     if (empty($_FILES['image_file']['name'])) {
-        $errors['image_file']['required'] = "Please upload a image for your post";
-    } 
-    //validate image note
-    if(empty(trim($filterArr['image_description']))){
-         $errors['image_description']['required'] = "Image description is required";
+        $errors['image_file']['required'] = "Please upload an image for your post";
     }
-    else{
-        if(strlen(trim($filterArr['image_description']))<10){
+    //validate image note
+    if (empty(trim($filterArr['image_description']))) {
+        $errors['image_description']['required'] = "Image description is required";
+    } else {
+        if (strlen(trim($filterArr['image_description'])) < 10) {
             $errors['image_description']['length'] = "Image description must be 10 characters long";
         }
     }
 
-    if(empty($errors)){
-        
+    if (empty($errors)) {
+        //Xử lý dữ liệu image file thành đường dẫn
+        $news_image_path = '';
+        if (!empty($_FILES['image_file']['name'])) {
+            $targetDir = 'templates/uploads/';
+            $targetFile = $targetDir . $news_title . "_" . basename($_FILES['image_file']['name']);
+            if (move_uploaded_file($_FILES['image_file']['tmp_name'], $targetFile)) {
+                $news_image_path = $targetFile;
+            } else {
+                die("Không thể upload ảnh!");
+            }
+        }
+        //Xử lý dữ liệu từ input có áp dụng ckeditor
+        $save_content = $conn->real_escape_string($filterArr['news_content']);
+        //lấy user id từ session
+        $user_id = getSession('user_id');
+        $data = [
+            'category_id' => $filterArr['category'],
+            'news_title' => $filterArr['news_title'],
+            'news_summary' => $filterArr['news_summary'],
+            'news_description' => $save_content,
+            'news_image_path' => $news_image_path,
+            'news_image_note' => $filterArr['image_description'],
+            'user_id' => $user_id
+        ];
+        $sql = "INSERT INTO news (news_title, news_summary, news_description, news_image_path, news_image_note, user_id, category_id) 
+        VALUES (?, ?, ?, ?, ?, ? ,? )";
+        $stmt = $conn->prepare($sql);
+        if ($stmt === false) {
+            die("Loi prepare SQL: " . $conn->error);
+        }
+        $stmt->bind_param(
+            "sssssii", //định dạng kiểu dữ liệu theo đúng thứ tự: string, string, string, int, string, string
+            $data['news_title'],
+            $data['news_summary'],
+            $data['news_description'],
+            $data['news_image_path'],
+            $data['news_image_note'],
+            $data['user_id'],
+            $data['category_id'],
+        );
+        //lưu vào biến để kiểm tra trạng thái
+        $insert_success = $stmt->execute();
+        if ($insert_success) {
+            header("Location: ?module=news&action=manageNews");
+        }
+    } else {
+        setSesstionFlash('oldData', $filterArr);
+        setSesstionFlash('errors', $errors);
     }
+    $oldData = getSessionFlash('oldData');
+    $errorsArr = getSessionFlash('errors');
 } else {
     $msg = "";
     $msg_type = '';
@@ -90,12 +135,18 @@ if (isMethodPost()) {
             <div class="mb-3">
                 <label for="news_title" class="form-label fw-bold">News title</label>
                 <input name="news_title" id="news_title" type="text" class="form-control" placeholder="Enter news title">
+                <?php
+                echo formErrors($errorsArr, 'news_title');
+                ?>
             </div>
 
             <!-- Tóm tắt -->
             <div class="mb-3">
                 <label for="news_summary" class="form-label fw-bold">News summary</label>
                 <input name="news_summary" id="news_summary" type="text" class="form-control" placeholder="Enter short summary">
+                <?php
+                echo formErrors($errorsArr, 'news_summary');
+                ?>
             </div>
 
             <!-- Nội dung -->
@@ -105,18 +156,27 @@ if (isMethodPost()) {
                 <script>
                     CKEDITOR.replace('news_content');
                 </script>
+                <?php
+                echo formErrors($errorsArr, 'news_content');
+                ?>
             </div>
 
             <!-- Hình ảnh -->
             <div class="mb-3">
                 <label for="formFileLg" class="form-label fw-bold">Upload a news image</label>
                 <input name="image_file" class="form-control" id="formFileLg" type="file">
+                <?php
+                echo formErrors($errorsArr, 'image_file');
+                ?>
             </div>
 
             <!-- Mô tả hình ảnh -->
             <div class="mb-3">
                 <label for="image_description" class="form-label fw-bold">Image description</label>
                 <input name="image_description" id="image_description" type="text" class="form-control" placeholder="Enter image description">
+                <?php
+                echo formErrors($errorsArr, 'image_description');
+                ?>
             </div>
 
             <!-- Nút hành động -->
