@@ -2,7 +2,11 @@
 // if(!defined('_USER')){
 //     die("Truy cập không hợp lệ") ;
 // }
-
+$logged_in = getSession("logged_in");
+if ($logged_in) {
+    require_once './modules/errors/logged_in.php';
+    die();
+}
 if (isMethodPost()) {
     $filterArr = filterData();
     $errors = [];
@@ -49,7 +53,7 @@ if (isMethodPost()) {
 
         // Đóng
         $stmt->close();
-        
+
 
         if (!empty($user)) {
             //kiểm tra mật khẩu có hợp lệ không
@@ -59,9 +63,10 @@ if (isMethodPost()) {
                     //Kiểm tra xem tài khoản đã được kích hoạt hay chưa
                     if ($user['user_status'] == 1) {
                         //Tạo session khi đăng nhập thành công
+                        setSesstion("logged_in", "you are logged in");
                         setSesstion("user_id", $user['user_id']);
                         setSesstion("user_name", $user['user_name']);
-                        setSesstion("user_role",$user['user_role']);
+                        setSesstion("user_role", $user['user_role']);
                         setSesstionFlash('msg', 'Login succeed');
                         setSesstionFlash('msg_type', 'success');
                         header("Location:?module=home&action=index");

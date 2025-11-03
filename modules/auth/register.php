@@ -2,7 +2,11 @@
 if (!defined('_PERMISSION')) {
     die("Truy cập không hợp lệ");
 }
-
+$logged_in = getSession("logged_in");
+if ($logged_in) {
+    require_once './modules/errors/logged_in.php';
+    die();
+}
 //test function filterData
 // if (!empty($_POST)) {
 //     $filterArr = filterData('post');
