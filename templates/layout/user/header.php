@@ -77,7 +77,7 @@
                             <ul class="list-unstyled ms-4 mt-3">
                                 <li class="nav-item dropdown ">
                                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                        <i class="bi bi-gear-fill"></i>
+                                        <img src="/News_website/templates/assets/images/settings_24dp_000000_FILL0_wght400_GRAD0_opsz24.svg" alt="Setting">
                                     </a>
                                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                                         <li><a class="dropdown-item" href="#">Profile</a></li>

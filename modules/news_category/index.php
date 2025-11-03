@@ -63,7 +63,7 @@ echo $category_id;
                         </div>
                         <div class="bottom">
                             <div class="views d-flex align-items-center gap-1 ">
-                                <img src="\News_website\templates\assets\images\visibility_24dp_000000_FILL0_wght400_GRAD0_opsz24.svg" alt="">
+                                <img src="/News_website/templates/assets/images/visibility_24dp_000000_FILL0_wght400_GRAD0_opsz24.svg" alt="">
                                 <p class="m-0">' . htmlspecialchars($row['news_views']) . '</p>
                             </div>
                             <div class="Post-date d-flex align-items-center ">

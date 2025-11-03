@@ -14,13 +14,13 @@ if (!$Login) {
         <div class="manageNews-content">
             <div class="manageNews-button my-3 mx-3">
                 <a href="?module=news&action=addNews" class="btn btn-primary add-button">
-                    <img class="add-icon" src="\News_website\templates\assets\images\add_circle_24dp_1F1F1F_FILL0_wght400_GRAD0_opsz24.svg" alt=""> Add News
+                    <img class="add-icon" src="/News_website/templates/assets/images/add_circle_24dp_1F1F1F_FILL0_wght400_GRAD0_opsz24.svg" alt=""> Add News
                 </a>
             </div>
             <div class="search mb-3 mx-3">
                 <form class="d-flex">
                     <div class="search-box me-2">
-                        <img class="search-icon" src="\News_website\templates\assets\images\search_24dp_1F1F1F_FILL0_wght400_GRAD0_opsz24.svg" alt="">
+                        <img class="search-icon" src="/News_website/templates/assets/images/search_24dp_1F1F1F_FILL0_wght400_GRAD0_opsz24.svg" alt="">
                         <input class="form-control" type="search" placeholder="Enter the title or category news" aria-label="Search">
                     </div>
                     <button class="btn btn-outline-success" type="submit">Search</button>
