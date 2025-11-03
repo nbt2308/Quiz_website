@@ -56,8 +56,8 @@ if (!$Login) {
                                         echo '<td>Not yet approved</td>';
                                     }
 
-                                    echo '<td>
-                                            <a href="?module=news&action=editNews&id=' . $row['news_id'] . '" class="btn btn-warning btn-sm mb-1">
+                                    echo '<td >
+                                            <a href="?module=news&action=editNews&id=' . $row['news_id'] . '" class="btn btn-warning btn-sm">
                                                 <img src="/News_website/templates/assets/images/edit_24dp_1F1F1F_FILL0_wght400_GRAD0_opsz24.svg" alt="Edit">
                                             </a>
 
