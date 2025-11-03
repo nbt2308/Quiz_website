@@ -65,7 +65,7 @@ layoutUser('header');
                                 <a class="fw-bold text-decoration-none" href="#" >' . htmlspecialchars($row['news_title']) . ' </a>
                                 <div class="text-limit">
                                     <p class="text-muted mb-0">'
-                                . htmlspecialchars($row['news_description']) .
+                                . htmlspecialchars($row['news_summary']) .
                                 '</p>
                                 </div>
                                 <p class="mt-5">Ngày đăng: ' . htmlspecialchars($row['news_post_date']) . '</p>
@@ -123,7 +123,7 @@ layoutUser('header');
                         <div class="top">
                             <h5 class="card-title">' . htmlspecialchars($row['news_title']) . '</h5>
                             <div class="text-limit">
-                                <p class="card-text">' . htmlspecialchars($row['news_description']) . '</p>
+                                <p class="card-text">' . htmlspecialchars($row['news_summary']) . '</p>
                             </div>
                         </div>
                         <div class="bottom">

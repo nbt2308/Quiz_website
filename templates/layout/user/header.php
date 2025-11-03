@@ -25,11 +25,11 @@
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                             <li class="nav-item">
-                                <a class="nav-link active" aria-current="page" href="?module=home&action=index">Home</a>
+                                <a class="nav-link <?php echo $_GET['module'] == "home" ? "active" : " t" ?>" aria-current="page" href="?module=home&action=index">Home</a>
                             </li>
                             <!-- check role -->
-                            <li class="nav-item">
-                                <a class="nav-link" href="?module=news&action=manageNews">Manage</a>
+                            <li class="nav-item mx-2">
+                                <a class="nav-link <?php echo $_GET['module'] == "news" ? "active" : " u" ?>" href="?module=news&action=manageNews">Manage</a>
                             </li>
                             <?php
                             $Admin = getSession('user_role');
@@ -44,8 +44,8 @@
 
 
 
-                            <li class="nav-item datetime">
-                                <?php echo '<a class="nav-link" disabled>' . date('d/m/Y ') . '</a>'; ?>
+                            <li class="nav-item datetime mt-2 ms-3">
+                                <?php echo '<a class="text-secondary text-decoration-none" disabled>' . date('d/m/Y ') . '</a>'; ?>
                             </li>
 
 
