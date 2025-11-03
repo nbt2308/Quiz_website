@@ -11,13 +11,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Change Password</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="/Quiz_website/modules/auth/css/css/changePassword.css">
+    <link rel="stylesheet" href="/News_website/modules/auth/css/css/changePassword.css">
 </head>
 
 <body>
     <div class="changePassword-container">
         <div class="logo-brand">
-            <img src="Quiz_website/templates/assets/images/TH.png" alt="Logo-brand">
+            <img src="News_website/templates/assets/images/TH.png" alt="Logo-brand">
         </div>
         <div class="changePassword-content">
             <form action="" method="POST" class="m-5">

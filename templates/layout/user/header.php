@@ -7,8 +7,8 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-    <link rel="stylesheet" href="/Quiz_website/templates/assets/css/news/manageNews.css">
-    <link rel="stylesheet" href="/Quiz_website/templates/assets/css/home/style.css">
+    <link rel="stylesheet" href="/News_website/templates/assets/css/news/manageNews.css">
+    <link rel="stylesheet" href="/News_website/templates/assets/css/home/style.css">
     <script src="https://cdn.ckeditor.com/4.22.1/standard/ckeditor.js"></script>
     <title>TH News Website</title>
 </head>
@@ -18,7 +18,7 @@
         <div class="header container">
             <nav class="navbar navbar-expand-lg navbar-light">
                 <div class="container-fluid">
-                    <a class="navbar-brand logo-brand" href="?module=home&action=index"><img src="/Quiz_website/templates/assets/images/TH.png" alt="Logo-brand"></a>
+                    <a class="navbar-brand logo-brand" href="?module=home&action=index"><img src="/News_website/templates/assets/images/TH.png" alt="Logo-brand"></a>
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                     </button>

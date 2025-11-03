@@ -10,7 +10,7 @@ if (!defined('_PERMISSION')) {
         <!--begin::Brand Link-->
         <a href="./index.html" class="brand-link">
             <!--begin::Brand Image-->
-            <img width="60" height="60" src="/Quiz_website/templates/assets/images/TH.png" alt="Logo-brand">
+            <img width="60" height="60" src="/News_website/templates/assets/images/TH.png" alt="Logo-brand">
             <!--end::Brand Image-->
             <!--begin::Brand Text-->
             <span class="brand-text fw-light">TH News</span>
