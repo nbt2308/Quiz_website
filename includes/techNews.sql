@@ -19,8 +19,6 @@ CREATE TABLE user (
     user_active_token VARCHAR(500),  
     user_created_at DATETIME DEFAULT CURRENT_TIMESTAMP
 );
-INSERT INTO user (user_email, user_password, user_name, user_role) VALUES ("nva@gmail.com", md5("nva123"), "Nguyen Van A", FALSE);
-INSERT INTO user (user_email, user_password, user_name, user_role) VALUES ("admin@gmail.com", md5("admin123"), "Administrator", TRUE);
 
 -- 3️⃣ Bảng CATEGORY
 CREATE TABLE category (
