@@ -1,6 +1,6 @@
 <?php
 layoutUser('header');
-$Login = getSession("user_id");
+$Login = getSession("logged_in");
 if (!$Login) {
     header("Location: ?module=auth&action=login");
 }

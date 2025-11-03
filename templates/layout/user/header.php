@@ -64,7 +64,7 @@
                     </form> -->
                         <?php
                         //Check người dùng đã đăng nhập hay chưa
-                        $Login = getSession("user_id");
+                        $Login = getSession("logged_in");
                         if (!$Login) {
                         ?>
                             <div class="signin-signup ms-3">
