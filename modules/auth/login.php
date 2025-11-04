@@ -81,6 +81,9 @@ if (isMethodPost()) {
                     setSesstionFlash('msg_type', 'danger');
                 }
             }
+        } else {
+            setSesstionFlash('msg', 'Invalid Email or Password');
+            setSesstionFlash('msg_type', 'danger');
         }
     } else {
         setSesstionFlash('msg', 'Invalid data, please check again');
