@@ -1,7 +1,5 @@
 <?php
-// if(!defined('_USER')){
-//     die("Truy cập không hợp lệ") ;
-// }
+
 $logged_in = getSession("logged_in");
 if ($logged_in) {
     require_once './modules/errors/logged_in.php';
@@ -79,7 +77,7 @@ if (isMethodPost()) {
                 $emailTo = $data['user_email'];
                 $subjectEmail = "Chào mừng bạn đến với TH News! Đây là đường link liên kết đổi mật khẩu của bạn.";
                 $contentEmail = "Link tại đây </br>";
-                $contentEmail .= _HOST_URL . '/?module=auth&action=resetPassword&token=' . $forgot_password_token . '</br>';
+                $contentEmail .= 'localhost/News_website/?module=auth&action=resetPassword&token=' . $forgot_password_token . '</br>';
                 $contentEmail .= 'Cảm ơn bạn đã ủng hộ TH News';
                 sendMail($emailTo, $subjectEmail, $contentEmail);
 

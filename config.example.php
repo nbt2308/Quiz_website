@@ -1,6 +1,4 @@
 <?php
-//check quyen nguoi dung (basic)
-const _PERMISSION = true;
 
 //route
 const _MODULES="home";

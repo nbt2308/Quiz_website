@@ -1,7 +1,5 @@
 <?php
-if (!defined('_PERMISSION')) {
-    die("Truy cập không hợp lệ");
-}
+
 layoutUser('header');
 
 
@@ -39,7 +37,7 @@ if (!empty($filter['token'])) {
         <div class="container-fluid h-custom">
             <div class="row d-flex flex-column justify-content-center align-items-center h-100">
                 <div class="col-md-9 col-lg-6 col-xl-5 d-flex justify-content-center align-items-center">
-                    <img src="<?php echo _HOST_URL_TEMPLATES; ?>/assets/images/TH.png"
+                    <img src="/News_website/templates/assets/images/TH.png"
                         class="img-fluid" alt="Sample image">
                 </div>
                 <?php
@@ -76,7 +74,7 @@ if (!empty($filter['token'])) {
                         <div class="d-flex flex-row align-items-center justify-content-center justify-content-lg-start text-center">
                             <h2 class="fw-bold mb-5 me-3 ">Kích hoạt tài khoản thành công</h2>
                         </div>
-                        <a href="<?php echo _HOST_URL; ?>?module=auth&action=login"
+                        <a href="?module=auth&action=login"
                             class="link-primary text-primary" style="font-size: 20px; color: blue !important;">Đăng nhập ngay</a>
                     </div>
                 <?php
@@ -102,14 +100,14 @@ if (!empty($filter['token'])) {
         <div class="container-fluid h-custom">
             <div class="row d-flex flex-column justify-content-center align-items-center h-100">
                 <div class="col-md-9 col-lg-6 col-xl-5 d-flex justify-content-center align-items-center">
-                    <img src="<?php echo _HOST_URL_TEMPLATES; ?>/assets/images/TH.png"
+                    <img src="/News_website/templates/assets/images/TH.png"
                         class="img-fluid" alt="Sample image">
                 </div>
                 <div class="col-md-8 col-lg-6 col-xl-4 d-flex flex-column align-items-center justify-content-center">
                     <div class="d-flex flex-row align-items-center justify-content-center justify-content-lg-start text-center">
                         <h2 class="fw-bold mb-5 me-3 ">Link kích hoạt đã hết hạn hoặc không tồn tại</h2>
                     </div>
-                    <a href="<?php echo _HOST_URL; ?>?module=auth&action=register"
+                    <a href="?module=auth&action=register"
                         class="link-primary text-primary" style="font-size: 20px; color: blue !important;">Quay trở lại</a>
                 </div>
             </div>

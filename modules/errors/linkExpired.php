@@ -5,7 +5,7 @@
      <div class="container-fluid h-custom">
          <div class="row d-flex flex-column justify-content-center align-items-center h-100">
              <div class="col-md-9 col-lg-6 col-xl-5 d-flex justify-content-center align-items-center">
-                 <img src="<?php echo _HOST_URL_TEMPLATES; ?>/assets/images/TH.png"
+                 <img src="/News_website/templates/assets/images/TH.png"
                      class="img-fluid" alt="Sample image">
              </div>
 

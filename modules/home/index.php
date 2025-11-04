@@ -1,9 +1,4 @@
 <?php
-// if(!defined('_USER')){
-//     die("Truy cập không hợp lệ") ;
-// }
-
-
 
 //home
 layoutUser('header');
@@ -25,16 +20,6 @@ layoutUser('header');
             echo "<p>Không có dữ liệu.</p>";
         }
         ?>
-        <!-- <div class="category-title"><a href="#"><strong>Breaking news</strong></a></div>
-        <div class="category-title"><a href="#"><strong>World</strong></a></div>
-        <div class="category-title"><a href="#"><strong>Business</strong></a></div>
-        <div class="category-title"><a href="#"><strong>Sports</strong></a></div>
-        <div class="category-title"><a href="#"><strong>Technology</strong></a></div>
-        <div class="category-title"><a href="#"><strong>Health</strong></a></div>
-        <div class="category-title"><a href="#"><strong>Entertainment</strong></a></div>
-        <div class="category-title"><a href="#"><strong>Law</strong></a></div>
-        <div class="category-title"><a href="#"><strong>Education</strong></a></div>
-        <div class="category-title"><a href="#"><strong>Lifestyle</strong></a></div> -->
     </div>
     <div class="main container mt-3">
         <div class="left-container ">

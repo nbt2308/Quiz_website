@@ -1,9 +1,4 @@
 <?php
-if (!defined('_PERMISSION')) {
-    die("Truy cập không hợp lệ");
-}
-
-
 try {
     header("Content-type: text/html; charset=utf-8");
     $conn = new mysqli(_HOST, _USER, _PASSWORD, _DBNAME);

@@ -1,7 +1,4 @@
 <?php
-if (!defined('_PERMISSION')) {
-    die("Truy cập không hợp lệ");
-}
 $logged_in = getSession("logged_in");
 if ($logged_in) {
     require_once './modules/errors/logged_in.php';
@@ -103,7 +100,7 @@ if (isMethodPost()) {
             $emailTo = $data['user_email'];
             $subjectEmail = "Chào mừng bạn đến với TH News! Kích hoạt tài khoản ngay.";
             $contentEmail = "Link kích hoạt tại đây </br>";
-            $contentEmail .= _HOST_URL . '/?module=auth&action=active&token=' . $active_token . '</br>';
+            $contentEmail .= 'localhost/News_website/?module=auth&action=active&token=' . $active_token . '</br>';
             $contentEmail .= 'Cảm ơn bạn đã đăng ký tài khoản tại TH News';
             sendMail($emailTo, $subjectEmail, $contentEmail);
 

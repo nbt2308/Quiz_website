@@ -4,12 +4,12 @@ session_start(); //mo phien lam viec
 ob_start(); //tranh loi khi dung ham header, cookie
 
 require_once 'config.php';
-require_once './includes/connect.php';
-require_once './includes/session.php';
-require_once './includes/mailer/Exception.php';
-require_once './includes/mailer/PHPMailer.php';
-require_once './includes/mailer/SMTP.php';
-require_once './includes/function.php';
+require_once './lib/connect.php';
+require_once './lib/session.php';
+require_once './lib/mailer/Exception.php';
+require_once './lib/mailer/PHPMailer.php';
+require_once './lib/mailer/SMTP.php';
+require_once './lib/function.php';
 
 //Test send mail
 // sendMail("truchoa2019@gmail.com", "Test mail", "eheheheheheheh");
