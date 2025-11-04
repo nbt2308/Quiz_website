@@ -69,7 +69,7 @@ echo $category_id;
                             <div class="Post-date d-flex align-items-center ">
                                 <p class="m-0">' . htmlspecialchars($row['news_post_date']) . '</p>
                             </div>
-                            <button class="btn btn-primary">View more</button>
+                            <a href="?module=news&action=news_detail&news_id=' . htmlspecialchars($row['news_id']) . '" class="btn btn-primary">View more</a>
                         </div>
                     </div>
                 </div>

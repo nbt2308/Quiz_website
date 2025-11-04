@@ -1,0 +1,9 @@
+.title {
+    color: darkblue;
+    text-shadow: blueviolet 2px 2px 5px;
+}
+
+.summary {
+    font-weight: bold;
+    font-style: italic;
+}
