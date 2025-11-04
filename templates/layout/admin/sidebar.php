@@ -1,7 +1,5 @@
 <?php
-if (!defined('_PERMISSION')) {
-    die("Truy cập không hợp lệ");
-}
+
 ?>
 <!--begin::Sidebar-->
 <aside class="app-sidebar bg-body-secondary shadow" data-bs-theme="dark">

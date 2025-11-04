@@ -1,7 +1,5 @@
 <?php
-if (!defined('_PERMISSION')) {
-    die("Truy cập không hợp lệ");
-}
+
 ?>
 <!--begin::Row-->
 <div class="row">

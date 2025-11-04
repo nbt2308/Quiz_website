@@ -1,7 +1,5 @@
 <?php
-if (!defined('_PERMISSION')) {
-    die("Truy cập không hợp lệ");
-}
+
 ?>
 <!doctype html>
 <html lang="en">

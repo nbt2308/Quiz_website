@@ -1,7 +1,4 @@
 <?php
-if (!defined('_PERMISSION')) {
-    die("Truy cập không hợp lệ");
-}
 
 layoutAdmin("header");
 layoutAdmin("sidebar");
