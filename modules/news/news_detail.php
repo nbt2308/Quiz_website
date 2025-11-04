@@ -47,7 +47,7 @@ if (!empty($_GET['news_id'])) {
         echo  '<h3 class="title"> ' . $row1['news_title'] . ' </h3>';
         echo  '<p class="summary"> ' . $row1['news_summary'] . ' </p>';
         echo  '<div class="d-flex justify-content-center">';
-        echo        '<img class="image" height=auto width=500 src="' . $row1['news_image_path'] . '">';
+        echo        '<img class="image img-fluid" height=auto width=500 src="' . $row1['news_image_path'] . '">';
         echo  '</div>';
         echo  '<p class="summary text-center"> <i>' . $row1['news_image_note'] . '</i> </p>';
         //giải mã ký tự từ db
