@@ -5,7 +5,7 @@ $category_id;
 if (!empty($_GET['category_id'])) {
     $category_id = $_GET['category_id'];
 }
-echo $category_id;
+// echo $category_id;
 ?>
 <main>
     <div class="category container">
