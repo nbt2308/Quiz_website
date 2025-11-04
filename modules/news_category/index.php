@@ -83,3 +83,6 @@ if (!empty($_GET['category_id'])) {
     </div>
     </div>
 </main>
+<?php
+layoutUser("footer");
+?>

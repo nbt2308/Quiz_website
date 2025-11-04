@@ -49,10 +49,16 @@ if (!empty($_GET['news_id'])) {
         echo  '<div class="d-flex justify-content-center">';
         echo        '<img class="image" height=auto width=500 src="' . $row1['news_image_path'] . '">';
         echo  '</div>';
-        echo  '<p class="content"> ' . $row1['news_description'] . ' </p>';
+        //giải mã ký tự từ db
+        $decoded = html_entity_decode($row1['news_description'], ENT_QUOTES | ENT_HTML5, 'UTF-8');
+        $decoded = html_entity_decode($row1['news_description'], ENT_QUOTES | ENT_HTML5, 'UTF-8');
+        echo  '<p class="content"> ' . $decoded . ' </p>';
 
         echo '<button type="button" class="btn btn-secondary" onclick="history.back()">Go back</button>';
         ?>
     </div>
     </div>
 </main>
+<?php
+layoutUser("footer");
+?>
