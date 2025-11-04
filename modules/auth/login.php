@@ -58,7 +58,11 @@ if (isMethodPost()) {
         if (!empty($user)) {
             //kiểm tra mật khẩu có hợp lệ không
             if (!empty($password)) {
-                $checkPass = password_verify($password, $user['user_password']);
+
+                $checkPass = false;
+                if (strcmp(md5($password), $user['user_password']) === 0) {
+                    $checkPass = true;
+                }
                 if ($checkPass) {
                     //Kiểm tra xem tài khoản đã được kích hoạt hay chưa
                     if ($user['user_status'] == 1) {

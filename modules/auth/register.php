@@ -71,7 +71,7 @@ if (isMethodPost()) {
         $data = [
             'user_email' => $filterArr['email'],
             'user_name' => $filterArr['username'],
-            'user_password' => password_hash($filterArr['password'], PASSWORD_DEFAULT),
+            'user_password' => md5($filterArr['password']),
             'user_active_token' => $active_token,
             'user_role' => FALSE,
             'user_created_at' => date('Y-m-d H:i:s')
