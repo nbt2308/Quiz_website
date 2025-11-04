@@ -49,65 +49,91 @@ INSERT INTO news
 (news_title, news_summary, news_description, news_image_path, news_image_note, news_isPost, user_id, category_id)
 VALUES
 -- 1. Breaking News
-('Massive Storm Hits Coastal City',
- 'A powerful storm has caused severe flooding in coastal areas, forcing thousands of residents to evacuate.',
- 'A massive tropical storm struck the eastern coastline early this morning, bringing with it torrential rain and powerful winds that exceeded 120 kilometers per hour.\n\nLocal authorities have issued immediate evacuation orders in low-lying areas as water levels continue to rise. Emergency shelters have been set up in schools and public buildings to accommodate displaced residents.\n\nMeteorologists warn that the storm could intensify over the next 24 hours before gradually moving inland. Rescue operations are ongoing as teams work around the clock to assist affected families and restore essential services.',
- 'images/storm.jpg',
- 'Photo of the flooded city streets after the storm',
+('Bão có thể mạnh cấp 14 khi vào vùng biển Đà Nẵng - Khánh Hòa',
+ 'Không khí lạnh suy yếu trong khi độ ẩm, nhiệt độ bề mặt biển, độ đứt gió đang thuận lợi khiến bão Kalmaegi có thể đạt cấp 14 khi vào vùng biển Đà Nẵng - Khánh Hòa.',
+ 'Lúc 16h hôm nay, bão Kalmaegi trên vùng biển phía tây miền Trung Philippines, cách đảo Song Tử Tây khoảng 770 km về phía đông, sức gió mạnh nhất gần tâm bão 149 km/h, cấp 13, giật cấp 16 và theo hướng tây với tốc độ khoảng 25 km/h.
+    <br>
+  Tại cuộc họp thông tin diễn biến bão Kalmaegi chiều nay, ông Mai Văn Khiêm, Giám đốc Trung tâm Dự báo Khí tượng Thủy văn quốc gia, cho biết rạng sáng mai bão sẽ vượt qua phía bắc của đảo Palawan, Philippines vào Biển Đông.
+    <br>
+  Bão sẽ đạt cực đại cấp 14 (166 km/h), giật cấp 16-17 vào ngày 6/11, thậm chí có mô hình cho rằng bão sẽ trên cấp 14 khi ở đặc khu Trường Sa và trên vùng biển Đà Nẵng - Khánh Hòa. Chiều cùng ngày, bão sẽ vào vùng biển miền Trung.',
+ 'templates/uploads/bao-1762255887-2152-1762255955.webp',
+ 'Hệ thống giám sát thiên tai Việt Nam',
  TRUE, 1, 1),
 
 -- 2. World
 ('Global Leaders Meet for Climate Summit',
  'World leaders gathered in Paris to discuss urgent measures to address the escalating climate crisis.',
- 'The 2025 Global Climate Summit opened today in Paris, drawing leaders from over 70 countries to discuss the growing impacts of global warming.\n\nIn his opening remarks, the UN Secretary-General emphasized the importance of collective action and urged nations to commit to stricter emission targets. Several countries announced new pledges to phase out fossil fuels by 2040.\n\nEnvironmental activists rallied outside the venue, demanding greater accountability from major polluters. The summit is expected to last for three days, with discussions focused on renewable energy, deforestation, and ocean protection.',
- 'images/climate_summit.jpg',
+ 'The 2025 Global Climate Summit opened today in Paris, drawing leaders from over 70 countries to discuss the growing impacts of global warming.
+    <br>
+  In his opening remarks, the UN Secretary-General emphasized the importance of collective action and urged nations to commit to stricter emission targets. Several countries announced new pledges to phase out fossil fuels by 2040.
+    <br>
+  Environmental activists rallied outside the venue, demanding greater accountability from major polluters. The summit is expected to last for three days, with discussions focused on renewable energy, deforestation, and ocean protection.',
+ 'templates/uploads/leaders_meet-a0a0a32375cf7d12b2c2db3ef642f2cd.jpg',
  'Leaders attending the Climate Summit 2025 in Paris',
  TRUE, 1, 2),
 
 -- 3. Business
 ('Tech Stocks Rally as Markets Recover',
  'The global stock market rebounded as investors regained confidence in major technology firms.',
- 'After weeks of volatility, global stock markets rallied today, driven largely by strong earnings reports from leading tech companies like Meta, Google, and Microsoft.\n\nAnalysts credit the recovery to renewed investor optimism and better-than-expected performance across the AI and semiconductor sectors. The NASDAQ rose 2.3%, marking its strongest daily gain this quarter.\n\nDespite the positive momentum, experts caution that uncertainty remains due to inflation concerns and shifting global trade policies. Investors are advised to remain selective in the coming weeks as market trends stabilize.',
- 'images/stock_market.jpg',
+ 'After weeks of volatility, global stock markets rallied today, driven largely by strong earnings reports from leading tech companies like Meta, Google, and Microsoft.
+    <br>
+  Analysts credit the recovery to renewed investor optimism and better-than-expected performance across the AI and semiconductor sectors. The NASDAQ rose 2.3%, marking its strongest daily gain this quarter.
+    <br>
+  Despite the positive momentum, experts caution that uncertainty remains due to inflation concerns and shifting global trade policies. Investors are advised to remain selective in the coming weeks as market trends stabilize.',
+ 'templates/uploads/38d4d70886c8a2dd73f3e5f1497c8f73.jpg',
  'Stock market chart showing an upward trend',
- TRUE, 1, 3),
+ TRUE, 2, 3),
 
 -- 4. Sports
-('Local Team Wins National Championship',
- 'In a stunning upset, the underdog local football team claimed the national title for the first time in 15 years.',
- 'Thousands of fans flooded the streets last night as the city’s football team secured a dramatic 3–2 victory in the national championship final.\n\nThe match was an emotional rollercoaster, with both teams exchanging goals until a decisive strike in the 88th minute sealed the win. The team’s coach praised his players for their determination and teamwork throughout the season.\n\nCelebrations are expected to continue through the weekend, with the city planning a parade to honor the players and staff. Local businesses have also joined in, offering free merchandise and discounts to celebrate the victory.',
- 'images/championship.jpg',
+('Mbappe - Guler: Cặp bài trùng gợi nhớ về Ronaldo - Ozil',
+ 'Không cầu thủ nào kiến tạo cho Kylian Mbappe ghi bàn nhiều ở mùa này như Arda Guler mùa này, tương tự cách Mesut Ozil từng ăn ý với Cristiano Ronaldo thời cả hai còn sát cánh ở Real Madrid.',
+ 'Khi ghi cú đúp trong trận Real hạ Valencia 4-0 cuối tuần qua, Mbappe không chỉ nâng thành tích ghi bàn mùa này của anh trên mọi đấu trường mùa này lên con số 18, mà còn kéo theo sự gia tăng một chỉ số khác của đồng đội. 
+    <br>
+  Trong 18 bàn đó của tiền đạo người Pháp, có 6 bàn từ phạt đền và một bàn không tính kiến tạo. Với 11 bàn còn lại, Guler kiến tạo cho Mbappe 6 bàn, nhiều hơn bất kỳ ai, và lần gần nhất là ở pha lập công thứ hai của Mbappe trước Valencia.',
+ 'templates/uploads/guler-1-1762223703-1762225233-7724-1762225241.webp',
  'Team lifting the championship trophy',
- TRUE, 1, 4),
+ TRUE, 2, 4),
 
 -- 5. Technology
-('AI Revolutionizes Software Development',
- 'Developers are now using AI-assisted tools to accelerate code generation and boost productivity.',
- 'Artificial Intelligence is rapidly transforming the software industry. Developers worldwide are adopting AI-driven platforms that can generate, review, and optimize code with unprecedented accuracy.\n\nAccording to a recent study by TechWorld Analytics, more than 60% of development teams have integrated at least one AI-powered tool into their workflow. This shift has led to faster project delivery and improved code quality.\n\nExperts predict that within the next two years, AI will become an indispensable assistant for programmers, much like the rise of compilers in the 1970s. However, concerns about over-reliance on automation and data privacy still remain key challenges.',
- 'images/ai_coding.jpg',
- 'Developer using AI-assisted coding platform',
- TRUE, 1, 5),
+('Robot hình người Trung Quốc "gây họa" trong bếp',
+ 'Robot G1 nổi tiếng của công ty Unitree lúng túng cầm chảo, làm đổ thức ăn ra sàn bếp và trượt ngã.',
+ 'Bên dưới, tài khoản bishara tiếp tục chia sẻ clip khác cho thấy G1 xông vào phòng một cách mạnh mẽ, làm vỡ cửa kính. Nhưng sau đó, có vẻ robot không kiểm soát được tốc độ, đâm sầm vào giá đỡ camera và tường. Những clip này đều trích từ video "Điều gì xảy ra nếu bạn ngược đãi robot?" của YouTuber Cody Detwiler.
+    <br>
+  Một sự cố tương tự xảy ra hồi tháng 3, người dùng Zhang Genyuan giao cho G1 nhiệm vụ nấu ăn. Robot vật lộn với những việc đơn giản như đập trứng và rót sữa. Nỗ lực dọn nhà của nó cũng không suôn sẻ khi thường xuyên dẫn đến va chạm, đổ vỡ.
+    <br>
+  G1 chủ yếu được thiết kế cho mục đích công nghiệp và nghiên cứu, nhưng Unitree Robotics đã đa dạng hóa khả năng của nó, mở rộng sang làm việc nhà. Trường hợp của Cody Detwiler và Zhang Genyuan cho thấy G1 chưa sẵn sàng cho nhiệm vụ đòi hỏi độ chính xác cao. Robot hình người đang có những bước tiến ấn tượng, nhưng vẫn chưa thực sự phối hợp ăn ý với con người.',
+ 'templates/uploads/unitreeg1cooking-1762232515-17-3227-1244-1762232680.webp',
+ 'Robot hình người G1 làm rơi chảo thức ăn trong bếp. Ảnh: X/bishara.',
+ TRUE, 2, 5),
 
 -- 6. Health
-('New Vaccine Shows Promising Results',
- 'A groundbreaking vaccine has demonstrated 95% effectiveness in large-scale trials.',
- 'Researchers at the Global Health Institute have announced promising results for a new vaccine targeting a recently emerged virus strain. The trials involved over 30,000 participants across five countries.\n\nPreliminary data indicates the vaccine achieved a 95% success rate in preventing infection, with minimal side effects reported. Health officials are now working closely with pharmaceutical companies to begin mass production.\n\nExperts believe this development marks a significant milestone in global health preparedness, potentially preventing future pandemics of similar nature.',
- 'images/vaccine.jpg',
- 'Scientists working in a medical lab',
- TRUE, 1, 6),
+('Tiêm vaccine phòng bệnh cho cả lớp học',
+ 'Cô Hồ Thị Lực, 42 tuổi, ở Hà Nội, đăng ký tiêm cúm theo chương trình của nhà trường, để chống ốm đầu năm học.',
+ 'Cô Lực là giáo viên mẫu giáo, cho biết trẻ mầm non còn nhỏ, ý thức giữ gìn vệ sinh chưa cao, sinh hoạt cùng nhiều bé khác. Do vậy, hễ một bé ho, sốt, sổ mũi là các bé khác cũng lần lượt lây và ngã bệnh. Hơn nữa, giáo viên cũng có thể mắc bệnh lây cho trẻ và ngược lại, gián đoạn việc dạy.
+    <br>
+  Vì vậy, cô coi việc phòng bệnh trong lớp học là ưu tiên hàng đầu, bắt đầu bằng việc chủ động phòng bệnh cho bản thân. Nếu phụ huynh còn ngần ngại chưa cho con tiêm vaccine, cô cũng tìm hiểu và động viên gia đình phòng bệnh cho con. Bên cạnh vaccine, cô Lực cũng luôn đặt ra quy định nghiêm ngặt khi vệ sinh trường lớp, dụng cụ học tập, đồ chơi, ăn uống đảm bảo an toàn, sạch sẽ nhằm bảo vệ sức khỏe cho các bé.',
+ 'templates/uploads/233a3450-1757134057-1762247285-5828-7583-1762247871.webp',
+ 'Cô giáo và học sinh đều cần có sức khỏe tốt để đảm bảo việc học tập không bị gián đoạn. Ảnh minh họa: Quỳnh Trần.',
+ TRUE, 2, 6),
 
 -- 7. Science
-('Astronomers Discover Potentially Habitable Planet',
- 'A newly discovered exoplanet may be capable of supporting life as we know it.',
- 'Astronomers from NASA have identified a planet orbiting a star similar to the Sun, located 1,200 light-years from Earth. Named Kepler-452c, the planet lies within the star’s habitable zone — the region where liquid water could exist on the surface.\n\nThe discovery was made using data from the Kepler Space Telescope and has sparked excitement in the scientific community. Further analysis will focus on the planet’s atmosphere and surface conditions.\n\nWhile it’s too early to confirm whether life exists there, scientists say this finding brings humanity one step closer to understanding our place in the universe.',
- 'images/exoplanet.jpg',
- 'Artistic impression of the newly discovered exoplanet',
+('Tàu Trung Quốc chở phi hành gia trẻ nhất lên trạm Thiên Cung',
+ 'Tàu Thần Châu 21 phóng từ sa mạc Gobi đang bay tới trạm Thiên Cung trên quỹ đạo Trái Đất, chở phi hành gia trẻ nhất của Trung Quốc và chuột thí nghiệm.',
+ 'Theo Space, tên lửa Trường Chinh 2F đưa tàu vũ trụ Thần Châu 21 cất cánh từ Trung tâm phóng vệ tinh Tửu Tuyền ở đông bắc Trung Quốc vào 23h44 ngày 31/10 giờ địa phương (22h44 cùng ngày giờ Hà Nội). Dự kiến tàu vũ trụ sẽ ghép nối với cổng trước của module lõi Thiên Hòa thuộc trạm vũ trụ Thiên Cung khoảng 3,5 giờ sau khi cất cánh, sử dụng chế độ gặp nhanh tự động giúp tiết kiệm 3 giờ so với nhiệm vụ Thần Châu 20.
+    <br>
+  Tàu Thần Châu 21 chở chỉ huy Zhang Lu (48 tuổi) từng tham gia nhiệm vụ Thần Châu 15 năm 2022 cùng hai phi hành gia mới là Wu Fei và Zhang Hongzhang được chọn từ lứa phi hành gia thứ 3 của Trung Quốc tuyển năm 2020. Ở tuổi 32, Wu là thành viên trẻ nhất trong đội phi hành gia Trung Quốc, làm kỹ sư ở Học viện Công nghệ vũ trụ (CAST). Zhang (39 tuổi), chuyên gia hàng hóa trên tàu, là nhà nghiên cứu ở Viện Vật lý hóa học Đại Liên thuộc Viện hàn lâm Khoa học Trung Quốc (CAS). Zhang Lu và đồng nghiệp sẽ gặp gỡ chỉ huy Chen Dong của nhiệm vụ Thần Châu 20 và hai thành viên khác là Chen Zhongrui và Wang Jie trên trạm Thiên Cung. Chen Dong gần đây trở thành phi hành gia Trung Quốc đầu tiên trải qua 400 ngày trên quỹ đạo, nhưng ông và đồng nghiệp sẽ sớm rời khỏi trạm Thiên Cung để trở về Trái Đất vào ngày 3/11.',
+ 'templates/uploads/VNE-As-1761929803-9604-1761929877.webp',
+ 'Tên lửa Trường Chinh 2F chở tàu Thần Châu 21 cất cánh hôm 31/10. Ảnh: CCTV.',
  TRUE, 1, 7),
 
 -- 8. Entertainment
-('Famous Singer Releases New Album',
- 'Pop icon Lily Monroe’s new album “Skyline Dreams” dominates streaming charts worldwide.',
- 'Pop superstar Lily Monroe has once again taken the world by storm with her highly anticipated album “Skyline Dreams.” Within hours of its release, the album topped Spotify and Apple Music charts in over 30 countries.\n\nThe record features 12 tracks blending electronic pop with heartfelt ballads. Critics have praised Monroe’s mature sound and introspective lyrics that explore themes of growth, nostalgia, and resilience.\n\nFans have flooded social media with excitement, sharing clips and reviews under the hashtag #SkylineDreams. A world tour has also been announced, set to begin in Tokyo this December.',
- 'images/album_release.jpg',
- 'Cover art of Skyline Dreams album',
+('Gen Alpha và áp lực "học cắm đầu cắm cổ"',
+ 'Jennifer B. Wallace gọi trẻ em là thế hệ "học cắm đầu cắm cổ", chịu nhiều kỳ vọng của người lớn, trong "Gen Alpha và áp lực thành tích".',
+ 'Học hành, thể thao và các hoạt động ngoại khóa ngày càng trở nên cạnh tranh, được người lớn dẫn dắt và mang tính đánh cược cao. Wallace chỉ ra "những đứa trẻ này đang chạy theo một lộ trình đã được vạch sẵn mà không đủ thời gian nghỉ ngơi hay cơ hội để quyết định liệu đó có phải là cuộc đua mà chúng muốn tham gia hay không". Kết quả, trẻ em tiếp nhận tư tưởng rằng giá trị của chúng phụ thuộc vào thành tích, điểm số GPA, số lượng người theo dõi trên mạng xã hội, thương hiệu trường đại học chứ không phải con người thật.
+    <br>
+  Ngoài ra, lớn lên trong một cộng đồng nhiều người thành công về mặt vật chất có thể làm tăng áp lực lên trẻ, khiến chúng cảm thấy cần phải có trách nhiệm duy trì vị thế của gia đình.
+    <br>
+  Sự căng thẳng trong học tập, cạnh tranh không lành mạnh dễ khiến trẻ mắc chứng rối loạn lo âu và trầm cảm. Sách đưa số liệu từ các cuộc khảo sát quốc gia tại Mỹ về thanh thiếu niên, cho thấy sự gia tăng về tỷ lệ mắc một số vấn đề sức khỏe tinh thần. Năm 2019, một phần ba số học sinh trung học và một nửa số nữ sinh được ghi nhận có cảm xúc buồn bã hoặc tuyệt vọng kéo dài. Tác phẩm nêu: "Một học sinh ở New York nhớ lại đã bật khóc trong lớp 3 vì cô bé nghĩ rằng việc nhận điểm C trong bài kiểm tra toán làm hỏng cơ hội vào Harvard và sống một cuộc sống tốt đẹp".',
+ 'templates/uploads/gen-alpha-va-ap-luc-thanh-tich-1792-5276-1761878463.webp',
+ 'Bìa "Gen Alpha và áp lực thành tích", sách do Lê Thanh Sơn dịch, 1980 Books và NXB Công Thương liên kết ấn hành. Ảnh: 1980 Books.',
  TRUE, 1, 8);
