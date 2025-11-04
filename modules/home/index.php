@@ -78,11 +78,11 @@ layoutUser('header');
                 </button>
 
                 <!-- Chấm nhỏ bên dưới -->
-                <div class="carousel-indicators mt-3">
+                <!-- <div class="carousel-indicators mt-3">
                     <button type="button" data-bs-target="#newsCarousel" data-bs-slide-to="0" class="active"></button>
                     <button type="button" data-bs-target="#newsCarousel" data-bs-slide-to="1"></button>
                     <button type="button" data-bs-target="#newsCarousel" data-bs-slide-to="2"></button>
-                </div>
+                </div> -->
             </div>
             <div class="news-card my-3">
                 <?php
