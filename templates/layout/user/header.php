@@ -34,9 +34,10 @@
                             <?php
                             $Admin = getSession('user_role');
                             if ($Admin == 1) {
+                                $user_id = getSession("user_id");
                             ?>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="?module=admin&action=index">Admin</a>
+                                    <a class="nav-link" href="?module=admin&action=index&user_id=<?php echo $user_id ?>">Admin</a>
                                 </li>
                             <?php
                             }

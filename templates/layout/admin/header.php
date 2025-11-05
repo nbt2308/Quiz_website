@@ -1,13 +1,10 @@
-<?php
-
-?>
 <!doctype html>
 <html lang="en">
 <!--begin::Head-->
 
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>AdminLTE v4 | Dashboard</title>
+    <title>Admin dashboard</title>
     <!--begin::Accessibility Meta Tags-->
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
     <meta name="color-scheme" content="light dark" />
@@ -103,16 +100,16 @@
                     <li class="nav-item dropdown user-menu">
                         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
                             <img
-                                src="./assets/img/user2-160x160.jpg"
+                                src="/News_website/templates/assets/images/person_24dp_000000_FILL0_wght400_GRAD0_opsz24.svg"
                                 class="user-image rounded-circle shadow"
                                 alt="User Image" />
-                            <span class="d-none d-md-inline">Alexander Pierce</span>
+                            <span class="d-none d-md-inline">bao trong</span>
                         </a>
                         <ul class="dropdown-menu dropdown-menu-lg dropdown-menu-end">
                             <!--begin::User Image-->
                             <li class="user-header text-bg-primary">
                                 <img
-                                    src="./assets/img/user2-160x160.jpg"
+                                    src="/News_website/templates/assets/images/person_24dp_FFFFFF_FILL0_wght400_GRAD0_opsz24.svg"
                                     class="rounded-circle shadow"
                                     alt="User Image" />
                                 <p>

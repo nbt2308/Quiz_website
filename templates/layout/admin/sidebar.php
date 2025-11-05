@@ -6,7 +6,7 @@
     <!--begin::Sidebar Brand-->
     <div class="sidebar-brand">
         <!--begin::Brand Link-->
-        <a href="./index.html" class="brand-link">
+        <a href="?module=home&action=index" class="brand-link">
             <!--begin::Brand Image-->
             <img width="60" height="60" src="/News_website/templates/assets/images/TH.png" alt="Logo-brand">
             <!--end::Brand Image-->
@@ -30,7 +30,8 @@
                 id="navigation">
                 <li class="nav-item menu-open">
                     <a href="#" class="nav-link active">
-                        <i class="nav-icon bi bi-speedometer"></i>
+                        <!-- <i class="nav-icon bi bi-speedometer"></i> -->
+                        <img src="/News_website/templates/assets/images/readiness_score_24dp_FFFFFF_FILL0_wght400_GRAD0_opsz24.svg" alt="">
                         <p>
                             Dashboard
 
@@ -41,7 +42,8 @@
 
                 <li class="nav-item">
                     <a href="#" class="nav-link">
-                        <i class="nav-icon bi bi-box-seam-fill"></i>
+                        <!-- <i class="nav-icon bi bi-box-seam-fill"></i> -->
+                        <img src="/News_website/templates/assets/images/news_24dp_FFFFFF_FILL0_wght400_GRAD0_opsz24.svg" alt="">
                         <p>
                             News management
                             <i class="nav-arrow bi bi-chevron-right"></i>
@@ -70,31 +72,8 @@
                 </li>
                 <li class="nav-item">
                     <a href="#" class="nav-link">
-                        <i class="nav-icon bi bi-clipboard-fill"></i>
-                        <p>
-                            Account management
-                            <i class="nav-arrow bi bi-chevron-right"></i>
-                        </p>
-                    </a>
-                    <ul class="nav nav-treeview">
-                        <li class="nav-item">
-                            <a href="./layout/unfixed-sidebar.html" class="nav-link">
-                                <i class="nav-icon bi bi-circle"></i>
-                                <p>List account</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="./layout/fixed-sidebar.html" class="nav-link">
-                                <i class="nav-icon bi bi-circle"></i>
-                                <p>Add new account</p>
-                            </a>
-                        </li>
-                    </ul>
-                </li>
-
-                <li class="nav-item">
-                    <a href="#" class="nav-link">
-                        <i class="nav-icon bi bi-pencil-square"></i>
+                        <!-- <i class="nav-icon bi bi-pencil-square"></i> -->
+                        <img src="/News_website/templates/assets/images/account_circle_24dp_FFFFFF_FILL0_wght400_GRAD0_opsz24.svg" alt="">
                         <p>
                             User management
                             <i class="nav-arrow bi bi-chevron-right"></i>
@@ -105,6 +84,18 @@
                             <a href="./forms/general.html" class="nav-link">
                                 <i class="nav-icon bi bi-circle"></i>
                                 <p>List users</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="./forms/general.html" class="nav-link">
+                                <i class="nav-icon bi bi-   circle"></i>
+                                <p>Add new user</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="./forms/general.html" class="nav-link">
+                                <i class="nav-icon bi bi-circle"></i>
+                                <p>Assign user permissions</p>
                             </a>
                         </li>
                     </ul>
