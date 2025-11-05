@@ -4,28 +4,18 @@ $Login = getSession("logged_in");
 if (!$Login) {
     header("Location: ?module=auth&action=login");
 }
+if (isMethodPost('POST')) {
+    $searchKey = $_POST['searchKey'];
+}
 ?>
 
 <main>
     <div class="manageNews-container container">
         <div class="manageNews-title my-3">
-            <span>Manage your post</span>
+            <span>Results with keyword: <?php echo $searchKey ?></span>
         </div>
-        <div class="manageNews-content mb-5">
-            <div class="manageNews-button my-3 mx-3">
-                <a href="?module=news&action=addNews" class="btn btn-primary add-button">
-                    <img class="add-icon" src="/News_website/templates/assets/images/add_circle_24dp_FFFFFF_FILL0_wght400_GRAD0_opsz24.svg" alt=""> Add News
-                </a>
-            </div>
-            <div class="search mb-3 mx-3">
-                <form class="d-flex" action="?module=news&action=searchNews" method="POST">
-                    <div class="search-box me-2">
-                        <img class="search-icon" src="/News_website/templates/assets/images/search_24dp_1F1F1F_FILL0_wght400_GRAD0_opsz24.svg" alt="">
-                        <input name="searchKey" class="form-control" type="search" placeholder="Enter the title or category news" aria-label="Search">
-                    </div>
-                    <button class="btn btn-outline-success" type="submit">Search</button>
-                </form>
-            </div>
+        <div class="manageNews-content">
+
             <div class="table-with-paginate">
                 <div data-bs-spy="scroll" data-bs-target="#navbar-example2" data-bs-root-margin="0px 0px -40%" data-bs-smooth-scroll="true" class="scrollspy-example bg-body-tertiary p-3 rounded-2" tabindex="0">
                     <table class="table table-hover ">
@@ -41,9 +31,9 @@ if (!$Login) {
                         </thead>
                         <tbody>
                             <?php
-                            $sql = "SELECT * FROM category, news WHERE news.category_id = category.category_id";
+                            $sql = "SELECT * FROM category, news WHERE news.category_id = category.category_id AND (news_title LIKE '%$searchKey%' OR category_name LIKE '%$searchKey%')";
                             $list = $conn->query($sql);
-                            if ($list->num_rows > 0)
+                            if ($list->num_rows > 0) {
                                 while ($row = $list->fetch_assoc()) {
                                     echo '<tr>';
                                     echo '<th scope="row">' . $row["news_id"] . '</th>';
@@ -73,6 +63,13 @@ if (!$Login) {
 
                                     echo '</tr>';
                                 }
+                            } else {
+                                echo '<tr>';
+                                echo '<td colspan="6" >';
+                                echo '<p class="fs-5 text-danger">Not found data with "' . $searchKey . '"</p>';
+                                echo '</td>';
+                                echo '</tr>';
+                            }
                             ?>
                         </tbody>
                     </table>
