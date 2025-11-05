@@ -91,10 +91,10 @@ layoutUser('header');
                         FROM news n
                         INNER JOIN category c ON n.category_id = c.category_id
                         INNER JOIN (
-                            SELECT category_id, MIN(news_post_date) AS latest_post
+                            SELECT category_id, MAX(news_views) AS most_views
                             FROM news
                             GROUP BY category_id
-                        ) AS latest ON n.category_id = latest.category_id AND n.news_post_date = latest.latest_post;";
+                        ) AS most ON n.category_id = most.category_id AND n.news_views = most.most_views;";
                 $result = $conn->query($sql3);
                 if ($result->num_rows > 0) {
                     while ($row = $result->fetch_assoc()) {

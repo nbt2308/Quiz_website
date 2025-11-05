@@ -54,7 +54,7 @@ if (isset($_GET['id'])) {
 
             <div class="mb-3">
                 <label class="form-label">Image</label><br>
-                <img src="<?= $news['news_image_path'] ?>" class="img-fluid" alt="News Image">
+                <img width="500" height="auto" src="<?= $news['news_image_path'] ?>" class="img-fluid" alt="News Image">
             </div>
 
             <div class="mb-3">
