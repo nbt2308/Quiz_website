@@ -4,7 +4,25 @@ $news_id;
 
 if (!empty($_GET['news_id'])) {
     $news_id = $_GET['news_id'];
+
+    //Tăng số lượt xem của bài viết
+    $sql = "UPDATE news
+            SET    news_views=news_views + 1
+            WHERE  news_id = ?";
+    $stmt = $conn->prepare($sql);
+    if ($stmt === false) {
+        die("Loi prepare SQL: " . $conn->error);
+    }
+    $stmt->bind_param(
+        "i", //định dạng kiểu dữ liệu: int
+        $news_id
+    );
+    //lưu vào biến để kiểm tra trạng thái
+    $insert_success = $stmt->execute();
 }
+
+
+
 ?>
 <main>
     <div class="category container">
@@ -41,7 +59,7 @@ if (!empty($_GET['news_id'])) {
         $result1 = $conn->query($sql1);
         $row1 = $result1->fetch_assoc();
         echo  '<div class="d-flex justify-content-between">';
-        echo        '<p class="text-start text-secondary"><b>Posted by</b> ' . $row1['user_name'] . ' </p>';
+        echo        '<p class="text-start text-secondary"><b>Posted by</b> ' . $row1['user_name'] . ', views: ' . $row1['news_views'] . ' </p>';
         echo        '<p class="text-end text-secondary"> ' . $row1['news_post_date'] . ' </p>';
         echo  '</div>';
         echo  '<h3 class="title"> ' . $row1['news_title'] . ' </h3>';
