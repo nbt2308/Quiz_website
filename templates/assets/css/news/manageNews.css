@@ -44,12 +44,24 @@
     position: relative;
 }
 
-.search-box input{
+.search-box input {
+    width: 100%;
     padding-left: 35px;
+    padding-right: 35px;
+    height: 35px;
 }
 
-.search-icon{
-    align-items: left;
+.search-icon {
     position: absolute;
-    margin: 7px 5px;
+    top: 50%;
+    left: 10px;
+    transform: translateY(-50%);
+}
+
+.reset-button {
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+    cursor: pointer;
 }

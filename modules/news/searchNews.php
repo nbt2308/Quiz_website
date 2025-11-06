@@ -15,7 +15,23 @@ if (isMethodPost('POST')) {
             <span>Results with keyword: <?php echo $searchKey ?></span>
         </div>
         <div class="manageNews-content">
-
+            <div class="manageNews-button my-3 mx-3">
+                <a href="?module=news&action=addNews" class="btn btn-primary add-button">
+                    <img class="add-icon" src="/News_website/templates/assets/images/add_circle_24dp_FFFFFF_FILL0_wght400_GRAD0_opsz24.svg" alt=""> Add News
+                </a>
+            </div>
+            <div class="search mb-3 mx-3">
+                <form class="d-flex" action="?module=news&action=searchNews" method="POST">
+                    <div class="search-box me-2">
+                        <img class="search-icon" src="/News_website/templates/assets/images/search_24dp_1F1F1F_FILL0_wght400_GRAD0_opsz24.svg" alt="">
+                        <input name="searchKey" class="form-control" type="text" value="<?php echo $searchKey ?>" placeholder="Enter the title or category news" aria-label="Search">
+                        <a href="?module=news&action=manageNews" class="reset-button">
+                            <img src="/News_website/templates/assets/images/close_24dp_1F1F1F_FILL0_wght400_GRAD0_opsz24.svg" alt="">
+                        </a>
+                    </div>
+                    <button class="btn btn-outline-success" type="submit">Search</button>
+                </form>
+            </div>
             <div class="table-with-paginate">
                 <div data-bs-spy="scroll" data-bs-target="#navbar-example2" data-bs-root-margin="0px 0px -40%" data-bs-smooth-scroll="true" class="scrollspy-example bg-body-tertiary p-3 rounded-2" tabindex="0">
                     <table class="table table-hover ">

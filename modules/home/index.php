@@ -22,7 +22,7 @@ layoutUser('header');
         ?>
     </div>
     <div class="main container mt-3">
-        <div class="left-container ">
+        <div class="top-container ">
 
 
             <div id="newsCarousel" class="carousel slide" data-bs-ride="carousel">
@@ -45,7 +45,7 @@ layoutUser('header');
                             echo '
                     <div class="carousel-item ' . ($isActive ? 'active' : '') . '">
                         <div class="d-flex align-items-center justify-content-center p-3">
-                            <img src="' . $row['news_image_path'] . '" alt="News image" class="rounded me-3" style="width:400px;height:250px;object-fit:cover;">
+                            <div style="height:100%;width:auto;"><img src="' . $row['news_image_path'] . '" alt="News image" class="rounded me-3" style="width:400px;height:250px;object-fit:cover;"></div>
                             <div class="ms-3">
                                 <a class="fw-bold text-decoration-none" href="#" >' . htmlspecialchars($row['news_title']) . ' </a>
                                 <div class="text-limit">
@@ -84,22 +84,20 @@ layoutUser('header');
                     <button type="button" data-bs-target="#newsCarousel" data-bs-slide-to="2"></button>
                 </div> -->
             </div>
-            <div class="news-card my-3">
-                <?php
-                $category_id = 1; // ví dụ id chuyên mục
-                $sql3 = "SELECT n.*, c.category_name
-                        FROM news n
-                        INNER JOIN category c ON n.category_id = c.category_id
-                        INNER JOIN (
-                            SELECT category_id, MAX(news_views) AS most_views
-                            FROM news
-                            GROUP BY category_id
-                        ) AS most ON n.category_id = most.category_id AND n.news_views = most.most_views;";
-                $result = $conn->query($sql3);
-                if ($result->num_rows > 0) {
-                    while ($row = $result->fetch_assoc()) {
-                        echo '
-                        <span class="ms-3 fs-4 fw-bold">' . htmlspecialchars($row['category_name']) . '</span>
+
+
+        </div>
+        <div class="bottom-container">
+            <div class="left-content">
+                <div class="news-card  ">
+                    <?php
+                    $category_id = 1; // ví dụ id chuyên mục
+                    $sql3 = "SELECT * FROM news ORDER BY news_post_date DESC";
+                    $result = $conn->query($sql3);
+                    if ($result->num_rows > 0) {
+                        while ($row = $result->fetch_assoc()) {
+                            echo '
+                         
                 <div class="card">
                     <div class="image-preview">
                         <img class="card-img-top" src="' . $row['news_image_path'] . '" alt="News image" />
@@ -124,16 +122,16 @@ layoutUser('header');
                     </div>
                 </div>
                         ';
+                        }
+                    } else {
+                        echo "<p>Không có dữ liệu.</p>";
                     }
-                } else {
-                    echo "<p>Không có dữ liệu.</p>";
-                }
-                ?>
+                    ?>
 
+                </div>
             </div>
-
+            <div class="right-content"></div>
         </div>
-        <div class="right-container"></div>
     </div>
 </main>
 <?php

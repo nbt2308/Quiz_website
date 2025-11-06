@@ -21,7 +21,7 @@ if (!$Login) {
                 <form class="d-flex" action="?module=news&action=searchNews" method="POST">
                     <div class="search-box me-2">
                         <img class="search-icon" src="/News_website/templates/assets/images/search_24dp_1F1F1F_FILL0_wght400_GRAD0_opsz24.svg" alt="">
-                        <input name="searchKey" class="form-control" type="search" placeholder="Enter the title or category news" aria-label="Search">
+                        <input name="searchKey" class="form-control" type="text" placeholder="Enter the title or category news" aria-label="Search">
                     </div>
                     <button class="btn btn-outline-success" type="submit">Search</button>
                 </form>
@@ -36,7 +36,7 @@ if (!$Login) {
                                 <th scope="col">Title</th>
                                 <th scope="col">Date</th>
                                 <th scope="col">Status</th>
-                                <th scope="col">Action</th>
+                                <th scope="col" width="13%">Action</th>
                             </tr>
                         </thead>
                         <tbody>
