@@ -99,9 +99,9 @@ if (isMethodPost()) {
             //gửi mail kích hoạt tài khoản cho người dùng
             $emailTo = $data['user_email'];
             $subjectEmail = "Chào mừng bạn đến với TH News! Kích hoạt tài khoản ngay.";
-            $contentEmail = "Link kích hoạt tại đây </br>";
-            $contentEmail .= 'localhost/News_website/?module=auth&action=active&token=' . $active_token . '</br>';
-            $contentEmail .= 'Cảm ơn bạn đã đăng ký tài khoản tại TH News';
+            $contentEmail = "Link kích hoạt tại đây: </br>";
+            $contentEmail .= 'http://localhost/News_website/?module=auth&action=active&token=' . $active_token . '</br>';
+            $contentEmail .= ' Cảm ơn bạn đã đăng ký tài khoản tại TH News';
             sendMail($emailTo, $subjectEmail, $contentEmail);
 
 

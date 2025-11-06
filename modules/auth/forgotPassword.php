@@ -76,9 +76,9 @@ if (isMethodPost()) {
                 //gửi mail đổi mật khẩu cho người dùng
                 $emailTo = $data['user_email'];
                 $subjectEmail = "Chào mừng bạn đến với TH News! Đây là đường link liên kết đổi mật khẩu của bạn.";
-                $contentEmail = "Link tại đây </br>";
-                $contentEmail .= 'localhost/News_website/?module=auth&action=resetPassword&token=' . $forgot_password_token . '</br>';
-                $contentEmail .= 'Cảm ơn bạn đã ủng hộ TH News';
+                $contentEmail = "Link tại đây: </br>";
+                $contentEmail .= 'http://localhost/News_website/?module=auth&action=resetPassword&token=' . $forgot_password_token . '</br>';
+                $contentEmail .= ' Cảm ơn bạn đã ủng hộ TH News';
                 sendMail($emailTo, $subjectEmail, $contentEmail);
 
                 setSesstionFlash('msg', 'Confirmed successfully, please check your email');
