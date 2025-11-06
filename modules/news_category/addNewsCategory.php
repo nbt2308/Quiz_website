@@ -31,8 +31,8 @@ if (isMethodPost()) {
             header("Location: ?module=news_category&action=listNewsCategory");
         }
     } else {
-        setSesstionFlash('oldData', $filterArr);
-        setSesstionFlash('errors', $errors);
+        setSessionFlash('oldData', $filterArr);
+        setSessionFlash('errors', $errors);
     }
     $oldData = getSessionFlash('oldData');
     $errorsArr = getSessionFlash('errors');

@@ -41,7 +41,7 @@ function deleteSession($key = '')
 }
 
 //Tao session flash
-function setSesstionFlash($key, $value)
+function setSessionFlash($key, $value)
 {
     $key = $key . 'Flash';
     $rel = setSesstion($key, $value);
