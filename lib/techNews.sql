@@ -25,7 +25,8 @@ INSERT INTO user (user_email, user_password, user_name, user_role, user_status) 
 -- 3️⃣ Bảng CATEGORY
 CREATE TABLE category (
     category_id INT AUTO_INCREMENT PRIMARY KEY,
-    category_name VARCHAR(100) NOT NULL
+    category_name VARCHAR(100) NOT NULL UNIQUE,
+    category_created_at DATETIME DEFAULT CURRENT_TIMESTAMP
 );
 INSERT INTO category (category_name) VALUES ("Breaking News"), ("World"), ("Business"), ("Sports"), ("Technology"), ("Health"), ("Science"), ("Entertainment");
 
