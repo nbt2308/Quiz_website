@@ -125,6 +125,7 @@ a.navbar-brand.logo-brand img {
 .carousel-control-prev-icon,
 .carousel-control-next-icon {
     filter: invert(100%);
+    z-index: 0;
 }
 
 #newsCarousel .carousel-control-prev {
@@ -147,11 +148,13 @@ a.navbar-brand.logo-brand img {
     background-size: 50% 50%;
     background-position: center;
     filter: invert(1);
+    z-index: 0;
 }
 
 /* --- Giữ vị trí giữa dọc --- */
 #newsCarousel .carousel-control-prev,
 #newsCarousel .carousel-control-next {
+    z-index: 0;
     top: 50%;
     transform: translateY(-50%);
 }
