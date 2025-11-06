@@ -83,12 +83,13 @@ a.navbar-brand.logo-brand img {
     /* border: 1px solid green; */
     height: fit-content;
     display: flex;
+    flex-direction: column;
     padding: 0;
 }
 
 /* LEFT CONTAINER */
-.left-container {
-    width: 70%;
+.top-container {
+    width: 100%;
     /* border: 1px solid rgb(248, 0, 41); */
     height: fit-content;
 }
@@ -99,8 +100,8 @@ a.navbar-brand.logo-brand img {
 }
 
 #newsCarousel {
-    max-width: 900px;
-    margin: auto;
+    width: 100%;
+    /* margin: auto; */
     border-radius: 10px;
     overflow: hidden;
     background: #fff;
@@ -155,12 +156,13 @@ a.navbar-brand.logo-brand img {
 }
 
 .card {
-    margin: 10px;
+    margin: 20px 0;
     width: calc(100% - 20px);
     display: flex;
     flex-direction: row;
     border-radius: 10px;
     overflow: hidden;
+    border:none;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
@@ -234,11 +236,15 @@ a.navbar-brand.logo-brand img {
 
 
 
-.right-container {
-    width: 30%;
+.bottom-container {
     height: fit-content;
 }
-
+.left-content{
+    width: 70%;
+}
+.right-content{
+    width: 30%;
+}
 .footer {
     width: 100%;
     display: flex;
