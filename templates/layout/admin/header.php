@@ -1,3 +1,12 @@
+<?php
+$user_id;
+if (!empty($_GET['user_id'])) {
+    $user_id = $_GET['user_id'];
+}
+$sql = "SELECT * FROM user WHERE user_id='$user_id'";
+$result = $conn->query($sql);
+$data = $result->fetch_assoc();
+?>
 <!doctype html>
 <html lang="en">
 <!--begin::Head-->
@@ -103,7 +112,6 @@
                                 src="/News_website/templates/assets/images/person_24dp_000000_FILL0_wght400_GRAD0_opsz24.svg"
                                 class="user-image rounded-circle shadow"
                                 alt="User Image" />
-                            <span class="d-none d-md-inline">bao trong</span>
                         </a>
                         <ul class="dropdown-menu dropdown-menu-lg dropdown-menu-end">
                             <!--begin::User Image-->
@@ -112,10 +120,7 @@
                                     src="/News_website/templates/assets/images/person_24dp_FFFFFF_FILL0_wght400_GRAD0_opsz24.svg"
                                     class="rounded-circle shadow"
                                     alt="User Image" />
-                                <p>
-                                    Alexander Pierce - Web Developer
-                                    <small>Member since Nov. 2023</small>
-                                </p>
+                                <p><?php echo $data['user_name']; ?></p>
                             </li>
                             <!--end::User Image-->
                             <!--begin::Menu Body-->

@@ -1,6 +1,4 @@
-<?php
-
-?>
+<?php $user_id = getSession("user_id"); ?>
 <!--begin::Sidebar-->
 <aside class="app-sidebar bg-body-secondary shadow" data-bs-theme="dark">
     <!--begin::Sidebar Brand-->
@@ -29,12 +27,11 @@
                 data-accordion="false"
                 id="navigation">
                 <li class="nav-item menu-open">
-                    <a href="#" class="nav-link active">
+                    <a href="?module=admin&action=index&user_id=<?php echo $user_id ?>" class="nav-link active">
                         <!-- <i class="nav-icon bi bi-speedometer"></i> -->
                         <img src="/News_website/templates/assets/images/readiness_score_24dp_FFFFFF_FILL0_wght400_GRAD0_opsz24.svg" alt="">
                         <p>
                             Dashboard
-
                         </p>
                     </a>
 
@@ -71,34 +68,15 @@
                     </ul>
                 </li>
                 <li class="nav-item">
-                    <a href="#" class="nav-link">
+
+                    <a href="?module=users_management&action=listUser&user_id=<?php echo $user_id ?>" class="nav-link">
                         <!-- <i class="nav-icon bi bi-pencil-square"></i> -->
                         <img src="/News_website/templates/assets/images/account_circle_24dp_FFFFFF_FILL0_wght400_GRAD0_opsz24.svg" alt="">
                         <p>
                             User management
-                            <i class="nav-arrow bi bi-chevron-right"></i>
                         </p>
                     </a>
-                    <ul class="nav nav-treeview">
-                        <li class="nav-item">
-                            <a href="./forms/general.html" class="nav-link">
-                                <i class="nav-icon bi bi-circle"></i>
-                                <p>List users</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="./forms/general.html" class="nav-link">
-                                <i class="nav-icon bi bi-   circle"></i>
-                                <p>Add new user</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="./forms/general.html" class="nav-link">
-                                <i class="nav-icon bi bi-circle"></i>
-                                <p>Assign user permissions</p>
-                            </a>
-                        </li>
-                    </ul>
+
                 </li>
 
             </ul>
