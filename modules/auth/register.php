@@ -151,37 +151,37 @@ if (isMethodPost()) {
         <div class="logo-brand mb-4">
             <img src="/News_website/templates/assets/images/TH.png" alt="Logo-brand">
         </div>
-        <div>
+        <div class="frame-register">
             <?php getMsg($msg, $msg_type); ?>
             <div class="register-content">
 
                 <div class="register-title mb-3 mt-3">
                     <span>SIGN UP</span>
                 </div>
-                <div class="form-register mt-3">
-                    <form action="" method="POST">
-                        <div class="form-floating mb-2">
+                <div class="register-form mt-3">
+                    <form action="" method="POST" class="mb-3">
+                        <div class="form-floating mb-3">
                             <input type="text" class="form-control" id="floatingInput" placeholder="name@example.com" name="email" value="<?php echo showOldData($oldData, 'email'); ?>">
                             <label for="floatingInput">Email address</label>
                             <?php
                             echo formErrors($errorsArr, 'email');
                             ?>
                         </div>
-                        <div class="form-floating mb-2">
+                        <div class="form-floating mb-3">
                             <input type="text" class="form-control" id="floatingInput" placeholder="name@example.com" name="username" value="<?php echo showOldData($oldData, 'username'); ?>">
                             <label for="floatingInput">Username</label>
                             <?php
                             echo formErrors($errorsArr, 'username');
                             ?>
                         </div>
-                        <div class="form-floating mb-2">
+                        <div class="form-floating mb-3">
                             <input type="password" class="form-control" id="floatingInput" placeholder="name@example.com" name="password" value="<?php echo showOldData($oldData, 'password'); ?>">
                             <label for="floatingInput">Password</label>
                             <?php
                             echo formErrors($errorsArr, 'password');
                             ?>
                         </div>
-                        <div class="form-floating mb-2">
+                        <div class="form-floating mb-3">
                             <input type="password" class="form-control" id="floatingInput" placeholder="name@example.com" name="confirmPassword">
                             <label for="floatingInput">Confirm password</label>
                             <?php

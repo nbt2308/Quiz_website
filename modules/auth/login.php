@@ -120,7 +120,7 @@ if (isMethodPost()) {
         <div>
             <img src="/News_website/templates/assets/images/TH.png" alt="Logo-brand">
         </div>
-        <div>
+        <div class="frame-login">
             <?php getMsg($msg, $msg_type); ?>
             <div class="login-content">
                 <div class="title-login mb-3 mt-3">

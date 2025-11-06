@@ -89,6 +89,10 @@ if (isMethodPost()) {
                 setSesstionFlash('msg_type', 'danger');
             }
             $stmt->close();
+        } else {
+            setSesstionFlash('msg', 'Invalid data, please check again');
+            setSesstionFlash('msg_type', 'danger');
+            setSesstionFlash('errors', $errors);
         }
     } else {
         setSesstionFlash('msg', 'Invalid data, please check again');
@@ -121,7 +125,7 @@ if (isMethodPost()) {
         <div class="logo-brand mb-4">
             <img src="/News_website/templates/assets/images/TH.png" alt="Logo-brand">
         </div>
-        <div>
+        <div class="frame-forgotPassword">
             <?php getMsg($msg, $msg_type); ?>
             <div class="forgotPassword-content">
                 <div class="forgotPassword-title mb-3 mt-3">

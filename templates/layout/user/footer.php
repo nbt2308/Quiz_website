@@ -3,9 +3,9 @@
 
 <footer class="bg-primary text-center text-lg-start text-white">
     <!-- Grid container -->
-    <div class="container p-4">
+    <div class="container p-4 footer-container">
         <!--Grid row-->
-        <div class="row my-4">
+        <div class="row my-4 footer-content">
             <!--Grid column-->
             <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
 

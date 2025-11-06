@@ -134,7 +134,7 @@ if (!empty($token_reset)) {
         <div class="logo-brand mb-4">
             <img src="/News_website/templates/assets/images/TH.png" alt="Logo-brand">
         </div>
-        <div>
+        <div class="frame-resetPassword">
             <?php getMsg($msg, $msg_type); ?>
             <div class="resetPassword-content">
                 <div class="resetPassword-title mb-3 mt-3">
