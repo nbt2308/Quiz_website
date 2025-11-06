@@ -1,6 +1,6 @@
 <!-- Remove the container if you want to extend the Footer to full width. -->
 
-
+<link rel="stylesheet" href="/News_website/templates/assets/css/layout/user/footer.css">
 <footer class="bg-primary text-center text-lg-start text-white">
     <!-- Grid container -->
     <div class="container p-4 footer-container">

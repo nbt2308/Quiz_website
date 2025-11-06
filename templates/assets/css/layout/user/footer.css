@@ -1,0 +1,33 @@
+@media (min-width: 993px) {
+    .footer-content {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+}
+
+/* Cho máy tính bảng và các thiết bị nhỏ hơn */
+@media (max-width: 992px) {
+
+
+    .footer-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .footer-content {
+        display: flex;
+        justify-content: space-between;
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+/* Cho điện thoại di động */
+@media (max-width: 576px) {
+
+    footer {
+        font-size: 14px;
+    }
+}
