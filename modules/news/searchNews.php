@@ -10,7 +10,7 @@ if (isMethodPost('POST')) {
 ?>
 
 <main>
-    <div class="manageNews-container container">
+    <div class="manageNews-container container mb-5">
         <div class="manageNews-title my-3">
             <span>Results with keyword: <?php echo $searchKey ?></span>
         </div>
