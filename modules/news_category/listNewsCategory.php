@@ -47,25 +47,26 @@ if (!$Login) {
                             $list = $conn->query($sql);
                             if ($list->num_rows > 0) {
                                 while ($row = $list->fetch_assoc()) {
-                                    echo '<th scope="row">' . $row["category_id"] . '</th>';
-                                    echo '<td>' . $row["category_name"] . '</td>';
-                                    echo '<td>' . $row["total_news"] . '</td>';
-                                    echo '<td>' . $row["category_created_at"] . '</td>';
+                                    echo '<tr>';
+                                        echo '<th scope="row">' . $row["category_id"] . '</th>';
+                                        echo '<td>' . $row["category_name"] . '</td>';
+                                        echo '<td>' . $row["total_news"] . '</td>';
+                                        echo '<td>' . $row["category_created_at"] . '</td>';
 
-                                    echo '<td >
-                                            <a href="?module=news_category&action=editNews&id=' . $row['category_id'] . '" class="btn btn-warning btn-sm">
-                                                <img src="/News_website/templates/assets/images/edit_24dp_FFFFFF_FILL0_wght400_GRAD0_opsz24.svg" alt="Edit">
-                                            </a>
+                                        echo '<td >
+                                                <a href="?module=news_category&action=editNewsCategory&id=' . $row['category_id'] . '" class="btn btn-warning btn-sm">
+                                                    <img src="/News_website/templates/assets/images/edit_24dp_FFFFFF_FILL0_wght400_GRAD0_opsz24.svg" alt="Edit">
+                                                </a>
 
-                                            <a href="?module=news&action=deleteNews&id=' . $row['category_id'] . '" class="btn btn-danger btn-sm">
-                                                <img src="/News_website/templates/assets/images/delete_24dp_FFFFFF_FILL0_wght400_GRAD0_opsz24.svg" alt="Delete">
-                                            </a>
+                                                <a href="?module=news_category&action=deleteNewsCategory&id=' . $row['category_id'] . '" class="btn btn-danger btn-sm">
+                                                    <img src="/News_website/templates/assets/images/delete_24dp_FFFFFF_FILL0_wght400_GRAD0_opsz24.svg" alt="Delete">
+                                                </a>
 
-                                            <a href="?module=news&action=viewNews&id=' . $row['category_id'] . '" class="btn btn-info btn-sm">
-                                                <img src="/News_website/templates/assets/images/visibility_24dp_FFFFFF_FILL0_wght400_GRAD0_opsz24.svg" alt="View">
-                                            </a>
+                                                <a href="?module=news_category&action=viewNewsCategory&id=' . $row['category_id'] . '" class="btn btn-info btn-sm">
+                                                    <img src="/News_website/templates/assets/images/visibility_24dp_FFFFFF_FILL0_wght400_GRAD0_opsz24.svg" alt="View">
+                                                </a>
 
-                                        </td>';
+                                            </td>';
 
                                     echo '</tr>';
                                 }
