@@ -24,7 +24,7 @@ if (isMethodPost('POST')) {
         }
         ?>
     </div>
-    <div class="main container mt-3">
+    <div class="main container my-3">
         <div class="top-container ">
 
 
