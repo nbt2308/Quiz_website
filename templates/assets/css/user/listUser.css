@@ -1,9 +1,14 @@
-
 .table thead tr th {
     text-align: center;
 }
 
 .table tbody tr td {
-
+    max-width: 150px;
+    /* chiều rộng tối đa của ô */
+    white-space: nowrap;
+    /* không xuống dòng */
+    overflow: hidden;
+    /* ẩn phần vượt quá */
+    text-overflow: ellipsis;
     text-align: center;
 }
