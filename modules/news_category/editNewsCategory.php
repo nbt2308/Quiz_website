@@ -80,7 +80,7 @@ if (isMethodPost()) {
 
             <!-- Nút hành động -->
             <div class="d-flex justify-content-between mt-4">
-                <a href="?module=news_category&action=editNewsCategory" class="btn btn-secondary">Back</a>
+                <a href="?module=news_category&action=listNewsCategory" class="btn btn-secondary">Back</a>
                 <button type="submit" class="btn btn-primary">Edit category name</button>
             </div>
         </form>
