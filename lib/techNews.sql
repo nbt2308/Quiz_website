@@ -13,14 +13,20 @@ CREATE TABLE user (
     user_email VARCHAR(150) NOT NULL UNIQUE,
     user_password VARCHAR(255) NOT NULL,
     user_name VARCHAR(100) NOT NULL,
-    user_role BOOLEAN DEFAULT FALSE,  -- TRUE = admin, FALSE = user
+    user_role BOOLEAN DEFAULT FALSE,  -- TRUE = admin, FALSE = user,
+    user_address VARCHAR(500),
+    user_image_path VARCHAR(255),
+    user_bio TEXT,
     user_status BOOLEAN DEFAULT FALSE, 
     user_forget_token VARCHAR(500), 
     user_active_token VARCHAR(500),  
     user_created_at DATETIME DEFAULT CURRENT_TIMESTAMP
 );
-INSERT INTO user (user_email, user_password, user_name, user_role, user_status) VALUES ("nva@gmail.com", md5("nva123"), "Nguyen Van A", FALSE, TRUE);
-INSERT INTO user (user_email, user_password, user_name, user_role, user_status) VALUES ("admin@gmail.com", md5("admin123"), "Administrator", TRUE, TRUE);
+INSERT INTO user (user_email, user_password, user_name, user_role, user_address, user_image_path, user_bio, user_status) 
+VALUES 
+("nbt@gmail.com", md5("nbt123"), "Nguyễn Bảo Trọng", FALSE, "899/45, đường vào tim e, phường Bình Đức, tỉnh An Giang", 'templates/uploads/hehe.jpg', "I'm Bao Trong, 20 years old, love green color", TRUE),
+("admin@gmail.com", md5("admin123"), "Administrator", TRUE, "123, Ung Van Khiem Street, Long Xuyen Ward, An Giang Province", 'templates/uploads/hoa.png', "I'm admin of this website, 12 years old,....", TRUE);
+
 
 -- 3️⃣ Bảng CATEGORY
 CREATE TABLE category (

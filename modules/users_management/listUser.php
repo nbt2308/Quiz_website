@@ -13,7 +13,7 @@ $data = $result->fetch_assoc();
 
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>Admin dashboard</title>
+    <title>User management</title>
     <!--begin::Accessibility Meta Tags-->
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
     <meta name="color-scheme" content="light dark" />
@@ -164,7 +164,7 @@ $data = $result->fetch_assoc();
 
                         <div class="row">
                             <div class="col ">
-                                <a href="?module=users_management&action=addUser" class="btn btn-primary mb-3">
+                                <a href="?module=users_management&action=addUser&user_id=<?php echo $user_id; ?>" class="btn btn-primary mb-3">
                                     <i class="fa-solid fa-plus"></i>
                                     <span>Add new user</span>
                                 </a>
@@ -179,7 +179,8 @@ $data = $result->fetch_assoc();
                                             <th scope="col">USERNAME</th>
                                             <th scope="col">EMAIL</th>
                                             <th scope="col">ROLE</th>
-                                            <th scope="col">STATUS</th>
+                                            <th scope="col">ADDRESS</th>
+                                            <th scope="col" style="width:105px;">STATUS</th>
                                             <th scope="col" colspan="3">ACTIONS</th>
                                             <!-- <th scope="col">VIEW</th>
                                             <th scope="col">EDIT</th>
@@ -210,10 +211,11 @@ $data = $result->fetch_assoc();
                                                 } else {
                                                     echo '<td>User</td>';
                                                 }
+                                                echo '<td>' . $row['user_address'] . '</td>';
                                                 if ($row["user_status"] == 1) {
-                                                    echo '<td>Activated</td>';
+                                                    echo '<td><i class="fa-solid fa-circle" style="color: #04ff00;"></i> Activated</td>';
                                                 } else {
-                                                    echo '<td>pending</td>';
+                                                    echo '<td><i class="fa-solid fa-circle" style="color: #f50000;"></i> Pending</td>';
                                                 }
                                                 echo '<td>';
                                                 echo '<a class="btn btn-info" title="View user information"><i class="fa-solid fa-eye" style="color: #ffffff;"></i></a>';
