@@ -129,12 +129,12 @@ if (isMethodPost()) {
         if ($insert_success) {
             header("Location: ?module=news&action=manageNews");
         } else {
-            setSesstionFlash('msg', 'Invalid data, please check again');
-            setSesstionFlash('msg_type', 'danger');
+            setSessionFlash('msg', 'Invalid data, please check again');
+            setSessionFlash('msg_type', 'danger');
         }
     } else {
-        setSesstionFlash('oldData', $filterArr);
-        setSesstionFlash('errors', $errors);
+        setSessionFlash('oldData', $filterArr);
+        setSessionFlash('errors', $errors);
     }
     $msg = getSessionFlash('msg');
     $msg_type = getSessionFlash('msg_type');

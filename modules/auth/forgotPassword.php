@@ -81,23 +81,23 @@ if (isMethodPost()) {
                 $contentEmail .= ' Cảm ơn bạn đã ủng hộ TH News';
                 sendMail($emailTo, $subjectEmail, $contentEmail);
 
-                setSesstionFlash('msg', 'Confirmed successfully, please check your email');
-                setSesstionFlash('msg_type', 'success');
+                setSessionFlash('msg', 'Confirmed successfully, please check your email');
+                setSessionFlash('msg_type', 'success');
                 $last_id = $conn->insert_id;
             } else {
-                setSesstionFlash('msg', 'Confirmed failure');
-                setSesstionFlash('msg_type', 'danger');
+                setSessionFlash('msg', 'Confirmed failure');
+                setSessionFlash('msg_type', 'danger');
             }
             $stmt->close();
         } else {
-            setSesstionFlash('msg', 'Invalid data, please check again');
-            setSesstionFlash('msg_type', 'danger');
-            setSesstionFlash('errors', $errors);
+            setSessionFlash('msg', 'Invalid data, please check again');
+            setSessionFlash('msg_type', 'danger');
+            setSessionFlash('errors', $errors);
         }
     } else {
-        setSesstionFlash('msg', 'Invalid data, please check again');
-        setSesstionFlash('msg_type', 'danger');
-        setSesstionFlash('errors', $errors);
+        setSessionFlash('msg', 'Invalid data, please check again');
+        setSessionFlash('msg_type', 'danger');
+        setSessionFlash('errors', $errors);
     }
     $errorsArr = getSessionFlash('errors');
     $msg = getSessionFlash('msg');

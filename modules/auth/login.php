@@ -69,27 +69,27 @@ if (isMethodPost()) {
                         setSesstion("user_id", $user['user_id']);
                         setSesstion("user_name", $user['user_name']);
                         setSesstion("user_role", $user['user_role']);
-                        setSesstionFlash('msg', 'Login succeed');
-                        setSesstionFlash('msg_type', 'success');
+                        setSessionFlash('msg', 'Login succeed');
+                        setSessionFlash('msg_type', 'success');
                         header("Location:?module=home&action=index");
                     } else {
-                        setSesstionFlash('msg', 'Please check your email to activate your account and login again');
-                        setSesstionFlash('msg_type', 'danger');
+                        setSessionFlash('msg', 'Please check your email to activate your account and login again');
+                        setSessionFlash('msg_type', 'danger');
                     }
                 } else {
-                    setSesstionFlash('msg', 'Invalid Email or Password');
-                    setSesstionFlash('msg_type', 'danger');
+                    setSessionFlash('msg', 'Invalid Email or Password');
+                    setSessionFlash('msg_type', 'danger');
                 }
             }
         } else {
-            setSesstionFlash('msg', 'Invalid Email or Password');
-            setSesstionFlash('msg_type', 'danger');
+            setSessionFlash('msg', 'Invalid Email or Password');
+            setSessionFlash('msg_type', 'danger');
         }
     } else {
-        setSesstionFlash('msg', 'Invalid data, please check again');
-        setSesstionFlash('msg_type', 'danger');
-        setSesstionFlash('oldData', $filterArr);
-        setSesstionFlash('errors', $errors);
+        setSessionFlash('msg', 'Invalid data, please check again');
+        setSessionFlash('msg_type', 'danger');
+        setSessionFlash('oldData', $filterArr);
+        setSessionFlash('errors', $errors);
     }
     $oldData = getSessionFlash('oldData');
     $errorsArr = getSessionFlash('errors');

@@ -89,14 +89,14 @@ if (!empty($token_reset)) {
                     sendMail($emailTo, $subjectEmail, $contentEmail);
 
 
-                    setSesstionFlash('msg', 'Reset password succeed');
-                    setSesstionFlash('msg_type', 'success');
+                    setSessionFlash('msg', 'Reset password succeed');
+                    setSessionFlash('msg_type', 'success');
                     header("Location:?module=auth&action=login");
                 }
             } else {
-                setSesstionFlash('msg', 'Invalid data, please check again');
-                setSesstionFlash('msg_type', 'danger');
-                setSesstionFlash('errors', $errors);
+                setSessionFlash('msg', 'Invalid data, please check again');
+                setSessionFlash('msg_type', 'danger');
+                setSessionFlash('errors', $errors);
             }
             $errorsArr = getSessionFlash('errors');
             $msg = getSessionFlash('msg');

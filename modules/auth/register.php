@@ -105,19 +105,19 @@ if (isMethodPost()) {
             sendMail($emailTo, $subjectEmail, $contentEmail);
 
 
-            setSesstionFlash('msg', 'Register succeed, please check your email to activate your account');
-            setSesstionFlash('msg_type', 'success');
+            setSessionFlash('msg', 'Register succeed, please check your email to activate your account');
+            setSessionFlash('msg_type', 'success');
             $last_id = $conn->insert_id;
         } else {
-            setSesstionFlash('msg', 'Register failed');
-            setSesstionFlash('msg_type', 'danger');
+            setSessionFlash('msg', 'Register failed');
+            setSessionFlash('msg_type', 'danger');
         }
         $stmt->close();
     } else {
-        setSesstionFlash('msg', 'Invalid data, please check again');
-        setSesstionFlash('msg_type', 'danger');
-        setSesstionFlash('oldData', $filterArr);
-        setSesstionFlash('errors', $errors);
+        setSessionFlash('msg', 'Invalid data, please check again');
+        setSessionFlash('msg_type', 'danger');
+        setSessionFlash('oldData', $filterArr);
+        setSessionFlash('errors', $errors);
     }
 
     $oldData = getSessionFlash('oldData');

@@ -93,8 +93,8 @@ if (isMethodPost()) {
             header("Location: ?module=news&action=manageNews");
         }
     } else {
-        setSesstionFlash('oldData', $filterArr);
-        setSesstionFlash('errors', $errors);
+        setSessionFlash('oldData', $filterArr);
+        setSessionFlash('errors', $errors);
     }
     $oldData = getSessionFlash('oldData');
     $errorsArr = getSessionFlash('errors');
