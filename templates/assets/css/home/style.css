@@ -241,9 +241,11 @@ a.navbar-brand.logo-brand img {
 }
 .left-content{
     width: 70%;
+    float: left;
 }
 .right-content{
     width: 30%;
+    float: right;
 }
 .footer {
     width: 100%;

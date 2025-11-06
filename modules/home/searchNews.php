@@ -2,6 +2,9 @@
 
 //home
 layoutUser('header');
+if (isMethodPost('POST')) {
+    $searchKey = $_POST['searchKey'];
+}
 ?>
 <main>
     <div class="category container">
@@ -91,7 +94,7 @@ layoutUser('header');
             <div class="left-content">
                 <div class="news-card  ">
                     <?php
-                    $sql3 = "SELECT * FROM news ORDER BY news_post_date DESC";
+                    $sql3 = "SELECT * FROM news WHERE news_title LIKE '%$searchKey%' OR news_summary LIKE '%$searchKey%'";
                     $result = $conn->query($sql3);
                     if ($result->num_rows > 0) {
                         while ($row = $result->fetch_assoc()) {
@@ -123,22 +126,31 @@ layoutUser('header');
                         ';
                         }
                     } else {
-                        echo "<p>Không có dữ liệu.</p>";
+                        echo '<tr>';
+                        echo '<td colspan="6" >';
+                        echo '<p class="fs-5 text-danger">Not found data with "' . $searchKey . '"</p>';
+                        echo '</td>';
+                        echo '</tr>';
                     }
                     ?>
 
                 </div>
             </div>
-            <div class="right-content">
+            <div class="right-content ">
                 <div class="search mt-4">
                     <form class="d-flex" action="?module=home&action=searchNews" method="POST">
                         <div class="search-box me-2">
                             <img class="search-icon" src="/News_website/templates/assets/images/search_24dp_1F1F1F_FILL0_wght400_GRAD0_opsz24.svg" alt="">
-                            <input name="searchKey" class="form-control" type="text" placeholder="Enter the title or category news" aria-label="Search">
+                            <input name="searchKey" class="form-control" type="text" value="<?php echo $searchKey ?>" placeholder="Enter the title or category news" aria-label="Search">
+                            <a href="?module=home&action=index" class="reset-button">
+                                <img src="/News_website/templates/assets/images/close_24dp_1F1F1F_FILL0_wght400_GRAD0_opsz24.svg" alt="">
+                            </a>
                         </div>
                         <button class="btn btn-outline-success" type="submit">Search</button>
                     </form>
                 </div>
+
+
             </div>
         </div>
     </div>
