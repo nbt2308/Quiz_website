@@ -47,20 +47,20 @@ $user_id = $_GET['user_id']
                                 $sql = "SELECT * FROM category, news WHERE news.category_id = category.category_id AND news.user_id = '$user_id'";
                                 $list = $conn->query($sql);
                                 $stt = 1;
-                                if ($list->num_rows > 0)
+                                if ($list->num_rows > 0) {
                                     while ($row = $list->fetch_assoc()) {
                                         echo '<tr>';
-                                            echo '<th scope="row">' . $stt . '</th>';
-                                            echo '<td>' . $row["category_name"] . '</td>';
-                                            echo '<td>' . $row["news_title"] . '</td>';
-                                            echo '<td>' . $row["news_post_date"] . '</td>';
-                                            if ($row["news_isPost"] == 1) {
-                                                echo '<td>Approved</td>';
-                                            } else {
-                                                echo '<td>Not yet approved</td>';
-                                            }
+                                        echo '<th scope="row">' . $stt . '</th>';
+                                        echo '<td>' . $row["category_name"] . '</td>';
+                                        echo '<td>' . $row["news_title"] . '</td>';
+                                        echo '<td>' . $row["news_post_date"] . '</td>';
+                                        if ($row["news_isPost"] == 1) {
+                                            echo '<td>Approved</td>';
+                                        } else {
+                                            echo '<td>Not yet approved</td>';
+                                        }
 
-                                            echo '<td>
+                                        echo '<td>
                                                     <a href="?module=news&action=viewNews&id=' . $row['news_id'] . '" class="btn btn-info btn-sm">
                                                         <img src="/News_website/templates/assets/images/visibility_24dp_FFFFFF_FILL0_wght400_GRAD0_opsz24.svg" alt="View">
                                                     </a>
@@ -77,9 +77,19 @@ $user_id = $_GET['user_id']
                                                         <img src="/News_website/templates/assets/images/delete_24dp_FFFFFF_FILL0_wght400_GRAD0_opsz24.svg" alt="Delete">
                                                     </a>
                                                 </td>';
-                                            $stt++;
+                                        $stt++;
                                         echo '</tr>';
                                     }
+                                } else {
+                                    echo '<tr>';
+                                    echo '<td colspan="6" class="text-center py-4">';
+                                    echo '<div class="text-muted" style="font-size: 14px;">';
+                                    echo '<i class="bi bi-inbox fs-4 d-block mb-2"></i>';
+                                    echo 'No data available';
+                                    echo '</div>';
+                                    echo '</td>';
+                                    echo '</tr>';
+                                }
                                 ?>
                             </tbody>
                         </table>
