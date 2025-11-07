@@ -29,7 +29,10 @@
                             </li>
                             <!-- check role -->
                             <li class="nav-item mx-2">
-                                <a class="nav-link <?php echo $_GET['action'] == "manageNews" ? "active" : "" ?>" href="?module=news&action=manageNews">Manage</a>
+                                <?php
+                                    $user_id = getSession("user_id");
+                                ?>
+                                <a class="nav-link <?php echo $_GET['action'] == "manageNews" ? "active" : "" ?>" href="?module=news&action=manageNews&user_id=<?php echo $user_id ?>">Manage</a>
                             </li>
                             <?php
                             $Admin = getSession('user_role');

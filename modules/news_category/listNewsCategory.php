@@ -48,12 +48,12 @@ if (!$Login) {
                             if ($list->num_rows > 0) {
                                 while ($row = $list->fetch_assoc()) {
                                     echo '<tr>';
-                                        echo '<th scope="row">' . $row["category_id"] . '</th>';
-                                        echo '<td>' . $row["category_name"] . '</td>';
-                                        echo '<td>' . $row["total_news"] . '</td>';
-                                        echo '<td>' . $row["category_created_at"] . '</td>';
+                                    echo '<td class="text-center">' . $row["category_id"] . '</td>';
+                                    echo '<td class="text-center">' . $row["category_name"] . '</td>';
+                                    echo '<td class="text-center">' . $row["total_news"] . '</td>';
+                                    echo '<td class="text-center">' . $row["category_created_at"] . '</td>';
 
-                                        echo '<td >
+                                    echo '<td >
                                                 <a href="?module=news_category&action=editNewsCategory&id=' . $row['category_id'] . '" class="btn btn-warning btn-sm">
                                                     <img src="/News_website/templates/assets/images/edit_24dp_FFFFFF_FILL0_wght400_GRAD0_opsz24.svg" alt="Edit">
                                                 </a>

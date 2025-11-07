@@ -4,6 +4,8 @@ $Login = getSession("logged_in");
 if (!$Login) {
     header("Location: ?module=auth&action=login");
 }
+
+$user_id = $_GET['user_id']
 ?>
 
 <main>
@@ -42,38 +44,38 @@ if (!$Login) {
                             </thead>
                             <tbody>
                                 <?php
-                                $sql = "SELECT * FROM category, news WHERE news.category_id = category.category_id";
+                                $sql = "SELECT * FROM category, news WHERE news.category_id = category.category_id AND news.user_id = '$user_id'";
                                 $list = $conn->query($sql);
                                 if ($list->num_rows > 0)
                                     while ($row = $list->fetch_assoc()) {
                                         echo '<tr>';
-                                        echo '<th scope="row">' . $row["news_id"] . '</th>';
-                                        echo '<td>' . $row["category_name"] . '</td>';
-                                        echo '<td>' . $row["news_title"] . '</td>';
-                                        echo '<td>' . $row["news_post_date"] . '</td>';
-                                        if ($row["news_isPost"] == 1) {
-                                            echo '<td>Approved</td>';
-                                        } else {
-                                            echo '<td>Not yet approved</td>';
-                                        }
+                                            echo '<th scope="row">' . $row["news_id"] . '</th>';
+                                            echo '<td>' . $row["category_name"] . '</td>';
+                                            echo '<td>' . $row["news_title"] . '</td>';
+                                            echo '<td>' . $row["news_post_date"] . '</td>';
+                                            if ($row["news_isPost"] == 1) {
+                                                echo '<td>Approved</td>';
+                                            } else {
+                                                echo '<td>Not yet approved</td>';
+                                            }
 
-                                        echo '<td>
-                                                <a href="?module=news&action=viewNews&id=' . $row['news_id'] . '" class="btn btn-info btn-sm">
-                                                    <img src="/News_website/templates/assets/images/visibility_24dp_FFFFFF_FILL0_wght400_GRAD0_opsz24.svg" alt="View">
-                                                </a>
-                                            </td>
+                                            echo '<td>
+                                                    <a href="?module=news&action=viewNews&id=' . $row['news_id'] . '" class="btn btn-info btn-sm">
+                                                        <img src="/News_website/templates/assets/images/visibility_24dp_FFFFFF_FILL0_wght400_GRAD0_opsz24.svg" alt="View">
+                                                    </a>
+                                                </td>
 
-                                            <td>
-                                                <a href="?module=news&action=editNews&id=' . $row['news_id'] . '" class="btn btn-warning btn-sm">
-                                                    <img src="/News_website/templates/assets/images/edit_24dp_FFFFFF_FILL0_wght400_GRAD0_opsz24.svg" alt="Edit">
-                                                </a>
-                                            </td>
+                                                <td>
+                                                    <a href="?module=news&action=editNews&id=' . $row['news_id'] . '" class="btn btn-warning btn-sm">
+                                                        <img src="/News_website/templates/assets/images/edit_24dp_FFFFFF_FILL0_wght400_GRAD0_opsz24.svg" alt="Edit">
+                                                    </a>
+                                                </td>
 
-                                            <td>
-                                                <a href="?module=news&action=deleteNews&id=' . $row['news_id'] . '" class="btn btn-danger btn-sm">
-                                                    <img src="/News_website/templates/assets/images/delete_24dp_FFFFFF_FILL0_wght400_GRAD0_opsz24.svg" alt="Delete">
-                                                </a>
-                                            </td>';
+                                                <td>
+                                                    <a href="?module=news&action=deleteNews&id=' . $row['news_id'] . '" class="btn btn-danger btn-sm">
+                                                        <img src="/News_website/templates/assets/images/delete_24dp_FFFFFF_FILL0_wght400_GRAD0_opsz24.svg" alt="Delete">
+                                                    </a>
+                                                </td>';
 
                                         echo '</tr>';
                                     }
