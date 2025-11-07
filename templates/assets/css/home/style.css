@@ -272,8 +272,26 @@ a.navbar-brand.logo-brand img {
     left: 0;
     flex-direction: column;
 }
+.card-about{
+    border: none;
+    transition: ease-in-out 0.3s;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
 
+.card-about:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25),
+        0 10px 10px rgba(0, 0, 0, 0.22);
+        
+}
 
+#btn-back-to-top {
+    position: fixed;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    bottom: 50px;
+    right: 20px;
+    display: none;
+}
 
 /* RESPONSIVE */
 @media (max-width: 768px) {

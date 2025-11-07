@@ -4,7 +4,7 @@
 layoutUser('header');
 ?>
 <main>
-    <?php layoutUser('categoryBar')?>
+    <?php layoutUser('categoryBar'); ?>
     <div class="main container mt-3">
         <div class="top-container ">
 
@@ -133,13 +133,8 @@ layoutUser('header');
                 </div>
             </div>
 
-            <!-- Back to top button -->
-            <button
-                type="button"
-                class="btn btn-primary btn-floating btn-lg"
-                id="btn-back-to-top">
-                <i class="fas fa-arrow-up"></i>
-            </button>
+            <?php layoutUser('scrollBack') ?>
+
         </div>
     </div>
 </main>
