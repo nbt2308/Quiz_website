@@ -25,14 +25,14 @@
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                             <li class="nav-item">
-                                <a class="nav-link <?php echo $_GET['module'] == "home" ? "active" : "" ?>" aria-current="page" href="?module=home&action=index">Home</a>
+                                <a class="nav-link homePage <?php echo $_GET['module'] == "home" ? "active" : "" ?>" aria-current="page" href="?module=home&action=index">Home</a>
                             </li>
                             <!-- check role -->
                             <li class="nav-item mx-2">
                                 <?php
                                     $user_id = getSession("user_id");
                                 ?>
-                                <a class="nav-link <?php echo $_GET['action'] == "manageNews" ? "active" : "" ?>" href="?module=news&action=manageNews&user_id=<?php echo $user_id ?>">Manage</a>
+                                <a class="nav-link managePage <?php echo $_GET['action'] == "manageNews" ? "active" : "" ?>" href="?module=news&action=manageNews&user_id=<?php echo $user_id ?>">Manage</a>
                             </li>
                             <?php
                             $Admin = getSession('user_role');
@@ -40,7 +40,7 @@
                                 $user_id = getSession("user_id");
                             ?>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="?module=admin&action=index&user_id=<?php echo $user_id ?>">Admin</a>
+                                    <a class="nav-link adminPage" href="?module=admin&action=index&user_id=<?php echo $user_id ?>">Admin</a>
                                 </li>
                             <?php
                             }
