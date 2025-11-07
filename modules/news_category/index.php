@@ -8,7 +8,7 @@ if (!empty($_GET['category_id'])) {
 // echo $category_id;
 ?>
 <main>
-    <?php layoutUser('categoryBar')?>
+    <?php require_once './templates/layout/user/categoryBar.php'; ?>
     <div class="main-container container">
         <?php
         //in ten chu de

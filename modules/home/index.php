@@ -4,7 +4,7 @@
 layoutUser('header');
 ?>
 <main>
-    <?php layoutUser('categoryBar'); ?>
+    <?php require_once './templates/layout/user/categoryBar.php'; ?>
     <div class="main container mt-3">
         <div class="top-container ">
 
