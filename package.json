@@ -1,0 +1,29 @@
+{
+  "name": "news_website",
+  "version": "1.0.0",
+  "description": "test",
+  "keywords": [
+    "kkk"
+  ],
+  "homepage": "https://github.com/nbt2308/News_website#readme",
+  "bugs": {
+    "url": "https://github.com/nbt2308/News_website/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nbt2308/News_website.git"
+  },
+  "license": "ISC",
+  "author": "truc hoa",
+  "type": "commonjs",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "test": "npx testcafe chrome"
+  },
+  "devDependencies": {
+    "testcafe": "^3.7.2"
+  }
+}

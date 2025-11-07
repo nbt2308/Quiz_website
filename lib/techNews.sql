@@ -24,7 +24,7 @@ CREATE TABLE user (
 );
 INSERT INTO user (user_email, user_password, user_name, user_role, user_address, user_image_path, user_bio, user_status) 
 VALUES 
-("nbt@gmail.com", md5("nbt123"), "Nguyễn Bảo Trọng", FALSE, "899/45, đường vào tim e, phường Bình Đức, tỉnh An Giang", 'templates/uploads/hehe.jpg', "I'm Bao Trong, 20 years old, love green color", TRUE),
+("nva@gmail.com", md5("nva123"), "Nguyễn Văn A", FALSE, "899/45, đường vào tim e, phường Bình Đức, tỉnh An Giang", 'templates/uploads/hehe.jpg', "I'm Van A, 20 years old, love green color", TRUE),
 ("admin@gmail.com", md5("admin123"), "Administrator", TRUE, "123, Ung Van Khiem Street, Long Xuyen Ward, An Giang Province", 'templates/uploads/hoa.png', "I'm admin of this website, 12 years old,....", TRUE);
 
 

@@ -148,7 +148,7 @@ if (isMethodPost()) {
                             <a href="?module=auth&action=forgotPassword">Forgot your password?</a>
                         </div>
                         <div class="btn-login">
-                            <button type="submit" class="btn btn-primary">Sign in</button>
+                            <button type="submit" class="btn btn-primary signInButton">Sign in</button>
                         </div>
                         <div class="register mb-3">
                             <span>Don't have an account?</span>
