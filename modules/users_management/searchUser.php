@@ -6,6 +6,34 @@ if (!empty($_GET['user_id'])) {
 $sql = "SELECT * FROM user WHERE user_id='$user_id'";
 $result = $conn->query($sql);
 $data = $result->fetch_assoc();
+
+
+//xu ly search
+if (!empty($_GET)) {
+    $user_role = $_GET['filter_user_role'];
+    $user_status = $_GET['filter_user_status'];
+    $searchKey = $_GET['searchKey'];
+    // if ($user_role == "") {
+    //     $user_role = "";
+    // }
+    // if ($user_status = "") {
+    //     $user_status = "";
+    // }
+    $sql = "SELECT * FROM user 
+          WHERE user_role LIKE '%$user_role%' 
+          AND user_status LIKE '%$user_status%' 
+          AND (user_name LIKE '%$searchKey%' OR user_email LIKE '%$searchKey%')";
+    $stmt = $conn->prepare($sql);
+    if ($stmt === false) {
+        die("Loi prepare SQL: " . $conn->error);
+    }
+    $stmt->execute();
+    $result = $stmt->get_result();
+} else {
+    $user_role = "";
+    $user_status =  "";
+    $searchKey = "";
+}
 ?>
 <!doctype html>
 <html lang="en">
@@ -178,22 +206,47 @@ $data = $result->fetch_assoc();
                                 <div class="col-4">
                                     <select class="form-select mb-3" name="filter_user_role" aria-label="Default select example">
 
-                                        <option selected value="">None</option>
-                                        <option value="0">User</option>
-                                        <option value="1">Admin</option>
+                                        <?php
+                                        if ($user_role == 1) {
+                                            echo '  <option value="">None</option>
+                                                    <option value="0">User</option>
+                                                    <option selected value="1">Admin</option>';
+                                        } else if ($user_role == 0) {
+                                            echo '  <option value="">None</option>
+                                                    <option selected value="0">User</option>
+                                                    <option value="1">Admin</option>';
+                                        } else {
+                                            echo '  <option selected value="">None</option>
+                                                    <option value="0">User</option>
+                                                    <option value="1">Admin</option>';
+                                        }
+                                        ?>
+
                                     </select>
                                 </div>
                                 <div class="col-4">
                                     <select class="form-select mb-3" name="filter_user_status" aria-label="Default select example">
 
-                                        <option selected="" value="">None</option>
-                                        <option value="0">Pending</option>
-                                        <option value="1">Activated</option>
+                                        <?php
+                                        if ($user_status == 1) {
+                                            echo '  <option value="">None</option>
+                                                    <option value="0">Pending</option>
+                                                    <option selected value="1">Activated</option>';
+                                        } else if ($user_status == 0) {
+                                            echo '  <option value="">None</option>
+                                                    <option selected value="0">Pending</option>
+                                                    <option value="1">Activated</option>';
+                                        } else {
+                                            echo '  <option selected value="">None</option>
+                                                    <option value="0">Pending</option>
+                                                    <option value="1">Activated</option>';
+                                        }
+                                        ?>
                                     </select>
                                 </div>
                                 <div class="col-4 ">
                                     <div class="d-flex">
-                                        <input name="searchKey" class="form-control" type="text" placeholder="Enter the title or category news" aria-label="Search">
+                                        <input name="searchKey" class="form-control" type="text" placeholder="Enter the title or category news" aria-label="Search" value="<?php echo $searchKey; ?>">
                                         <button class="btn btn-outline-success ms-1" type="submit">Search</button>
                                     </div>
                                 </div>
@@ -220,15 +273,6 @@ $data = $result->fetch_assoc();
                                     </thead>
                                     <tbody>
                                         <?php
-                                        $sql = "SELECT * FROM user";
-                                        $stmt = $conn->prepare($sql);
-                                        if ($stmt === false) {
-                                            die("Loi prepare SQL: " . $conn->error);
-                                        }
-                                        $stmt->execute();
-
-                                        //Lấy kết quả
-                                        $result = $stmt->get_result();
                                         if ($result) {
                                             while ($row = $result->fetch_assoc()) {
                                                 echo '<tr>';
