@@ -221,7 +221,7 @@ $data = $result->fetch_assoc();
                                                 echo '<a class="btn btn-info" title="View user information"><i class="fa-solid fa-eye" style="color: #ffffff;"></i></a>';
                                                 echo '</td>';
                                                 echo '<td>';
-                                                echo '<a class="btn btn-warning mx-2" title="Edit user information"><i class="fa-solid fa-pen-to-square" style="color: #ffffff;"></i></a>';
+                                                echo '<a class="btn btn-warning mx-2" title="Edit user information" href="?module=users_management&action=editUser&user_id=' . $row['user_id'] . '"><i class="fa-solid fa-pen-to-square" style="color: #ffffff;"></i></a>';
                                                 echo '</td>';
                                                 echo '<td>';
                                                 echo '<a class="btn btn-danger" title="Delete user"><i class="fa-solid fa-trash"></i></a>';
