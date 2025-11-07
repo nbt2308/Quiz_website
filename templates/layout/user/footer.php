@@ -53,7 +53,7 @@
                         <a href="<?php echo $Login ? "?module=news&action=manageNews&user_id=$user_id" : "?module=auth&action=login" ?>" class=" text-white text-decoration-none link-danger">Manage your posts</a>
                     </li>
                     <li class="mb-2">
-                        <a href="#" class="text-white text-decoration-none link-danger">About us</a>
+                        <a href="?module=home&action=aboutUs" class="text-white text-decoration-none link-danger">About us</a>
                     </li>
 
                 </ul>
