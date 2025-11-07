@@ -73,7 +73,14 @@ if (!$Login) {
                                     echo '</tr>';
                                 }
                             } else {
-                                echo 'No data!';
+                                echo '<tr>';
+                                echo '<td colspan="6" class="text-center py-4">';
+                                echo '<div class="text-muted" style="font-size: 14px;">';
+                                echo '<i class="bi bi-inbox fs-4 d-block mb-2"></i>';
+                                echo 'No data available';
+                                echo '</div>';
+                                echo '</td>';
+                                echo '</tr>';
                             }
                             ?>
                         </tbody>
