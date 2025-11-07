@@ -43,7 +43,7 @@
 
                 <ul class="list-unstyled d-flex flex-column align-items-center">
                     <li class="mb-2">
-                        <a href="#" class="text-white text-decoration-none link-danger">Home</a>
+                        <a href="?module=home&action=index" class="text-white text-decoration-none link-danger">Home</a>
                     </li>
                     <li class="mb-2">
                         <?php 
