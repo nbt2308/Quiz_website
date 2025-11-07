@@ -6,6 +6,10 @@ if (!empty($_GET['user_id'])) {
 $sql = "SELECT * FROM user WHERE user_id='$user_id'";
 $result = $conn->query($sql);
 $data = $result->fetch_assoc();
+
+
+
+
 ?>
 <!doctype html>
 <html lang="en">
@@ -13,7 +17,7 @@ $data = $result->fetch_assoc();
 
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>User management</title>
+    <title>Add New User</title>
     <!--begin::Accessibility Meta Tags-->
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
     <meta name="color-scheme" content="light dark" />
@@ -73,6 +77,7 @@ $data = $result->fetch_assoc();
         crossorigin="anonymous" />
     <link rel="stylesheet" href="/News_website/templates/assets/css/user/listUser.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://cdn.ckeditor.com/4.22.1/standard/ckeditor.js"></script>
 </head>
 <!--end::Head-->
 <!--begin::Body-->
@@ -161,95 +166,110 @@ $data = $result->fetch_assoc();
                 <div class="shadow p-3 mb-5 bg-body rounded">
                     <div class="container-fluid">
                         <!--begin::Row-->
-
-                        <div class="row">
-                            <div class="col ">
-                                <a href="?module=users_management&action=addUser&user_id=<?php echo $user_id; ?>" class="btn btn-primary mb-3">
-                                    <i class="fa-solid fa-plus"></i>
-                                    <span>Add new user</span>
-                                </a>
+                        <form action="" method="POST" enctype="multipart/form-data" class="p-4">
+                            <div class="row">
+                                <div class="col">
+                                    <div class="mb-3">
+                                        <label for="exampleFormControlInput1" class="form-label fw-bold">Email address </label>
+                                        <input type="text" name="user_email" class="form-control"
+                                            id="exampleFormControlInput1" placeholder="Enter email address" disabled value="<?= htmlspecialchars($data['user_email']) ?>">
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="mb-3">
+                                        <label for="exampleFormControlInput1" class="form-label fw-bold">Password (<span class="text-danger">It cannot be seen here</span>)</label>
+                                        <input type="password" name="user_password" class="form-control" id="exampleFormControlInput1" placeholder="Enter password" disabled>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                        <div class="row ">
-                            <div class="table-responsive">
-                                <table class="table table-hover table-bordered mb-0">
-                                    <thead>
-                                        <tr>
-                                            <th scope="col">ID</th>
-                                            <th scope="col">USERNAME</th>
-                                            <th scope="col">EMAIL</th>
-                                            <th scope="col">ROLE</th>
-                                            <th scope="col">ADDRESS</th>
-                                            <th scope="col" style="width:105px;">STATUS</th>
-                                            <th scope="col" colspan="3">ACTIONS</th>
-                                            <!-- <th scope="col">VIEW</th>
-                                            <th scope="col">EDIT</th>
-                                            <th scope="col">DELETE</th> -->
+                            <div class="row">
+                                <div class="col-6">
+                                    <div class="mb-3">
+                                        <label for="exampleFormControlInput1" class="form-label fw-bold">Username </label>
+                                        <input type="text" name="user_name" class="form-control"
+                                            id="exampleFormControlInput1" placeholder="Enter username" require value="<?= htmlspecialchars($data['user_name']) ?>" disabled>
 
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="mb-3">
+                                        <label for="exampleFormControlInput1" class="form-label fw-bold">User role </label>
 
-                                        </tr>
-                                    </thead>
-                                    <tbody>
                                         <?php
-                                        $sql = "SELECT * FROM user";
-                                        $stmt = $conn->prepare($sql);
-                                        if ($stmt === false) {
-                                            die("Loi prepare SQL: " . $conn->error);
+                                        if (htmlspecialchars($data['user_role']) == 1) {
+                                            echo '<input type="text" name="user_role" class="form-control"
+                                                      id="exampleFormControlInput1" value="Admin" disabled>';
+                                            // echo '<option value="0">User</option>
+                                            //       <option selected value="1">Admin</option>';
+                                        } else if (htmlspecialchars($data['user_role']) == 0) {
+                                            echo '<input type="text" name="user_role" class="form-control"
+                                                      id="exampleFormControlInput1" value="User" disabled>';
                                         }
-                                        $stmt->execute();
 
-                                        //Lấy kết quả
-                                        $result = $stmt->get_result();
-                                        if ($result) {
-                                            while ($row = $result->fetch_assoc()) {
-                                                echo '<tr>';
-                                                echo '<td>' . $row['user_id'] . '</td>';
-                                                echo '<td>' . $row['user_name'] . '</td>';
-                                                echo '<td>' . $row['user_email'] . '</td>';
-                                                if ($row["user_role"] == 1) {
-                                                    echo '<td>Admin</td>';
-                                                } else {
-                                                    echo '<td>User</td>';
-                                                }
-                                                echo '<td>' . $row['user_address'] . '</td>';
-                                                if ($row["user_status"] == 1) {
-                                                    echo '<td><i class="fa-solid fa-circle" style="color: #04ff00;"></i> Activated</td>';
-                                                } else {
-                                                    echo '<td><i class="fa-solid fa-circle" style="color: #f50000;"></i> Pending</td>';
-                                                }
-                                                echo '<td>';
-                                                echo '<a class="btn btn-info" title="View user information" href="?module=users_management&action=viewUser&user_id=' . $row['user_id'] . '"><i class="fa-solid fa-eye" style="color: #ffffff;"></i></a>';
-                                                echo '</td>';
-                                                echo '<td>';
-                                                echo '<a class="btn btn-warning mx-2" title="Edit user information" href="?module=users_management&action=editUser&user_id=' . $row['user_id'] . '"><i class="fa-solid fa-pen-to-square" style="color: #ffffff;"></i></a>';
-                                                echo '</td>';
-                                                echo '<td>';
-                                                echo '<a class="btn btn-danger" title="Delete user"><i class="fa-solid fa-trash"></i></a>';
-                                                echo '</td>';
-                                                echo '</tr>';
-                                            }
-                                        }
                                         ?>
 
-                                    </tbody>
-                                </table>
+
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                        <div class="row mt-3">
-                            <nav aria-label="Page navigation example">
-                                <ul class="pagination justify-content-center">
-                                    <li class="page-item ">
-                                        <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
-                                    </li>
-                                    <li class="page-item active"><a class="page-link" href="#">1</a></li>
-                                    <li class="page-item"><a class="page-link" href="#">2</a></li>
-                                    <li class="page-item"><a class="page-link" href="#">3</a></li>
-                                    <li class="page-item">
-                                        <a class="page-link" href="#">Next</a>
-                                    </li>
-                                </ul>
-                            </nav>
-                        </div>
+                            <div class="row">
+                                <div class="mb-3">
+                                    <label for="user_status" class="form-label fw-bold">User status </label>
+                                    <?php
+                                    if (htmlspecialchars($data['user_status']) == 1) {
+                                        echo '<input type="text" name="user_status" class="form-control"
+                                                      id="exampleFormControlInput1" value="Activated" disabled>';
+                                        // echo '<option value="0">User</option>
+                                        //       <option selected value="1">Admin</option>';
+                                    } else if (htmlspecialchars($data['user_status']) == 0) {
+                                        echo '<input type="text" name="user_status" class="form-control"
+                                                      id="exampleFormControlInput1" value="Pending" disabled>';
+                                    }
+
+                                    ?>
+
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="mb-3">
+                                    <label for="user_address" class="form-label fw-bold">User address</label>
+                                    <input name="user_address" id="user_address" type="text"
+                                        class="form-control" placeholder="Enter address" require value="<?= htmlspecialchars($data['user_address']) ?>" disabled>
+
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="mb-3">
+                                    <label for="user_bio" class="form-label fw-bold">Bio</label>
+                                    <?php
+                                    $content = $data['user_bio']; // Lấy dữ liệu từ DB, ví dụ: &#60;p&#62;&#38;aacute;dasdasda&#60;/p&#62;
+
+                                    // Giải mã 2 lần
+                                    $decoded = html_entity_decode($content, ENT_QUOTES | ENT_HTML5, 'UTF-8');
+                                    $decoded = html_entity_decode($decoded, ENT_QUOTES | ENT_HTML5, 'UTF-8');
+                                    ?>
+                                    <div style="border:1px solid #ccc; padding:10px; border-radius:5px; background-color: #e9ecef;">
+                                        <?php echo $decoded; ?>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                            <!-- Hình ảnh -->
+                            <div class="row">
+                                <div class="mb-3 d-flex flex-column">
+                                    <label for="formFileLg" class="form-label fw-bold">User image (<span class="text-danger">*</span>)</label>
+                                    <img src="<?= htmlspecialchars($data['user_image_path']); ?>" alt="User image" width="300" height="auto">
+                                </div>
+                            </div>
+                            <!-- Nút hành động -->
+                            <div class="d-flex justify-content-between mt-4">
+                                <a href="?module=users_management&action=listUser&user_id=<?php echo $user_id; ?>" class="btn btn-secondary">Back</a>
+                            </div>
+                        </form>
+
+
                         <!--end::Row-->
 
                     </div>

@@ -393,7 +393,7 @@ if (isMethodPost()) {
                                     <input name="user_image" class="form-control" id="formFileLg" type="file">
                                     <div class="mb-2">
                                         <p>Current image:</p>
-                                        <img src="<?= htmlspecialchars($data['user_image_path']); ?>" alt="Current image" style="max-width: 200px;">
+                                        <img src="<?= htmlspecialchars($data['user_image_path']); ?>" alt="Current image" width="300" height="auto">
                                     </div>
                                 </div>
                             </div>
