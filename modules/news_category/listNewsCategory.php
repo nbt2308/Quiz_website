@@ -31,7 +31,7 @@ if (!$Login) {
                     <table class="table table-hover ">
                         <thead>
                             <tr>
-                                <th scope="col">ID</th>
+                                <th scope="col">STT</th>
                                 <th scope="col">Category name</th>
                                 <th scope="col">Total post</th>
                                 <th scope="col">Date</th>
@@ -45,10 +45,11 @@ if (!$Login) {
                                     LEFT JOIN news n ON c.category_id = n.category_id
                                     GROUP BY c.category_id, c.category_name";
                             $list = $conn->query($sql);
+                            $stt = 1;
                             if ($list->num_rows > 0) {
                                 while ($row = $list->fetch_assoc()) {
                                     echo '<tr>';
-                                    echo '<td class="text-center">' . $row["category_id"] . '</td>';
+                                    echo '<td class="text-center">' . $stt . '</td>';
                                     echo '<td class="text-center">' . $row["category_name"] . '</td>';
                                     echo '<td class="text-center">' . $row["total_news"] . '</td>';
                                     echo '<td class="text-center">' . $row["category_created_at"] . '</td>';
@@ -67,6 +68,7 @@ if (!$Login) {
                                                 </a>
 
                                             </td>';
+                                    $stt++;
 
                                     echo '</tr>';
                                 }

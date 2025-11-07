@@ -70,7 +70,7 @@ layoutUser('header');
                         <div class="d-flex align-items-center p-3">
                             <div style="height:100%;width:auto;"><img src="' . $row['news_image_path'] . '" alt="News image" class="rounded me-3" style="width:400px;height:250px;object-fit:cover;"></div>
                             <div class="ms-3">
-                                <a class="fw-bold text-decoration-none" href="#" >' . htmlspecialchars($row['news_title']) . ' </a>
+                                <a class="fw-bold text-decoration-none" href="?module=news&action=news_detail&news_id=' . htmlspecialchars($row['news_id']) . '" >' . htmlspecialchars($row['news_title']) . ' </a>
                                 <div class="text-limit">
                                     <p class="text-muted mb-0">'
                                 . htmlspecialchars($row['news_summary']) .

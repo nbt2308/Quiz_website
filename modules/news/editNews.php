@@ -1,5 +1,6 @@
 <?php
 layoutUser('header');
+$user_id = getSession('user_id');
 
 if (isset($_GET['id'])) {
     $news_id = $_GET['id'];
@@ -127,7 +128,7 @@ if (isMethodPost()) {
         }
 
         if ($insert_success) {
-            header("Location: ?module=news&action=manageNews");
+            header("Location: ?module=news&action=manageNews&user_id=$user_id");
         } else {
             setSessionFlash('msg', 'Invalid data, please check again');
             setSessionFlash('msg_type', 'danger');
@@ -231,7 +232,7 @@ if (isMethodPost()) {
 
             <!-- Nút hành động -->
             <div class="d-flex justify-content-between mt-4">
-                <a href="?module=news&action=manageNews" class="btn btn-secondary">Back</a>
+                <a href="?module=news&action=manageNews&user_id=<?php echo $user_id ?>" class="btn btn-secondary">Back</a>
                 <button type="submit" class="btn btn-primary">Edit news</button>
             </div>
         </form>

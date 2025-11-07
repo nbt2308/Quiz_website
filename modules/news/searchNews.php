@@ -7,6 +7,7 @@ if (!$Login) {
 if (isMethodPost('POST')) {
     $searchKey = $_POST['searchKey'];
 }
+$user_id = getSession('user_id');
 ?>
 
 <main>
@@ -20,7 +21,7 @@ if (isMethodPost('POST')) {
                     <div class="search-box me-2">
                         <img class="search-icon" src="/News_website/templates/assets/images/search_24dp_1F1F1F_FILL0_wght400_GRAD0_opsz24.svg" alt="">
                         <input name="searchKey" class="form-control" type="text" value="<?php echo $searchKey ?>" placeholder="Enter the title or category news" aria-label="Search">
-                        <a href="?module=news&action=manageNews" class="reset-button">
+                        <a href="?module=news&action=manageNews&user_id=<?php echo $user_id ?>" class="reset-button">
                             <img src="/News_website/templates/assets/images/close_24dp_1F1F1F_FILL0_wght400_GRAD0_opsz24.svg" alt="">
                         </a>
                     </div>

@@ -12,6 +12,7 @@ if (isset($_GET['id'])) {
     $result2 = $conn->query($sql2);
     $category = $result2->fetch_assoc();
 }
+$user_id = getSession('user_id');
 ?>
 
 <main>
@@ -63,7 +64,7 @@ if (isset($_GET['id'])) {
             </div>
 
             <div class="d-flex justify-content-between mt-4">
-                <a href="?module=news&action=manageNews" class="btn btn-secondary">Cancel</a>
+                <a href="?module=news&action=manageNews&user_id=<?php echo $user_id ?>" class="btn btn-secondary">Cancel</a>
                 <button type="submit" class="btn btn-danger">Delete News</button>
             </div>
         </form>
