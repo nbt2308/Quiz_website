@@ -35,17 +35,21 @@ if (!empty($_GET['category_id'])) {
                         while ($row = $result->fetch_assoc()) {
                             echo '<li><a class="dropdown-item" href="?module=news_category&action=index&category_id=' . htmlspecialchars($row['category_id']) . '">' . htmlspecialchars($row['category_name']) . '</a></li>';
                         }
-                    } else {
-                        echo "<p>Không có dữ liệu.</p>";
                     }
+                    echo '<div class="text-muted " style="font-size: 14px; text-align:center;">';
+                    echo '<i class="bi bi-inbox fs-4 d-block mb-2 "></i>';
+                    echo '<p>No data available</p>';
+                    echo '</div>';
                     ?>
 
                 </ul>
             </div>
         <?php
-        } else {
-            echo "<p>Không có dữ liệu.</p>";
         }
+        echo '<div class="text-muted " style="font-size: 14px; text-align:center;">';
+        echo '<i class="bi bi-inbox fs-4 d-block mb-2 "></i>';
+        echo '<p>No data available</p>';
+        echo '</div>';
         ?>
     </div>
     <div class="main-container container">
@@ -89,7 +93,10 @@ if (!empty($_GET['category_id'])) {
                         ';
             }
         } else {
-            echo "<p>Không có dữ liệu.</p>";
+            echo '<div class="text-muted " style="font-size: 14px; text-align:center;">';
+            echo '<i class="bi bi-inbox fs-4 d-block mb-2 "></i>';
+            echo '<p>No data available</p>';
+            echo '</div>';
         }
         ?>
 

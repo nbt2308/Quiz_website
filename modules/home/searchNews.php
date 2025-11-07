@@ -20,7 +20,10 @@ if (isMethodPost('POST')) {
         ';
             }
         } else {
-            echo "<p>Không có dữ liệu.</p>";
+            echo '<div class="text-muted " style="font-size: 14px; text-align:center;">';
+            echo '<i class="bi bi-inbox fs-4 d-block mb-2 "></i>';
+            echo '<p>No data available</p>';
+            echo '</div>';
         }
         ?>
     </div>
@@ -64,7 +67,10 @@ if (isMethodPost('POST')) {
                             $isActive = false;
                         }
                     } else {
-                        echo "<p>Không có dữ liệu.</p>";
+                        echo '<div class="text-muted " style="font-size: 14px; text-align:center;">';
+                        echo '<i class="bi bi-inbox fs-4 d-block mb-2 "></i>';
+                        echo '<p>No data available</p>';
+                        echo '</div>';
                     }
                     ?>
 
@@ -126,11 +132,12 @@ if (isMethodPost('POST')) {
                         ';
                         }
                     } else {
-                        echo '<tr>';
-                        echo '<td colspan="6" >';
-                        echo '<p class="fs-5 text-danger">Not found data with "' . $searchKey . '"</p>';
-                        echo '</td>';
-                        echo '</tr>';
+                        echo '<div class="w-100 text-center py-4">';
+                        echo '<div class="text-muted" style="font-size: 15px;">';
+                        echo '<i class="bi bi-search fs-4 d-block mb-2"></i>';
+                        echo 'No results found for "<strong>' . htmlspecialchars($searchKey) . '</strong>"';
+                        echo '</div>';
+                        echo '</div>';
                     }
                     ?>
 

@@ -77,8 +77,11 @@ $user_id = getSession('user_id');
                                 }
                             } else {
                                 echo '<tr>';
-                                echo '<td colspan="6" >';
-                                echo '<p class="fs-5 text-danger">Not found data with "' . $searchKey . '"</p>';
+                                echo '<td colspan="6" class="text-center py-4">';
+                                echo '<div class="text-muted" style="font-size: 15px;">';
+                                echo '<i class="bi bi-search fs-4 d-block mb-2"></i>';
+                                echo 'No results found for "<strong>' . htmlspecialchars($searchKey) . '</strong>"';
+                                echo '</div>';
                                 echo '</td>';
                                 echo '</tr>';
                             }

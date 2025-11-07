@@ -50,9 +50,9 @@ $user_id = $_GET['user_id']
                                 if ($list->num_rows > 0) {
                                     while ($row = $list->fetch_assoc()) {
                                         echo '<tr>';
-                                        echo '<th scope="row">' . $stt . '</th>';
-                                        echo '<td>' . $row["category_name"] . '</td>';
-                                        echo '<td>' . $row["news_title"] . '</td>';
+                                        echo '<td>' . $stt . '</td>';
+                                        echo '<td class="text-start">' . $row["category_name"] . '</td>';
+                                        echo '<td class="text-start">' . $row["news_title"] . '</td>';
                                         echo '<td>' . $row["news_post_date"] . '</td>';
                                         if ($row["news_isPost"] == 1) {
                                             echo '<td>Approved</td>';
