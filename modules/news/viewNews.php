@@ -14,6 +14,7 @@ if (isset($_GET['id'])) {
     }
     $news = $result->fetch_assoc();
 }
+$user_id = getSession('user_id');
 ?>
 
 <main>
@@ -77,7 +78,7 @@ if (isset($_GET['id'])) {
                 <input type="text" class="form-control" value="<?= $news['news_isPost'] ? 'Approved' : 'Not approved' ?>" disabled>
             </div>
 
-            <a href="?module=news&action=manageNews" class="btn btn-secondary mt-3">Back</a>
+            <a href="?module=news&action=manageNews&user_id=<?php echo $user_id ?>" class="btn btn-secondary mt-3">Back</a>
 
         </div>
     </div>

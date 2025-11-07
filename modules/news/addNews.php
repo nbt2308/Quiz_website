@@ -1,6 +1,8 @@
 <?php
 layoutUser('header');
 
+$user_id = getSession('user_id');
+
 //validate data
 if (isMethodPost()) {
     $filterArr = filterData();
@@ -90,7 +92,7 @@ if (isMethodPost()) {
         //lưu vào biến để kiểm tra trạng thái
         $insert_success = $stmt->execute();
         if ($insert_success) {
-            header("Location: ?module=news&action=manageNews");
+            header("Location: ?module=news&action=manageNews&user_id=$user_id");
         }
     } else {
         setSessionFlash('oldData', $filterArr);
@@ -181,7 +183,7 @@ if (isMethodPost()) {
 
             <!-- Nút hành động -->
             <div class="d-flex justify-content-between mt-4">
-                <a href="?module=news&action=manageNews" class="btn btn-secondary">Back</a>
+                <a href="?module=news&action=manageNews&user_id=<?php echo $user_id ?>" class="btn btn-secondary">Back</a>
                 <button type="submit" class="btn btn-primary">Add news</button>
             </div>
         </form>

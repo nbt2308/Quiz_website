@@ -46,8 +46,11 @@
                         <a href="#" class="text-white text-decoration-none link-danger">Home</a>
                     </li>
                     <li class="mb-2">
-                        <?php $Login = getSession("logged_in"); ?>
-                        <a href="<?php echo $Login ? "?module=news&action=manageNews" : "?module=auth&action=login" ?>" class=" text-white text-decoration-none link-danger">Manage your posts</a>
+                        <?php 
+                            $Login = getSession("logged_in"); 
+                            $user_id = getSession('user_id');
+                        ?>
+                        <a href="<?php echo $Login ? "?module=news&action=manageNews&user_id=$user_id" : "?module=auth&action=login" ?>" class=" text-white text-decoration-none link-danger">Manage your posts</a>
                     </li>
                     <li class="mb-2">
                         <a href="#" class="text-white text-decoration-none link-danger">About us</a>
