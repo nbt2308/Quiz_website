@@ -48,21 +48,15 @@
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="./widgets/small-box.html" class="nav-link">
+                            <a href="?module=news_management_admin&action=listNews&user_id=<?php echo $user_id ?>" class="nav-link">
                                 <i class="nav-icon bi bi-circle"></i>
                                 <p>List news</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="./widgets/info-box.html" class="nav-link">
-                                <i class="nav-icon bi bi-circle"></i>
-                                <p>Add news</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
                             <a href="./widgets/cards.html" class="nav-link">
                                 <i class="nav-icon bi bi-circle"></i>
-                                <p>Article Categorization</p>
+                                <p>Post Approval</p>
                             </a>
                         </li>
                     </ul>
