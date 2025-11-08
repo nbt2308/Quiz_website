@@ -42,7 +42,8 @@ if (isMethodPost('POST')) {
                                 SELECT category_id, MAX(news_post_date) AS latest_post
                                 FROM news
                                 GROUP BY category_id
-                            ) vmax ON n.category_id = vmax.category_id AND n.news_post_date = vmax.latest_post;";
+                            ) vmax ON n.category_id = vmax.category_id AND n.news_post_date = vmax.latest_post
+                            WHERE n.news_isPost = 1;";
 
                     $result = $conn->query($sql2);
                     if ($result->num_rows > 0) {
@@ -50,7 +51,7 @@ if (isMethodPost('POST')) {
                         while ($row = $result->fetch_assoc()) {
                             echo '
                     <div class="carousel-item ' . ($isActive ? 'active' : '') . '">
-                        <div class="d-flex align-items-center justify-content-center p-3">
+                        <div class="d-flex align-items-center p-3">
                             <div style="height:100%;width:auto;"><img src="' . $row['news_image_path'] . '" alt="News image" class="rounded me-3" style="width:400px;height:250px;object-fit:cover;"></div>
                             <div class="ms-3">
                                 <a class="fw-bold text-decoration-none" href="#" >' . htmlspecialchars($row['news_title']) . ' </a>
