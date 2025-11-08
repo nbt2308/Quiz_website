@@ -14,13 +14,14 @@ layoutUser('header');
 
                     <?php
                     $sql2 = "SELECT n.*, c.category_name
-                            FROM news n
-                            JOIN category c ON n.category_id = c.category_id
-                            JOIN (
-                                SELECT category_id, MAX(news_post_date) AS latest_post
-                                FROM news
-                                GROUP BY category_id
-                            ) vmax ON n.category_id = vmax.category_id AND n.news_post_date = vmax.latest_post;";
+                                FROM news n
+                                JOIN category c ON n.category_id = c.category_id
+                                JOIN (
+                                    SELECT category_id, MAX(news_post_date) AS latest_post
+                                    FROM news
+                                    GROUP BY category_id
+                                ) vmax ON n.category_id = vmax.category_id AND n.news_post_date = vmax.latest_post
+                                WHERE n.news_isPost = 1;";
 
                     $result = $conn->query($sql2);
                     if ($result->num_rows > 0) {
@@ -78,7 +79,7 @@ layoutUser('header');
             <div class="left-content">
                 <div class="news-card  ">
                     <?php
-                    $sql3 = "SELECT * FROM news ORDER BY news_post_date DESC";
+                    $sql3 = "SELECT * FROM news WHERE news_isPost = 1 ORDER BY news_post_date DESC";
                     $result = $conn->query($sql3);
                     if ($result->num_rows > 0) {
                         while ($row = $result->fetch_assoc()) {

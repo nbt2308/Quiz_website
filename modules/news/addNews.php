@@ -65,7 +65,7 @@ if (isMethodPost()) {
         //lấy user id từ session
         $user_id = getSession('user_id');
         $user_role = getSession('user_role');
-        if ($user_role == 1) {
+        if ($user_role === 1) {
             $news_isPost = 1;
         } else {
             $news_isPost = 0;
