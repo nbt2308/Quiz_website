@@ -64,6 +64,12 @@ if (isMethodPost()) {
         // $save_content = $conn->real_escape_string($filterArr['news_content']);
         //lấy user id từ session
         $user_id = getSession('user_id');
+        $user_role = getSession('user_role');
+        if ($user_role == 1) {
+            $news_isPost = 1;
+        } else {
+            $news_isPost = 0;
+        }
         $data = [
             'category_id' => $filterArr['category'],
             'news_title' => $filterArr['news_title'],
@@ -71,21 +77,23 @@ if (isMethodPost()) {
             'news_description' => $filterArr['news_content'],
             'news_image_path' => $news_image_path,
             'news_image_note' => $filterArr['image_description'],
+            'news_isPost' => $news_isPost,
             'user_id' => $user_id
         ];
-        $sql = "INSERT INTO news (news_title, news_summary, news_description, news_image_path, news_image_note, user_id, category_id) 
-        VALUES (?, ?, ?, ?, ?, ? ,? )";
+        $sql = "INSERT INTO news (news_title, news_summary, news_description, news_image_path, news_image_note, news_isPost, user_id, category_id) 
+        VALUES (?, ?, ?, ?, ?, ?, ?, ? )";
         $stmt = $conn->prepare($sql);
         if ($stmt === false) {
             die("Loi prepare SQL: " . $conn->error);
         }
         $stmt->bind_param(
-            "sssssii", //định dạng kiểu dữ liệu theo đúng thứ tự: string, string, string, int, string, string
+            "sssssiii", //định dạng kiểu dữ liệu theo đúng thứ tự: string, string, string, int, string, string
             $data['news_title'],
             $data['news_summary'],
             $data['news_description'],
             $data['news_image_path'],
             $data['news_image_note'],
+            $data['news_isPost'],
             $data['user_id'],
             $data['category_id'],
         );
