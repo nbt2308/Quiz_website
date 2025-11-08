@@ -6,6 +6,83 @@ if (!empty($_GET['user_id'])) {
 $sql = "SELECT * FROM user WHERE user_id='$user_id'";
 $result = $conn->query($sql);
 $data = $result->fetch_assoc();
+//Search handle
+if (isMethodGet()) {
+    $filterArr = filterData();
+
+    if (isset($filterArr['filter_user_role'])) {
+        $user_role = $filterArr['filter_user_role'];
+    } else {
+        $user_role = "";
+    }
+    if (isset($filterArr['filter_user_status'])) {
+        $user_status = $filterArr['filter_user_status'];
+    } else {
+
+        $user_status =  "";
+    }
+    if (isset($filterArr['searchKey'])) {
+        $searchKey = $filterArr['searchKey'];
+    } else {
+
+
+        $searchKey = "";
+    }
+
+
+    //Pagination
+    $sql1 = "SELECT * FROM user";
+    $stmt = $conn->prepare($sql1);
+    if ($stmt === false) {
+        die("Loi prepare SQL: " . $conn->error);
+    }
+    $stmt->execute();
+
+    //Lấy kết quả
+    $result1 = $stmt->get_result();
+    $total_rows = $result1->num_rows;
+
+    $offset = 0;
+    $perPage = 5; //tong so user/page
+    $maxPage = ceil($total_rows  / $perPage); //tinh max page
+    $filterArr = filterData('GET');
+    $page = 1;
+    if (isset($filterArr['page'])) {
+        $page = $filterArr['page'];
+    }
+
+    if ($page > $maxPage || $page < 0) {
+        $page = 1;
+    }
+    if (isset($page)) {
+        $offset = ($page - 1) * $perPage;
+    }
+
+    $sql2 = "SELECT * FROM user 
+            WHERE user_role LIKE '%$user_role%' 
+            AND user_status LIKE '%$user_status%' 
+            AND (user_name LIKE '%$searchKey%' OR user_email LIKE '%$searchKey%') ORDER BY user_id DESC LIMIT $offset, $perPage";
+    $stmt1 = $conn->prepare($sql2);
+    if ($stmt1 === false) {
+        die("Loi prepare SQL: " . $conn->error);
+    }
+    $stmt1->execute();
+
+    //Lấy kết quả
+    $result2 = $stmt1->get_result();
+} else {
+    $user_role = "";
+    $user_status =  "";
+    $searchKey = "";
+}
+
+
+
+//query string 
+if (!empty($_SERVER['QUERY_STRING'])) {
+    $queryString = $_SERVER['QUERY_STRING'];
+    $queryString = str_replace('&page=' . $page, '', $queryString);
+}
 ?>
 <!doctype html>
 <html lang="en">
@@ -173,27 +250,26 @@ $data = $result->fetch_assoc();
                         <div class="row">
                             <form class="d-flex gap-1" action="" method="get">
                                 <input type="hidden" name="module" value="users_management">
-                                <input type="hidden" name="action" value="searchUser">
+                                <input type="hidden" name="action" value="listUser">
                                 <input type="hidden" name="user_id" value="<?php echo $user_id; ?>">
                                 <div class="col-4">
                                     <select class="form-select mb-3" name="filter_user_role" aria-label="Default select example">
-
-                                        <option selected value="">None</option>
-                                        <option value="0">User</option>
-                                        <option value="1">Admin</option>
+                                        <option value="" <?= $user_role === "" ? "selected" : "" ?>>None</option>
+                                        <option value="0" <?= $user_role === "0" ? "selected" : "" ?>>User</option>
+                                        <option value="1" <?= $user_role === "1" ? "selected" : "" ?>>Admin</option>
                                     </select>
                                 </div>
                                 <div class="col-4">
+                                   
                                     <select class="form-select mb-3" name="filter_user_status" aria-label="Default select example">
-
-                                        <option selected="" value="">None</option>
-                                        <option value="0">Pending</option>
-                                        <option value="1">Activated</option>
+                                        <option value="" <?= $user_status === "" ? "selected" : "" ?>>None</option>
+                                        <option value="0" <?= $user_status === "0" ? "selected" : "" ?>>Pending</option>
+                                        <option value="1" <?= $user_status === "1" ? "selected" : "" ?>>Activated</option>
                                     </select>
                                 </div>
                                 <div class="col-4 ">
                                     <div class="d-flex">
-                                        <input name="searchKey" class="form-control" type="text" placeholder="Enter the title or category news" aria-label="Search">
+                                        <input name="searchKey" class="form-control" type="text" placeholder="Enter the title or category news" aria-label="Search" value="<?= htmlspecialchars($searchKey) ?>">
                                         <button class="btn btn-outline-success ms-1" type="submit">Search</button>
                                     </div>
                                 </div>
@@ -220,17 +296,8 @@ $data = $result->fetch_assoc();
                                     </thead>
                                     <tbody>
                                         <?php
-                                        $sql = "SELECT * FROM user";
-                                        $stmt = $conn->prepare($sql);
-                                        if ($stmt === false) {
-                                            die("Loi prepare SQL: " . $conn->error);
-                                        }
-                                        $stmt->execute();
-
-                                        //Lấy kết quả
-                                        $result = $stmt->get_result();
-                                        if ($result) {
-                                            while ($row = $result->fetch_assoc()) {
+                                        if ($result2) {
+                                            while ($row = $result2->fetch_assoc()) {
                                                 echo '<tr>';
                                                 echo '<td>' . $row['user_id'] . '</td>';
                                                 echo '<td>' . $row['user_name'] . '</td>';
@@ -264,20 +331,51 @@ $data = $result->fetch_assoc();
                             </div>
                         </div>
                         <div class="row mt-3">
-                            <nav aria-label="Page navigation example">
-                                <ul class="pagination justify-content-center">
-                                    <li class="page-item ">
-                                        <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
-                                    </li>
-                                    <li class="page-item active"><a class="page-link" href="#">1</a></li>
-                                    <li class="page-item"><a class="page-link" href="#">2</a></li>
-                                    <li class="page-item"><a class="page-link" href="#">3</a></li>
-                                    <li class="page-item">
-                                        <a class="page-link" href="#">Next</a>
-                                    </li>
+                            <nav aria-label="Page navigation example" class="">
+                                <ul class="pagination">
+                                    <!-- prev button -->
+                                    <?php
+
+                                    if ($page > 1) {
+                                        echo '<li class="page-item"><a class="page-link rounded-0 rounded-start" href="?' . $queryString . '&page=' . ($page - 1) . '">Previous</a></li>';
+                                    }
+                                    $start = $page - 1;
+                                    if ($start < 1) {
+                                        $start = 1;
+                                    }
+                                    if ($start > 1) {
+                                        echo '<li class="page-item"><a class="page-link rounded-0" href="?' . $queryString . '&page=' . ($page - 1) . '">...</a></li>';
+                                    }
+
+                                    ?>
+                                    <?php
+                                    $end = $page + 1;
+                                    if ($end > $maxPage) {
+                                        $end = $maxPage;
+                                    }
+                                    ?>
+
+                                    <?php
+                                    for ($i = $start; $i <= $end; $i++) {
+
+                                        echo '<li class="page-item ' . ($page == $i ? 'active' : '') . '"><a class="page-link rounded-0" href="?' . $queryString . '&page=' . $i . '">' . $i . '</a></li>';
+                                    }
+                                    ?>
+
+                                    <!-- next button -->
+                                    <?php
+
+                                    if ($end < $maxPage) {
+                                        echo '<li class="page-item"><a class="page-link rounded-0" href="?' . $queryString . '&page=' . ($page + 1) . '">...</a></li>';
+                                    }
+                                    if ($page < $maxPage) {
+                                        echo '<li class="page-item"><a class="page-link rounded-0 rounded-end" href="?' . $queryString . '&page=' . ($page + 1) . '">Next</a></li>';
+                                    }
+                                    ?>
                                 </ul>
                             </nav>
                         </div>
+
                         <!--end::Row-->
 
                     </div>
