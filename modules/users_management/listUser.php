@@ -291,7 +291,7 @@ if (isset($user_role) || isset($user_status) || !empty($searchKey)) {
                                     <label for="" class="fw-bold">Search</label>
                                     <div class="d-flex">
                                         
-                                        <input name="searchKey" class="form-control" type="text" placeholder="Enter the title or category news" aria-label="Search" value="<?= htmlspecialchars($searchKey) ?>">
+                                        <input name="searchKey" class="form-control" type="text" placeholder="Enter the username or email" aria-label="Search" value="<?= htmlspecialchars($searchKey) ?>">
                                         <button class="btn btn-outline-success ms-1" type="submit">Search</button>
                                     </div>
                                 </div>
