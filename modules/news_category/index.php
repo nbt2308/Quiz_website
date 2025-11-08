@@ -17,7 +17,7 @@ if (!empty($_GET['category_id'])) {
         $row1 = $result1->fetch_assoc();
         echo  '<span class="ms-3 fs-4 fw-bold">' . htmlspecialchars($row1['category_name']) . '</span>';
         //in nhung bai viet
-        $sql = "SELECT * FROM news WHERE news.category_id='$category_id'";
+        $sql = "SELECT * FROM news WHERE news.category_id='$category_id' AND news_isPost=1";
         $result = $conn->query($sql);
         if ($result->num_rows > 0) {
             while ($row = $result->fetch_assoc()) {

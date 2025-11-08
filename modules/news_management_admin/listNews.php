@@ -118,12 +118,12 @@ if (isset($news_status) || isset($news_category) || !empty($searchKey)) {
                 <!--begin::Row-->
 
                 <div class="row">
-                    <div class="col ">
+                    <!-- <div class="col ">
                         <a href="?module=news_management_admin&action=addNews&user_id=<?php echo $user_id; ?>" class="btn btn-primary mb-3">
                             <i class="fa-solid fa-plus"></i>
                             <span>Add new post</span>
                         </a>
-                    </div>
+                    </div> -->
                 </div>
                 <div class="row">
                     <form class="d-flex gap-1" action="" method="get">
