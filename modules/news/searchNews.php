@@ -33,7 +33,7 @@ $user_id = getSession('user_id');
                     <table class="table table-hover ">
                         <thead>
                             <tr>
-                                <th scope="col">ID</th>
+                                <th scope="col">STT</th>
                                 <th scope="col">Category</th>
                                 <th scope="col">Title</th>
                                 <th scope="col">Date</th>
@@ -45,12 +45,13 @@ $user_id = getSession('user_id');
                             <?php
                             $sql = "SELECT * FROM category, news WHERE news.category_id = category.category_id AND (news_title LIKE '%$searchKey%' OR category_name LIKE '%$searchKey%')";
                             $list = $conn->query($sql);
+                            $stt = 1;
                             if ($list->num_rows > 0) {
                                 while ($row = $list->fetch_assoc()) {
                                     echo '<tr>';
-                                    echo '<th scope="row">' . $row["news_id"] . '</th>';
-                                    echo '<td>' . $row["category_name"] . '</td>';
-                                    echo '<td>' . $row["news_title"] . '</td>';
+                                    echo '<td>' . $stt . '</th>';
+                                    echo '<td class="text-start">' . $row["category_name"] . '</td>';
+                                    echo '<td class="text-start">' . $row["news_title"] . '</td>';
                                     echo '<td>' . $row["news_post_date"] . '</td>';
                                     if ($row["news_isPost"] == 1) {
                                         echo '<td>Approved</td>';
@@ -72,6 +73,7 @@ $user_id = getSession('user_id');
                                             </a>
 
                                         </td>';
+                                    $stt++;
 
                                     echo '</tr>';
                                 }
