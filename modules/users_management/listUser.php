@@ -272,6 +272,7 @@ if (isset($user_role) || isset($user_status) || !empty($searchKey)) {
                                 <input type="hidden" name="action" value="listUser">
                                 <input type="hidden" name="user_id" value="<?php echo $user_id; ?>">
                                 <div class="col-4">
+                                    <label for="" class="fw-bold">Filter user role</label>
                                     <select class="form-select mb-3" name="filter_user_role" aria-label="Default select example">
                                         <option value="" <?= $user_role === "" ? "selected" : "" ?>>None</option>
                                         <option value="0" <?= $user_role === "0" ? "selected" : "" ?>>User</option>
@@ -279,7 +280,7 @@ if (isset($user_role) || isset($user_status) || !empty($searchKey)) {
                                     </select>
                                 </div>
                                 <div class="col-4">
-
+                                    <label for="" class="fw-bold">Filter user status</label>
                                     <select class="form-select mb-3" name="filter_user_status" aria-label="Default select example">
                                         <option value="" <?= $user_status === "" ? "selected" : "" ?>>None</option>
                                         <option value="0" <?= $user_status === "0" ? "selected" : "" ?>>Pending</option>
@@ -287,7 +288,9 @@ if (isset($user_role) || isset($user_status) || !empty($searchKey)) {
                                     </select>
                                 </div>
                                 <div class="col-4 ">
+                                    <label for="" class="fw-bold">Search</label>
                                     <div class="d-flex">
+                                        
                                         <input name="searchKey" class="form-control" type="text" placeholder="Enter the title or category news" aria-label="Search" value="<?= htmlspecialchars($searchKey) ?>">
                                         <button class="btn btn-outline-success ms-1" type="submit">Search</button>
                                     </div>
