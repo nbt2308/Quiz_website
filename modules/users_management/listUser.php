@@ -41,7 +41,7 @@ if (isMethodGet()) {
     //Lấy kết quả
     $result1 = $stmt->get_result();
     $total_rows = $result1->num_rows;
-
+    $stmt->close();
     $offset = 0;
     $perPage = 5; //tong so user/page
     $maxPage = ceil($total_rows  / $perPage); //tinh max page
@@ -82,6 +82,25 @@ if (isMethodGet()) {
 if (!empty($_SERVER['QUERY_STRING'])) {
     $queryString = $_SERVER['QUERY_STRING'];
     $queryString = str_replace('&page=' . $page, '', $queryString);
+}
+
+//xử lý bảng rỗng
+if (isset($user_role) || isset($user_status) || !empty($searchKey)) {
+    $sql2 = "SELECT * FROM user 
+            WHERE user_role LIKE '%$user_role%' 
+            AND user_status LIKE '%$user_status%' 
+            AND (user_name LIKE '%$searchKey%' OR user_email LIKE '%$searchKey%') ORDER BY user_id DESC";
+    $stmt1 = $conn->prepare($sql2);
+    if ($stmt1 === false) {
+        die("Loi prepare SQL: " . $conn->error);
+    }
+    $stmt1->execute();
+
+    //Lấy kết quả
+    $result3 = $stmt1->get_result();
+    $total_rows1 = $result3->num_rows;
+
+    $maxPage = ceil($total_rows1 / $perPage);
 }
 ?>
 <!doctype html>
@@ -260,7 +279,7 @@ if (!empty($_SERVER['QUERY_STRING'])) {
                                     </select>
                                 </div>
                                 <div class="col-4">
-                                   
+
                                     <select class="form-select mb-3" name="filter_user_status" aria-label="Default select example">
                                         <option value="" <?= $user_status === "" ? "selected" : "" ?>>None</option>
                                         <option value="0" <?= $user_status === "0" ? "selected" : "" ?>>Pending</option>
