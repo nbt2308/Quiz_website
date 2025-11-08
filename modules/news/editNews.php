@@ -136,6 +136,8 @@ if (isMethodPost()) {
     } else {
         setSessionFlash('oldData', $filterArr);
         setSessionFlash('errors', $errors);
+        setSessionFlash('msg', 'Invalid data, please check again');
+        setSessionFlash('msg_type', 'danger');
     }
     $msg = getSessionFlash('msg');
     $msg_type = getSessionFlash('msg_type');
@@ -153,8 +155,9 @@ if (isMethodPost()) {
 <main>
     <div class="container my-4">
         <h3 class=" text-center">Edit News</h3>
-        <?php getMsg($msg, $msg_type); ?>
+
         <form action="" method="POST" enctype="multipart/form-data" class="p-4 border rounded bg-light">
+            <?php getMsg($msg, $msg_type); ?>
             <input type="hidden" name="news_id" value="<?= $news['news_id'] ?>">
             <!-- Chọn danh mục -->
             <div class="mb-3">

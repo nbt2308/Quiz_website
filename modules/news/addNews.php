@@ -101,13 +101,20 @@ if (isMethodPost()) {
         $insert_success = $stmt->execute();
         if ($insert_success) {
             header("Location: ?module=news&action=manageNews&user_id=$user_id");
+        } else {
+            setSessionFlash('msg', 'Add new post failed');
+            setSessionFlash('msg_type', 'danger');
         }
     } else {
         setSessionFlash('oldData', $filterArr);
         setSessionFlash('errors', $errors);
+        setSessionFlash('msg', 'Add new post failed');
+        setSessionFlash('msg_type', 'danger');
     }
     $oldData = getSessionFlash('oldData');
     $errorsArr = getSessionFlash('errors');
+    $msg = getSessionFlash('msg');
+    $msg_type = getSessionFlash('msg_type');
 } else {
     $msg = "";
     $msg_type = '';
@@ -120,7 +127,7 @@ if (isMethodPost()) {
     <div class="container my-4">
         <h3 class="mb-4 text-center fw-bold">Add News</h3>
         <form action="" method="POST" enctype="multipart/form-data" class="p-4 border rounded bg-light">
-
+            <?php getMsg($msg, $msg_type); ?>
             <!-- Chọn danh mục -->
             <div class="mb-3">
                 <label for="category" class="form-label fw-bold">Select category</label>
