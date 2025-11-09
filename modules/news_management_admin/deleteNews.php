@@ -46,7 +46,7 @@ if (isMethodPost()) {
 //header
 
 $dataTitle = [
-    'title' => "Delete new",
+    'title' => "Delete news",
     'breadcrumb' => "List News",
     'data' => $user_name_current,
     'module' => 'news_management_admin',

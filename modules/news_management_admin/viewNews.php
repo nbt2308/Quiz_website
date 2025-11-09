@@ -20,7 +20,7 @@ $news = $result->fetch_assoc();
 //header
 
 $dataTitle = [
-    'title' => "View new",
+    'title' => "View news",
     'breadcrumb' => "List News",
     'data' => $user_name_current,
     'module' => 'news_management_admin',
