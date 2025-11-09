@@ -54,7 +54,7 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="./widgets/cards.html" class="nav-link">
+                            <a href="?module=news_management_admin&action=newsApproval&user_id=<?php echo $user_id ?>" class="nav-link">
                                 <i class="nav-icon bi bi-circle"></i>
                                 <p>Post Approval</p>
                             </a>

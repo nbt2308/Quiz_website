@@ -15,12 +15,38 @@ if (!$result || $result->num_rows == 0) {
 }
 $news = $result->fetch_assoc();
 
+if (isMethodPost()) {
+    $filterArr = filterData();
 
+    $sql = "UPDATE news SET news_isPost=1 WHERE news_id='$news_id'";
+    $stmt = $conn->prepare($sql);
+    if ($stmt === false) {
+        die("Loi prepare SQL: " . $conn->error);
+    }
+
+    //lưu vào biến để kiểm tra trạng thái
+    $insert_success = $stmt->execute();
+
+    if ($insert_success) {
+        setSessionFlash('msg', 'Approve news succeed');
+        setSessionFlash('msg_type', 'success');
+        header("Location:?module=news_management_admin&action=newsApproval&user_id=$user_id_current");
+    } else {
+        setSessionFlash('msg', 'Approve news failed');
+        setSessionFlash('msg_type', 'danger');
+    }
+    $stmt->close();
+    $msg = getSessionFlash('msg');
+    $msg_type = getSessionFlash('msg_type');
+} else {
+    $msg = "";
+    $msg_type = '';
+}
 
 //header
 
 $dataTitle = [
-    'title' => "View news",
+    'title' => "Delete news",
     'breadcrumb' => "List News",
     'data' => $user_name_current,
     'module' => 'news_management_admin',
@@ -120,7 +146,8 @@ layoutAdminUseInclude("header", $dataTitle);
                     </div>
                     <!-- Nút hành động -->
                     <div class="d-flex justify-content-between mt-4">
-                        <a onclick="history.back()" class="btn btn-secondary">Back</a>
+                        <a onclick="history.back()" class=" btn btn-secondary">Back</a>
+                        <button type="submit" class="btn btn-success">Approve News</button>
                     </div>
                 </form>
 

@@ -32,7 +32,7 @@ if (isMethodPost()) {
         setSessionFlash('msg_type', 'success');
         header("Location:?module=news_management_admin&action=listNews&user_id=$user_id_current");
     } else {
-        setSessionFlash('msg', 'Delete user failed');
+        setSessionFlash('msg', 'Delete news failed');
         setSessionFlash('msg_type', 'danger');
     }
     $stmt->close();
@@ -146,7 +146,7 @@ layoutAdminUseInclude("header", $dataTitle);
                     </div>
                     <!-- Nút hành động -->
                     <div class="d-flex justify-content-between mt-4">
-                        <a href="?module=news_management_admin&action=listNews&user_id=<?php echo $user_id_current; ?>" class="btn btn-secondary">Back</a>
+                        <a onclick="history.back()" class=" btn btn-secondary">Back</a>
                         <button type="submit" class="btn btn-danger">Delete News</button>
                     </div>
                 </form>
