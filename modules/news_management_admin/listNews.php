@@ -1,6 +1,11 @@
 <?php
-include_once "./templates/layout/admin/header.php";
-
+$user_id;
+if (!empty($_GET['user_id'])) {
+    $user_id = $_GET['user_id'];
+}
+$sql = "SELECT * FROM user WHERE user_id='$user_id'";
+$result = $conn->query($sql);
+$data = $result->fetch_assoc();
 //Search handle
 if (isMethodGet()) {
     $filterArr = filterData();
@@ -97,6 +102,14 @@ if (isset($news_status) || isset($news_category) || !empty($searchKey)) {
 
     $maxPage = ceil($total_rows1 / $perPage);
 }
+
+//header
+$user_name = $data['user_name'];
+$dataTitle = [
+    'title' => "List News",
+    'data' => $user_name
+];
+layoutAdminUseInclude("header", $dataTitle);
 ?>
 
 <?php layoutAdmin("sidebar"); ?>
@@ -105,7 +118,7 @@ if (isset($news_status) || isset($news_category) || !empty($searchKey)) {
     <div class="app-content-header">
         <!--begin::Container-->
 
-        <?php layoutAdmin("breadcrumb"); ?>
+        <?php layoutAdminUseInclude("breadcrumb", $dataTitle); ?>
 
         <!--end::Container-->
     </div>
@@ -194,13 +207,13 @@ if (isset($news_status) || isset($news_category) || !empty($searchKey)) {
                                             echo '<td><i class="fa-solid fa-circle" style="color: #f50000;"></i> Not approved</td>';
                                         }
                                         echo '<td>';
-                                        echo '<a class="btn btn-info" title="View user information" href="?module=users_management&action=viewUser&user_id=' . $row['user_id'] . '"><i class="fa-solid fa-eye" style="color: #ffffff;"></i></a>';
+                                        echo '<a class="btn btn-info" title="View news information" href="?module=news_management_admin&action=viewNews&user_id=' . $user_id . '&news_id=' . $row['news_id'] . '"><i class="fa-solid fa-eye" style="color: #ffffff;"></i></a>';
                                         echo '</td>';
                                         echo '<td>';
-                                        echo '<a class="btn btn-warning mx-2" title="Edit user information" href="?module=users_management&action=editUser&user_id=' . $row['user_id'] . '"><i class="fa-solid fa-pen-to-square" style="color: #ffffff;"></i></a>';
+                                        echo '<a class="btn btn-warning mx-2" title="Edit news information" href="?module=news_management_admin&action=editNews&user_id=' . $user_id . '&news_id=' . $row['news_id'] . '"><i class="fa-solid fa-pen-to-square" style="color: #ffffff;"></i></a>';
                                         echo '</td>';
                                         echo '<td>';
-                                        echo '<a class="btn btn-danger" title="Delete user" href="?module=users_management&action=deleteUser&user_id=' . $row['user_id'] . '"><i class="fa-solid fa-trash"></i></a>';
+                                        echo '<a class="btn btn-danger" title="Delete news" href="?module=news_management_admin&action=deleteNews&user_id=' . $user_id . '&news_id=' . $row['news_id'] . '"><i class="fa-solid fa-trash"></i></a>';
                                         echo '</td>';
                                         echo '</tr>';
                                     }
