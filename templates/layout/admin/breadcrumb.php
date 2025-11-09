@@ -1,7 +1,7 @@
 <?php
 $module = $_GET['module'];
 $action = $_GET['action'];
-$user_id=getSession("user_id");
+$user_id = getSession("user_id");
 ?>
 <!--begin::Row-->
 <div class="container p-lg-0">
@@ -15,7 +15,7 @@ $user_id=getSession("user_id");
                     <li class="breadcrumb-item"><a href="?module=home&action=index">Home</a></li>
                     <?php
                     if (!empty($dataTitle['breadcrumb'])) {
-                        echo '<li class="breadcrumb-item"><a href="?module=users_management&action=listUser&user_id='.$user_id.'">' . $dataTitle['breadcrumb'] . '</a></li>';
+                        echo '<li class="breadcrumb-item"><a href="?module=' . $dataTitle['module'] . '&action=' . $dataTitle['action'] . '&user_id=' . $user_id . '">' . $dataTitle['breadcrumb'] . '</a></li>';
                     }
                     ?>
                     <li class="breadcrumb-item active" aria-current="page"><?php echo $dataTitle['title']; ?></li>

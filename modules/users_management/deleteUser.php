@@ -44,7 +44,9 @@ if (isMethodPost()) {
 $dataTitle = [
     'title' => "Delete user",
     'breadcrumb' => "List Users",
-    'data' => $user_name_current
+    'data' => $user_name_current,
+    'module'=>'users_management',
+    'action'=>'listUser'
 ];
 layoutAdminUseInclude("header", $dataTitle);
 ?>

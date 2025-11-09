@@ -139,7 +139,9 @@ $user_name = $data['user_name'];
 $dataTitle = [
     'title' => "Add new user",
     'breadcrumb' => "List Users",
-    'data' => $user_name
+    'data' => $user_name,
+    'module'=>'users_management',
+    'action'=>'listUser'
 ];
 layoutAdminUseInclude("header", $dataTitle);
 ?>

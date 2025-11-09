@@ -1,7 +1,7 @@
 <?php
 $user_id;
-$user_id_current=getSession("user_id");
-$user_name_current=getSession("user_name");
+$user_id_current = getSession("user_id");
+$user_name_current = getSession("user_name");
 if (!empty($_GET['user_id'])) {
     $user_id = $_GET['user_id'];
 }
@@ -15,7 +15,9 @@ $data = $result->fetch_assoc();
 $dataTitle = [
     'title' => "View user",
     'breadcrumb' => "List Users",
-    'data' => $user_name_current
+    'data' => $user_name_current,
+    'module' => 'users_management',
+    'action' => 'listUser'
 ];
 layoutAdminUseInclude("header", $dataTitle);
 ?>
