@@ -1,6 +1,7 @@
 <?php
 $user_id;
 $user_id_current = getSession("user_id");
+$user_name_current = getSession("user_name");
 if (!empty($_GET['user_id'])) {
     $user_id = $_GET['user_id'];
     $sql = "SELECT * FROM user WHERE user_id='$user_id'";
@@ -40,11 +41,10 @@ if (isMethodPost()) {
 }
 
 //header
-$user_name = $data['user_name'];
 $dataTitle = [
     'title' => "Delete user",
     'breadcrumb' => "List Users",
-    'data' => $user_name
+    'data' => $user_name_current
 ];
 layoutAdminUseInclude("header", $dataTitle);
 ?>
