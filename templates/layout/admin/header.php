@@ -1,19 +1,10 @@
-<?php
-$user_id;
-if (!empty($_GET['user_id'])) {
-    $user_id = $_GET['user_id'];
-}
-$sql = "SELECT * FROM user WHERE user_id='$user_id'";
-$result = $conn->query($sql);
-$data = $result->fetch_assoc();
-?>
 <!doctype html>
 <html lang="en">
 <!--begin::Head-->
 
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>Admin dashboard</title>
+    <title><?php echo $dataTitle['title'] ?></title>
     <!--begin::Accessibility Meta Tags-->
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
     <meta name="color-scheme" content="light dark" />
@@ -119,11 +110,12 @@ $data = $result->fetch_assoc();
                         <ul class="dropdown-menu dropdown-menu-lg dropdown-menu-end">
                             <!--begin::User Image-->
                             <li class="user-header text-bg-primary">
+
                                 <img
                                     src="/News_website/templates/assets/images/person_24dp_FFFFFF_FILL0_wght400_GRAD0_opsz24.svg"
                                     class="rounded-circle shadow"
                                     alt="User Image" />
-                                <p><?php echo $data['user_name']; ?></p>
+                                <p><?php echo $dataTitle['data']; ?></p>
                             </li>
                             <!--end::User Image-->
                             <!--begin::Menu Body-->
