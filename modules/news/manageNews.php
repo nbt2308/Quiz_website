@@ -111,82 +111,88 @@ if (isset($news_status) || isset($news_category) || !empty($searchKey)) {
         </div>
         <div class="shadow p-3 mb-5 bg-body rounded">
             <div class="container-fluid">
-                <div class="manageNews-button my-3">
-                    <a href="?module=news&action=addNews" class="btn btn-primary add-button">
-                        <img class="add-icon" src="/News_website/templates/assets/images/add_circle_24dp_FFFFFF_FILL0_wght400_GRAD0_opsz24.svg" alt=""> Add News
-                    </a>
+                <div class="row d-flex justify-content-between align-items-center mb-3">
+                    <div class="col align-items-center">
+                        <a href="?module=news&action=addNews" class="btn btn-primary add-button">
+                            <img class="add-icon" src="/News_website/templates/assets/images/add_circle_24dp_FFFFFF_FILL0_wght400_GRAD0_opsz24.svg" alt=""> Add News
+                        </a>
+                    </div>
+                    <div class="col d-flex justify-content-end align-items-center">
+                        <a href="?module=news&action=manageNews&user_id=<?php echo $user_id; ?>" class="btn btn-primary"><i class="fa-solid fa-arrows-rotate" style="color: #ffffff;"></i></a>
+                    </div>
                 </div>
-                <div class="row">
-                    <form class="d-flex gap-1" action="" method="get">
-                        <input type="hidden" name="module" value="news">
-                        <input type="hidden" name="action" value="manageNews">
-                        <input type="hidden" name="user_id" value="<?php echo $user_id; ?>">
-                        <div class="col-4">
-                            <label for="" class="fw-bold">Filter news status</label>
-                            <select class="form-select mb-3" name="filter_news_status" aria-label="Default select example">
-                                <option value="" <?= $news_status === "" ? "selected" : "" ?>>None</option>
-                                <option value="0" <?= $news_status === "0" ? "selected" : "" ?>>Not Approved</option>
-                                <option value="1" <?= $news_status === "1" ? "selected" : "" ?>>Approved</option>
-                            </select>
-                        </div>
-                        <div class="col-4">
-                            <label for="" class="fw-bold">Filter news category</label>
-                            <select class="form-select mb-3" name="filter_news_category" aria-label="Default select example">
-                                <option value="" <?= $news_category === "" ? "selected" : "" ?>>None</option>
-                                <!-- lap data -->
-                                <?php
-                                $sql = "SELECT * FROM category";
-                                $list = $conn->query($sql);
-                                if ($list && $list->num_rows > 0) {
-                                    while ($row = $list->fetch_assoc()) {
-                                        $selected = ($news_category == $row["category_id"]) ? "selected" : "";
-                                        echo '<option value="' . $row["category_id"] . '" ' . $selected . '>' . $row["category_name"] . '</option>';
-                                    }
+            </div>
+            <div class="row">
+                <form class="d-flex gap-1" action="" method="get">
+                    <input type="hidden" name="module" value="news">
+                    <input type="hidden" name="action" value="manageNews">
+                    <input type="hidden" name="user_id" value="<?php echo $user_id; ?>">
+                    <div class="col-4">
+                        <label for="" class="fw-bold">Filter news status</label>
+                        <select class="form-select mb-3" name="filter_news_status" aria-label="Default select example">
+                            <option value="" <?= $news_status === "" ? "selected" : "" ?>>None</option>
+                            <option value="0" <?= $news_status === "0" ? "selected" : "" ?>>Not Approved</option>
+                            <option value="1" <?= $news_status === "1" ? "selected" : "" ?>>Approved</option>
+                        </select>
+                    </div>
+                    <div class="col-4">
+                        <label for="" class="fw-bold">Filter news category</label>
+                        <select class="form-select mb-3" name="filter_news_category" aria-label="Default select example">
+                            <option value="" <?= $news_category === "" ? "selected" : "" ?>>None</option>
+                            <!-- lap data -->
+                            <?php
+                            $sql = "SELECT * FROM category";
+                            $list = $conn->query($sql);
+                            if ($list && $list->num_rows > 0) {
+                                while ($row = $list->fetch_assoc()) {
+                                    $selected = ($news_category == $row["category_id"]) ? "selected" : "";
+                                    echo '<option value="' . $row["category_id"] . '" ' . $selected . '>' . $row["category_name"] . '</option>';
                                 }
-                                ?>
+                            }
+                            ?>
 
-                            </select>
+                        </select>
+                    </div>
+                    <div class="col-4 ">
+                        <label for="" class="fw-bold">Search</label>
+                        <div class="d-flex">
+                            <input name="searchKey" class="form-control" type="text" placeholder="Enter the title or category news" aria-label="Search" value="<?= htmlspecialchars($searchKey) ?>">
+                            <button class="btn btn-outline-success ms-1" type="submit">Search</button>
                         </div>
-                        <div class="col-4 ">
-                            <label for="" class="fw-bold">Search</label>
-                            <div class="d-flex">
-                                <input name="searchKey" class="form-control" type="text" placeholder="Enter the title or category news" aria-label="Search" value="<?= htmlspecialchars($searchKey) ?>">
-                                <button class="btn btn-outline-success ms-1" type="submit">Search</button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-                <div class="row">
-                    <div class="table-responsive">
-                        <table class="table table-hover table-bordered">
-                            <thead>
-                                <tr>
-                                    <th scope="col">STT</th>
-                                    <th scope="col">Category</th>
-                                    <th scope="col">Title</th>
-                                    <th scope="col">Date</th>
-                                    <th scope="col">Status</th>
-                                    <th scope="col" colspan="3">Action</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <?php
+                    </div>
+                </form>
+            </div>
+            <div class="row">
+                <div class="table-responsive">
+                    <table class="table table-hover table-bordered">
+                        <thead>
+                            <tr>
+                                <th scope="col">STT</th>
+                                <th scope="col">Category</th>
+                                <th scope="col">Title</th>
+                                <th scope="col">Date</th>
+                                <th scope="col">Status</th>
+                                <th scope="col" colspan="3">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php
 
-                                $stt = 1;
-                                if ($result2->num_rows > 0) {
-                                    while ($row = $result2->fetch_assoc()) {
-                                        echo '<tr>';
-                                        echo '<td>' . $stt . '</td>';
-                                        echo '<td class="text-start">' . $row["category_name"] . '</td>';
-                                        echo '<td class="text-start">' . $row["news_title"] . '</td>';
-                                        echo '<td>' . $row["news_post_date"] . '</td>';
-                                        if ($row["news_isPost"] === 1) {
-                                            echo '<td><i class="fa-solid fa-circle" style="color: #04ff00;"></i> Approved</td>';
-                                        } else {
-                                            echo '<td><i class="fa-solid fa-circle" style="color: #f50000;"></i> Not approved</td>';
-                                        }
+                            $stt = 1;
+                            if ($result2->num_rows > 0) {
+                                while ($row = $result2->fetch_assoc()) {
+                                    echo '<tr>';
+                                    echo '<td>' . $stt . '</td>';
+                                    echo '<td class="text-start">' . $row["category_name"] . '</td>';
+                                    echo '<td class="text-start">' . $row["news_title"] . '</td>';
+                                    echo '<td>' . $row["news_post_date"] . '</td>';
+                                    if ($row["news_isPost"] === 1) {
+                                        echo '<td><i class="fa-solid fa-circle" style="color: #04ff00;"></i> Approved</td>';
+                                    } else {
+                                        echo '<td><i class="fa-solid fa-circle" style="color: #f50000;"></i> Not approved</td>';
+                                    }
 
-                                        echo '<td>
+                                    echo '<td>
                                                     <a href="?module=news&action=viewNews&id=' . $row['news_id'] . '" class="btn btn-info btn-sm">
                                                         <img src="/News_website/templates/assets/images/visibility_24dp_FFFFFF_FILL0_wght400_GRAD0_opsz24.svg" alt="View">
                                                     </a>
@@ -203,71 +209,71 @@ if (isset($news_status) || isset($news_category) || !empty($searchKey)) {
                                                         <img src="/News_website/templates/assets/images/delete_24dp_FFFFFF_FILL0_wght400_GRAD0_opsz24.svg" alt="Delete">
                                                     </a>
                                                 </td>';
-                                        $stt++;
-                                        echo '</tr>';
-                                    }
-                                } else {
-                                    echo '<tr>';
-                                    echo '<td colspan="6" class="text-center py-4">';
-                                    echo '<div class="text-muted" style="font-size: 14px;">';
-                                    echo '<i class="bi bi-inbox fs-4 d-block mb-2"></i>';
-                                    echo 'No data available';
-                                    echo '</div>';
-                                    echo '</td>';
+                                    $stt++;
                                     echo '</tr>';
                                 }
-                                ?>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-                <div class="row mt-3">
-                    <nav aria-label="Page navigation example" class="d-flex align-items-center justify-content-center">
-                        <ul class="pagination">
-                            <!-- prev button -->
-                            <?php
-
-                            if ($page > 1) {
-                                echo '<li class="page-item"><a class="page-link rounded-0 rounded-start" href="?' . $queryString . '&page=' . ($page - 1) . '">Previous</a></li>';
-                            }
-                            $start = $page - 1;
-                            if ($start < 1) {
-                                $start = 1;
-                            }
-                            if ($start > 1) {
-                                echo '<li class="page-item"><a class="page-link rounded-0" href="?' . $queryString . '&page=' . ($page - 1) . '">...</a></li>';
-                            }
-
-                            ?>
-                            <?php
-                            $end = $page + 1;
-                            if ($end > $maxPage) {
-                                $end = $maxPage;
+                            } else {
+                                echo '<tr>';
+                                echo '<td colspan="6" class="text-center py-4">';
+                                echo '<div class="text-muted" style="font-size: 14px;">';
+                                echo '<i class="bi bi-inbox fs-4 d-block mb-2"></i>';
+                                echo 'No data available';
+                                echo '</div>';
+                                echo '</td>';
+                                echo '</tr>';
                             }
                             ?>
-
-                            <?php
-                            for ($i = $start; $i <= $end; $i++) {
-
-                                echo '<li class="page-item ' . ($page == $i ? 'active' : '') . '"><a class="page-link rounded-0" href="?' . $queryString . '&page=' . $i . '">' . $i . '</a></li>';
-                            }
-                            ?>
-
-                            <!-- next button -->
-                            <?php
-
-                            if ($end < $maxPage) {
-                                echo '<li class="page-item"><a class="page-link rounded-0" href="?' . $queryString . '&page=' . ($page + 1) . '">...</a></li>';
-                            }
-                            if ($page < $maxPage) {
-                                echo '<li class="page-item"><a class="page-link rounded-0 rounded-end" href="?' . $queryString . '&page=' . ($page + 1) . '">Next</a></li>';
-                            }
-                            ?>
-                        </ul>
-                    </nav>
+                        </tbody>
+                    </table>
                 </div>
             </div>
+            <div class="row mt-3">
+                <nav aria-label="Page navigation example" class="d-flex align-items-center justify-content-center">
+                    <ul class="pagination">
+                        <!-- prev button -->
+                        <?php
+
+                        if ($page > 1) {
+                            echo '<li class="page-item"><a class="page-link rounded-0 rounded-start" href="?' . $queryString . '&page=' . ($page - 1) . '">Previous</a></li>';
+                        }
+                        $start = $page - 1;
+                        if ($start < 1) {
+                            $start = 1;
+                        }
+                        if ($start > 1) {
+                            echo '<li class="page-item"><a class="page-link rounded-0" href="?' . $queryString . '&page=' . ($page - 1) . '">...</a></li>';
+                        }
+
+                        ?>
+                        <?php
+                        $end = $page + 1;
+                        if ($end > $maxPage) {
+                            $end = $maxPage;
+                        }
+                        ?>
+
+                        <?php
+                        for ($i = $start; $i <= $end; $i++) {
+
+                            echo '<li class="page-item ' . ($page == $i ? 'active' : '') . '"><a class="page-link rounded-0" href="?' . $queryString . '&page=' . $i . '">' . $i . '</a></li>';
+                        }
+                        ?>
+
+                        <!-- next button -->
+                        <?php
+
+                        if ($end < $maxPage) {
+                            echo '<li class="page-item"><a class="page-link rounded-0" href="?' . $queryString . '&page=' . ($page + 1) . '">...</a></li>';
+                        }
+                        if ($page < $maxPage) {
+                            echo '<li class="page-item"><a class="page-link rounded-0 rounded-end" href="?' . $queryString . '&page=' . ($page + 1) . '">Next</a></li>';
+                        }
+                        ?>
+                    </ul>
+                </nav>
+            </div>
         </div>
+    </div>
 
     </div>
 
