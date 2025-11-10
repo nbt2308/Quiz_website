@@ -32,24 +32,59 @@ if (!empty($_GET['news_id'])) {
         $sql1 = "SELECT * FROM news, user WHERE news_id='$news_id'";
         $result1 = $conn->query($sql1);
         $row1 = $result1->fetch_assoc();
-        echo  '<div class="d-flex justify-content-between">';
-        echo        '<p class="text-start text-secondary"><b>Posted by</b> ' . $row1['user_name'] . ', views: ' . $row1['news_views'] . ' </p>';
-        echo        '<p class="text-end text-secondary"> ' . $row1['news_post_date'] . ' </p>';
-        echo  '</div>';
-        echo  '<h3 class="title"> ' . $row1['news_title'] . ' </h3>';
-        echo  '<p class="summary"> ' . $row1['news_summary'] . ' </p>';
-        echo  '<div class="d-flex justify-content-center">';
-        echo        '<img class="image img-fluid" height=auto width=500 src="' . $row1['news_image_path'] . '">';
-        echo  '</div>';
-        echo  '<p class="summary text-center"> <i>' . $row1['news_image_note'] . '</i> </p>';
-        //giải mã ký tự từ db
-        $decoded = html_entity_decode($row1['news_description'], ENT_QUOTES | ENT_HTML5, 'UTF-8');
-        $decoded = html_entity_decode($row1['news_description'], ENT_QUOTES | ENT_HTML5, 'UTF-8');
-        echo  '<p class="content"> ' . $decoded . ' </p>';
+        if ($row1) {
+            echo '
+        <article class="p-4 p-md-5 rounded-4 shadow-sm">
+            <header class="mb-5 text-center border-bottom pb-4">
+                <h1 class="fw-bold mb-3 display-6 text-dark">' . htmlspecialchars($row1['news_title']) . '</h1>
 
-        echo '<button type="button" class="btn btn-secondary mb-3" onclick="history.back()">Go back</button>';
+                <div class="d-flex flex-column flex-md-row justify-content-center align-items-center gap-3 text-muted small">
+                    <span class="d-flex align-items-center gap-1">
+                        <i class="bi bi-person-circle"></i>
+                        <span><strong>' . htmlspecialchars($row1['user_name']) . '</strong></span>
+                    </span>
+
+                    <span class="vr d-none d-md-block"></span> <!-- đường kẻ dọc chia giữa các info -->
+
+                    <span class="d-flex align-items-center gap-1">
+                        <i class="bi bi-eye"></i>
+                        <span>' . number_format((int)$row1['news_views']) . ' views</span>
+                    </span>
+
+                    <span class="vr d-none d-md-block"></span>
+
+                    <span class="d-flex align-items-center gap-1">
+                        <i class="bi bi-calendar3"></i>
+                        <span>' . date("F j, Y", strtotime($row1['news_post_date'])) . '</span>
+                    </span>
+                </div>
+
+                <p class="lead text-secondary mt-4 fst-italic">' . htmlspecialchars($row1['news_summary']) . '</p>
+            </header>
+
+            <figure class="text-center mb-4">
+                <img src="' . htmlspecialchars($row1['news_image_path']) . '" 
+                     class="img-fluid rounded-4 shadow-sm" 
+                     alt="News image" style="max-width: 600px; height: auto;">
+                <figcaption class="text-secondary mt-2 fst-italic small">' . htmlspecialchars($row1['news_image_note']) . '</figcaption>
+            </figure>';
+
+            // Decode nội dung
+            $decoded = html_entity_decode($row1['news_description'], ENT_QUOTES | ENT_HTML5, 'UTF-8');
+            echo '<section class="article-content fs-6 lh-lg text-justify px-md-4">
+                ' . $decoded . '
+              </section>';
+
+            echo '<div class="text-center mt-5">
+                <button type="button" class="btn btn-outline-secondary px-4" onclick="history.back()">
+                    <i class="bi bi-arrow-left"></i> Go back
+                </button>
+              </div>
+        </article>';
+        } else {
+            echo '<p class="text-danger text-center mt-5">Article not found.</p>';
+        }
         ?>
-    </div>
     </div>
 </main>
 <?php
