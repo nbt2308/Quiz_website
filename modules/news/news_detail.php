@@ -29,7 +29,7 @@ if (!empty($_GET['news_id'])) {
     <div class="main-container container">
         <?php
         //in ten chu de
-        $sql1 = "SELECT * FROM news, user WHERE news_id='$news_id' AND news.user_id=user.user_id";
+        $sql1 = "SELECT * FROM news, user WHERE news_id='$news_id'";
         $result1 = $conn->query($sql1);
         $row1 = $result1->fetch_assoc();
         echo  '<div class="d-flex justify-content-between">';
