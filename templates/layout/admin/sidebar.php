@@ -72,6 +72,17 @@
                     </a>
 
                 </li>
+                <li class="nav-item">
+
+                    <a href="?module=news_category&action=listNewsCategory&user_id=<?php echo $user_id ?>" class="nav-link">
+                        <!-- <i class="nav-icon bi bi-pencil-square"></i> -->
+                        <img src="/News_website/templates/assets/images/category_24dp_FFFFFF_FILL0_wght400_GRAD0_opsz24.svg" alt="">
+                        <p>
+                            Category management
+                        </p>
+                    </a>
+
+                </li>
 
             </ul>
             <!--end::Sidebar Menu-->
