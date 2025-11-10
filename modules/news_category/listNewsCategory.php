@@ -11,7 +11,7 @@ if (isMethodGet()) {
     $filterArr = filterData();
 
     if (isset($filterArr['datetime-from'])) {
-        $datetime_from = $filterArr['datetime'];
+        $datetime_from = $filterArr['datetime-from'];
     } else {
         $datetime_from = "";
     }
@@ -24,10 +24,29 @@ if (isMethodGet()) {
     if (isset($filterArr['searchKey'])) {
         $searchKey = $filterArr['searchKey'];
     } else {
-
-
         $searchKey = "";
     }
+
+    $sql2 = "SELECT  c.*, COUNT(n.news_id) AS total_news
+             FROM category c
+             LEFT JOIN news n ON c.category_id = n.category_id
+             WHERE 1";
+
+    // Filter theo ngày
+    if (!empty($datetime_from) && !empty($datetime_to)) {
+        $sql2 .= " AND DATE(c.category_created_at) BETWEEN '$datetime_from' AND '$datetime_to'";
+    } elseif (!empty($datetime_from)) {
+        $sql2 .= " AND DATE(c.category_created_at) >= '$datetime_from'";
+    } elseif (!empty($datetime_to)) {
+        $sql2 .= " AND DATE(c.category_created_at) <= '$datetime_to'";
+    }
+
+    // Filter theo tên
+    if (!empty($searchKey)) {
+        $sql2 .= " AND c.category_name LIKE '%$searchKey%'";
+    }
+
+
 
 
     //Pagination
@@ -58,10 +77,9 @@ if (isMethodGet()) {
         $offset = ($page - 1) * $perPage;
     }
 
-    $sql2 = "SELECT * FROM category 
-            WHERE user_role LIKE '%$user_role%' 
-            AND user_status LIKE '%$user_status%' 
-            AND (user_name LIKE '%$searchKey%' OR user_email LIKE '%$searchKey%') ORDER BY user_id DESC LIMIT $offset, $perPage";
+    $sql2 .= " GROUP BY c.category_id
+               ORDER BY c.category_created_at DESC
+               LIMIT $offset, $perPage";
     $stmt1 = $conn->prepare($sql2);
     if ($stmt1 === false) {
         die("Loi prepare SQL: " . $conn->error);
@@ -76,8 +94,17 @@ if (isMethodGet()) {
     $searchKey = "";
 }
 
-
-
+//xử lý chuyển định dạng datetime để hiển thị ra ô input
+if (!empty($datetime_from)) {
+    $datetime_from_value = date('Y-m-d\TH:i', strtotime($datetime_from));
+} else {
+    $datetime_from_value = '';
+}
+if (!empty($datetime_to)) {
+    $datetime_to_value = date('Y-m-d\TH:i', strtotime($datetime_to));
+} else {
+    $datetime_to_value = '';
+}
 //query string 
 if (!empty($_SERVER['QUERY_STRING'])) {
     $queryString = $_SERVER['QUERY_STRING'];
@@ -85,11 +112,28 @@ if (!empty($_SERVER['QUERY_STRING'])) {
 }
 
 //xử lý bảng rỗng
-if (isset($user_role) || isset($user_status) || !empty($searchKey)) {
-    $sql2 = "SELECT * FROM user 
-            WHERE user_role LIKE '%$user_role%' 
-            AND user_status LIKE '%$user_status%' 
-            AND (user_name LIKE '%$searchKey%' OR user_email LIKE '%$searchKey%') ORDER BY user_id DESC";
+if (isset($datetime_from) || isset($datetime_to) || !empty($searchKey)) {
+    //xử lý datetime
+    $sql2 = "SELECT  c.*, COUNT(n.news_id) AS total_news
+             FROM category c
+             LEFT JOIN news n ON c.category_id = n.category_id
+             WHERE 1";
+
+    // Filter theo ngày
+    if (!empty($datetime_from) && !empty($datetime_to)) {
+        $sql2 .= " AND DATE(c.category_created_at) BETWEEN '$datetime_from' AND '$datetime_to'";
+    } elseif (!empty($datetime_from)) {
+        $sql2 .= " AND DATE(c.category_created_at) >= '$datetime_from'";
+    } elseif (!empty($datetime_to)) {
+        $sql2 .= " AND DATE(c.category_created_at) <= '$datetime_to'";
+    }
+
+    // Filter theo tên
+    if (!empty($searchKey)) {
+        $sql2 .= " AND c.category_name LIKE '%$searchKey%'";
+    }
+    $sql2 .= " GROUP BY c.category_id
+               ORDER BY c.category_created_at DESC";
     $stmt1 = $conn->prepare($sql2);
     if ($stmt1 === false) {
         die("Loi prepare SQL: " . $conn->error);
@@ -132,7 +176,7 @@ layoutAdminUseInclude("header", $dataTitle);
                 <!--begin::Row-->
 
                 <div class="row">
-                    <div class="col ">
+                    <div class="col">
                         <a href="?module=news_category&action=addNewsCategory" class="btn btn-primary add-button">
                             <img class="add-icon" src="/News_website/templates/assets/images/add_circle_24dp_FFFFFF_FILL0_wght400_GRAD0_opsz24.svg" alt=""> Add News Category Name
                         </a>
@@ -146,18 +190,18 @@ layoutAdminUseInclude("header", $dataTitle);
                         <div class="col">
                             <!-- Return type: "yyyy-MM-ddThh:mm", cần thay chuỗi này thành "2025-11-10 14:30:00" để lưu vào db-->
                             <!-- giải pháp: str_replace -->
-                            <label for="" class="fw-bold">From</label>
-                            <input type="datetime-local" class="form-control" name="datetime-from">
+                            <label for="datetime-from" class="fw-bold">From</label>
+                            <input type="datetime-local" class="form-control" name="datetime-from" value="<?= htmlspecialchars($datetime_from_value) ?>">
                         </div>
                         <div class="col">
-                            <label for="" class="fw-bold">To</label>
-                            <input type="datetime-local" class="form-control" name="datetime-to">
+                            <label for="datetime-to" class="fw-bold">To</label>
+                            <input type="datetime-local" class="form-control" name="datetime-to" value="<?= htmlspecialchars($datetime_to_value) ?>">
                         </div>
                         <div class="col">
                             <label for="" class="fw-bold">Search</label>
                             <div class="d-flex">
 
-                                <input name="searchKey" class="form-control" type="text" placeholder="Enter the username or email" aria-label="Search" value="<?= htmlspecialchars($searchKey) ?>">
+                                <input name="searchKey" class="form-control" type="text" placeholder="Enter the category name" aria-label="Search" value="<?= htmlspecialchars($searchKey) ?>">
                                 <button class="btn btn-outline-success ms-1" type="submit">Search</button>
                             </div>
                         </div>
@@ -177,14 +221,10 @@ layoutAdminUseInclude("header", $dataTitle);
                             </thead>
                             <tbody>
                                 <?php
-                                $sql = "SELECT c.*, COUNT(n.news_id) AS total_news
-                                    FROM category c
-                                    LEFT JOIN news n ON c.category_id = n.category_id
-                                    GROUP BY c.category_id, c.category_name";
-                                $list = $conn->query($sql);
+
                                 $stt = 1;
-                                if ($list->num_rows > 0) {
-                                    while ($row = $list->fetch_assoc()) {
+                                if ($result2->num_rows > 0) {
+                                    while ($row = $result2->fetch_assoc()) {
                                         echo '<tr>';
                                         echo '<td class="text-center">' . $stt . '</td>';
                                         echo '<td class="text-center">' . $row["category_name"] . '</td>';
