@@ -29,8 +29,7 @@ if (isMethodGet()) {
 
 
     //Pagination
-    $sql1 = "SELECT n.*, c.category_name FROM news n, category c WHERE n.category_id=c.category_id
-    GROUP BY c.category_id, c.category_name";
+    $sql1 = "SELECT n.* FROM news n";
     $stmt = $conn->prepare($sql1);
     if ($stmt === false) {
         die("Loi prepare SQL: " . $conn->error);
@@ -86,11 +85,11 @@ if (!empty($_SERVER['QUERY_STRING'])) {
 
 //xử lý bảng rỗng
 if (isset($news_status) || isset($news_category) || !empty($searchKey)) {
-    $sql2 = "SELECT * FROM news n, category c
+    $sql3 = "SELECT * FROM news n, category c
             WHERE n.category_id=c.category_id AND news_isPost LIKE '%$news_status%' 
             AND n.category_id LIKE '%$news_category%' 
             AND (news_title LIKE '%$searchKey%' OR category_name LIKE '%$searchKey%') ORDER BY news_id DESC";
-    $stmt1 = $conn->prepare($sql2);
+    $stmt1 = $conn->prepare($sql3);
     if ($stmt1 === false) {
         die("Loi prepare SQL: " . $conn->error);
     }
@@ -157,8 +156,10 @@ layoutAdminUseInclude("header", $dataTitle);
                                 <option value="" <?= $news_category === "" ? "selected" : "" ?>>None</option>
                                 <!-- lap data -->
                                 <?php
-                                if ($result1 && $result1->num_rows > 0) {
-                                    while ($row = $result1->fetch_assoc()) {
+                                $sql = "SELECT * FROM category";
+                                $list = $conn->query($sql);
+                                if ($list && $list->num_rows > 0) {
+                                    while ($row = $list->fetch_assoc()) {
                                         $selected = ($news_category == $row["category_id"]) ? "selected" : "";
                                         echo '<option value="' . $row["category_id"] . '" ' . $selected . '>' . $row["category_name"] . '</option>';
                                     }

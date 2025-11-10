@@ -30,8 +30,7 @@ if (isMethodGet()) {
 
 
     //Pagination
-    $sql1 = "SELECT n.*, c.category_name FROM news n, category c WHERE n.category_id=c.category_id
-    GROUP BY c.category_id, c.category_name";
+    $sql1 = "SELECT n.* FROM news n";
     $stmt = $conn->prepare($sql1);
     if ($stmt === false) {
         die("Loi prepare SQL: " . $conn->error);
@@ -87,11 +86,11 @@ if (!empty($_SERVER['QUERY_STRING'])) {
 
 //xử lý bảng rỗng
 if (isset($news_status) || isset($news_category) || !empty($searchKey)) {
-    $sql2 = "SELECT * FROM news n, category c
+    $sql3 = "SELECT * FROM news n, category c
             WHERE n.category_id=c.category_id AND news_isPost LIKE '%$news_status%' 
             AND n.category_id LIKE '%$news_category%' 
             AND (news_title LIKE '%$searchKey%' OR category_name LIKE '%$searchKey%') ORDER BY news_id DESC";
-    $stmt1 = $conn->prepare($sql2);
+    $stmt1 = $conn->prepare($sql3);
     if ($stmt1 === false) {
         die("Loi prepare SQL: " . $conn->error);
     }
@@ -112,8 +111,6 @@ if (isset($news_status) || isset($news_category) || !empty($searchKey)) {
         </div>
         <div class="shadow p-3 mb-5 bg-body rounded">
             <div class="container-fluid">
-
-
                 <div class="manageNews-button my-3">
                     <a href="?module=news&action=addNews" class="btn btn-primary add-button">
                         <img class="add-icon" src="/News_website/templates/assets/images/add_circle_24dp_FFFFFF_FILL0_wght400_GRAD0_opsz24.svg" alt=""> Add News
@@ -121,8 +118,8 @@ if (isset($news_status) || isset($news_category) || !empty($searchKey)) {
                 </div>
                 <div class="row">
                     <form class="d-flex gap-1" action="" method="get">
-                        <input type="hidden" name="module" value="news_management_admin">
-                        <input type="hidden" name="action" value="listNews">
+                        <input type="hidden" name="module" value="news">
+                        <input type="hidden" name="action" value="manageNews">
                         <input type="hidden" name="user_id" value="<?php echo $user_id; ?>">
                         <div class="col-4">
                             <label for="" class="fw-bold">Filter news status</label>
@@ -138,8 +135,10 @@ if (isset($news_status) || isset($news_category) || !empty($searchKey)) {
                                 <option value="" <?= $news_category === "" ? "selected" : "" ?>>None</option>
                                 <!-- lap data -->
                                 <?php
-                                if ($result1 && $result1->num_rows > 0) {
-                                    while ($row = $result1->fetch_assoc()) {
+                                $sql = "SELECT * FROM category";
+                                $list = $conn->query($sql);
+                                if ($list && $list->num_rows > 0) {
+                                    while ($row = $list->fetch_assoc()) {
                                         $selected = ($news_category == $row["category_id"]) ? "selected" : "";
                                         echo '<option value="' . $row["category_id"] . '" ' . $selected . '>' . $row["category_name"] . '</option>';
                                     }
@@ -157,8 +156,7 @@ if (isset($news_status) || isset($news_category) || !empty($searchKey)) {
                         </div>
                     </form>
                 </div>
-                <div class="table-with-paginate">
-
+                <div class="row">
                     <div class="table-responsive">
                         <table class="table table-hover table-bordered">
                             <thead>
@@ -173,7 +171,7 @@ if (isset($news_status) || isset($news_category) || !empty($searchKey)) {
                             </thead>
                             <tbody>
                                 <?php
-                              
+
                                 $stt = 1;
                                 if ($result2->num_rows > 0) {
                                     while ($row = $result2->fetch_assoc()) {
@@ -222,10 +220,9 @@ if (isset($news_status) || isset($news_category) || !empty($searchKey)) {
                             </tbody>
                         </table>
                     </div>
-
                 </div>
                 <div class="row mt-3">
-                    <nav aria-label="Page navigation example" class="">
+                    <nav aria-label="Page navigation example" class="d-flex align-items-center justify-content-center">
                         <ul class="pagination">
                             <!-- prev button -->
                             <?php
