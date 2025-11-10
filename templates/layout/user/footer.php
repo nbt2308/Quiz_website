@@ -93,7 +93,7 @@
 
 <!-- End of .container -->
 
-
+<script src="/News_website/templates/assets/js/home/goBack.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 

@@ -67,8 +67,8 @@ a.navbar-brand.logo-brand img {
     top: 0;
     z-index: 1;
     background-color: white;
-    border-top: 1px solid #ccc;
-    border-bottom: 1px solid #ccc;
+    /* border-top: 1px solid #ccc; */
+    /* border-bottom: 1px solid #ccc; */
     height: 80px;
     display: flex;
     justify-content: center;
