@@ -171,7 +171,7 @@ if (isset($news_status) || isset($news_category) || !empty($searchKey)) {
                     <table class="table table-hover table-bordered">
                         <thead>
                             <tr>
-                                <th scope="col">STT</th>
+                                <th scope="col">ID</th>
                                 <th scope="col">Category</th>
                                 <th scope="col">Title</th>
                                 <th scope="col">Date</th>
@@ -182,11 +182,10 @@ if (isset($news_status) || isset($news_category) || !empty($searchKey)) {
                         <tbody>
                             <?php
 
-                            $stt = 1;
                             if ($result2->num_rows > 0) {
                                 while ($row = $result2->fetch_assoc()) {
                                     echo '<tr>';
-                                    echo '<td>' . $stt . '</td>';
+                                    echo '<td>' . $row["news_id"] . '</td>';
                                     echo '<td class="text-start">' . $row["category_name"] . '</td>';
                                     echo '<td class="text-start">' . $row["news_title"] . '</td>';
                                     echo '<td>' . $row["news_post_date"] . '</td>';
@@ -213,7 +212,6 @@ if (isset($news_status) || isset($news_category) || !empty($searchKey)) {
                                                         <img src="/News_website/templates/assets/images/delete_24dp_FFFFFF_FILL0_wght400_GRAD0_opsz24.svg" alt="Delete">
                                                     </a>
                                                 </td>';
-                                    $stt++;
                                     echo '</tr>';
                                 }
                             } else {

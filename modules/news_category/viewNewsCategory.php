@@ -75,14 +75,13 @@ layoutAdminUseInclude("header", $dataTitle);
                             <div class="form-control" style="height: auto; background:#e9ecef" disabled>
                                 <?php
                                 if ($category['total_news'] > 0) {
-                                    $sql1 = "SELECT n.news_title 
-                                FROM news n
-                                WHERE n.category_id = $category_id";
+                                    $sql1 = "SELECT news_title, news_id 
+                                FROM news
+                                WHERE category_id = $category_id";
                                     $result1 = $conn->query($sql1);
-                                    $stt = 1;
                                     while ($news = $result1->fetch_assoc()) {
-                                        echo '<p class="mb-1">(' . $stt . ') ' . htmlspecialchars($news['news_title']) . '</p>';
-                                        $stt++;
+                                        echo '<p class="mb-1">(' . $news['news_id'] . ') ' . htmlspecialchars($news['news_title']) . '</p>';
+                                    
                                     }
                                 } else {
                                     echo '<p class="text-danger">No news!!!</p>';

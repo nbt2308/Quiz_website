@@ -78,7 +78,7 @@ if (isMethodGet()) {
     }
 
     $sql2 .= " GROUP BY c.category_id
-               ORDER BY c.category_created_at DESC
+               ORDER BY c.category_id DESC
                LIMIT $offset, $perPage";
     $stmt1 = $conn->prepare($sql2);
     if ($stmt1 === false) {
@@ -212,7 +212,7 @@ layoutAdminUseInclude("header", $dataTitle);
                         <table class="table table-hover table-bordered">
                             <thead>
                                 <tr>
-                                    <th scope="col">STT</th>
+                                    <th scope="col">ID</th>
                                     <th scope="col">Category name</th>
                                     <th scope="col">Total post</th>
                                     <th scope="col">Date</th>
@@ -221,12 +221,10 @@ layoutAdminUseInclude("header", $dataTitle);
                             </thead>
                             <tbody>
                                 <?php
-
-                                $stt = 1;
                                 if ($result2->num_rows > 0) {
                                     while ($row = $result2->fetch_assoc()) {
                                         echo '<tr>';
-                                        echo '<td class="text-center">' . $stt . '</td>';
+                                        echo '<td class="text-center">' . $row["category_id"] . '</td>';
                                         echo '<td class="text-center">' . $row["category_name"] . '</td>';
                                         echo '<td class="text-center">' . $row["total_news"] . '</td>';
                                         echo '<td class="text-center">' . $row["category_created_at"] . '</td>';
@@ -249,7 +247,6 @@ layoutAdminUseInclude("header", $dataTitle);
                                                         <img src="/News_website/templates/assets/images/delete_24dp_FFFFFF_FILL0_wght400_GRAD0_opsz24.svg" alt="Delete">
                                                     </a>
                                                 </td>';
-                                        $stt++;
 
                                         echo '</tr>';
                                     }
