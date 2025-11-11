@@ -53,7 +53,7 @@ if (!empty($token_reset)) {
             }
 
             if (empty($errors)) {
-                $new_password = password_hash($filterArr['new_password'], PASSWORD_DEFAULT);
+                $new_password = md5($filterArr['new_password']);
                 $data = [
                     'new_password' => $new_password,
                     'user_forget_token' => null,
