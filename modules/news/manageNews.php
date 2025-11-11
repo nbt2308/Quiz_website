@@ -58,7 +58,9 @@ if (isMethodGet()) {
     }
 
     $sql2 = "SELECT * FROM news n, category c
-            WHERE n.category_id = c.category_id AND news_isPost LIKE '%$news_status%' 
+            WHERE n.category_id = c.category_id
+            AND n.user_id = $user_id
+            AND news_isPost LIKE '%$news_status%' 
             AND n.category_id LIKE '%$news_category%' 
             AND (news_title LIKE '%$searchKey%' OR category_name LIKE '%$searchKey%') 
             ORDER BY news_id DESC LIMIT $offset, $perPage";
@@ -87,7 +89,9 @@ if (!empty($_SERVER['QUERY_STRING'])) {
 //xử lý bảng rỗng
 if (isset($news_status) || isset($news_category) || !empty($searchKey)) {
     $sql3 = "SELECT * FROM news n, category c
-            WHERE n.category_id=c.category_id AND news_isPost LIKE '%$news_status%' 
+            WHERE n.category_id=c.category_id 
+            AND n.user_id = $user_id 
+            AND news_isPost LIKE '%$news_status%' 
             AND n.category_id LIKE '%$news_category%' 
             AND (news_title LIKE '%$searchKey%' OR category_name LIKE '%$searchKey%') ORDER BY news_id DESC";
     $stmt1 = $conn->prepare($sql3);
