@@ -18,7 +18,7 @@ $news = $result->fetch_assoc();
 if (isMethodPost()) {
     $filterArr = filterData();
 
-    $sql = "UPDATE news SET news_isPost=1 WHERE news_id='$news_id'";
+    $sql = "UPDATE news SET news_isPost=0 WHERE news_id='$news_id'";
     $stmt = $conn->prepare($sql);
     if ($stmt === false) {
         die("Loi prepare SQL: " . $conn->error);
@@ -28,11 +28,11 @@ if (isMethodPost()) {
     $insert_success = $stmt->execute();
 
     if ($insert_success) {
-        setSessionFlash('msg', 'Approve news succeed');
+        setSessionFlash('msg', 'Unapprove news succeed');
         setSessionFlash('msg_type', 'success');
         header("Location:?module=news_management_admin&action=newsApproval&user_id=$user_id_current");
     } else {
-        setSessionFlash('msg', 'Approve news failed');
+        setSessionFlash('msg', 'Unapprove news failed');
         setSessionFlash('msg_type', 'danger');
     }
     $stmt->close();
@@ -46,7 +46,7 @@ if (isMethodPost()) {
 //header
 
 $dataTitle = [
-    'title' => "Approve news",
+    'title' => "Unapprove news",
     'breadcrumb' => "List News",
     'data' => $user_name_current,
     'module' => 'news_management_admin',
@@ -147,7 +147,7 @@ layoutAdminUseInclude("header", $dataTitle);
                     <!-- Nút hành động -->
                     <div class="d-flex justify-content-between mt-4">
                         <a onclick="history.back()" class=" btn btn-secondary">Back</a>
-                        <button type="submit" class="btn btn-success">Approve News</button>
+                        <button type="submit" class="btn btn-warning">Unapprove News</button>
                     </div>
                 </form>
 

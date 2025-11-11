@@ -25,8 +25,7 @@ if (isMethodGet()) {
 
 
     //Pagination
-    $sql1 = "SELECT n.*, c.category_name FROM news n, category c WHERE n.category_id=c.category_id
-    GROUP BY c.category_id, c.category_name";
+    $sql1 = "SELECT * FROM news";
     $stmt = $conn->prepare($sql1);
     if ($stmt === false) {
         die("Loi prepare SQL: " . $conn->error);
@@ -54,10 +53,10 @@ if (isMethodGet()) {
     }
 
     $sql2 = "SELECT * FROM news n, category c
-            WHERE n.category_id = c.category_id AND news_isPost=0 
+            WHERE n.category_id = c.category_id 
             AND n.category_id LIKE '%$news_category%' 
-            AND (news_title LIKE '%$searchKey%' OR category_name LIKE '%$searchKey%') 
-            ORDER BY news_id DESC LIMIT $offset, $perPage";
+            AND (n.news_title LIKE '%$searchKey%' OR c.category_name LIKE '%$searchKey%') 
+            ORDER BY n.news_id DESC LIMIT $offset, $perPage";
     $stmt1 = $conn->prepare($sql2);
     if ($stmt1 === false) {
         die("Loi prepare SQL: " . $conn->error);
@@ -82,11 +81,11 @@ if (!empty($_SERVER['QUERY_STRING'])) {
 
 //xử lý bảng rỗng
 if (isset($news_category) || !empty($searchKey)) {
-    $sql2 = "SELECT * FROM news n, category c
-            WHERE n.category_id=c.category_id AND news_isPost=0
+    $sql3 = "SELECT * FROM news n, category c
+            WHERE n.category_id=c.category_id 
             AND n.category_id LIKE '%$news_category%' 
-            AND (news_title LIKE '%$searchKey%' OR category_name LIKE '%$searchKey%') ORDER BY news_id DESC";
-    $stmt1 = $conn->prepare($sql2);
+            AND (n.news_title LIKE '%$searchKey%' OR c.category_name LIKE '%$searchKey%') ORDER BY n.news_id DESC";
+    $stmt1 = $conn->prepare($sql3);
     if ($stmt1 === false) {
         die("Loi prepare SQL: " . $conn->error);
     }
@@ -122,18 +121,10 @@ layoutAdminUseInclude("header", $dataTitle);
     <!--begin::App Content-->
     <div class="app-content container">
         <!--begin::Container-->
+
         <div class="shadow p-3 mb-5 bg-body rounded">
             <div class="container-fluid">
                 <!--begin::Row-->
-
-                <div class="row">
-                    <!-- <div class="col ">
-                        <a href="?module=news_management_admin&action=addNews&user_id=<?php echo $user_id; ?>" class="btn btn-primary mb-3">
-                            <i class="fa-solid fa-plus"></i>
-                            <span>Add new post</span>
-                        </a>
-                    </div> -->
-                </div>
                 <div class="row">
                     <form class="d-flex gap-1" action="" method="get">
                         <input type="hidden" name="module" value="news_management_admin">
@@ -166,8 +157,8 @@ layoutAdminUseInclude("header", $dataTitle);
                 </div>
                 <div class="row ">
                     <div class="table-responsive">
-                        <table class="table table-hover table-bordered mb-0">
-                            <thead>
+                        <table class="table table-hover align-middle text-center">
+                            <thead class="table-dark">
                                 <tr>
                                     <th scope="col">ID</th>
                                     <th scope="col">CATEGORY</th>
@@ -190,18 +181,24 @@ layoutAdminUseInclude("header", $dataTitle);
                                         echo '<td>' . $row['news_title'] . '</td>';
                                         echo '<td>' . $row['news_post_date'] . '</td>';
                                         if ($row["news_isPost"] === 1) {
-                                            echo '<td><i class="fa-solid fa-circle" style="color: #04ff00;"></i> Approved</td>';
+                                            echo '<td><span class="badge bg-success">Approved</span></td>';
                                         } else {
-                                            echo '<td><i class="fa-solid fa-circle" style="color: #f50000;"></i> Not approved</td>';
+                                            echo '<td><span class="badge bg-danger">Not approved</span></td>';
                                         }
                                         echo '<td>';
-                                        echo '<a class="btn btn-info" title="View news information" href="?module=news_management_admin&action=viewNews&user_id=' . $user_id . '&news_id=' . $row['news_id'] . '"><i class="fa-solid fa-eye" style="color: #ffffff;"></i></a>';
+                                        echo '<a class="btn btn-md btn-info text-white" title="View news information" href="?module=news_management_admin&action=viewNews&user_id=' . $user_id . '&news_id=' . $row['news_id'] . '"><i class="bi bi-eye"></i> View</a>';
                                         echo '</td>';
+                                        if ($row["news_isPost"] === 1) {
+                                            echo '<td>';
+                                            echo '<a class="btn btn-md btn-warning text-white" title="Unapprove news" href="?module=news_management_admin&action=unapproveNews&user_id=' . $user_id . '&news_id=' . $row['news_id'] . '"><i class="fa-solid fa-circle-xmark"></i>Unapprove</a>';
+                                            echo '</td>';
+                                        } else {
+                                            echo '<td>';
+                                            echo '<a class="btn btn-md btn-success mx-2 text-white" title="Approve news" href="?module=news_management_admin&action=approveNews&user_id=' . $user_id . '&news_id=' . $row['news_id'] . '"><i class="fa-solid fa-circle-check" style="color: #ffffff;"></i>Approve</a>';
+                                            echo '</td>';
+                                        }
                                         echo '<td>';
-                                        echo '<a class="btn btn-success mx-2" title="Approve news" href="?module=news_management_admin&action=approveNews&user_id=' . $user_id . '&news_id=' . $row['news_id'] . '"><i class="fa-solid fa-circle-check" style="color: #ffffff;"></i></a>';
-                                        echo '</td>';
-                                        echo '<td>';
-                                        echo '<a class="btn btn-danger" title="Delete news" href="?module=news_management_admin&action=deleteNews&user_id=' . $user_id . '&news_id=' . $row['news_id'] . '"><i class="fa-solid fa-circle-xmark"></i></a>';
+                                        echo '<a class="btn btn-danger" title="Delete news" href="?module=news_management_admin&action=deleteNews&user_id=' . $user_id . '&news_id=' . $row['news_id'] . '"><i class="fa-solid fa-trash"></i>Delete</a>';
                                         echo '</td>';
                                         echo '</tr>';
                                     }
@@ -262,8 +259,9 @@ layoutAdminUseInclude("header", $dataTitle);
             </div>
             <!--end::Container-->
         </div>
-    </div>
-    <!--end::App Content-->
+
+
+        <!--end::App Content-->
 </main>
 <!--end::App Main-->
 <?php layoutAdmin("footer"); ?>
