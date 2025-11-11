@@ -47,6 +47,7 @@ if (!empty($_GET['category_id'])) {
                         </div>
                     </div>
                 </div>
+            </div>    
                         ';
             }
         } else {
@@ -56,8 +57,7 @@ if (!empty($_GET['category_id'])) {
             echo '</div>';
         }
         ?>
-
-    </div>
+        <?php layoutUser('scrollBack') ?>
     </div>
 </main>
 <?php
