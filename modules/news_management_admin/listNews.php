@@ -203,9 +203,9 @@ layoutAdminUseInclude("header", $dataTitle);
                                         echo '<td>' . $row['news_title'] . '</td>';
                                         echo '<td>' . $row['news_post_date'] . '</td>';
                                         if ($row["news_isPost"] === 1) {
-                                            echo '<td><i class="fa-solid fa-circle" style="color: #04ff00;"></i> Approved</td>';
+                                            echo '<td><span class="badge bg-success">Approved</span></td>';
                                         } else {
-                                            echo '<td><i class="fa-solid fa-circle" style="color: #f50000;"></i> Not approved</td>';
+                                            echo '<td><span class="badge bg-danger">Not approved</span></td>';
                                         }
                                         echo '<td>';
                                         echo '<a class="btn btn-info" title="View news information" href="?module=news_management_admin&action=viewNews&user_id=' . $user_id . '&news_id=' . $row['news_id'] . '"><i class="fa-solid fa-eye" style="color: #ffffff;"></i></a>';
