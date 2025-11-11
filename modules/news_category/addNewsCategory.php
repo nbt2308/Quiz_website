@@ -1,6 +1,13 @@
 <?php
-layoutUser('header');
 
+$user_id;
+$user_id_current = getSession("user_id");
+if (!empty($_GET['user_id'])) {
+    $user_id = $_GET['user_id'];
+}
+$sql = "SELECT * FROM user WHERE user_id='$user_id'";
+$result = $conn->query($sql);
+$data = $result->fetch_assoc();
 //validate data
 if (isMethodPost()) {
     $filterArr = filterData();
@@ -11,6 +18,13 @@ if (isMethodPost()) {
     } else {
         if (strlen(trim($filterArr['category_name'])) < 3) {
             $errors['category_name']['length'] = "Category name must be 3 characters long";
+        }
+        $category_name = $filterArr['category_name'];
+        $sql = "SELECT COUNT(*) AS total FROM category WHERE category_name='$category_name'";
+        $result = $conn->query($sql);
+        $checkCategoryName = $result->fetch_assoc()['total'];
+        if ($checkCategoryName > 0) {
+            $errors['category_name']['exist'] = "Category name already exists";
         }
     }
 
@@ -28,45 +42,82 @@ if (isMethodPost()) {
         //lưu vào biến để kiểm tra trạng thái
         $insert_success = $stmt->execute();
         if ($insert_success) {
-            header("Location: ?module=news_category&action=listNewsCategory");
+            header("Location: ?module=news_category&action=listNewsCategory&user_id=$user_id");
+        } else {
+            setSessionFlash('msg', 'Add new category failed');
+            setSessionFlash('msg_type', 'danger');
         }
     } else {
         setSessionFlash('oldData', $filterArr);
         setSessionFlash('errors', $errors);
+        setSessionFlash('msg', 'Invalid data, please check again');
+        setSessionFlash('msg_type', 'danger');
     }
     $oldData = getSessionFlash('oldData');
     $errorsArr = getSessionFlash('errors');
+    $msg = getSessionFlash('msg');
+    $msg_type = getSessionFlash('msg_type');
 } else {
     $msg = "";
     $msg_type = '';
     $oldData = "";
     $errorsArr = "";
 }
+//header
+$user_name = $data['user_name'];
+$dataTitle = [
+    'title' => "Add new category",
+    'breadcrumb' => "List Category",
+    'data' => $user_name,
+    'module' => 'news_category',
+    'action' => 'listNewsCategory'
+];
+layoutAdminUseInclude("header", $dataTitle);
 ?>
 
-<main>
-    <div class="container my-4">
-        <h3 class="mb-4 text-center fw-bold">Add News Category Name</h3>
-        <form action="" method="POST" enctype="multipart/form-data" class="p-4 border rounded bg-light">
+<?php layoutAdmin("sidebar"); ?>
+<main class="app-main">
+    <!--begin::App Content Header-->
+    <div class="app-content-header">
+        <!--begin::Container-->
 
-            <!-- Chủ đề tin -->
-            <div class="mb-3">
-                <label for="category_name" class="form-label fw-bold">News category name</label>
-                <input name="category_name" id="category_name" type="text" class="form-control" placeholder="Enter news category name">
-                <?php
-                echo formErrors($errorsArr, 'category_name');
-                ?>
-            </div>
+        <?php layoutAdminUseInclude("breadcrumb", $dataTitle); ?>
 
-            <!-- Nút hành động -->
-            <div class="d-flex justify-content-between mt-4">
-                <a href="?module=news_category&action=listNewsCategory" class="btn btn-secondary">Back</a>
-                <button type="submit" class="btn btn-primary">Add news category name</button>
-            </div>
-        </form>
+        <!--end::Container-->
     </div>
-</main>
+    <!--end::App Content Header-->
+    <!--begin::App Content-->
+    <div class="app-content container">
+        <!--begin::Container-->
+        <div class="shadow p-3 mb-5 bg-body rounded">
+            <div class="container-fluid">
+                <!--begin::Row-->
+                <?php getMsg($msg, $msg_type); ?>
+                <form action="" method="POST" enctype="multipart/form-data" class="p-4">
+                    <div class="row">
+                        <div class="mb-3">
+                            <label for="category_name" class="form-label fw-bold">News category name</label>
+                            <input name="category_name" id="category_name" type="text" class="form-control" placeholder="Enter news category name">
+                            <?php
+                            echo formErrors($errorsArr, 'category_name');
+                            ?>
+                        </div>
 
-<?php
-layoutUser('footer');
-?>
+                        <!-- Nút hành động -->
+                        <div class="d-flex justify-content-between mt-4">
+                            <a href="?module=news_category&action=listNewsCategory&user_id=<?php echo $user_id_current; ?>" class="btn btn-secondary">Back</a>
+                            <button type="submit" class="btn btn-primary">Add news category name</button>
+                        </div>
+                </form>
+
+
+                <!--end::Row-->
+
+            </div>
+            <!--end::Container-->
+        </div>
+    </div>
+    <!--end::App Content-->
+</main>
+<!--end::App Main-->
+<?php layoutAdmin("footer"); ?>

@@ -177,8 +177,8 @@ layoutAdminUseInclude("header", $dataTitle);
 
                 <div class="row">
                     <div class="col">
-                        <a href="?module=news_category&action=addNewsCategory" class="btn btn-primary add-button">
-                            <img class="add-icon" src="/News_website/templates/assets/images/add_circle_24dp_FFFFFF_FILL0_wght400_GRAD0_opsz24.svg" alt=""> Add News Category Name
+                        <a href="?module=news_category&action=addNewsCategory&user_id=<?php echo $user_id; ?>" class="btn btn-primary add-button">
+                            <img class="add-icon" src="/News_website/templates/assets/images/add_circle_24dp_FFFFFF_FILL0_wght400_GRAD0_opsz24.svg" alt=""> Add New Category
                         </a>
                     </div>
                 </div>
@@ -233,19 +233,19 @@ layoutAdminUseInclude("header", $dataTitle);
 
                                         echo '
                                                 <td >
-                                                    <a href="?module=news_category&action=viewNewsCategory&id=' . $row['category_id'] . '" class="btn btn-info btn-sm">
+                                                    <a href="?module=news_category&action=viewNewsCategory&user_id=' . $user_id . '&category_id=' . $row['category_id'] . '" class="btn btn-info btn-sm">
                                                         <img src="/News_website/templates/assets/images/visibility_24dp_FFFFFF_FILL0_wght400_GRAD0_opsz24.svg" alt="View">
                                                     </a>
 
                                                 </td>
                                                 <td >
-                                                    <a href="?module=news_category&action=editNewsCategory&id=' . $row['category_id'] . '" class="btn btn-warning btn-sm">
+                                                    <a href="?module=news_category&action=editNewsCategory&user_id=' . $user_id . '&category_id=' . $row['category_id'] . '" class="btn btn-warning btn-sm">
                                                         <img src="/News_website/templates/assets/images/edit_24dp_FFFFFF_FILL0_wght400_GRAD0_opsz24.svg" alt="Edit">
                                                     </a>
                                                 </td>
                                                 
                                                 <td >
-                                                    <a href="?module=news_category&action=deleteNewsCategory&id=' . $row['category_id'] . '" class="btn btn-danger btn-sm">
+                                                    <a href="?module=news_category&action=deleteNewsCategory&user_id=' . $user_id . '&category_id=' . $row['category_id'] . '" class="btn btn-danger btn-sm">
                                                         <img src="/News_website/templates/assets/images/delete_24dp_FFFFFF_FILL0_wght400_GRAD0_opsz24.svg" alt="Delete">
                                                     </a>
                                                 </td>';
