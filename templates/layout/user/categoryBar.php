@@ -1,5 +1,5 @@
 <div class="container category my-2 p-3 rounded shadow-sm">
-    <div class="d-flex flex-nowrap flex-md-wrap justify-content-start gap-2" style="scroll-behavior: smooth;">
+    <div class="d-flex flex-nowrap flex-md-wrap justify-content-start gap-2" style="scroll-behavior: smooth; overflow-x: auto;">
         <?php
         $current_category = isset($_GET['category_id']) ? (int)$_GET['category_id'] : 0;
 

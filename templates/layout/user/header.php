@@ -33,26 +33,26 @@
                     <!-- Nav links + user -->
                     <div class="collapse navbar-collapse" id="navbarContent">
                         <ul class="navbar-nav me-auto mb-2 mb-lg-0 align-items-lg-center">
-                            <li class="nav-item">
+                            <li class="nav-item mx-lg-2 text-center">
                                 <a class="nav-link <?= ($_GET['action'] == "index") ? "active fw-bold fs-6" : "fs-6" ?>" href="?module=home&action=index">Home</a>
                             </li>
 
                             <?php $user_id = getSession("user_id"); ?>
-                            <li class="nav-item mx-lg-2">
+                            <li class="nav-item mx-lg-2 text-center">
                                 <a class="nav-link <?= ($_GET['action'] == "manageNews") ? "active fw-bold fs-6" : "fs-6" ?>" href="?module=news&action=manageNews&user_id=<?= $user_id ?>">Manage</a>
                             </li>
 
                             <?php if (getSession('user_role') == 1): ?>
-                                <li class="nav-item">
+                                <li class="nav-item mx-lg-2 text-center">
                                     <a class="nav-link fs-6" href="?module=admin&action=index&user_id=<?= $user_id ?>">Admin</a>
                                 </li>
                             <?php endif; ?>
 
-                            <li class="nav-item mx-lg-2">
+                            <li class="nav-item mx-lg-2 text-center">
                                 <a class="nav-link <?= ($_GET['action'] == "aboutUs") ? "active fw-bold fs-6" : "fs-6" ?>" href="?module=home&action=aboutUs">About Us</a>
                             </li>
 
-                            <li class="nav-item datetime mx-lg-2 ms-3">
+                            <li class="nav-item datetime mx-lg-2 text-center">
                                 <?php echo '<a class="text-secondary text-decoration-none" disabled>' . date('d/m/Y ') . '</a>'; ?>
                             </li>
                         </ul>
