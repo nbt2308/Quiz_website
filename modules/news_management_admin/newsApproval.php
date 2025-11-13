@@ -136,8 +136,10 @@ layoutAdminUseInclude("header", $dataTitle);
                                 <option value="" <?= $news_category === "" ? "selected" : "" ?>>None</option>
                                 <!-- lap data -->
                                 <?php
-                                if ($result1 && $result1->num_rows > 0) {
-                                    while ($row = $result1->fetch_assoc()) {
+                                $sql = "SELECT * FROM category";
+                                $list = $conn->query($sql);
+                                if ($list && $list->num_rows > 0) {
+                                    while ($row = $list->fetch_assoc()) {
                                         $selected = ($news_category == $row["category_id"]) ? "selected" : "";
                                         echo '<option value="' . $row["category_id"] . '" ' . $selected . '>' . $row["category_name"] . '</option>';
                                     }
