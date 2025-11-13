@@ -180,8 +180,8 @@ layoutAdminUseInclude("header", $dataTitle);
                 <!--begin::Row-->
                 <?php getMsg($msg, $msg_type); ?>
                 <form action="" method="POST" enctype="multipart/form-data" class="p-4">
-                    <div class="row">
-                        <div class="col">
+                    <div class="row g-3">
+                        <div class="col-12 col-md-6">
                             <div class="mb-3">
                                 <label for="category" class="form-label">Select category</label>
                                 <select name="category" id="category" class="form-select">
@@ -199,7 +199,7 @@ layoutAdminUseInclude("header", $dataTitle);
                                 ?>
                             </div>
                         </div>
-                        <div class="col">
+                        <div class="col-12 col-md-6">
                             <div class="mb-3">
                                 <label for="news_title" class="form-label">News title</label>
                                 <input name="news_title" id="news_title" type="text" class="form-control" placeholder="Enter news title" value="<?= htmlspecialchars($news['news_title']) ?>">
@@ -208,53 +208,54 @@ layoutAdminUseInclude("header", $dataTitle);
                                 ?>
                             </div>
                         </div>
-                    </div>
-                    <div class="row">
-                        <div class="mb-3">
-                            <label for="news_summary" class="form-label">News summary</label>
-                            <input name="news_summary" id="news_summary" type="text" class="form-control" placeholder="Enter short summary" value="<?= htmlspecialchars($news['news_summary']) ?>">
-                            <?php
-                            echo formErrors($errorsArr, 'news_summary');
-                            ?>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="mb-3">
-                            <label for="news_content" class="form-label">News content</label>
-                            <?php
-                            $content = $news['news_description']; // Lấy dữ liệu từ DB, ví dụ: &#60;p&#62;&#38;aacute;dasdasda&#60;/p&#62;
 
-                            // Giải mã 2 lần
-                            $decoded = html_entity_decode($content, ENT_QUOTES | ENT_HTML5, 'UTF-8');
-                            $decoded = html_entity_decode($decoded, ENT_QUOTES | ENT_HTML5, 'UTF-8');
-                            ?>
-                            <textarea name="news_content" id="news_content" class="form-control" rows="5" placeholder="Enter content here"><?php echo $decoded ?></textarea>
-                            <script>
-                                CKEDITOR.replace('news_content');
-                            </script>
-                            <?php
-                            echo formErrors($errorsArr, 'news_content');
-                            ?>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="mb-3">
-                            <label for="formFileLg" class="form-label">Upload a news image</label>
-                            <input name="image_file" class="form-control" id="formFileLg" type="file">
-                            <div class="mb-2">
-                                <p>Current image:</p>
-                                <img src="<?= htmlspecialchars($news['news_image_path']) ?>" alt="Current image" style="max-width: 200px">
+                        <div class="col-12 col-md-6">
+                            <div class="mb-3">
+                                <label for="news_summary" class="form-label">News summary</label>
+                                <input name="news_summary" id="news_summary" type="text" class="form-control" placeholder="Enter short summary" value="<?= htmlspecialchars($news['news_summary']) ?>">
+                                <?php
+                                echo formErrors($errorsArr, 'news_summary');
+                                ?>
                             </div>
                         </div>
-                    </div>
+                        <div class="col-12 ">
+                            <div class="mb-3">
+                                <label for="news_content" class="form-label">News content</label>
+                                <?php
+                                $content = $news['news_description']; // Lấy dữ liệu từ DB, ví dụ: &#60;p&#62;&#38;aacute;dasdasda&#60;/p&#62;
 
-                    <div class="row">
-                        <div class="mb-3">
-                            <label for="image_description" class="form-label">Image description</label>
-                            <input name="image_description" id="image_description" type="text" class="form-control" placeholder="Enter image description" value="<?= htmlspecialchars($news['news_image_note']) ?>">
-                            <?php
-                            echo formErrors($errorsArr, 'image_description');
-                            ?>
+                                // Giải mã 2 lần
+                                $decoded = html_entity_decode($content, ENT_QUOTES | ENT_HTML5, 'UTF-8');
+                                $decoded = html_entity_decode($decoded, ENT_QUOTES | ENT_HTML5, 'UTF-8');
+                                ?>
+                                <textarea name="news_content" id="news_content" class="form-control" rows="5" placeholder="Enter content here"><?php echo $decoded ?></textarea>
+                                <script>
+                                    CKEDITOR.replace('news_content');
+                                </script>
+                                <?php
+                                echo formErrors($errorsArr, 'news_content');
+                                ?>
+                            </div>
+                        </div>
+                        <div class="col-12 ">
+                            <div class="mb-3">
+                                <label for="formFileLg" class="form-label">Upload a news image</label>
+                                <input name="image_file" class="form-control" id="formFileLg" type="file">
+                                <div class="mb-2">
+                                    <p>Current image:</p>
+                                    <img src="<?= htmlspecialchars($news['news_image_path']) ?>" alt="Current image" style="max-width: 200px">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-12 col-md-6">
+                            <div class="mb-3">
+                                <label for="image_description" class="form-label">Image description</label>
+                                <input name="image_description" id="image_description" type="text" class="form-control" placeholder="Enter image description" value="<?= htmlspecialchars($news['news_image_note']) ?>">
+                                <?php
+                                echo formErrors($errorsArr, 'image_description');
+                                ?>
+                            </div>
                         </div>
                     </div>
                     <!-- Nút hành động -->

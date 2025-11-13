@@ -74,31 +74,32 @@ layoutAdminUseInclude("header", $dataTitle);
             <div class="container-fluid">
                 <!--begin::Row-->
                 <form action="" method="POST" enctype="multipart/form-data" class="p-4">
-                    <div class="row">
-                        <div class="col">
+                    <div class="row g-3">
+                        <div class="col-12 col-md-6">
                             <div class="mb-3">
                                 <label class="form-label">Category</label>
                                 <input type="text" class="form-control" value="<?= htmlspecialchars($category['category_name']) ?>" disabled>
                             </div>
                         </div>
-                        <div class="col">
+                        <div class="col-12 col-md-6">
                             <div class="mb-3">
                                 <label class="form-label">Created at</label>
                                 <input type="text" class="form-control" value="<?= htmlspecialchars($category['category_created_at']) ?>" disabled>
                             </div>
                         </div>
-                    </div>
-                    <div class="row">
-                        <div class="mb-3">
-                            <label class="form-label">Total news</label>
-                            <input type="text" class="form-control" value="<?= htmlspecialchars($category['total_news']) ?>" disabled>
+
+                        <div class="col-12">
+                            <div class="mb-3">
+                                <label class="form-label">Total news</label>
+                                <input type="text" class="form-control" value="<?= htmlspecialchars($category['total_news']) ?>" disabled>
+                            </div>
                         </div>
                     </div>
 
                     <!-- Nút hành động -->
                     <div class="d-flex justify-content-between mt-4">
                         <a href="?module=news_category&action=listNewsCategory&user_id=<?php echo $user_id_current; ?>" class="btn btn-secondary">Cancel</a>
-                        <button type="submit" class="btn btn-danger">Delete Category</button>
+                        <button type="submit" class="btn btn-danger">Delete</button>
                     </div>
                 </form>
 

@@ -200,10 +200,11 @@ layoutAdminUseInclude("header", $dataTitle);
                             <label for="datetime-to" class="fw-bold">To</label>
                             <input type="datetime-local" class="form-control" name="datetime-to" value="<?= htmlspecialchars($datetime_to_value) ?>">
                         </div>
-                        <div class="col-12 col-md-4">
-                            <label for="searchKey" class="form-label fw-bold">Search</label>
+                       <div class="col-12 col-md-4">
+                            <label for="searchKey" class="fw-bold">Search</label>
                             <div class="input-group">
-                                <input name="searchKey" class="form-control" type="text" placeholder="Enter the category name" aria-label="Search" value="<?= htmlspecialchars($searchKey) ?>"> <button class="btn btn-success" type="submit">
+                                <input id="searchKey" name="searchKey" class="form-control" type="text" placeholder="Enter the category name" value="<?= htmlspecialchars($searchKey) ?>">
+                                <button class="btn btn-success" type="submit">
                                     <i class="fa-solid fa-magnifying-glass"></i> Search
                                 </button>
                             </div>

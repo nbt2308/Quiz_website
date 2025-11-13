@@ -67,7 +67,11 @@ if (isMethodPost()) {
         $news_image_path = '';
         if (!empty($_FILES['user_image']['name'])) {
             $targetDir = 'templates/uploads/';
-            $targetFile = $targetDir . $news_title . "_" . basename($_FILES['user_image']['name']);
+            // VẤN ĐỀ: $news_title không tồn tại ở đây, có thể đây là code copy/paste. 
+            // Tạm thời sửa bằng user_name để tránh lỗi.
+            $username_safe = preg_replace("/[^a-zA-Z0-9]/", "_", $filterArr['user_name']);
+            $targetFile = $targetDir . $username_safe . "_" . basename($_FILES['user_image']['name']);
+            
             if (move_uploaded_file($_FILES['user_image']['tmp_name'], $targetFile)) {
                 $news_image_path = $targetFile;
             } else {
@@ -82,7 +86,7 @@ if (isMethodPost()) {
             'user_status' => $filterArr['user_status'],
             'user_address' => $filterArr['user_address'],
             'user_bio' => $filterArr['user_bio'],
-            'user_image' => $news_image_path,
+            'user_image' => $news_image_path, // LƯU Ý: Tên key 'user_image'
             'user_created_at' => date('Y-m-d H:i:s')
         ];
 
@@ -103,7 +107,7 @@ if (isMethodPost()) {
             $data['user_status'],
             $data['user_address'],
             $data['user_bio'],
-            $data['user_image'],
+            $data['user_image'], // Tên key 'user_image' được dùng ở đây
             $data['user_created_at']
         );
         //lưu vào biến để kiểm tra trạng thái
@@ -122,17 +126,14 @@ if (isMethodPost()) {
         setSessionFlash('oldData', $filterArr);
         setSessionFlash('errors', $errors);
     }
+} 
 
-    $oldData = getSessionFlash('oldData');
-    $errorsArr = getSessionFlash('errors');
-    $msg = getSessionFlash('msg');
-    $msg_type = getSessionFlash('msg_type');
-} else {
-    $msg = "";
-    $msg_type = '';
-    $oldData = "";
-    $errorsArr = "";
-}
+// Lấy dữ liệu cũ và lỗi (nếu có) sau khi xử lý POST
+$oldData = getSessionFlash('oldData') ?? []; // Dùng ?? [] để đảm bảo là mảng
+$errorsArr = getSessionFlash('errors') ?? [];
+$msg = getSessionFlash('msg');
+$msg_type = getSessionFlash('msg_type');
+
 
 //header
 $user_name = $data['user_name'];
@@ -140,8 +141,8 @@ $dataTitle = [
     'title' => "Add new user",
     'breadcrumb' => "List Users",
     'data' => $user_name,
-    'module'=>'users_management',
-    'action'=>'listUser'
+    'module' => 'users_management',
+    'action' => 'listUser'
 ];
 layoutAdminUseInclude("header", $dataTitle);
 ?>
@@ -150,117 +151,105 @@ layoutAdminUseInclude("header", $dataTitle);
 <main class="app-main">
     <!--begin::App Content Header-->
     <div class="app-content-header">
-        <!--begin::Container-->
-
         <?php layoutAdminUseInclude("breadcrumb", $dataTitle); ?>
-
-        <!--end::Container-->
     </div>
     <!--end::App Content Header-->
+    
     <!--begin::App Content-->
     <div class="app-content container">
-        <!--begin::Container-->
         <div class="shadow p-3 mb-5 bg-body rounded">
             <div class="container-fluid">
-                <!--begin::Row-->
                 <?php getMsg($msg, $msg_type); ?>
+                
                 <form action="" method="POST" enctype="multipart/form-data" class="p-4">
-                    <div class="row">
-                        <div class="col">
+                    
+                    <div class="row g-3">
+
+                        <div class="col-12 col-md-6">
                             <div class="mb-3">
-                                <label for="exampleFormControlInput1" class="form-label fw-bold">Email address (<span class="text-danger">*</span>)</label>
-                                <input type="text" name="user_email" class="form-control" id="exampleFormControlInput1" placeholder="Enter email address" require>
-                                <?php
-                                echo formErrors($errorsArr, 'user_email');
-                                ?>
+                                <label for="user_email" class="form-label fw-bold">Email address (<span class="text-danger">*</span>)</label>
+                                <input type="text" name="user_email" class="form-control" id="user_email" placeholder="Enter email address" 
+                                       value="<?php echo $oldData['user_email'] ?? ''; ?>" required>
+                                <?php echo formErrors($errorsArr, 'user_email'); ?>
                             </div>
                         </div>
-                        <div class="col">
+
+                        <div class="col-12 col-md-6">
                             <div class="mb-3">
-                                <label for="exampleFormControlInput1" class="form-label fw-bold">Password (<span class="text-danger">*</span>)</label>
-                                <input type="password" name="user_password" class="form-control" id="exampleFormControlInput1" placeholder="Enter password" require>
-                                <?php
-                                echo formErrors($errorsArr, 'user_password');
-                                ?>
+                                <label for="user_password" class="form-label fw-bold">Password (<span class="text-danger">*</span>)</label>
+                                <input type="password" name="user_password" class="form-control" id="user_password" placeholder="Enter password" required>
+                                <?php echo formErrors($errorsArr, 'user_password'); ?>
                             </div>
                         </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-6">
+
+                        <div class="col-12 col-md-6">
                             <div class="mb-3">
-                                <label for="exampleFormControlInput1" class="form-label fw-bold">Username (<span class="text-danger">*</span>)</label>
-                                <input type="text" name="user_name" class="form-control" id="exampleFormControlInput1" placeholder="Enter username" require>
-                                <?php
-                                echo formErrors($errorsArr, 'user_name');
-                                ?>
+                                <label for="user_name" class="form-label fw-bold">Username (<span class="text-danger">*</span>)</label>
+                                <input type="text" name="user_name" class="form-control" id="user_name" placeholder="Enter username" 
+                                       value="<?php echo $oldData['user_name'] ?? ''; ?>" required>
+                                <?php echo formErrors($errorsArr, 'user_name'); ?>
                             </div>
                         </div>
-                        <div class="col-6">
+
+                        <div class="col-12 col-md-6">
                             <div class="mb-3">
-                                <label for="exampleFormControlInput1" class="form-label fw-bold">Select role for user (<span class="text-danger">*</span>)</label>
-                                <select class="form-select " name="user_role" aria-label=".form-select-lg example" require>
-                                    <option selected value="0">User</option>
-                                    <option value="1">Admin</option>
+                                <label for="user_role" class="form-label fw-bold">Select role for user (<span class="text-danger">*</span>)</label>
+                                <select class="form-select" name="user_role" id="user_role" required>
+                                    <option value="0" <?php echo (isset($oldData['user_role']) && $oldData['user_role'] == '0') ? 'selected' : ''; ?>>User</option>
+                                    <option value="1" <?php echo (isset($oldData['user_role']) && $oldData['user_role'] == '1') ? 'selected' : ''; ?>>Admin</option>
                                 </select>
-
                             </div>
                         </div>
-                    </div>
-                    <div class="row">
-                        <div class="mb-3">
-                            <label for="user_status" class="form-label fw-bold">Select status for user (<span class="text-danger">*</span>)</label>
-                            <select name="user_status" id="user_status" class="form-select">
-                                <option selected value="0">Pending</option>
-                                <option value="1">Activated</option>
-                            </select>
 
+                        <div class="col-12 col-md-6">
+                             <div class="mb-3">
+                                <label for="user_status" class="form-label fw-bold">Select status for user (<span class="text-danger">*</span>)</label>
+                                <select name="user_status" id="user_status" class="form-select" required>
+                                    <option value="0" <?php echo (isset($oldData['user_status']) && $oldData['user_status'] == '0') ? 'selected' : ''; ?>>Pending</option>
+                                    <option value="1" <?php echo (isset($oldData['user_status']) && $oldData['user_status'] == '1') ? 'selected' : ''; ?>>Activated</option>
+                                </select>
+                            </div>
                         </div>
-                    </div>
-                    <div class="row">
-                        <div class="mb-3">
-                            <label for="user_address" class="form-label fw-bold">Address (<span class="text-danger">*</span>)</label>
-                            <input name="user_address" id="user_address" type="text" class="form-control" placeholder="Enter address" require>
-                            <?php
-                            echo formErrors($errorsArr, 'user_address');
-                            ?>
-                        </div>
-                    </div>
 
-                    <div class="row">
-                        <div class="mb-3">
-                            <label for="user_bio" class="form-label fw-bold">Bio</label>
-                            <textarea name="user_bio" id="user_bio" class="form-control" rows="5" placeholder="Enter bio"></textarea>
-                            <script>
-                                CKEDITOR.replace('user_bio');
-                            </script>
+                        <div class="col-12 col-md-6">
+                            <div class="mb-3">
+                                <label for="user_address" class="form-label fw-bold">Address (<span class="text-danger">*</span>)</label>
+                                <input name="user_address" id="user_address" type="text" class="form-control" placeholder="Enter address" 
+                                       value="<?php echo $oldData['user_address'] ?? ''; ?>" required>
+                                <?php echo formErrors($errorsArr, 'user_address'); ?>
+                            </div>
                         </div>
-                    </div>
 
-                    <!-- Hình ảnh -->
-                    <div class="row">
-                        <div class="mb-3">
-                            <label for="formFileLg" class="form-label fw-bold">Upload a user image (<span class="text-danger">*</span>)</label>
-                            <input name="user_image" class="form-control" id="formFileLg" type="file">
-                            <?php
-                            echo formErrors($errorsArr, 'user_image');
-                            ?>
+                        <div class="col-12">
+                            <div class="mb-3">
+                                <label for="user_bio" class="form-label fw-bold">Bio</label>
+                                <!-- Dữ liệu cũ cho CKEditor phải được đặt bên trong textarea -->
+                                <textarea name="user_bio" id="user_bio" class="form-control" rows="5" placeholder="Enter bio"><?php echo $oldData['user_bio'] ?? ''; ?></textarea>
+                                <script>
+                                    CKEDITOR.replace('user_bio');
+                                </script>
+                            </div>
                         </div>
-                    </div>
+
+                        
+                        <div class="col-12">
+                            <div class="mb-3">
+                                <label for="formFileLg" class="form-label fw-bold">Upload a user image (<span class="text-danger">*</span>)</label>
+                                <input name="user_image" class="form-control" id="formFileLg" type="file" required>
+                                <?php echo formErrors($errorsArr, 'user_image'); ?>
+                            </div>
+                        </div>
+                    </div> 
+
                     <!-- Nút hành động -->
                     <div class="d-flex justify-content-between mt-4">
                         <a href="?module=users_management&action=listUser&user_id=<?php echo $user_id_current; ?>" class="btn btn-secondary">Back</a>
                         <button type="submit" class="btn btn-primary">Add user</button>
                     </div>
                 </form>
-
-
-                <!--end::Row-->
-
+                
             </div>
-            <!--end::Container-->
         </div>
     </div>
-    <!--end::App Content-->
 </main>
-<!--end::App Main-->
 <?php layoutAdmin("footer"); ?>

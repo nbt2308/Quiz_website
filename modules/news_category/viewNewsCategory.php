@@ -46,22 +46,22 @@ layoutAdminUseInclude("header", $dataTitle);
         <div class="shadow p-3 mb-5 bg-body rounded">
             <div class="container-fluid">
                 <!--begin::Row-->
-                <form action="" method="POST" enctype="multipart/form-data" class="p-4">
-                    <div class="row">
-                        <div class="col">
-                            <div class="mb-3">
-                                <label class="form-label">Category name</label>
-                                <input type="text" class="form-control" value="<?= htmlspecialchars($category['category_name']) ?>" disabled>
-                            </div>
-                        </div>
-                        <div class="col">
-                            <div class="mb-3">
-                                <label class="form-label">Created at</label>
-                                <input type="text" class="form-control" value="<?= htmlspecialchars($category['category_created_at']) ?>" disabled>
-                            </div>
+
+                <div class="row g-3">
+                    <div class="col-12 col-md-6">
+                        <div class="mb-3">
+                            <label class="form-label">Category name</label>
+                            <input type="text" class="form-control" value="<?= htmlspecialchars($category['category_name']) ?>" disabled>
                         </div>
                     </div>
-                    <div class="row">
+                    <div class="col-12 col-md-6">
+                        <div class="mb-3">
+                            <label class="form-label">Created at</label>
+                            <input type="text" class="form-control" value="<?= htmlspecialchars($category['category_created_at']) ?>" disabled>
+                        </div>
+                    </div>
+
+                    <div class="col-12">
 
                         <div class="mb-3">
                             <label class="form-label">Total news</label>
@@ -69,10 +69,10 @@ layoutAdminUseInclude("header", $dataTitle);
                         </div>
 
                     </div>
-                    <div class="row">
+                    <div class="col-12">
                         <div class="mb-3">
                             <label class="form-label">News of category</label>
-                            <div class="form-control" style="height: auto; background:#e9ecef" disabled>
+                            <div class="form-control p-2" style="height: auto; background:#e9ecef" disabled>
                                 <?php
                                 if ($category['total_news'] > 0) {
                                     $sql1 = "SELECT news_title, news_id 
@@ -81,7 +81,6 @@ layoutAdminUseInclude("header", $dataTitle);
                                     $result1 = $conn->query($sql1);
                                     while ($news = $result1->fetch_assoc()) {
                                         echo '<p class="mb-1">(' . $news['news_id'] . ') ' . htmlspecialchars($news['news_title']) . '</p>';
-                                    
                                     }
                                 } else {
                                     echo '<p class="text-danger">No news!!!</p>';
@@ -90,11 +89,12 @@ layoutAdminUseInclude("header", $dataTitle);
                             </div>
                         </div>
                     </div>
-                    <!-- Nút hành động -->
-                    <div class="d-flex justify-content-between mt-4">
-                        <a onclick="history.back()" class="btn btn-secondary">Back</a>
-                    </div>
-                </form>
+                </div>
+                <!-- Nút hành động -->
+                <div class="d-flex justify-content-between mt-4">
+                    <a onclick="history.back()" class="btn btn-secondary">Back</a>
+                </div>
+
 
 
                 <!--end::Row-->
