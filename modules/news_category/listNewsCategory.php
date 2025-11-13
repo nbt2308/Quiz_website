@@ -175,37 +175,37 @@ layoutAdminUseInclude("header", $dataTitle);
             <div class="container-fluid">
                 <!--begin::Row-->
 
-                <div class="row">
-                    <div class="col">
-                        <a href="?module=news_category&action=addNewsCategory&user_id=<?php echo $user_id; ?>" class="btn btn-primary add-button">
-                            <img class="add-icon" src="/News_website/templates/assets/images/add_circle_24dp_FFFFFF_FILL0_wght400_GRAD0_opsz24.svg" alt=""> Add New Category
+                <div class="row mb-3 align-items-center">
+                    <div class="col-12 col-md-6 mb-2 mb-md-0">
+                        <a href="?module=news_category&action=addNewsCategory&user_id=<?php echo $user_id; ?>" class="btn btn-primary w-100 w-md-auto">
+                            <i class="fa-solid fa-plus"></i> Add New Category
                         </a>
                     </div>
-                    <div class="col d-flex justify-content-end align-items-center">
-                        <a href="?module=news_category&action=listNewsCategory&user_id=<?php echo $user_id; ?>" class="btn btn-primary"><i class="fa-solid fa-arrows-rotate" style="color: #ffffff;"></i></a>
+                    <div class="col-12 col-md-6 text-md-end">
+                        <a href="?module=news_category&action=listNewsCategory&user_id=<?php echo $user_id; ?>" class="btn btn-outline-primary w-100 w-md-auto"><i class="fa-solid fa-arrows-rotate"></i> Reload</a>
                     </div>
                 </div>
-                <div class="row mt-3">
-                    <form class="d-flex gap-1" action="" method="get">
+                <div class="row mb-4">
+                    <form class="row g-3" action="" method="get">
                         <input type="hidden" name="module" value="news_category">
                         <input type="hidden" name="action" value="listNewsCategory">
                         <input type="hidden" name="user_id" value="<?php echo $user_id; ?>">
-                        <div class="col">
+                        <div class="col-12 col-md-4">
                             <!-- Return type: "yyyy-MM-ddThh:mm", cần thay chuỗi này thành "2025-11-10 14:30:00" để lưu vào db-->
                             <!-- giải pháp: str_replace -->
                             <label for="datetime-from" class="fw-bold">From</label>
                             <input type="datetime-local" class="form-control" name="datetime-from" value="<?= htmlspecialchars($datetime_from_value) ?>">
                         </div>
-                        <div class="col">
+                        <div class="col-12 col-md-4">
                             <label for="datetime-to" class="fw-bold">To</label>
                             <input type="datetime-local" class="form-control" name="datetime-to" value="<?= htmlspecialchars($datetime_to_value) ?>">
                         </div>
-                        <div class="col">
-                            <label for="" class="fw-bold">Search</label>
-                            <div class="d-flex">
-
-                                <input name="searchKey" class="form-control" type="text" placeholder="Enter the category name" aria-label="Search" value="<?= htmlspecialchars($searchKey) ?>">
-                                <button class="btn btn-outline-success ms-1" type="submit">Search</button>
+                        <div class="col-12 col-md-4">
+                            <label for="searchKey" class="form-label fw-bold">Search</label>
+                            <div class="input-group">
+                                <input name="searchKey" class="form-control" type="text" placeholder="Enter the category name" aria-label="Search" value="<?= htmlspecialchars($searchKey) ?>"> <button class="btn btn-success" type="submit">
+                                    <i class="fa-solid fa-magnifying-glass"></i> Search
+                                </button>
                             </div>
                         </div>
                     </form>

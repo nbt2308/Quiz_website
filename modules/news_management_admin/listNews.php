@@ -140,24 +140,24 @@ layoutAdminUseInclude("header", $dataTitle);
                         <a href="?module=news_management_admin&action=listNews&user_id=<?php echo $user_id; ?>" class="btn btn-primary"><i class="fa-solid fa-arrows-rotate" style="color: #ffffff;"></i></a>
                     </div>
                 </div>
-                <div class="row">
-                    <form class="d-flex gap-1" action="" method="get">
+                <div class="row mb-4 "> <form class="row g-3" action="" method="get">
                         <input type="hidden" name="module" value="news_management_admin">
                         <input type="hidden" name="action" value="listNews">
                         <input type="hidden" name="user_id" value="<?php echo $user_id; ?>">
-                        <div class="col-4">
-                            <label for="" class="fw-bold">Filter news status</label>
-                            <select class="form-select mb-3" name="filter_news_status" aria-label="Default select example">
+
+                        <div class="col-12 col-md-4">
+                            <label for="filter_news_status" class="form-label fw-bold">Filter news status</label>
+                            <select id="filter_news_status" class="form-select" name="filter_news_status" aria-label="Filter status">
                                 <option value="" <?= $news_status === "" ? "selected" : "" ?>>None</option>
                                 <option value="0" <?= $news_status === "0" ? "selected" : "" ?>>Not Approved</option>
                                 <option value="1" <?= $news_status === "1" ? "selected" : "" ?>>Approved</option>
                             </select>
                         </div>
-                        <div class="col-4">
-                            <label for="" class="fw-bold">Filter news category</label>
-                            <select class="form-select mb-3" name="filter_news_category" aria-label="Default select example">
+
+                        <div class="col-12 col-md-4">
+                            <label for="filter_news_category" class="form-label fw-bold">Filter news category</label>
+                            <select id="filter_news_category" class="form-select" name="filter_news_category" aria-label="Filter category">
                                 <option value="" <?= $news_category === "" ? "selected" : "" ?>>None</option>
-                                <!-- lap data -->
                                 <?php
                                 $sql = "SELECT * FROM category";
                                 $list = $conn->query($sql);
@@ -168,14 +168,16 @@ layoutAdminUseInclude("header", $dataTitle);
                                     }
                                 }
                                 ?>
-
                             </select>
                         </div>
-                        <div class="col-4 ">
-                            <label for="" class="fw-bold">Search</label>
-                            <div class="d-flex">
-                                <input name="searchKey" class="form-control" type="text" placeholder="Enter the title or category news" aria-label="Search" value="<?= htmlspecialchars($searchKey) ?>">
-                                <button class="btn btn-outline-success ms-1" type="submit">Search</button>
+
+                        <div class="col-12 col-md-4">
+                            <label for="searchKey" class="form-label fw-bold">Search</label>
+                            <div class="input-group">
+                                <input id="searchKey" name="searchKey" class="form-control" type="text" placeholder="Enter title or category..." aria-label="Search" value="<?= htmlspecialchars($searchKey) ?>">
+                                <button class="btn btn-outline-success" type="submit">
+                                    <i class="fa-solid fa-magnifying-glass"></i> Search
+                                </button>
                             </div>
                         </div>
                     </form>

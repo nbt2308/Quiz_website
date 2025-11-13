@@ -132,44 +132,52 @@ layoutAdminUseInclude("header", $dataTitle);
             <div class="container-fluid">
                 <!--begin::Row-->
 
-                <div class="row">
-                    <div class="col ">
-                        <a href="?module=users_management&action=addUser&user_id=<?php echo $user_id; ?>" class="btn btn-primary mb-3">
+                <div class="row mb-3 align-items-center">
+                    <div class="col-12 col-md-6 mb-2 mb-md-0">
+                        <a href="?module=users_management&action=addUser&user_id=<?php echo $user_id; ?>" class="btn btn-primary w-100 w-md-auto">
                             <i class="fa-solid fa-plus"></i>
                             <span>Add new user</span>
                         </a>
                     </div>
-                    <div class="col d-flex justify-content-end align-items-center">
-                        <a href="?module=users_management&action=listUser&user_id=<?php echo $user_id; ?>" class="btn btn-primary"><i class="fa-solid fa-arrows-rotate" style="color: #ffffff;"></i></a>
+
+                    <div class="col-12 col-md-6 text-md-end">
+                        <a href="?module=users_management&action=listUser&user_id=<?php echo $user_id; ?>" class="btn btn-outline-primary w-100 w-md-auto" title="Reload page">
+                            <i class="fa-solid fa-arrows-rotate"></i> Reload
+                        </a>
                     </div>
                 </div>
-                <div class="row">
-                    <form class="d-flex gap-1" action="" method="get">
+
+                <div class="row mb-4">
+                    <form class="row g-3" action="" method="get">
                         <input type="hidden" name="module" value="users_management">
                         <input type="hidden" name="action" value="listUser">
                         <input type="hidden" name="user_id" value="<?php echo $user_id; ?>">
-                        <div class="col-4">
-                            <label for="" class="fw-bold">Filter user role</label>
-                            <select class="form-select mb-3" name="filter_user_role" aria-label="Default select example">
+
+                        <div class="col-12 col-md-4">
+                            <label for="filter_user_role" class="form-label fw-bold">Filter user role</label>
+                            <select id="filter_user_role" class="form-select" name="filter_user_role">
                                 <option value="" <?= $user_role === "" ? "selected" : "" ?>>None</option>
                                 <option value="0" <?= $user_role === "0" ? "selected" : "" ?>>User</option>
                                 <option value="1" <?= $user_role === "1" ? "selected" : "" ?>>Admin</option>
                             </select>
                         </div>
-                        <div class="col-4">
-                            <label for="" class="fw-bold">Filter user status</label>
-                            <select class="form-select mb-3" name="filter_user_status" aria-label="Default select example">
+
+                        <div class="col-12 col-md-4">
+                            <label for="filter_user_status" class="form-label fw-bold">Filter user status</label>
+                            <select id="filter_user_status" class="form-select" name="filter_user_status">
                                 <option value="" <?= $user_status === "" ? "selected" : "" ?>>None</option>
                                 <option value="0" <?= $user_status === "0" ? "selected" : "" ?>>Pending</option>
                                 <option value="1" <?= $user_status === "1" ? "selected" : "" ?>>Activated</option>
                             </select>
                         </div>
-                        <div class="col-4 ">
-                            <label for="" class="fw-bold">Search</label>
-                            <div class="d-flex">
 
-                                <input name="searchKey" class="form-control" type="text" placeholder="Enter the username or email" aria-label="Search" value="<?= htmlspecialchars($searchKey) ?>">
-                                <button class="btn btn-outline-success ms-1" type="submit">Search</button>
+                        <div class="col-12 col-md-4">
+                            <label for="searchKey" class="form-label fw-bold">Search</label>
+                            <div class="input-group">
+                                <input id="searchKey" name="searchKey" class="form-control" type="text" placeholder="Username or email..." value="<?= htmlspecialchars($searchKey) ?>">
+                                <button class="btn btn-success" type="submit">
+                                    <i class="fa-solid fa-magnifying-glass"></i> Search
+                                </button>
                             </div>
                         </div>
                     </form>
