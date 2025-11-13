@@ -115,23 +115,23 @@ if (isset($news_status) || isset($news_category) || !empty($searchKey)) {
         </div>
         <div class="shadow p-3 mb-5 bg-body rounded">
             <div class="container-fluid">
-                <div class="row d-flex justify-content-between align-items-center mb-3">
-                    <div class="col align-items-center">
-                        <a href="?module=news&action=addNews" class="btn btn-primary add-button">
+                <div class="row mb-3 align-items-center">
+                    <div class="col-12 col-md-6 mb-2 mb-md-0">
+                        <a href="?module=news&action=addNews" class="btn btn-primary w-100 w-md-auto">
                             <img class="add-icon" src="/News_website/templates/assets/images/add_circle_24dp_FFFFFF_FILL0_wght400_GRAD0_opsz24.svg" alt=""> Add News
                         </a>
                     </div>
-                    <div class="col d-flex justify-content-end align-items-center">
-                        <a href="?module=news&action=manageNews&user_id=<?php echo $user_id; ?>" class="btn btn-primary"><i class="fa-solid fa-arrows-rotate" style="color: #ffffff;"></i></a>
+                    <div class="col-12 col-md-6 text-md-end">
+                        <a href="?module=news&action=manageNews&user_id=<?php echo $user_id; ?>" class="btn btn-outline-primary w-100 w-md-auto"><i class="fa-solid fa-arrows-rotate"></i> Reload</a>
                     </div>
                 </div>
             </div>
-            <div class="row">
-                <form class="d-flex gap-1" action="" method="get">
+            <div class="row mb-4">
+                <form class="row g-3" action="" method="get">
                     <input type="hidden" name="module" value="news">
                     <input type="hidden" name="action" value="manageNews">
                     <input type="hidden" name="user_id" value="<?php echo $user_id; ?>">
-                    <div class="col-4">
+                    <div class="col-12 col-md-4">
                         <label for="" class="fw-bold">Filter news status</label>
                         <select class="form-select mb-3" name="filter_news_status" aria-label="Default select example">
                             <option value="" <?= $news_status === "" ? "selected" : "" ?>>None</option>
@@ -139,7 +139,7 @@ if (isset($news_status) || isset($news_category) || !empty($searchKey)) {
                             <option value="1" <?= $news_status === "1" ? "selected" : "" ?>>Approved</option>
                         </select>
                     </div>
-                    <div class="col-4">
+                    <div class="col-12 col-md-4">
                         <label for="" class="fw-bold">Filter news category</label>
                         <select class="form-select mb-3" name="filter_news_category" aria-label="Default select example">
                             <option value="" <?= $news_category === "" ? "selected" : "" ?>>None</option>
@@ -157,11 +157,13 @@ if (isset($news_status) || isset($news_category) || !empty($searchKey)) {
 
                         </select>
                     </div>
-                    <div class="col-4 ">
-                        <label for="" class="fw-bold">Search</label>
-                        <div class="d-flex">
-                            <input name="searchKey" class="form-control" type="text" placeholder="Enter the title or category news" aria-label="Search" value="<?= htmlspecialchars($searchKey) ?>">
-                            <button class="btn btn-outline-success ms-1" type="submit">Search</button>
+                    <div class="col-12 col-md-4">
+                        <label for="searchKey" class="fw-bold">Search</label>
+                        <div class="input-group">
+                            <input id="searchKey" name="searchKey" class="form-control" type="text" placeholder="Enter the category name" value="<?= htmlspecialchars($searchKey) ?>">
+                            <button class="btn btn-success" type="submit">
+                                <i class="fa-solid fa-magnifying-glass"></i> Search
+                            </button>
                         </div>
                     </div>
                 </form>
