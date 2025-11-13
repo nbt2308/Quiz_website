@@ -126,6 +126,11 @@ layoutAdminUseInclude("header", $dataTitle);
             <div class="container-fluid">
                 <!--begin::Row-->
                 <div class="row">
+                    <div class="col d-flex justify-content-end align-items-center">
+                        <a href="?module=news_management_admin&action=newsApproval&user_id=<?php echo $user_id; ?>" class="btn btn-primary"><i class="fa-solid fa-arrows-rotate" style="color: #ffffff;"></i></a>
+                    </div>
+                </div>
+                <div class="row">
                     <form class="d-flex gap-1" action="" method="get">
                         <input type="hidden" name="module" value="news_management_admin">
                         <input type="hidden" name="action" value="newsApproval">

@@ -136,6 +136,9 @@ layoutAdminUseInclude("header", $dataTitle);
                             <span>Add new post</span>
                         </a>
                     </div> -->
+                    <div class="col d-flex justify-content-end align-items-center">
+                        <a href="?module=news_management_admin&action=listNews&user_id=<?php echo $user_id; ?>" class="btn btn-primary"><i class="fa-solid fa-arrows-rotate" style="color: #ffffff;"></i></a>
+                    </div>
                 </div>
                 <div class="row">
                     <form class="d-flex gap-1" action="" method="get">
@@ -195,7 +198,7 @@ layoutAdminUseInclude("header", $dataTitle);
                             </thead>
                             <tbody>
                                 <?php
-                                if ($result2) {
+                                if ($result2->num_rows > 0) {
                                     while ($row = $result2->fetch_assoc()) {
                                         echo '<tr>';
                                         echo '<td>' . $row['news_id'] . '</td>';
@@ -218,6 +221,15 @@ layoutAdminUseInclude("header", $dataTitle);
                                         echo '</td>';
                                         echo '</tr>';
                                     }
+                                } else {
+                                    echo '<tr>';
+                                    echo '<td colspan="6" class="text-center py-4">';
+                                    echo '<div class="text-muted" style="font-size: 14px;">';
+                                    echo '<i class="bi bi-inbox fs-4 d-block mb-2"></i>';
+                                    echo 'No data available';
+                                    echo '</div>';
+                                    echo '</td>';
+                                    echo '</tr>';
                                 }
                                 ?>
                             </tbody>

@@ -139,6 +139,9 @@ layoutAdminUseInclude("header", $dataTitle);
                             <span>Add new user</span>
                         </a>
                     </div>
+                    <div class="col d-flex justify-content-end align-items-center">
+                        <a href="?module=users_management&action=listUser&user_id=<?php echo $user_id; ?>" class="btn btn-primary"><i class="fa-solid fa-arrows-rotate" style="color: #ffffff;"></i></a>
+                    </div>
                 </div>
                 <div class="row">
                     <form class="d-flex gap-1" action="" method="get">

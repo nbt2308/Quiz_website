@@ -181,6 +181,9 @@ layoutAdminUseInclude("header", $dataTitle);
                             <img class="add-icon" src="/News_website/templates/assets/images/add_circle_24dp_FFFFFF_FILL0_wght400_GRAD0_opsz24.svg" alt=""> Add New Category
                         </a>
                     </div>
+                    <div class="col d-flex justify-content-end align-items-center">
+                        <a href="?module=news_category&action=listNewsCategory&user_id=<?php echo $user_id; ?>" class="btn btn-primary"><i class="fa-solid fa-arrows-rotate" style="color: #ffffff;"></i></a>
+                    </div>
                 </div>
                 <div class="row mt-3">
                     <form class="d-flex gap-1" action="" method="get">
