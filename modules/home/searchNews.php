@@ -7,26 +7,7 @@ if (isMethodPost('POST')) {
 }
 ?>
 <main>
-    <div class="category container">
-        <?php
-        $sql = "SELECT * FROM category";
-        $result = $conn->query($sql);
-        if ($result->num_rows > 0) {
-            while ($row = $result->fetch_assoc()) {
-                echo '
-                    <div class="category-title">
-                        <a href="?module=news_category&action=index&category_id=' . htmlspecialchars($row['category_id']) . '"><strong>' . htmlspecialchars($row['category_name']) . '</strong></a>
-                    </div>
-        ';
-            }
-        } else {
-            echo '<div class="text-muted " style="font-size: 14px; text-align:center;">';
-            echo '<i class="bi bi-inbox fs-4 d-block mb-2 "></i>';
-            echo '<p>No data available</p>';
-            echo '</div>';
-        }
-        ?>
-    </div>
+    <?php require './templates/layout/user/categoryBar.php'; ?>
     <div class="main container my-3">
         <div class="top-container ">
 
@@ -36,35 +17,37 @@ if (isMethodPost('POST')) {
 
                     <?php
                     $sql2 = "SELECT n.*, c.category_name
-                            FROM news n
-                            JOIN category c ON n.category_id = c.category_id
-                            JOIN (
-                                SELECT category_id, MAX(news_post_date) AS latest_post
-                                FROM news
-                                GROUP BY category_id
-                            ) vmax ON n.category_id = vmax.category_id AND n.news_post_date = vmax.latest_post
-                            WHERE n.news_isPost = 1;";
+                                    FROM news n
+                                    JOIN category c ON n.category_id = c.category_id
+                                    JOIN (
+                                        SELECT category_id, MAX(news_post_date) AS latest_post
+                                        FROM news
+                                        GROUP BY category_id
+                                    ) vmax ON n.category_id = vmax.category_id AND n.news_post_date = vmax.latest_post
+                                    WHERE n.news_isPost = 1;";
 
                     $result = $conn->query($sql2);
                     if ($result->num_rows > 0) {
                         $isActive = true;
                         while ($row = $result->fetch_assoc()) {
                             echo '
-                    <div class="carousel-item ' . ($isActive ? 'active' : '') . '">
-                        <div class="d-flex align-items-center p-3">
-                            <div style="height:100%;width:auto;"><img src="' . $row['news_image_path'] . '" alt="News image" class="rounded me-3" style="width:400px;height:250px;object-fit:cover;"></div>
-                            <div class="ms-3">
-                                <a class="fw-bold text-decoration-none" href="#" >' . htmlspecialchars($row['news_title']) . ' </a>
-                                <div class="text-limit">
-                                    <p class="text-muted mb-0">'
+                        <div class="carousel-item ' . ($isActive ? 'active' : '') . '">
+                            <div class="row align-items-center p-3">
+                                <div class="col-12 col-md-6 mb-3 mb-md-0">
+                                    <img src="' . $row['news_image_path'] . '" alt="News image" class="rounded w-100" style="height:250px;object-fit:cover;">
+                                </div>
+                                <div class="col-12 col-md-6 ">
+                                    <a class="fw-bold text-decoration-none fs-5" href="?module=news&action=news_detail&news_id=' . htmlspecialchars($row['news_id']) . '" >' . htmlspecialchars($row['news_title']) . ' </a>
+                                    <div class="text-limit">
+                                        <p class="text-muted mb-0">'
                                 . htmlspecialchars($row['news_summary']) .
                                 '</p>
+                                    </div>
+                                    <p class="mt-3 text-muted" style="font-size: 0.9rem;">Ngày đăng: ' . htmlspecialchars($row['news_post_date']) . '</p>
                                 </div>
-                                <p class="mt-5">Ngày đăng: ' . htmlspecialchars($row['news_post_date']) . '</p>
                             </div>
                         </div>
-                    </div>
-        ';
+            ';
                             $isActive = false;
                         }
                     } else {
@@ -87,12 +70,6 @@ if (isMethodPost('POST')) {
                     <span class="carousel-control-next-icon" aria-hidden="true"></span>
                 </button>
 
-                <!-- Chấm nhỏ bên dưới -->
-                <!-- <div class="carousel-indicators mt-3">
-                    <button type="button" data-bs-target="#newsCarousel" data-bs-slide-to="0" class="active"></button>
-                    <button type="button" data-bs-target="#newsCarousel" data-bs-slide-to="1"></button>
-                    <button type="button" data-bs-target="#newsCarousel" data-bs-slide-to="2"></button>
-                </div> -->
             </div>
 
 

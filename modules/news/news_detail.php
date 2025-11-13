@@ -64,7 +64,7 @@ if (!empty($_GET['news_id'])) {
 
             <figure class="text-center mb-4">
                 <img src="' . htmlspecialchars($row1['news_image_path']) . '" 
-                     class="img-fluid rounded-4 shadow-sm" 
+                     class="img-fluid rounded-4 shadow-sm figure w-100" 
                      alt="News image" style="max-width: 600px; height: auto;">
                 <figcaption class="text-secondary mt-2 fst-italic small">' . htmlspecialchars($row1['news_image_note']) . '</figcaption>
             </figure>';
