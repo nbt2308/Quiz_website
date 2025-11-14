@@ -118,7 +118,7 @@ if (isset($news_status) || isset($news_category) || !empty($searchKey)) {
                 <div class="row mb-3 align-items-center">
                     <div class="col-12 col-md-6 mb-2 mb-md-0">
                         <a href="?module=news&action=addNews" class="btn btn-primary w-100 w-md-auto">
-                            <img class="add-icon" src="/News_website/templates/assets/images/add_circle_24dp_FFFFFF_FILL0_wght400_GRAD0_opsz24.svg" alt=""> Add News
+                            <i class="fa-solid fa-plus"></i> Add News
                         </a>
                     </div>
                     <div class="col-12 col-md-6 text-md-end">
