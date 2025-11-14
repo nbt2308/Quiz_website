@@ -203,10 +203,20 @@ if (!empty($searchKey)) {
             <div class="right-content">
                 <div class="search mt-4">
                     <form class="d-flex" action="" method="GET">
+                        <input type="hidden" name="module" value="home">
+                        <input type="hidden" name="action" value="index">
                         <div class="search-box me-2">
                             <img class="search-icon" src="/News_website/templates/assets/images/search_24dp_1F1F1F_FILL0_wght400_GRAD0_opsz24.svg" alt="">
                             <input name="searchKey" class="form-control" type="text" placeholder="Enter the title or summary news" aria-label="Search" value="<?= htmlspecialchars($searchKey) ?>">
+                            <?php 
+                                if($searchKey){
+                                    echo '<a href="?module=home&action=index" class="reset-button">
+                                            <img src="/News_website/templates/assets/images/close_24dp_1F1F1F_FILL0_wght400_GRAD0_opsz24.svg" alt="">
+                                        </a>';
+                                }
+                            ?> 
                         </div>
+
                         <button class="btn btn-outline-success" type="submit">Search</button>
                     </form>
                 </div>
