@@ -178,7 +178,7 @@ layoutAdminUseInclude("header", $dataTitle);
                 <div class="row mb-3 align-items-center">
                     <div class="col-12 col-md-6 mb-2 mb-md-0">
                         <a href="?module=news_category&action=addNewsCategory&user_id=<?php echo $user_id; ?>" class="btn btn-primary w-100 w-md-auto">
-                            <i class="fa-solid fa-plus"></i> Add New Category
+                            <i class="fa-solid fa-plus"></i> Add new category
                         </a>
                     </div>
                     <div class="col-12 col-md-6 text-md-end">

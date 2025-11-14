@@ -59,12 +59,12 @@ $user_id = getSession('user_id');
             </div>
 
             <div class="mb-3">
-                <label class="form-label">Image Description</label>
+                <label class="form-label">Image description</label>
                 <input type="text" class="form-control" value="<?= htmlspecialchars($news['news_image_note']) ?>" disabled>
             </div>
 
             <div class="mb-3">
-                <label class="form-label">Post Date</label>
+                <label class="form-label">Post date</label>
                 <input type="text" class="form-control" value="<?= $news['news_post_date'] ?>" disabled>
             </div>
 
