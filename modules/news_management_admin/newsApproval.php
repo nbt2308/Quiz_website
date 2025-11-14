@@ -143,7 +143,7 @@ layoutAdminUseInclude("header", $dataTitle);
                         <input type="hidden" name="user_id" value="<?php echo $user_id; ?>">
 
                         <div class="col-12 col-md-4">
-                            <label for="filter_news_status" class="form-label fw-bold">Filter news status</label>
+                            <label for="filter_news_status" class=" fw-bold">Filter news status</label>
                             <select id="filter_news_status" class="form-select" name="filter_news_status" aria-label="Filter status">
                                 <option value="" <?= $news_status === "" ? "selected" : "" ?>>None</option>
                                 <option value="0" <?= $news_status === "0" ? "selected" : "" ?>>Not Approved</option>
@@ -170,7 +170,7 @@ layoutAdminUseInclude("header", $dataTitle);
                             </select>
                         </div>
                         <div class="col-12 col-md-4">
-                            <label for="searchKey" class="form-label fw-bold">Search</label>
+                            <label for="searchKey" class=" fw-bold">Search</label>
                             <div class="input-group">
                                 <input id="searchKey" name="searchKey" class="form-control" type="text" placeholder="Enter title or category..." aria-label="Search" value="<?= htmlspecialchars($searchKey) ?>">
                                 <button class="btn btn-outline-success" type="submit">
