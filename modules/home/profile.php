@@ -101,6 +101,7 @@ if (isMethodPost()) {
         }
 
         if ($insert_success) {
+            setSesstion("user_name", $filterArr['user_name']);
             header("Location:?module=home&action=index");
         } else {
             setSessionFlash('msg', 'Invalid data, please check again');
