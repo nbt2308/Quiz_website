@@ -89,6 +89,7 @@ if (!empty($_SERVER['QUERY_STRING'])) {
 if (isset($news_category) || !empty($searchKey)) {
     $sql3 = "SELECT * FROM news n, category c
             WHERE n.category_id=c.category_id 
+            AND news_isPost LIKE '%$news_status%' 
             AND n.category_id LIKE '%$news_category%' 
             AND (n.news_title LIKE '%$searchKey%' OR c.category_name LIKE '%$searchKey%') ORDER BY n.news_id DESC";
     $stmt1 = $conn->prepare($sql3);
