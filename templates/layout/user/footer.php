@@ -46,9 +46,9 @@
                         <a href="?module=home&action=index" class="text-white text-decoration-none link-danger">Home</a>
                     </li>
                     <li class="mb-2">
-                        <?php 
-                            $Login = getSession("logged_in"); 
-                            $user_id = getSession('user_id');
+                        <?php
+                        $Login = getSession("logged_in");
+                        $user_id = getSession('user_id');
                         ?>
                         <a href="<?php echo $Login ? "?module=news&action=manageNews&user_id=$user_id" : "?module=auth&action=login" ?>" class=" text-white text-decoration-none link-danger">Manage your posts</a>
                     </li>
@@ -94,6 +94,7 @@
 <!-- End of .container -->
 
 <script src="/News_website/templates/assets/js/home/goBack.js"></script>
+<script src="/News_website/templates/assets/js/home/profile.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 
