@@ -1,4 +1,8 @@
 <?php
+$Login = getSession("logged_in");
+if (!$Login) {
+    header("Location: ?module=auth&action=login");
+}
 $user_id;
 if (!empty($_GET['user_id'])) {
     $user_id = $_GET['user_id'];
