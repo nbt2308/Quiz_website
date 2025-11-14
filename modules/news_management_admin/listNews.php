@@ -29,7 +29,7 @@ if (isMethodGet()) {
 
 
     //Pagination
-    $sql1 = "SELECT n.* FROM news n";
+    $sql1 = "SELECT * FROM news";
     $stmt = $conn->prepare($sql1);
     if ($stmt === false) {
         die("Loi prepare SQL: " . $conn->error);
@@ -57,7 +57,8 @@ if (isMethodGet()) {
     }
 
     $sql2 = "SELECT * FROM news n, category c
-            WHERE n.category_id = c.category_id AND news_isPost LIKE '%$news_status%' 
+            WHERE n.category_id = c.category_id 
+            AND news_isPost LIKE '%$news_status%' 
             AND n.category_id LIKE '%$news_category%' 
             AND (news_title LIKE '%$searchKey%' OR category_name LIKE '%$searchKey%') 
             ORDER BY news_id DESC LIMIT $offset, $perPage";
@@ -140,7 +141,8 @@ layoutAdminUseInclude("header", $dataTitle);
                         <a href="?module=news_management_admin&action=listNews&user_id=<?php echo $user_id; ?>" class="btn btn-primary"><i class="fa-solid fa-arrows-rotate" style="color: #ffffff;"></i></a>
                     </div>
                 </div>
-                <div class="row mb-4 "> <form class="row g-3" action="" method="get">
+                <div class="row mb-4 ">
+                    <form class="row g-3" action="" method="get">
                         <input type="hidden" name="module" value="news_management_admin">
                         <input type="hidden" name="action" value="listNews">
                         <input type="hidden" name="user_id" value="<?php echo $user_id; ?>">

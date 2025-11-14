@@ -11,6 +11,11 @@ if (isMethodGet()) {
     $filterArr = filterData();
 
 
+    if (isset($filterArr['filter_news_status'])) {
+        $news_status = $filterArr['filter_news_status'];
+    } else {
+        $news_status = "";
+    }
     if (isset($filterArr['filter_news_category'])) {
         $news_category = $filterArr['filter_news_category'];
     } else {
@@ -54,9 +59,10 @@ if (isMethodGet()) {
 
     $sql2 = "SELECT * FROM news n, category c
             WHERE n.category_id = c.category_id 
+            AND news_isPost LIKE '%$news_status%' 
             AND n.category_id LIKE '%$news_category%' 
-            AND (n.news_title LIKE '%$searchKey%' OR c.category_name LIKE '%$searchKey%') 
-            ORDER BY n.news_id DESC LIMIT $offset, $perPage";
+            AND (news_title LIKE '%$searchKey%' OR category_name LIKE '%$searchKey%') 
+            ORDER BY news_id DESC LIMIT $offset, $perPage";
     $stmt1 = $conn->prepare($sql2);
     if ($stmt1 === false) {
         die("Loi prepare SQL: " . $conn->error);
@@ -135,6 +141,16 @@ layoutAdminUseInclude("header", $dataTitle);
                         <input type="hidden" name="module" value="news_management_admin">
                         <input type="hidden" name="action" value="newsApproval">
                         <input type="hidden" name="user_id" value="<?php echo $user_id; ?>">
+
+                        <div class="col-12 col-md-4">
+                            <label for="filter_news_status" class="form-label fw-bold">Filter news status</label>
+                            <select id="filter_news_status" class="form-select" name="filter_news_status" aria-label="Filter status">
+                                <option value="" <?= $news_status === "" ? "selected" : "" ?>>None</option>
+                                <option value="0" <?= $news_status === "0" ? "selected" : "" ?>>Not Approved</option>
+                                <option value="1" <?= $news_status === "1" ? "selected" : "" ?>>Approved</option>
+                            </select>
+                        </div>
+
                         <div class="col-12 col-md-4">
                             <label for="" class="fw-bold">Filter news category</label>
                             <select class="form-select mb-3" name="filter_news_category" aria-label="Default select example">
