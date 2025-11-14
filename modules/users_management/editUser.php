@@ -114,7 +114,7 @@ if (isMethodPost()) {
         }
 
         if ($insert_success) {
-            header("Location:?module=users_management&action=listUser&user_id=$user_id");
+            header("Location:?module=users_management&action=listUser&user_id=$user_id_current");
         } else {
             setSessionFlash('msg', 'Invalid data, please check again');
             setSessionFlash('msg_type', 'danger');

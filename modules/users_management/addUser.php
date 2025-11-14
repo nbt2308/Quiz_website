@@ -114,7 +114,7 @@ if (isMethodPost()) {
         $insert_success = $stmt->execute();
 
         if ($insert_success) {
-            header("Location:?module=users_management&action=listUser&user_id=$user_id");
+            header("Location:?module=users_management&action=listUser&user_id=$user_id_current");
         } else {
             setSessionFlash('msg', 'Add new user failed');
             setSessionFlash('msg_type', 'danger');
