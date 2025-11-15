@@ -105,6 +105,27 @@ VALUES
  'Stock market chart showing an upward trend',
  TRUE, 2, 3),
 
+ ('Ông Trump ký sắc lệnh miễn thuế cho hàng loạt nông sản',
+  'Nhiều loại thực phẩm thiết yếu như thịt bò, cà chua, chuối sẽ được miễn thuế đối ứng khi nhập khẩu vào Mỹ.',
+  'Ngày 14/11, Tổng thống Mỹ Donald Trump ký sắc lệnh miễn thuế đối ứng với hàng loạt thực phẩm. Đó là cà phê, trà, trái cây nhiệt đới và nước ép trái cây, hạt cacao, gia vị, chuối, cam, cà chua, thịt bò và một số loại phân bón.
+    <br> <br>
+  Nhiều sản phẩm trong danh sách miễn thuế đã ghi nhận mức tăng giá hai chữ số trong năm nay. Ví dụ, theo Chỉ số Giá Tiêu dùng (CPI) tháng 9, thịt bò xay đã tăng gần 14%, còn bò miếng tăng 17% so với năm ngoái. Đây là mức tăng mạnh nhất hơn 3 năm.
+    <br> <br>
+  Giá chuối tăng 7%, cà chua tăng 1%. Tổng cộng nhóm thực phẩm tiêu thụ tại gia đình tăng giá 2,7% trong tháng 9 so với năm ngoái.
+    <br> <br>
+  Sắc lệnh ngày 14/11 điều chỉnh phạm vi áp thuế đối ứng mà ông Trump công bố hôm 2/4, loại ra nhiều nông sản không thể sản xuất tại Mỹ. Ngày 5/9, Tổng thống Mỹ từng ký sắc lệnh điều chỉnh tương tự, miễn thuế đối ứng cho 45 nhóm hàng hóa như vàng, nickel, hóa chất,... Đây là các sản phẩm "không thể được trồng, khai thác và sản xuất tự nhiên ở Mỹ", hoặc không sản xuất đủ để đáp ứng nhu cầu trong nước.
+    <br> <br>
+  Sắc lệnh miễn trừ mới nhất có hiệu lực từ ngày 13/11, đánh dấu bước ngoặt trong chính sách của ông Trump. Tổng thống Mỹ từ lâu vẫn khẳng định việc tăng mạnh thuế nhập khẩu không thổi bùng lạm phát.
+    <br> <br>
+  Việc này được công bố chỉ một ngày sau khi Mỹ đạt khung thỏa thuận thương mại với Argentina, Ecuador, Guatemala và El Salvador. Chính quyền Trump hôm 14/11 cũng đã đạt thỏa thuận với Thụy Sĩ. Các quan chức Mỹ dự kiến đạt thêm nhiều thỏa thuận khác trong năm nay. Việc này sẽ mở đường cho giảm thuế với hàng loạt sản phẩm khác.
+    <br> <br>
+  Vài tuần gần đây, ông Trump đề cập nhiều đến vấn đề chi phí sinh hoạt. Ông khẳng định giá cả tăng cao là do các chính sách của người tiền nhiệm, chứ không phải do thuế nhập khẩu.
+    <br> <br>
+  Các nhà kinh tế học thì cho rằng chi phí tăng cao một phần do thuế nhập khẩu. Giá cả sinh hoạt có thể tiếp tục tăng trong năm tới, khi các doanh nghiệp bắt đầu chuyển gánh nặng xuống người mua.',
+  'templates/uploads/beef-1763169573-1763169598-9197-1763169733.webp',
+  'Thịt bò bán trong một gian hàng ở Washington (Mỹ). Ảnh: Reuters',
+  TRUE, 1, 3),
+
 -- 4. Sports
 ('Mbappe - Guler: Cặp bài trùng gợi nhớ về Ronaldo - Ozil',
  'Không cầu thủ nào kiến tạo cho Kylian Mbappe ghi bàn nhiều ở mùa này như Arda Guler mùa này, tương tự cách Mesut Ozil từng ăn ý với Cristiano Ronaldo thời cả hai còn sát cánh ở Real Madrid.',
