@@ -34,26 +34,26 @@
                 <div class="collapse navbar-collapse" id="navbarContent">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0 align-items-lg-center">
                         <li class="nav-item mx-lg-2 text-center">
-                            <a class="nav-link <?= ($_GET['action'] == "index") ? "active fw-bold fs-6" : "fs-6" ?>" href="?module=home&action=index">Home</a>
+                            <a class="nav-link <?= ($_GET['action'] == "index" || $_GET['action'] == "profile" ||$_GET['action'] == "changePassword") ? "active fw-bold fs-6" : "fw-bold fs-6" ?>" href="?module=home&action=index">Home</a>
                         </li>
 
                         <?php $user_id = getSession("user_id"); ?>
                         <li class="nav-item mx-lg-2 text-center">
-                            <a class="nav-link <?= ($_GET['action'] == "manageNews") ? "active fw-bold fs-6" : "fs-6" ?>" href="?module=news&action=manageNews&user_id=<?= $user_id ?>">Manage</a>
+                            <a class="nav-link <?= ($_GET['action'] == "manageNews") ? "active fw-bold fs-6" : "fw-bold fs-6" ?>" href="?module=news&action=manageNews&user_id=<?= $user_id ?>">Manage</a>
                         </li>
 
                         <?php if (getSession('user_role') == 1): ?>
                             <li class="nav-item mx-lg-2 text-center">
-                                <a class="nav-link fs-6" href="?module=admin&action=index&user_id=<?= $user_id ?>">Admin</a>
+                                <a class="nav-link fs-6 fw-bold " href="?module=admin&action=index&user_id=<?= $user_id ?>">Admin</a>
                             </li>
                         <?php endif; ?>
 
                         <li class="nav-item mx-lg-2 text-center">
-                            <a class="nav-link <?= ($_GET['action'] == "aboutUs") ? "active fw-bold fs-6" : "fs-6" ?>" href="?module=home&action=aboutUs">About Us</a>
+                            <a class="nav-link <?= ($_GET['action'] == "aboutUs") ? "active fw-bold fs-6" : "fw-bold fs-6" ?>" href="?module=home&action=aboutUs">About Us</a>
                         </li>
 
                         <li class="nav-item datetime mx-lg-2 text-center">
-                            <?php echo '<a class="text-secondary text-decoration-none" disabled>' . date('d/m/Y ') . '</a>'; ?>
+                            <?php echo '<a class="text-secondary text-decoration-none fw-bold" disabled>' . date('d/m/Y ') . '</a>'; ?>     
                         </li>
                     </ul>
 
@@ -68,12 +68,13 @@
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle d-flex align-items-center fs-6" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                     <img src="/News_website/templates/assets/images/settings_24dp_000000_FILL0_wght400_GRAD0_opsz24.svg" alt="User" class="rounded-circle" style="width:24px;height:24px;">
-                                    <span class="ms-2"><?= htmlspecialchars(getSession("user_name")) ?></span>
+                                    <span class="ms-2 fw-bold"><?= htmlspecialchars(getSession("user_name")) ?></span>
                                 </a>
                                 <ul class="dropdown-menu dropdown-menu-end">
                                     <?php $user_id = getSession("user_id"); ?>
-                                    <li><a class="dropdown-item fs-6" href="?module=home&action=profile&user_id=<?php echo $user_id; ?>">Profile</a></li>
-                                    <li><a class="dropdown-item fs-6" href="?module=auth&action=logout">Logout</a></li>
+                                    <li><a class="dropdown-item fs-6" href="?module=home&action=profile&user_id=<?php echo $user_id; ?>" ><i class="fa-solid fa-address-card me-1"></i>Profile</a></li>
+                                    <li><a class="dropdown-item fs-6" href="?module=home&action=changePassword&user_id=<?php echo $user_id; ?>"><i class="fa-solid fa-lock me-1"></i>Change password</a></li>
+                                    <li><a class="dropdown-item fs-6" href="?module=auth&action=logout"><i class="fa-solid fa-arrow-right-from-bracket me-1"></i>Logout</a></li>
                                 </ul>
                             </li>
                         </ul>
