@@ -94,69 +94,77 @@ if (isMethodPost()) {
     $errorsArr = "";
 }
 ?>
+<style>
+    .box-small {
+        max-width: 620px;
+        margin: 0 auto;
+    }
+</style>
 <main>
     <div class="container">
         <div class="my-3 text-center fs-2 fw-bold">
             <span>Change password</span>
         </div>
-        <div class="shadow p-3 mb-5 bg-body rounded">
-            <div class="container-fluid d-flex justify-content-center align-items-center flex-column">
-                <?php getMsg($msg, $msg_type); ?>
-                <form action="" method="POST" enctype="multipart/form-data" class="p-4">
-                    <div class="row g-3">
-                        <div class="col-12">
-                            <div class=" mb-3">
-                                <label for="password" class="form-label fw-bold">Current password (<span class="text-danger">*</span>)</label>
-                                <div class="input-group">
-                                    <input type="password" name="user_password" class="form-control"
-                                        id="password" placeholder="Enter current password" require>
-                                    <button class="btn btn-outline-secondary toggle-password" type="button">
-                                        👁 Show
-                                    </button>
-                                </div>
-                                <?php
-                                echo formErrors($errorsArr, 'user_password');
-                                ?>
-                            </div>
-                        </div>
-                        <div class="col-12 ">
-                            <div class="mb-3">
-                                <label for="exampleFormControlInput1" class="form-label fw-bold">New password (<span class="text-danger">*</span>)</label>
-                                <div class="input-group">
-                                    <input type="password" name="new_password" class="form-control" id="password" placeholder="Enter new password" require>
-                                    <button class="btn btn-outline-secondary toggle-password" type="button">
-                                        👁 Show
-                                    </button>
-                                </div>
-                                <?php
-                                echo formErrors($errorsArr, 'new_password');
-                                ?>
-                            </div>
-                        </div>
-                        <div class="col-12">
-                            <div class="mb-3">
-                                <label for="exampleFormControlInput1" class="form-label fw-bold">Confirm new password (<span class="text-danger">*</span>)</label>
-                                <div class="input-group">
-                                    <input type="password" name="confirm_new_password" class="form-control"
-                                        id="password" placeholder="Re-enter new password" require>
-                                    <button class="btn btn-outline-secondary toggle-password" type="button">
-                                        👁 Show
-                                    </button>
-                                </div>
-                                <?php
-                                echo formErrors($errorsArr, 'confirm_new_password');
-                                ?>
-                            </div>
-                        </div>
-                        <div class="d-flex justify-content-between mt-4">
-                            <a href="?module=home&action=index" class="btn btn-secondary">Back</a>
-                            <button type="submit" class="btn btn-primary">Update</button>
-                        </div>
-                </form>
-            </div>
+
+
+        <div class="box-small shadow p-3 mb-5 bg-body rounded">
+
+            <?php getMsg($msg, $msg_type); ?>
+
+            <form action="" method="POST" class="mt-3">
+
+                <!-- Current Password -->
+                <div class="mb-3">
+                    <label class="form-label fw-bold">Current password <span class="text-danger">*</span></label>
+                    <div class="input-group">
+                        <input
+                            type="password"
+                            name="user_password"
+                            class="form-control password-field"
+                            id="current_password"
+                            placeholder="Enter current password">
+                        <button class="btn btn-outline-secondary toggle-password" type="button">👁</button>
+                    </div>
+                    <?= formErrors($errorsArr, 'user_password'); ?>
+                </div>
+
+                <!-- New Password -->
+                <div class="mb-3">
+                    <label class="form-label fw-bold">New password <span class="text-danger">*</span></label>
+                    <div class="input-group">
+                        <input
+                            type="password"
+                            name="new_password"
+                            class="form-control password-field"
+                            id="new_password"
+                            placeholder="Enter new password">
+                        <button class="btn btn-outline-secondary toggle-password" type="button">👁 </button>
+                    </div>
+                    <?= formErrors($errorsArr, 'new_password'); ?>
+                </div>
+
+                <!-- Confirm Password -->
+                <div class="mb-3">
+                    <label class="form-label fw-bold">Confirm new password <span class="text-danger">*</span></label>
+                    <div class="input-group">
+                        <input
+                            type="password"
+                            name="confirm_new_password"
+                            class="form-control password-field"
+                            id="confirm_password"
+                            placeholder="Re-enter new password">
+                        <button class="btn btn-outline-secondary toggle-password" type="button">👁</button>
+                    </div>
+                    <?= formErrors($errorsArr, 'confirm_new_password'); ?>
+                </div>
+
+                <div class="d-flex justify-content-between mt-4">
+                    <a href="?module=home&action=index" class="btn btn-secondary">Back</a>
+                    <button type="submit" class="btn btn-primary">Update</button>
+                </div>
+
+            </form>
         </div>
     </div>
-
-
 </main>
 <?php layoutUser('footer'); ?>

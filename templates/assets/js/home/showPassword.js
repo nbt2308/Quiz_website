@@ -3,10 +3,10 @@ document.querySelectorAll(".toggle-password").forEach(btn => {
         const input = this.previousElementSibling; // Lấy input nằm trước nút
         if (input.type === "password") {
             input.type = "text";
-            this.textContent = "🙈 Hide";
+            this.textContent = "🙈";
         } else {
             input.type = "password";
-            this.textContent = "👁 Show";
+            this.textContent = "👁";
         }
     });
 });
