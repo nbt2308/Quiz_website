@@ -73,7 +73,7 @@ if (isMethodPost()) {
                         setSessionFlash('msg_type', 'success');
                         header("Location:?module=home&action=index");
                     } else {
-                        setSessionFlash('msg', 'Please check your email to activate your account and login again');
+                        setSessionFlash('msg', 'Your account is not activated or locked by the administrator');
                         setSessionFlash('msg_type', 'danger');
                     }
                 } else {
