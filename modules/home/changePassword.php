@@ -50,7 +50,7 @@ if (isMethodPost()) {
 
         $data = [
             'new_password' => md5($filterArr['new_password']),
-            'user_id'=>$user_id
+            'user_id' => $user_id
         ];
 
         $sql = "UPDATE user 
@@ -102,13 +102,18 @@ if (isMethodPost()) {
         <div class="shadow p-3 mb-5 bg-body rounded">
             <div class="container-fluid d-flex justify-content-center align-items-center flex-column">
                 <?php getMsg($msg, $msg_type); ?>
-                <form action="" method="POST" enctype="multipart/form-data" class="p-4">    
+                <form action="" method="POST" enctype="multipart/form-data" class="p-4">
                     <div class="row g-3">
                         <div class="col-12">
-                            <div class="mb-3">
-                                <label for="exampleFormControlInput1" class="form-label fw-bold">Current password (<span class="text-danger">*</span>)</label>
-                                <input type="password" name="user_password" class="form-control"
-                                    id="exampleFormControlInput1" placeholder="Enter current password" require>
+                            <div class=" mb-3">
+                                <label for="password" class="form-label fw-bold">Current password (<span class="text-danger">*</span>)</label>
+                                <div class="input-group">
+                                    <input type="password" name="user_password" class="form-control"
+                                        id="password" placeholder="Enter current password" require>
+                                    <button class="btn btn-outline-secondary toggle-password" type="button">
+                                        👁 Show
+                                    </button>
+                                </div>
                                 <?php
                                 echo formErrors($errorsArr, 'user_password');
                                 ?>
@@ -117,7 +122,12 @@ if (isMethodPost()) {
                         <div class="col-12 ">
                             <div class="mb-3">
                                 <label for="exampleFormControlInput1" class="form-label fw-bold">New password (<span class="text-danger">*</span>)</label>
-                                <input type="password" name="new_password" class="form-control" id="exampleFormControlInput1" placeholder="Enter new password" require>
+                                <div class="input-group">
+                                    <input type="password" name="new_password" class="form-control" id="password" placeholder="Enter new password" require>
+                                    <button class="btn btn-outline-secondary toggle-password" type="button">
+                                        👁 Show
+                                    </button>
+                                </div>
                                 <?php
                                 echo formErrors($errorsArr, 'new_password');
                                 ?>
@@ -126,8 +136,13 @@ if (isMethodPost()) {
                         <div class="col-12">
                             <div class="mb-3">
                                 <label for="exampleFormControlInput1" class="form-label fw-bold">Confirm new password (<span class="text-danger">*</span>)</label>
-                                <input type="password" name="confirm_new_password" class="form-control"
-                                    id="exampleFormControlInput1" placeholder="Re-enter new password" require>
+                                <div class="input-group">
+                                    <input type="password" name="confirm_new_password" class="form-control"
+                                        id="password" placeholder="Re-enter new password" require>
+                                    <button class="btn btn-outline-secondary toggle-password" type="button">
+                                        👁 Show
+                                    </button>
+                                </div>
                                 <?php
                                 echo formErrors($errorsArr, 'confirm_new_password');
                                 ?>
