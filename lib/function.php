@@ -26,6 +26,58 @@ use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\SMTP;
 use PHPMailer\PHPMailer\Exception;
 
+function sendMailFromUser($user_name, $emailTo, $emailFrom, $subjectEmail, $contentEmail)
+{
+    // Cần phải có các dòng require tương ứng ở đầu file PHP của bạn
+    // use PHPMailer\PHPMailer\PHPMailer;
+    // use PHPMailer\PHPMailer\Exception;
+    // use PHPMailer\PHPMailer\SMTP;
+
+    // Định nghĩa biến mật khẩu SMTP (nên được định nghĩa ngoài hàm)
+    $smtpPassword = _PASSWORD_EMAIL; 
+    
+    // Tạo một instance mới
+    $mail = new PHPMailer(true);
+
+    try {
+        //Server settings
+        $mail->SMTPDebug = SMTP::DEBUG_OFF;      // Tắt debug trong môi trường production
+        $mail->isSMTP();
+        $mail->Host       = 'smtp.gmail.com';
+        $mail->SMTPAuth   = true;
+        // Tài khoản GỬI là tài khoản Admin (thnewswebsite@gmail.com)
+        $mail->Username   = 'thnewswebsite@gmail.com';       
+        $mail->Password   = $smtpPassword; // Mật khẩu ứng dụng của Admin
+        $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;
+        $mail->Port       = 465; 
+        $mail->CharSet    = 'UTF-8';
+
+        // Recipients (Người nhận)
+        
+        // 1. setFrom: Bắt buộc phải là tài khoản SMTP (Admin) để xác thực
+        $mail->setFrom('thnewswebsite@gmail.com', 'Admin Website'); 
+
+        // 2. addAddress: Người nhận chính là Admin
+        $mail->addAddress($emailTo, 'Admin'); 
+        
+        // 3. addReplyTo: Đặt địa chỉ người dùng (người gửi form) làm địa chỉ trả lời
+        $mail->addReplyTo($emailFrom, $user_name); 
+
+
+        // Content
+        $mail->isHTML(false); // Nên dùng Plain Text cho phản hồi liên hệ, trừ khi bạn cần HTML.
+        $mail->Subject = $subjectEmail;
+        $mail->Body    = $contentEmail;
+
+        $mail->send();
+        // Trả về true nếu gửi thành công
+        return true; 
+    } catch (Exception $e) {
+        // Có thể ghi log lỗi thay vì echo trực tiếp ra màn hình
+        error_log("Message could not be sent. Mailer Error: {$mail->ErrorInfo}");
+        return false;
+    }
+}
 function sendMail($emailTo, $subjectEmail, $contentEmail)
 {
 

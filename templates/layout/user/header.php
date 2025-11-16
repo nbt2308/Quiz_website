@@ -51,6 +51,9 @@
                         <li class="nav-item mx-lg-2 text-center">
                             <a class="nav-link <?= ($_GET['action'] == "aboutUs") ? "active fw-bold fs-6" : "fw-bold fs-6" ?>" href="?module=home&action=aboutUs">About Us</a>
                         </li>
+                        <li class="nav-item mx-lg-2 text-center">
+                            <a class="nav-link <?= ($_GET['action'] == "contactUs") ? "active fw-bold fs-6" : "fw-bold fs-6" ?>" href="?module=home&action=contactUs">Contact Us</a>
+                        </li>
 
                         <li class="nav-item datetime mx-lg-2 text-center">
                             <?php echo '<a class="text-secondary text-decoration-none fw-bold" disabled>' . date('d/m/Y ') . '</a>'; ?>     
