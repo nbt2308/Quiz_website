@@ -154,7 +154,7 @@ if (isMethodPost()) {
 
 <main>
     <div class="container my-4">
-        <h3 class=" text-center">Edit News</h3>
+        <h3 class="fw-bold text-center mb-4">Edit News</h3>
 
         <form action="" method="POST" enctype="multipart/form-data" class="p-4 border rounded bg-light">
             <?php getMsg($msg, $msg_type); ?>

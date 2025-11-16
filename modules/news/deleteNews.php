@@ -12,7 +12,7 @@ $user_id = getSession('user_id');
 
 <main>
     <div class="container my-4">
-        <h3 class="mb-4">Delete News</h3>
+        <h3 class="fw-bold text-center mb-4">Delete News</h3>
         <form action="?module=news&action=deleteNews_handle" method="POST" class="p-4 border rounded bg-light">
             <input type="hidden" name="news_id" value="<?= $news_id ?>">
 

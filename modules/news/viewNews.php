@@ -19,7 +19,7 @@ $user_id = getSession('user_id');
 
 <main>
     <div class="container my-4">
-        <h3 class="mb-4">View News</h3>
+        <h3 class="fw-bold text-center mb-4">View News</h3>
 
         <div class="p-4 border rounded bg-light">
 
