@@ -130,7 +130,7 @@ if (isMethodPost()) {
             <?php getMsg($msg, $msg_type); ?>
             <!-- Chọn danh mục -->
             <div class="mb-3">
-                <label for="category" class="form-label fw-bold">Select category</label>
+                <label for="category" class="form-label fw-bold">Select category (<span class="text-danger">*</span>)</label>
                 <select name="category" id="category" class="form-select">
                     <option selected disabled>-- Select a category --</option>
                     <?php
@@ -150,7 +150,7 @@ if (isMethodPost()) {
 
             <!-- Tiêu đề tin -->
             <div class="mb-3">
-                <label for="news_title" class="form-label fw-bold">News title</label>
+                <label for="news_title" class="form-label fw-bold">News title (<span class="text-danger">*</span>)</label>
                 <input name="news_title" id="news_title" type="text" class="form-control" placeholder="Enter news title">
                 <?php
                 echo formErrors($errorsArr, 'news_title');
@@ -159,7 +159,7 @@ if (isMethodPost()) {
 
             <!-- Tóm tắt -->
             <div class="mb-3">
-                <label for="news_summary" class="form-label fw-bold">News summary</label>
+                <label for="news_summary" class="form-label fw-bold">News summary (<span class="text-danger">*</span>)</label>
                 <input name="news_summary" id="news_summary" type="text" class="form-control" placeholder="Enter short summary">
                 <?php
                 echo formErrors($errorsArr, 'news_summary');
@@ -168,7 +168,7 @@ if (isMethodPost()) {
 
             <!-- Nội dung -->
             <div class="mb-3">
-                <label for="news_content" class="form-label fw-bold">News content</label>
+                <label for="news_content" class="form-label fw-bold">News content (<span class="text-danger">*</span>)</label>
                 <textarea name="news_content" id="news_content" class="form-control" rows="5" placeholder="Enter content here"></textarea>
                 <script>
                     CKEDITOR.replace('news_content');
@@ -180,7 +180,7 @@ if (isMethodPost()) {
 
             <!-- Hình ảnh -->
             <div class="mb-3">
-                <label for="formFileLg" class="form-label fw-bold">Upload a news image</label>
+                <label for="formFileLg" class="form-label fw-bold">Upload a news image (<span class="text-danger">*</span>)</label>
                 <input name="image_file" class="form-control" id="formFileLg" type="file">
                 <?php
                 echo formErrors($errorsArr, 'image_file');
@@ -189,7 +189,7 @@ if (isMethodPost()) {
 
             <!-- Mô tả hình ảnh -->
             <div class="mb-3">
-                <label for="image_description" class="form-label fw-bold">Image description</label>
+                <label for="image_description" class="form-label fw-bold">Image description (<span class="text-danger">*</span>)</label>
                 <input name="image_description" id="image_description" type="text" class="form-control" placeholder="Enter image description">
                 <?php
                 echo formErrors($errorsArr, 'image_description');
