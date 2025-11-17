@@ -123,12 +123,13 @@
                             <!--end::User Image-->
                             <!--begin::Menu Body-->
                             <li class="user-body">
-                                <a href="#" style="width: 100%;" class="btn btn-default btn-flat">Profile</a>
+                                <?php $user_id = getSession("user_id"); ?>
+                                <a href="?module=home&action=profile&user_id=<?php echo $user_id; ?>" style="width: 100%;" class="btn btn-default btn-flat">Profile</a>
                             </li>
                             <!--end::Menu Body-->
                             <!--begin::Menu Footer-->
                             <li class="user-footer">
-                                <a href="#" style="width: 100%;" class="btn btn-default btn-flat float-end">Sign out</a>
+                                <a href="?module=auth&action=logout" style="width: 100%;" class="btn btn-default btn-flat float-end">Sign out</a>
                             </li>
                             <!--end::Menu Footer-->
                         </ul>

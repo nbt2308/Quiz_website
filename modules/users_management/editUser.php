@@ -215,7 +215,12 @@ layoutAdminUseInclude("header", $dataTitle);
 
                         <div class="col-12 col-md-6">
                             <div class="mb-3">
-                                <label for="user_status" class="form-label fw-bold">Select status for user (<span class="text-danger">*</span>)</label>
+                                <label for="user_status" class="form-label fw-bold">
+                                    Select status for user (<span class="text-danger"><?php echo ($user_id == $user_id_current
+                                                                                            ? 'You are currently an admin, please check carefully'
+                                                                                            : '*'); ?></span>)
+
+                                </label>
                                 <select name="user_status" id="user_status" class="form-select">
                                     <?php
                                     if (htmlspecialchars($data['user_status']) == 1) {
