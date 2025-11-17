@@ -173,13 +173,13 @@ layoutAdminUseInclude("header", $dataTitle);
                             <div class="mb-3">
                                 <label for="exampleFormControlInput1" class="form-label fw-bold">Email address (<span class="text-danger">It cannot be changed here</span>)</label>
                                 <input type="text" name="user_email" class="form-control"
-                                    id="exampleFormControlInput1" placeholder="Enter email address" disabled value="<?= htmlspecialchars($data['user_email']) ?>">
+                                    id="exampleFormControlInput1" placeholder="" disabled value="<?= htmlspecialchars($data['user_email'] ?? '') ?>">
                             </div>
                         </div>
                         <div class="col-12 col-md-6">
                             <div class="mb-3">
                                 <label for="exampleFormControlInput1" class="form-label fw-bold">Password (<span class="text-danger">It cannot be changed here</span>)</label>
-                                <input type="password" name="user_password" class="form-control" id="exampleFormControlInput1" placeholder="Enter password" disabled>
+                                <input type="password" name="user_password" class="form-control" id="exampleFormControlInput1" placeholder="" disabled>
                             </div>
                         </div>
 
@@ -188,7 +188,7 @@ layoutAdminUseInclude("header", $dataTitle);
                             <div class="mb-3">
                                 <label for="exampleFormControlInput1" class="form-label fw-bold">Username (<span class="text-danger">*</span>)</label>
                                 <input type="text" name="user_name" class="form-control"
-                                    id="exampleFormControlInput1" placeholder="Enter username" require value="<?= htmlspecialchars($data['user_name']) ?>">
+                                    id="exampleFormControlInput1" placeholder="Enter username here" require value="<?= htmlspecialchars($data['user_name'] ?? '') ?>">
                                 <?php
                                 echo formErrors($errorsArr, 'user_name');
                                 ?>
@@ -235,7 +235,7 @@ layoutAdminUseInclude("header", $dataTitle);
                             <div class="mb-3">
                                 <label for="user_address" class="form-label fw-bold">Address (<span class="text-danger">*</span>)</label>
                                 <input name="user_address" id="user_address" type="text"
-                                    class="form-control" placeholder="Enter address" require value="<?= htmlspecialchars($data['user_address']) ?>">
+                                    class="form-control" placeholder="Enter address here" require value="<?= htmlspecialchars($data['user_address'] ?? '') ?>">
                                 <?php
                                 echo formErrors($errorsArr, 'user_address');
                                 ?>
@@ -252,7 +252,7 @@ layoutAdminUseInclude("header", $dataTitle);
                                 $decoded = html_entity_decode($content, ENT_QUOTES | ENT_HTML5, 'UTF-8');
                                 $decoded = html_entity_decode($decoded, ENT_QUOTES | ENT_HTML5, 'UTF-8');
                                 ?>
-                                <textarea name="user_bio" id="user_bio" class="form-control" rows="5" placeholder="Enter bio"><?php echo $decoded ?></textarea>
+                                <textarea class="form-control" rows="3" name="user_bio" id="user_bio" placeholder="Enter bio information here" disabled><?php echo $decoded; ?></textarea>
                                 <script>
                                     CKEDITOR.replace('user_bio');
                                 </script>
@@ -266,7 +266,7 @@ layoutAdminUseInclude("header", $dataTitle);
                                 <input name="user_image" class="form-control" id="formFileLg" type="file">
                                 <div class="mb-2">
                                     <p>Current image:</p>
-                                    <img src="<?= htmlspecialchars($data['user_image_path']); ?>" alt="Current image" width="300" height="auto">
+                                    <img src="<?= htmlspecialchars($data['user_image_path'] ?? ''); ?>" alt="Current image" width="300" height="auto">
                                 </div>
                             </div>
                         </div>

@@ -45,13 +45,13 @@ layoutAdminUseInclude("header", $dataTitle);
                             <div class="mb-3">
                                 <label for="exampleFormControlInput1" class="form-label fw-bold">Email address </label>
                                 <input type="text" name="user_email" class="form-control"
-                                    id="exampleFormControlInput1" placeholder="Enter email address" disabled value="<?= htmlspecialchars($data['user_email']) ?>">
+                                    id="exampleFormControlInput1" placeholder="" disabled value="<?= htmlspecialchars($data['user_email'] ?? '') ?>">
                             </div>
                         </div>
                         <div class="col-12 col-md-6">
                             <div class="mb-3">
                                 <label for="exampleFormControlInput1" class="form-label fw-bold">Password (<span class="text-danger">It cannot be seen here</span>)</label>
-                                <input type="password" name="user_password" class="form-control" id="exampleFormControlInput1" placeholder="Enter password" disabled>
+                                <input type="password" name="user_password" class="form-control" id="exampleFormControlInput1" placeholder="" disabled>
                             </div>
                         </div>
 
@@ -60,7 +60,7 @@ layoutAdminUseInclude("header", $dataTitle);
                             <div class="mb-3">
                                 <label for="exampleFormControlInput1" class="form-label fw-bold">Username </label>
                                 <input type="text" name="user_name" class="form-control"
-                                    id="exampleFormControlInput1" placeholder="Enter username" require value="<?= htmlspecialchars($data['user_name']) ?>" disabled>
+                                    id="exampleFormControlInput1" placeholder="" require value="<?= htmlspecialchars($data['user_name'] ?? '') ?>" disabled>
 
                             </div>
                         </div>
@@ -107,7 +107,7 @@ layoutAdminUseInclude("header", $dataTitle);
                             <div class="mb-3">
                                 <label for="user_address" class="form-label fw-bold">User address</label>
                                 <input name="user_address" id="user_address" type="text"
-                                    class="form-control" placeholder="Enter address here" require value="<?= htmlspecialchars($user['address'] ?? '') ?>" disabled>
+                                    class="form-control" placeholder="" require value="<?= htmlspecialchars($user['address'] ?? '') ?>" disabled>
 
                             </div>
                         </div>
@@ -122,7 +122,7 @@ layoutAdminUseInclude("header", $dataTitle);
                                 $decoded = html_entity_decode($content, ENT_QUOTES | ENT_HTML5, 'UTF-8');
                                 $decoded = html_entity_decode($decoded, ENT_QUOTES | ENT_HTML5, 'UTF-8');
                                 ?>
-                                    <textarea class="form-control" rows="3" name="user_bio" id="user_bio" placeholder="Enter bio information here" disabled><?php echo $decoded; ?></textarea>
+                                    <textarea class="form-control" rows="3" name="user_bio" id="user_bio" placeholder="" disabled><?php echo $decoded; ?></textarea>
 
                             </div>
                         </div>
