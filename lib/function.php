@@ -28,12 +28,9 @@ use PHPMailer\PHPMailer\Exception;
 
 function sendMailFromUser($user_name, $emailTo, $emailFrom, $subjectEmail, $contentEmail)
 {
-    // Cần phải có các dòng require tương ứng ở đầu file PHP của bạn
-    // use PHPMailer\PHPMailer\PHPMailer;
-    // use PHPMailer\PHPMailer\Exception;
-    // use PHPMailer\PHPMailer\SMTP;
+   
 
-    // Định nghĩa biến mật khẩu SMTP (nên được định nghĩa ngoài hàm)
+    // Định nghĩa biến mật khẩu SMTP 
     $smtpPassword = _PASSWORD_EMAIL; 
     
     // Tạo một instance mới
@@ -65,7 +62,7 @@ function sendMailFromUser($user_name, $emailTo, $emailFrom, $subjectEmail, $cont
 
 
         // Content
-        $mail->isHTML(false); // Nên dùng Plain Text cho phản hồi liên hệ, trừ khi bạn cần HTML.
+        $mail->isHTML(false); 
         $mail->Subject = $subjectEmail;
         $mail->Body    = $contentEmail;
 
