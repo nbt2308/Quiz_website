@@ -81,6 +81,50 @@ VALUES
  'Hệ thống giám sát thiên tai Việt Nam',
  TRUE, 1, 1),
 
+ ('Sạt lở núi đè ôtô khách ở Khánh Hòa, 6 người chết',
+  'Mưa lớn khiến đèo Khánh Lê ở quốc lộ 27C sạt lở, đất đá vùi lấp xe khách từ Đà Lạt xuống Nha Trang, 6 người tử vong, 19 người bị thương, cứu hộ đang tìm nạn nhân, sáng 17/11.',
+  'Gần 22h hôm qua, xe khách Phương Trang 34 chỗ biển số TP HCM chở 32 người, trong đó có hai tài xế, một phụ xe, chạy trên đèo Khánh Lê hướng Đà Lạt – Nha Trang để ra Quảng Ngãi. Đến khu vực Nam Khánh Vĩnh, đèo sạt lở, đất đá đổ xuống vùi lấp một phần xe.
+    <br> <br>
+  Cabin bị đất đá tách rời, thân bên phải ôtô biến dạng, vỡ kính, khung sắt và giường nằm méo mó. Nhiều người mắc kẹt bên trong. Đất đá cũng vùi nhiều xe máy gần đó.
+    <br> <br>
+  Mưa lớn khiến hai đầu đèo sạt lở trên đoạn dài gần 4 km. Lực lượng cứu hộ mất hơn hai giờ mở đường tiếp cận hiện trường. Cảnh sát PCCC huy động hai xe chuyên dụng, gần 20 cán bộ chiến sĩ đào bới đưa nạn nhân ra ngoài.
+    <br> <br>
+  Tai nạn làm 6 người chết (3 nam, 3 nữ). Bốn thi thể đã được đưa ra, hai người còn kẹt dưới các khối đá lớn. Có 19 người bị thương. Giám đốc Bệnh viện Đa khoa Khánh Hòa Lê Vũ Chương cho biết ba ca nặng đã được phẫu thuật; 16 người còn lại bị chấn thương ở đầu, chân tay, không nguy hiểm đến tính mạng.
+    <br> <br>
+  Theo Công an Khánh Hòa, xe gặp nạn khi chạy gần taluy dương. Đất đá từ núi đã đè bẹp khoảng nửa thân xe. Mưa lớn và nguy cơ tiếp tục sạt lở gây khó khăn cho cứu hộ.
+    <br> <br>
+  Đại diện Công ty Phương Trang cho biết hệ thống định vị ghi nhận tai nạn lúc 21h39 ngày 16/11. Xe khách bị nạn loại 34 phòng riêng (xe limousine), chạy tuyến Đà Lạt – Quảng Ngãi. Hai tài xế và phụ xe đều bị thương, trong đó một người chấn thương nặng. Số khách an toàn đã được đưa về bến của nhà xe ở Nha Trang.
+    <br> <br>
+  Quốc lộ 27C dài 121 km nối Đà Lạt – Nha Trang, là tuyến chính của xe du lịch. Đèo Khánh Lê dài 33 km, thường sạt lở mùa mưa.
+    <br> <br>
+  Thời gian qua, mưa lớn kéo dài ở các tỉnh miền Trung, gây ra một số vụ sạt lở. Gần đây nhất, tối qua đèo Khánh Sơn đoạn qua xã Cam An (Khánh Hoà) sạt lở, vùi lấp lán trại cùng ba người bên trong. Sự cố khiến một người chết, một bị thương, một nạn nhân mất tích. Thời điểm núi sạt, trong lán có 10 người.
+    <br> <br>
+  Cách đây ba ngày, vạt núi tại thôn Pứt, xã Hùng Sơn (Đà Nẵng) bị sạt, đất đá chảy xuống suối, vùi nhiều chòi canh rẫy, ba người mất tích hiện chưa tìm thấy.',
+  'templates/uploads/783699063009970484-1763345151-7983-1787-1763345279.webp',
+  'Xe khách bị đá rơi biến dạng phần đầu. Ảnh: Minh Bằng',
+  TRUE, 2, 1),
+
+('Lũ tràn về đô thị Huế',
+  'Mưa lớn, thủy điện ở thượng nguồn sông Hương, sông Bồ xả lũ về hạ du khiến nhiều tuyến đường, khu dân cư ở đô thị Huế lại bị ngập.',
+  'Sáng 17/11, nước lũ tràn qua Đập Đá nằm giữa sông Hương và sông Như Ý. Tuyến đường đi bộ ven sông Như Ý ngập hơn 0,5 m, nước tràn vào nhiều nhà dân ven sông. Nằm ở hạ lưu sông Như Ý, các tuyến đường Tố Hữu, Vũ Thắng, Phan Anh bị ngập, giao thông khó khăn.
+    <br> <br>
+  Cư dân ở các tòa chung cư Aranya, Xuân Phú, Vicoland, phường Vỹ Dạ vội vã đưa ôtô ra đậu kín công viên Hành chính công tránh lũ. Anh Nguyễn Văn Nhân, 45 tuổi, ở phường An Cựu, cho biết sáng mở cửa đã thấy nước ngập đường nên vội lái xe đi tránh.
+    <br> <br>
+  "Đỗ xe lên đây cho an toàn. Đợt lũ trước, lái xe ra đỗ sớm nên thoát được cảnh bị ngâm nước như nhiều ôtô khác", anh Nhân nói.
+    <br> <br>
+  Nằm ở hạ lưu sông Bồ, nhiều tuyến đường liên thôn, liên xóm tại các xã Quảng Điền, Đan Điền, phường Hóa Châu bị ngập khi thủy điện Hương Điền xả lũ khoảng 3.000 m3/s. Nước lũ tràn về nhanh gây ngập quốc lộ 1 đoạn qua phường Hương Trà. Cảnh sát giao thông phải túc trực để điều tiết giao thông.
+    <br> <br>
+  Ông Nguyễn Ánh Cầu, Chủ tịch xã Quảng Điền, cho biết từ đêm qua nước lũ tràn về đã chia cắt các tuyến đường về xã Quảng Thọ, Quảng An, tràn vào hàng trăm nhà dân ven sông Bồ với độ sâu 0,5 m. Hiện nay, các tuyến đường đã được rào chắn và bố trí lực lượng túc trực. Sáng nay, một người dân cố tình vượt rào bị lũ cuốn, may mắn cứu kịp thời.
+    <br> <br>
+  Chi cục Thủy lợi và Biến đổi khi hậu TP Huế cho biết mực nước sông Hương tại trạm Kim Long là lúc 9h sáng nay là 2,76 trên báo động hai 0,76 m; sông Bồ tại trạm Phú Ốc 4,93 m, trên báo động ba là 0,43 m.
+    <br> <br>
+  Dự báo, mưa cường suất lớn trong ngày 17-18/11 sẽ gây ngập 0,3-0,5 m một số khu vực quốc lộ 1 đoạn qua xã Phú Lộc với mức ngập 0,3-0,5 m, khu đô thị An Cựu, Thuận Hóa, đường Ngô Đức Kế, Thánh Gióng, Phú Xuân.
+    <br> <br>
+  Đài Khí tượng Thủy văn TP Huế dự báo từ sáng nay đến sáng 19/11, Huế mưa rất to. Tổng lượng mưa ở vùng đồng bằng phổ biến 150-300 mm, có nơi trên 400 mm; vùng núi 200-400 mm, có nơi trên 500 mm.',
+  'templates/uploads/2-1763347148-1763347200-6108-1763347252.webp',
+  'Các tuyến đường ở khu đô thị mới An Vân Dương bị nước lũ tràn vào gây ngập. Ảnh: Võ Thạnh',
+  TRUE, 2, 1),
+
 -- 2. World
 ('Global Leaders Meet for Climate Summit',
  'World leaders gathered in Paris to discuss urgent measures to address the escalating climate crisis.',
