@@ -30,7 +30,7 @@ if (isMethodPost()) {
             $errors['user_address']['length'] = "Address must be 6 characters long";
         }
     }
-    $save_content = $conn->real_escape_string($filterArr['user_bio']);
+    $save_content = $conn->real_escape_string($filterArr['user_bio'] ?? '');
     if (empty($errors)) {
         //not found error
         //transfer data
@@ -246,7 +246,7 @@ layoutAdminUseInclude("header", $dataTitle);
                             <div class="mb-3">
                                 <label for="user_bio" class="form-label fw-bold">Bio</label>
                                 <?php
-                                $content = $data['user_bio']; // Lấy dữ liệu từ DB, ví dụ: &#60;p&#62;&#38;aacute;dasdasda&#60;/p&#62;
+                                $content = $data['user_bio'] ?? ''; // Lấy dữ liệu từ DB, ví dụ: &#60;p&#62;&#38;aacute;dasdasda&#60;/p&#62;
 
                                 // Giải mã 2 lần
                                 $decoded = html_entity_decode($content, ENT_QUOTES | ENT_HTML5, 'UTF-8');
