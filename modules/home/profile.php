@@ -140,7 +140,7 @@ if (isMethodPost()) {
                             <div class="rounded-circle bg-gray-200 overflow-hidden shadow-inner d-flex justify-content-center" style="width:200px;height:200px">
                                 <!-- Ảnh xem trước -->
                                 <img id="avatar-preview"
-                                    src="<?= htmlspecialchars($data['user_image_path']); ?>"
+                                    src="<?= htmlspecialchars($data['user_image_path'] ?? ''); ?>"
                                     alt="Ảnh đại diện"
                                     class="w-full h-full object-cover rounded">
                             </div>
@@ -194,7 +194,7 @@ if (isMethodPost()) {
                             <div class="mb-3">
                                 <label for="user_address" class="form-label fw-bold">Address (<span class="text-danger">*</span>)</label>
                                 <input name="user_address" id="user_address" type="text"
-                                    class="form-control" placeholder="Enter address" require value="<?= htmlspecialchars($data['user_address']) ?>">
+                                    class="form-control" placeholder="Enter address" require value="<?= htmlspecialchars($data['user_address'] ?? '') ?>">
                                 <?php
                                 echo formErrors($errorsArr, 'user_address');
                                 ?>
@@ -204,7 +204,7 @@ if (isMethodPost()) {
                             <div class="mb-3">
                                 <label for="user_bio" class="form-label fw-bold">Bio</label>
                                 <?php
-                                $content = $data['user_bio']; // Lấy dữ liệu từ DB, ví dụ: &#60;p&#62;&#38;aacute;dasdasda&#60;/p&#62;
+                                $content = $data['user_bio'] ?? ''; // Lấy dữ liệu từ DB, ví dụ: &#60;p&#62;&#38;aacute;dasdasda&#60;/p&#62;
 
                                 // Giải mã 2 lần
                                 $decoded = html_entity_decode($content, ENT_QUOTES | ENT_HTML5, 'UTF-8');

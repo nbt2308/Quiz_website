@@ -73,7 +73,7 @@ if (isMethodPost()) {
 <main>
     <div class="container">
         <div class="my-3 text-center fs-2 fw-bold">
-            <span class="text-primary">Contact User</span><br>
+            <span class="text-primary">Contact Us</span><br>
             <span class="fs-6 fst-italic">We value your feedback. Please use the form below to send us your inquiries, comments, or news tips.</span>
         </div>
 

@@ -55,6 +55,9 @@
                     <li class="mb-2">
                         <a href="?module=home&action=aboutUs" class="text-white text-decoration-none link-danger">About us</a>
                     </li>
+                    <li class="mb-2">
+                        <a href="?module=home&action=contactUs" class="text-white text-decoration-none link-danger">Contact us</a>
+                    </li>
 
                 </ul>
             </div>
