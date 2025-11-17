@@ -254,13 +254,13 @@ a.navbar-brand.logo-brand img {
 }
 
 .left-content {
-    /* width: 70%; */
-    /* float: left; */
+    width: 70%;
+    float: left;
 }
 
 .right-content {
-    /* width: 30%; */
-    /* float: right; */
+    width: 30%;
+    float: right;
 }
 
 .footer {
